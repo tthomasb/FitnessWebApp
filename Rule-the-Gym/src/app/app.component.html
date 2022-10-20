@@ -1,11 +1,11 @@
-<!-- Toolbar -->
-
 <!--  <img
     width="40"
     alt="Dumbbell Logo"
     src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi7.pngguru.com%2Fpreview%2F309%2F616%2F994%2Fdumbbell-barbell-fitness-centre-weight-training-dumbbell.jpg&f=1&nofb=1&ipt=b245b6d2a371cea1fe8664d9144c68696e8991abfd09409995dbdd73d00da707&ipo=images"
   />
   -->
+
+<!-- Toolbar -->
 <div class="toolbar" role="main">
   <mat-toolbar>
     <button
@@ -21,10 +21,31 @@
 
   <mat-drawer-container class="sidenav-container" autosize>
     <mat-drawer #drawer class="sidenav" mode="side">
-      <button mat-raised-button>Basic1</button>
-      <br/>
-      <button mat-raised-button>Basic2</button>
-      <br/>
+      
+      <mat-list-item [routerLink]="['/dashboard']" [routerLinkActive]="['is-active']">
+        <h5>Übersicht</h5>
+        <mat-icon>dashboard</mat-icon>
+        Dashboard
+        <br/>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/training']" [routerLinkActive]="['is-active']">
+        <mat-icon>fitness_center</mat-icon>
+        Training
+        <br/>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/nutrition']" [routerLinkActive]="['is-active']">
+        <mat-icon>fastfood</mat-icon>
+        Nutrition
+        <br/>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/bmi']" [routerLinkActive]="['is-active']">
+        <mat-icon>sync</mat-icon>
+        BMI
+        <br/>
+      </mat-list-item>
     </mat-drawer>
 
     <div class="sidenav-content">

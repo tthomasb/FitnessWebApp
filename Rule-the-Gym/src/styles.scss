@@ -69,15 +69,6 @@ $RuletheGym-dark-theme: mat.define-dark-theme(
     flex: 1;
   }
 
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .toolbar {
     color: white;
     background-color: black;
@@ -86,14 +77,6 @@ $RuletheGym-dark-theme: mat.define-dark-theme(
     bottom: 0;
     left: 0;
     right: 0;
-    //background: #eee;
-  }
-
-  .mat-drawer-content {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
   }
 
   .sidenav-container {
@@ -105,10 +88,24 @@ $RuletheGym-dark-theme: mat.define-dark-theme(
   .sidenav-content {
     display: flex;
     height: 100%;
-    align-items: center;
-    justify-content: center;
+    //align-items: center;
+    //justify-content: center;
   }
 
   .sidenav {
     padding: 5%;
+  }
+
+  .mat-list-item {
+    position: absolute;
+    // Need a fix!
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
   }
