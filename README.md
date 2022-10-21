@@ -17,10 +17,11 @@ Features:
  -- note down yours sets and reps
  -- track your progress
  -- pause timer between sets
+ -- get statistics on your progress at the end
 
 ## The Team
 
-- Thomas
-- Nick
-- Willi
-- Johannes
+- Thomas (Integrator)
+- Nick (Project Manager)
+- Willi (Software Architect)
+- Johannes (System Analyst)
