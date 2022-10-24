@@ -1,28 +1,39 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, OnInit } from '@angular/core';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { createUrlTreeFromSnapshot } from '@angular/router';
 
-interface FoodNode {
-  name: string;
-  pause:string
-  children?: FoodNode[];
+interface WorkoutsNode {
+  name: string;  
+  children?: WorkoutNode[];
+}
+interface WorkoutNode {
+  name: string;  
+  children?: ExerciseNode[];
+}
+interface ExerciseNode {
+  name: string;  
+  children?: DataNode[];
+}
+interface DataNode {
+  name: string;  
+  pause:string;
 }
 
-const TREE_DATA: FoodNode[] = [
+const TREE_DATA: WorkoutsNode[] = [
   {
-    name: 'Workouts',
-    pause:'2min',
+    name: 'Workouts',    
     children: [
       {
-        name: 'Workout 1',
-        pause:'2min',
-        children: [{name: 'Exercise 1', pause:'2min'}, {name: 'Exercise 2',pause:'2min'}, {name: 'Exercise 3', pause:'2min'}],
-      },
-      {
-        name: 'Workout 2',
-        pause:'2min',
-        children: [{name: 'Exercise 1',pause:'2min',}, {name: 'Exercise 2',pause:'2min',}, {name: 'Exercise 3',pause:'2min',}],
-      },
+        name: 'Workout 1',        
+        children: [{name: 'Exercise 1', 
+                    children: [
+                      {
+                        name:"curls",
+                        pause: "2min"
+                      }
+                    ]}],
+      }      
     ],
   },
 ];
@@ -32,14 +43,15 @@ const TREE_DATA: FoodNode[] = [
   styleUrls: ['./training.component.scss']
 })
 export class TrainingComponent implements OnInit {
-  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
+  treeControl = new NestedTreeControl<WorkoutsNode>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<WorkoutsNode>();
 
   constructor() { 
     this.dataSource.data = TREE_DATA;
   }
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: WorkoutsNode) => !!node.children && node.children.length > 0;
   ngOnInit(): void {
+    
   }
 
 }
