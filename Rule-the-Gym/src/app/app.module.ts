@@ -11,6 +11,7 @@ import { TrainingComponent } from './components/training/training.component';
 import { BmiComponent } from './components/bmi/bmi.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NutritionComponent } from './components/nutrition/nutrition.component';
+
 @NgModule({
   declarations: [
     AppComponent,
