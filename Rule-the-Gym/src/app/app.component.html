@@ -1,10 +1,3 @@
-<!--  <img
-    width="40"
-    alt="Dumbbell Logo"
-    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi7.pngguru.com%2Fpreview%2F309%2F616%2F994%2Fdumbbell-barbell-fitness-centre-weight-training-dumbbell.jpg&f=1&nofb=1&ipt=b245b6d2a371cea1fe8664d9144c68696e8991abfd09409995dbdd73d00da707&ipo=images"
-  />
-  -->
-
 <!-- Toolbar -->
 <div class="toolbar" role="main">
   <mat-toolbar>
@@ -19,11 +12,10 @@
     <span>Rule the Gym</span>
   </mat-toolbar>
 
-  <mat-drawer-container class="sidenav-container" autosize>
-    <mat-drawer #drawer class="sidenav" mode="side">
-      
+  <mat-drawer-container class="sidenav-container" fxFlex autosize>
+    <mat-drawer #drawer class="sidenav" mode="side" opened>
+
       <mat-list-item [routerLink]="['/dashboard']" [routerLinkActive]="['is-active']">
-        <h5>Übersicht</h5>
         <mat-icon>dashboard</mat-icon>
         Dashboard
         <br/>
@@ -50,8 +42,6 @@
 
     <div class="sidenav-content">
       <div class="content" role="main">
-
-        <h2>Coming soon!</h2>
       </div>
     </div>
     <mat-drawer-content>
