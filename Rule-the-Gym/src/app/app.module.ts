@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +12,8 @@ import { TrainingComponent } from './components/training/training.component';
 import { BmiComponent } from './components/bmi/bmi.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NutritionComponent } from './components/nutrition/nutrition.component';
+import { WorkoutComponent } from './components/training/workout/workout.component';
+import { ExerciseComponent } from './components/training/exercise/exercise.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +21,13 @@ import { NutritionComponent } from './components/nutrition/nutrition.component';
     TrainingComponent,
     BmiComponent,
     DashboardComponent,
-    NutritionComponent
+    NutritionComponent,
+    WorkoutComponent,
+    ExerciseComponent
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
