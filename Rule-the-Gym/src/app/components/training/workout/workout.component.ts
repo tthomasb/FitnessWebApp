@@ -13,3 +13,11 @@ export class WorkoutComponent implements OnInit {
   }
 
 }
+
+/**
+   * Open the dialog for adding an Event
+   * openAdd(): void {
+  
+  }
+   */
+ 

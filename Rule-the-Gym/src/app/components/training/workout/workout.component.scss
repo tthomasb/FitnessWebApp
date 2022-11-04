@@ -1,0 +1,41 @@
+.container {
+  padding: 8px;
+}
+
+.workout {
+  padding: 0px;
+}
+
+.workout-card {
+  color: blue;
+}
+
+.mat-card-subtitle {
+  color: blueviolet;
+}
+
+/*
+.mat-card-content {
+    
+}
+*/
+
+p {
+  color: red;
+}
+
+.mat-card-actions {
+  color: green;
+}
+
+.action-container {
+  margin-top: 0px;
+  position: sticky;
+  bottom: 6px;
+  float: right;
+}
+
+.button-add {
+  position: relative;
+  right: 16px;
+}
