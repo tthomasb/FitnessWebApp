@@ -107,11 +107,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "FitnessWebApp:serve"
+            "devServerTarget": "Rule-the-Gym:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "FitnessWebApp:serve:production"
+              "devServerTarget": "Rule-the-Gym:serve:production"
             }
           }
         }
