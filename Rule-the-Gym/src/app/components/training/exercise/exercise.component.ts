@@ -1,4 +1,6 @@
+import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-exercise',
@@ -6,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exercise.component.scss']
 })
 export class ExerciseComponent implements OnInit {
+ 
+  Musclegroup = this._formBuilder.group({
+    chest: false,
+    back: false,
+    arms: false,
+  });
 
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
   }
