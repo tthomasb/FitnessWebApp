@@ -28,7 +28,7 @@ exports.config = {
 
   allScriptsTimeout: 11000,
   capabilities: {
-    browserName: 'opera'
+    browserName: 'chrome'
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
