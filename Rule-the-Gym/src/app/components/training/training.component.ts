@@ -20,6 +20,7 @@ interface DataNode {
   pause:string;
 }
 
+/*
 const TREE_DATA: WorkoutsNode[] = [
   {
     name: 'Workouts',    
@@ -37,6 +38,8 @@ const TREE_DATA: WorkoutsNode[] = [
     ],
   },
 ];
+*/
+
 @Component({
   selector: 'app-training',
   templateUrl: './training.component.html',
@@ -47,7 +50,7 @@ export class TrainingComponent implements OnInit {
   dataSource = new MatTreeNestedDataSource<WorkoutsNode>();
 
   constructor() { 
-    this.dataSource.data = TREE_DATA;
+    //this.dataSource.data = TREE_DATA;
   }
   hasChild = (_: number, node: WorkoutsNode) => !!node.children && node.children.length > 0;
   ngOnInit(): void {
