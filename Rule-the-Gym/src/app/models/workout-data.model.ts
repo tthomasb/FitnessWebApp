@@ -2,27 +2,30 @@ import { ExerciseModel } from "./exercise-model.model";
 
 export class WorkoutData {
 
-    name?: string;
-    exercises?: ExerciseModel[];
-
+    name: string;
+    exercises: ExerciseModel[];
+constructor(name:string, exercises:ExerciseModel[]){
+    this.name=name;
+    this.exercises=exercises
+}
 }
 
-export namespace WorkoutData{
-    export function parseWorkoutData(obj:any):WorkoutData{
-        const data=new WorkoutData();
-        let ctr=0;Node
-        for(const key of obj.keys()){
-            if(!obj[key]){
-                throw new Error('Key is empty!')
-            }else{
-                if(obj[key] instanceof ExerciseModel){
-                        const exercises: any[]=[];
-                        exercises[ctr]=ExerciseModel.parseExerciseModel(obj[key]);
-                        ctr++;
-                }
-            }
+// export namespace WorkoutData{
+//     export function parseWorkoutData(obj:any):WorkoutData{
+//         const data=new WorkoutData();
+//         let ctr=0;Node
+//         for(const key of obj.keys()){
+//             if(!obj[key]){
+//                 throw new Error('Key is empty!')
+//             }else{
+//                 if(obj[key] instanceof ExerciseModel){
+//                         const exercises: any[]=[];
+//                         exercises[ctr]=ExerciseModel.parseExerciseModel(obj[key]);
+//                         ctr++;
+//                 }
+//             }
             
-        }
-        return new WorkoutData;
-    }
-}
+//         }
+//         return new WorkoutData;
+//     }
+// }

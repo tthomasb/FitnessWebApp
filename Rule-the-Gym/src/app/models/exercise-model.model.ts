@@ -1,10 +1,10 @@
 export class ExerciseModel {
 
-    name?:string;
-    description?:string;
-    reps?:number;
-    sets?:number;
-    pause?:number;
+    name!:string;
+    description!:string;
+    reps!:number;
+    sets!:number;
+    pause!:number;
 constructor(name:any,description:any, sets:any,reps:any,pause:any){
 this.name=name;
 this.description=description;
