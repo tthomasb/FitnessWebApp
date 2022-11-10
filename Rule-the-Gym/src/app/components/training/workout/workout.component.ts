@@ -10,7 +10,13 @@ import { DialogWorkoutComponent } from 'src/app/dialogues/dialog-workout/dialog-
   styleUrls: ['./workout.component.scss'],
 })
 export class WorkoutComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  workouts:WorkoutData[]
+  constructor(public dialog: MatDialog) {
+    this.workouts=[
+      new WorkoutData("Biceps1",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")]), 
+      new WorkoutData("Biceps2",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")])
+    ];
+  }
 
   ngOnInit(): void {}
 
@@ -22,10 +28,8 @@ export class WorkoutComponent implements OnInit {
       width: '90%',
       height: '90%',
     });
-  workouts:WorkoutData[]=[
-  new WorkoutData("Biceps1",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")]), 
-  new WorkoutData("Biceps2",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")])
-];
+
+
       
 
     /**
