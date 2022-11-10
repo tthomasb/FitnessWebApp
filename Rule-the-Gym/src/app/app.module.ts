@@ -16,6 +16,7 @@ import { WorkoutComponent } from './components/training/workout/workout.componen
 import { ExerciseComponent } from './components/training/exercise/exercise.component';
 import { DialogWorkoutComponent } from './dialogues/dialog-workout/dialog-workout.component';
 import { DialogExerciseComponent } from './dialogues/dialog-exercise/dialog-exercise.component';
+import { DialogWorkoutAddExerciseComponent } from './dialogues/dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DialogExerciseComponent } from './dialogues/dialog-exercise/dialog-exer
     WorkoutComponent,
     ExerciseComponent,
     DialogWorkoutComponent,
-    DialogExerciseComponent
+    DialogExerciseComponent,
+    DialogWorkoutAddExerciseComponent
   ],
   imports: [
     BrowserModule,
