@@ -2,9 +2,7 @@
   <div class="workout">
     <mat-card class="workout-card">
       <mat-grid-list cols="3" rows="5" rowHeight="50px">
-        <mat-grid-tile colspan="2" rowspan="1"
-          ><mat-card-title>Upper body</mat-card-title></mat-grid-tile
-        >
+        <mat-grid-tile colspan="2" rowspan="1"><mat-card-title>Upper body</mat-card-title></mat-grid-tile>
         <mat-grid-tile colspan="1" rowspan="4">
           <img
             style="width: 70%; height: 70%"
@@ -63,8 +61,12 @@
 
     <!-- Floating-Actions -->
     <div class="action-container">
-      <!-- <button mat-fab (click)="openAdd()" color="primary" class="button-add"> -->
-      <button mat-fab color="primary" class="button-add">
+      <button
+        mat-fab
+        (click)="openAddWorkout()"
+        color="primary"
+        class="button-add"
+      >
         <mat-icon>add</mat-icon>
       </button>
     </div>

@@ -1,0 +1,48 @@
+<div class="dialog">
+  <div mat-dialog-container>
+    <mat-grid-list cols="1" rows="2" rowHeight="500%">
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card-title
+          ><h1 mat-dialog-title>Create a workout plan</h1></mat-card-title
+        >
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card-subtitle>
+          <div mat-dialog-content>
+            <form class="example-form">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Workout title</mat-label>
+                <input matInput value="" />
+              </mat-form-field>
+            </form>
+            <form class="example-form">
+                <button mat-flat-button>Choose exercise</button>
+                <input matInput value="" />
+            </form>
+            <form class="example-form">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Time</mat-label>
+                <input matInput value="" />
+              </mat-form-field>
+            </form>
+            <p>Übung 1</p>
+            <p>Übung 2</p>
+            <p>Übung 3</p>
+            <br>
+            <mat-card-subtitle
+            ><button mat-flat-button color="primary" mat-dialog-close>
+              Create
+            </button>
+            <button mat-flat-button color="primary" mat-dialog-close>
+              Close
+            </button></mat-card-subtitle
+          >
+          </div>
+        </mat-card-subtitle>
+      </mat-grid-tile>
+      <div mat-dialog-actions>
+        
+      </div>
+    </mat-grid-list>
+  </div>
+</div>
