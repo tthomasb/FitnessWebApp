@@ -11,8 +11,8 @@ export class WorkoutComponent implements OnInit {
 
   constructor() { }
   workouts:WorkoutData[]=[
-  new WorkoutData("Biceps1",[new ExerciseModel("Curls","biceps curls",5,4,60),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60)]), 
-  new WorkoutData("Biceps2",[new ExerciseModel("Curls","biceps curls",5,4,60),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60)])
+  new WorkoutData("Biceps1",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")]), 
+  new WorkoutData("Biceps2",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")])
 ];
   
 
