@@ -1,8 +1,10 @@
 <div class="container">
-  <div class="workout">
+  <div class="workout" *ngFor="let workout of workouts">
     <mat-card class="workout-card">
       <mat-grid-list cols="3" rows="5" rowHeight="50px">
-        <mat-grid-tile colspan="2" rowspan="1"><mat-card-title>Upper body</mat-card-title></mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="1"
+          ><mat-card-title>{{ workout.name }}</mat-card-title></mat-grid-tile
+        >
         <mat-grid-tile colspan="1" rowspan="4">
           <img
             style="width: 70%; height: 70%"
@@ -11,16 +13,17 @@
             alt="Gym pic"
           />
         </mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="1"
-          ><mat-card-subtitle
-            >Chest, Back, Biceps, Triceps, Shoulder</mat-card-subtitle
-          ></mat-grid-tile
-        >
-        <mat-grid-tile colspan="2" rowspan="1"
+        <mat-grid-tile colspan="2" rowspan="1" style="height: 3%"
+          ><div style="height: 100%; background: blueviolet"></div
+        ></mat-grid-tile>
+
+        <mat-grid-tile
+          colspan="2"
+          rowspan="1"
+          *ngFor="let exercises of workout.exercises"
           ><mat-card-content
-            ><p>Description 1.</p>
-            <p>Description 2.</p></mat-card-content
-          ></mat-grid-tile
+            ><p>{{ exercises.name }}</p>
+          </mat-card-content></mat-grid-tile
         >
         <mat-grid-tile colspan="2" rowspan="1"
           ><mat-card-actions
@@ -32,31 +35,6 @@
     </mat-card>
     <br />
 
-    <mat-card class="workout-card">
-      <mat-card-title>Lower body</mat-card-title>
-      <mat-card-subtitle>Calfs, Quadriceps, Hamstrings</mat-card-subtitle>
-      <mat-card-content>
-        <p>Description 1.</p>
-        <p>Description 2.</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Start</button>
-        <button mat-button>Edit</button>
-      </mat-card-actions>
-    </mat-card>
-    <br />
-    <mat-card class="workout-card">
-      <mat-card-title>Lower body</mat-card-title>
-      <mat-card-subtitle>Calfs, Quadriceps, Hamstrings</mat-card-subtitle>
-      <mat-card-content>
-        <p>Description 1.</p>
-        <p>Description 2.</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Start</button>
-        <button mat-button>Edit</button>
-      </mat-card-actions>
-    </mat-card>
     <br />
 
     <!-- Floating-Actions -->
