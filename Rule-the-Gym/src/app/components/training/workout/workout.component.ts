@@ -10,11 +10,17 @@ import { DialogWorkoutComponent } from 'src/app/dialogues/dialog-workout/dialog-
   styleUrls: ['./workout.component.scss'],
 })
 export class WorkoutComponent implements OnInit {
-  workouts:WorkoutData[]
+  workouts: WorkoutData[];
   constructor(public dialog: MatDialog) {
-    this.workouts=[
-      new WorkoutData("Biceps1",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")]), 
-      new WorkoutData("Biceps2",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")])
+    this.workouts = [
+      new WorkoutData('Biceps1', [
+        new ExerciseModel('Curls', 'biceps curls', 5, 4, 60, 'biceps'),
+        new ExerciseModel('Hammer Curls', 'Hammer curls', 5, 4, 60, 'biceps'),
+      ]),
+      new WorkoutData('Biceps2', [
+        new ExerciseModel('Curls', 'biceps curls', 5, 4, 60, 'biceps'),
+        new ExerciseModel('Hammer Curls', 'Hammer curls', 5, 4, 60, 'biceps'),
+      ]),
     ];
   }
 
@@ -23,20 +29,16 @@ export class WorkoutComponent implements OnInit {
   /**
    * Open the workout dialog
    */
-   openAddWorkout() {
+  openAddWorkout() {
     const dialogRef = this.dialog.open(DialogWorkoutComponent, {
       width: '90%',
       height: '90%',
     });
-
-
-      
 
     /**
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
     */
-      
   }
 }
