@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ExerciseModel } from 'src/app/models/exercise-model.model';
+import { WorkoutData } from 'src/app/models/workout-data.model';
 
 @Component({
   selector: 'app-workout',
@@ -8,8 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class WorkoutComponent implements OnInit {
 
   constructor() { }
+  workouts:WorkoutData[]=[
+  new WorkoutData("Biceps1",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")]), 
+  new WorkoutData("Biceps2",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")])
+];
+  
 
   ngOnInit(): void {
+      
   }
 
 }
