@@ -100,10 +100,8 @@ p {
 }
 
 .sidenav-container {
-  width: auto;
   height: 100%;
   background-color: rgb(41, 41, 41);
-  //border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .sidenav-content {
@@ -114,12 +112,17 @@ p {
 }
 
 .sidenav {
+  //width: 15%;
   padding: 1%;
 }
 
 .mat-list-item {
   //margin-right: 8px;
-  font-size: 80%;
+  font-size: 70%;
+}
+
+.mat-icon {
+  font-size: 130%;
 }
 
 .content {
@@ -134,4 +137,27 @@ p {
 .is-active {
   font-weight: bold;
   color: #7b1fa2;;
+}
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: blueviolet; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(110, 10, 204); 
 }

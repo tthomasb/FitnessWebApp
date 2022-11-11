@@ -28,14 +28,8 @@ p {
   color: green;
 }
 
-.action-container {
-  margin-top: 0px;
-  position: sticky;
-  bottom: 6px;
-  float: right;
-}
-
 .button-add {
-  position: relative;
-  right: 16px;
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
 }
