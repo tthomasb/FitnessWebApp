@@ -11,16 +11,9 @@ import { ExerciseModel } from 'src/app/models/exercise-model.model';
 })
 export class ExerciseComponent implements OnInit {
  exercises:ExerciseModel[]
- 
 
-  Musclegroup = this._formBuilder.group({
-    chest: false,
-    back: false,
-    arms: false,
-    biceps:false,
-  });
 
-  constructor(private _formBuilder: FormBuilder) { 
+  constructor() { 
     this.exercises=[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Curls","biceps curls",5,4,60,"biceps")];
     
     

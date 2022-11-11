@@ -1,9 +1,17 @@
 .mat-card {
-    max-width: 500px;
-    border-width: 1px;
-    margin-left: 10px;
-    margin-top: 10px;
+    background-color: rgb(78, 77, 77);
+    max-width: 30%;
+    border-width: 5%;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
   }
 .mat-button {
    
+}
+.mat-card-title {
+    margin-left: 1.5%;
+}
+.mat-card-subtitle {
+    margin-left: 1.5%;
 }
