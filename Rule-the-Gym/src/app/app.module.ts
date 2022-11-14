@@ -14,6 +14,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NutritionComponent } from './components/nutrition/nutrition.component';
 import { WorkoutComponent } from './components/training/workout/workout.component';
 import { ExerciseComponent } from './components/training/exercise/exercise.component';
+import { DialogWorkoutComponent } from './dialogues/dialog-workout/dialog-workout.component';
+import { DialogExerciseComponent } from './dialogues/dialog-exercise/dialog-exercise.component';
+import { DialogWorkoutAddExerciseComponent } from './dialogues/dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { ExerciseComponent } from './components/training/exercise/exercise.compo
     DashboardComponent,
     NutritionComponent,
     WorkoutComponent,
-    ExerciseComponent
+    ExerciseComponent,
+    DialogWorkoutComponent,
+    DialogExerciseComponent,
+    DialogWorkoutAddExerciseComponent
   ],
   imports: [
     BrowserModule,

@@ -4,20 +4,20 @@ import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { createUrlTreeFromSnapshot } from '@angular/router';
 
 interface WorkoutsNode {
-  name: string;  
+  name: string;
   children?: WorkoutNode[];
 }
 interface WorkoutNode {
-  name: string;  
+  name: string;
   children?: ExerciseNode[];
 }
 interface ExerciseNode {
-  name: string;  
+  name: string;
   children?: DataNode[];
 }
 interface DataNode {
-  name: string;  
-  pause:string;
+  name: string;
+  pause: string;
 }
 
 /*
@@ -43,18 +43,16 @@ const TREE_DATA: WorkoutsNode[] = [
 @Component({
   selector: 'app-training',
   templateUrl: './training.component.html',
-  styleUrls: ['./training.component.scss']
+  styleUrls: ['./training.component.scss'],
 })
 export class TrainingComponent implements OnInit {
-  treeControl = new NestedTreeControl<WorkoutsNode>(node => node.children);
+  treeControl = new NestedTreeControl<WorkoutsNode>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<WorkoutsNode>();
 
-  constructor() { 
+  constructor() {
     //this.dataSource.data = TREE_DATA;
   }
-  hasChild = (_: number, node: WorkoutsNode) => !!node.children && node.children.length > 0;
-  ngOnInit(): void {
-    
-  }
-
+  hasChild = (_: number, node: WorkoutsNode) =>
+    !!node.children && node.children.length > 0;
+  ngOnInit(): void {}
 }
