@@ -14,12 +14,11 @@ export class WorkoutComponent implements OnInit {
   constructor(public dialog: MatDialog) {
     this.workouts = [
       new WorkoutData('Biceps1', [
-        new ExerciseModel('Curls', 'biceps curls', 5, 4, 60, 'biceps'),
-        new ExerciseModel('Hammer Curls', 'Hammer curls', 5, 4, 60, 'biceps'),
+        new ExerciseModel('Curls', 'biceps curls', 5, 4, 60, 'biceps',"Dumbell")
       ]),
       new WorkoutData('Biceps2', [
-        new ExerciseModel('Curls', 'biceps curls', 5, 4, 60, 'biceps'),
-        new ExerciseModel('Hammer Curls', 'Hammer curls', 5, 4, 60, 'biceps'),
+        new ExerciseModel('Curls', 'biceps curls', 5, 4, 60, 'biceps',"Dumbell"),
+        new ExerciseModel('Hammer Curls', 'Hammer curls', 5, 4, 60, 'biceps',"Dumbell"),
       ]),
     ];
   }
