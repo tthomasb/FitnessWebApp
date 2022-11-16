@@ -2,17 +2,11 @@ export class ExerciseModel {
 
     name:string;
     description:string;
-    reps:number;
-    sets:number;
-    pause:number;
     muscle:string;
     equipment:string;
 constructor(name:any,description:any, sets:any,reps:any,pause:any, muscle:any, equipment:any){
 this.name=name;
 this.description=description;
-this.reps=reps;
-this.sets=sets;
-this.pause=pause;
 this.muscle=muscle;
 this.equipment=equipment;
 }

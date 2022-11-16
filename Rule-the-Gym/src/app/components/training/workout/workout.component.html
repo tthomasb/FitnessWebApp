@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="workout" *ngFor="let workout of workouts">
-    <mat-card class="workout-card">
-      <mat-grid-list cols="3" rows="5" rowHeight="50px">
+  <div class="workout" >
+    <mat-card class="workout-card" *ngFor="let workout of workouts" class="list">
+      <mat-grid-list cols="3" rows="5" rowHeight="50px" >
         <mat-grid-tile colspan="2" rowspan="1"
           ><mat-card-title>{{ workout.name }}</mat-card-title></mat-grid-tile
         >
