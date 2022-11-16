@@ -8,7 +8,7 @@ export class WorkoutData {
     type:string;
     
 
-constructor(name:string, exercises:ExerciseModel[], sets:Sets, type:string, exercisepause:number){
+constructor(name:string, exercises:ExerciseModel[], sets:Sets, type:string){
     this.name=name;
     this.exercises=exercises
     this.sets=sets;
