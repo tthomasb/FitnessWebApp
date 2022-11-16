@@ -12,7 +12,9 @@ import { Sets } from 'src/app/models/sets.model';
 })
 export class WorkoutComponent implements OnInit {
   workouts: WorkoutData[];
+  wotype:Set<string>;
   constructor(public dialog: MatDialog) {
+    //initialize dummy data
     this.workouts = [
       new WorkoutData('Biceps1', [
         new ExerciseModel('Curls', 'biceps curls','biceps',"Dumbell")
@@ -22,7 +24,16 @@ export class WorkoutComponent implements OnInit {
         new ExerciseModel('Curls', 'biceps curls','biceps',"Dumbell")
       ],new Sets([12,12,12],[30,30,30],60,[20,20,20]),"Gym"),
 
+      new WorkoutData('Biceps1', [
+        new ExerciseModel('handstand', 'biceps curls','biceps',"Dumbell")
+      ],new Sets([12,12,12],[30,30,30],60,[20,20,20]),"Calysthenics"),
     ];
+
+    //loop over data to create top level tree structure
+    this.wotype=new Set<string>();
+    for(let w of this.workouts){
+      this.wotype.add(w.type);
+    }
   }
 
   ngOnInit(): void {}

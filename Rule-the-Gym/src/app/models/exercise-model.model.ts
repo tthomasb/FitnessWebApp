@@ -1,5 +1,5 @@
 export class ExerciseModel {
-
+    
     name:string;
     description:string;
     muscle:string;
@@ -9,6 +9,7 @@ this.name=name;
 this.description=description;
 this.muscle=muscle;
 this.equipment=equipment;
+
 }
 
 }

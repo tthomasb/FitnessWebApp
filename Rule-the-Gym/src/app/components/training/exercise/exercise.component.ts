@@ -23,7 +23,7 @@ export class ExerciseComponent implements OnInit {
 
   constructor(dialog:Dialog) { 
     this.dialog=dialog
-    this.exercises=[new ExerciseModel("Curls","biceps curls",5,4,60,"Chest","Dumbell"),new ExerciseModel("Curls","biceps curls",5,4,60,"biceps","Dumbell")];
+    this.exercises=[new ExerciseModel("Curls","biceps curls","Chest","Dumbell"),new ExerciseModel("Curls","biceps curls","biceps","Dumbell")];
    
     for(let i=0; i<this.exercises.length; i++){
       if(this.exercises[i].muscle==="Chest"){
