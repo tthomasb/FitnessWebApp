@@ -1,6 +1,7 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
+
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -10,7 +11,7 @@
 
 //Mixins and Variables
 @import "./styles/styles_variables.scss";
-
+@import"./styles/restyle.scss";
 // Define a light theme
 $light-primary: mat.define-palette(mat.$teal-palette);
 $light-accent: mat.define-palette(mat.$pink-palette);
