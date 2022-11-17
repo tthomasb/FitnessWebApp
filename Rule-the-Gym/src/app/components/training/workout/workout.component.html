@@ -13,7 +13,7 @@
           </mat-expansion-panel-header>
 
           <div *ngFor="let workout of workouts">
-            <!-- <div *ngif="workout.type.equals(w)"> -->
+            <div *ngIf="workout.type===w">
               <mat-card class="test">
                 <mat-card-title>{{ workout.name }}</mat-card-title>
                 <mat-card-subtitle>{{ workout.description }}</mat-card-subtitle>
@@ -36,7 +36,7 @@
                   </button>
                 </mat-card-actions>
               </mat-card>
-             <!-- </div> -->
+             </div>
           </div>
           <!-- <mat-card>
             <mat-card-title>Cable Row</mat-card-title>
