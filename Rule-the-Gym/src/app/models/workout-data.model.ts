@@ -1,5 +1,6 @@
 import { ExerciseModel } from "./exercise-model.model";
 import { Sets } from "./sets.model"; 
+
 export class WorkoutData {
 
     name: string;

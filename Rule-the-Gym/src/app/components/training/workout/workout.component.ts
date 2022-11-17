@@ -3,6 +3,8 @@ import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { WorkoutData } from 'src/app/models/workout-data.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogWorkoutComponent } from 'src/app/dialogues/dialog-workout/dialog-workout.component';
+import { DialogEditWorkoutComponent } from 'src/app/dialogues/dialog-edit-workout/dialog-edit-workout.component';
+import { DialogStartWorkoutComponent } from 'src/app/dialogues/dialog-start-workout/dialog-start-workout.component';
 import { Sets } from 'src/app/models/sets.model';
 
 @Component({
@@ -43,6 +45,32 @@ export class WorkoutComponent implements OnInit {
    */
   openAddWorkout() {
     const dialogRef = this.dialog.open(DialogWorkoutComponent, {
+      width: '90%',
+      height: '90%',
+    });
+
+    /**
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+    */
+  }
+
+  openEditWorkout() {
+    const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
+      width: '90%',
+      height: '90%',
+    });
+
+    /**
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+    */
+  }
+
+  openStartWorkout() {
+    const dialogRef = this.dialog.open(DialogStartWorkoutComponent, {
       width: '90%',
       height: '90%',
     });
