@@ -6,13 +6,15 @@ export class WorkoutData {
     exercises: ExerciseModel[];
     sets:Sets;
     type:string;
+    description:string;
     
 
-constructor(name:string, exercises:ExerciseModel[], sets:Sets, type:string){
+constructor(name:string,description:string, exercises:ExerciseModel[], sets:Sets, type:string){
     this.name=name;
     this.exercises=exercises
     this.sets=sets;
     this.type=type;
+    this.description=description;
 }
 }
 

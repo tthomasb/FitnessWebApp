@@ -16,15 +16,15 @@ export class WorkoutComponent implements OnInit {
   constructor(public dialog: MatDialog) {
     //initialize dummy data
     this.workouts = [
-      new WorkoutData('Biceps1', [
+      new WorkoutData('Biceps1',"Workout1", [
         new ExerciseModel('Curls', 'biceps curls','biceps',"Dumbell")
       ],new Sets([12,12,12],[30,30,30],60,[20,20,20]),"Gym"),
       
-      new WorkoutData('Biceps1', [
+      new WorkoutData('Biceps1', "Workout1",[
         new ExerciseModel('Curls', 'biceps curls','biceps',"Dumbell")
       ],new Sets([12,12,12],[30,30,30],60,[20,20,20]),"Gym"),
 
-      new WorkoutData('Biceps1', [
+      new WorkoutData('Biceps1',"Workout1", [
         new ExerciseModel('handstand', 'biceps curls','biceps',"Dumbell")
       ],new Sets([12,12,12],[30,30,30],60,[20,20,20]),"Calysthenics"),
     ];

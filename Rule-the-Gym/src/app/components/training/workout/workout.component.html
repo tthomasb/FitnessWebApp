@@ -4,7 +4,7 @@
 
     </mat-card> -->
     <mat-accordion>
-      <div *ngFor='let w of wotype' class="toplayer">
+      <div *ngFor="let w of wotype" class="toplayer">
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -12,8 +12,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <div *ngfor='let workout of workouts'>
-            <div *ngif="workout.type.equals(w)">
+          <div *ngFor="let workout of workouts">
+            <!-- <div *ngif="workout.type.equals(w)"> -->
               <mat-card class="test">
                 <mat-card-title>{{workout.name}}</mat-card-title>
                 <mat-card-subtitle>{{workout.description}}</mat-card-subtitle>
@@ -22,7 +22,7 @@
                   <button mat-button>DELETE</button>
                 </mat-card-actions>
               </mat-card>
-            </div>
+            <!-- </div> -->
           </div>
           <!-- <mat-card>
             <mat-card-title>Cable Row</mat-card-title>
