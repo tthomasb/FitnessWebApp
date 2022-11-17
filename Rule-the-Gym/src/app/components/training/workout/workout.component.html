@@ -4,22 +4,36 @@
 
     </mat-card> -->
     <mat-accordion>
-      <div *ngFor='let w of wotype' class="toplayer">
+      <div *ngFor="let w of wotype" class="toplayer">
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              {{w}}
+              {{ w }}
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <div *ngfor='let workout of workouts'>
+          <div *ngfor="let workout of workouts">
             <div *ngif="workout.type.equals(w)">
               <mat-card class="test">
-                <mat-card-title>{{workout.name}}</mat-card-title>
-                <mat-card-subtitle>{{workout.description}}</mat-card-subtitle>
+                <mat-card-title>{{ workout.name }}</mat-card-title>
+                <mat-card-subtitle>{{ workout.description }}</mat-card-subtitle>
                 <mat-card-actions>
-                  <button mat-button>EDIT</button>
-                  <button mat-button>DELETE</button>
+                  <button
+                    mat-button
+                    (click)="openEditWorkout()"
+                    color="primary"
+                    class="button-edit"
+                  >
+                    EDIT
+                  </button>
+                  <button
+                    mat-button
+                    (click)="openStartWorkout()"
+                    color="primary"
+                    class="button-start"
+                  >
+                    DELETE
+                  </button>
                 </mat-card-actions>
               </mat-card>
             </div>
@@ -41,7 +55,12 @@
 
     <!-- Floating-Actions -->
     <div class="action-container">
-      <button mat-fab (click)="openAddWorkout()" color="primary" class="button-add">
+      <button
+        mat-fab
+        (click)="openAddWorkout()"
+        color="primary"
+        class="button-add"
+      >
         <mat-icon>add</mat-icon>
       </button>
     </div>

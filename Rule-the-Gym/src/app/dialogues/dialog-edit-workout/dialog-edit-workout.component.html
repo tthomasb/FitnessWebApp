@@ -1,0 +1,97 @@
+<div class="dialog">
+  <div mat-dialog-container>
+    <mat-card-title
+      ><h1 mat-dialog-title>Edit a workout plan</h1></mat-card-title
+    >
+    <mat-card-subtitle>
+      <div mat-dialog-content>
+        <form class="example-form">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Workout title</mat-label>
+            <input matInput value="" />
+          </mat-form-field>
+        </form>
+
+        <div class="Exercises">
+          <mat-accordion>
+            <section class="exercise-section">
+              <mat-expansion-panel hideToggle disabled>
+                <mat-expansion-panel-header>
+                  <mat-panel-title> Exercise name </mat-panel-title>
+                  <mat-panel-description> Muscle group </mat-panel-description>
+                </mat-expansion-panel-header>
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title> Dumbell Rows </mat-panel-title>
+                  <mat-panel-description> Back </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Sets</mat-label>
+                  <input matInput placeholder="" value="" />
+                </mat-form-field>
+                <br />
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Reps</mat-label>
+                  <input matInput placeholder="" value="" />
+                </mat-form-field>
+                <br />
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Break time</mat-label>
+                  <input matInput placeholder="Always seconds" value="30" />
+                </mat-form-field>
+                <mat-card-actions>
+                  <button mat-flat-button color="primary">Save</button>
+                  <button mat-flat-button color="primary">Cancel</button>
+                  <br />
+                  Should be a green text after edit!
+                </mat-card-actions>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title> Lat Pulldown </mat-panel-title>
+                  <mat-panel-description> Back </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Sets</mat-label>
+                  <input matInput placeholder="" value="" />
+                </mat-form-field>
+                <br />
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Reps</mat-label>
+                  <input matInput placeholder="" value="" />
+                </mat-form-field>
+                <br />
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Break time</mat-label>
+                  <input matInput placeholder="Always seconds" value="30" />
+                </mat-form-field>
+                <mat-card-actions>
+                  <button mat-flat-button color="primary">Save</button>
+                  <button mat-flat-button color="primary">Cancel</button>
+                  <br />
+                  Should be a green text after edit!
+                </mat-card-actions>
+              </mat-expansion-panel>
+            </section>
+          </mat-accordion>
+        </div>
+      </div>
+    </mat-card-subtitle>
+    <form class="example-form">
+      <button
+        mat-flat-button
+        (click)="addExercise()"
+        color="primary"
+        class="button-add"
+      >
+        Choose exercise
+      </button>
+    </form>
+    <div mat-dialog-actions>
+      <button mat-flat-button color="primary" mat-dialog-close>Save</button>
+      <button mat-flat-button color="primary" mat-dialog-close>Cancel</button>
+    </div>
+  </div>
+</div>
