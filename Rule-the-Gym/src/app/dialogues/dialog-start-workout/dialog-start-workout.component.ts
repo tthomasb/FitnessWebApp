@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-start-workout',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogStartWorkoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(public DialogRef:MatDialogRef<DialogStartWorkoutComponent>) { }
 
   ngOnInit(): void {
   }

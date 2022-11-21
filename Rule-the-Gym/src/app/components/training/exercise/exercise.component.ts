@@ -20,7 +20,10 @@ export class ExerciseComponent implements OnInit {
 
   constructor(dialog:Dialog) { 
     this.dialog=dialog
-    this.exercises=[new ExerciseModel("Curls","biceps curls","Chest","Dumbell"),new ExerciseModel("Curls","biceps curls","biceps","Dumbell")];
+    this.exercises=[
+      new ExerciseModel("Curls","biceps curls","Chest","Dumbell"),
+      new ExerciseModel("Curls","biceps curls","biceps","Dumbell")
+    ];
    
     
   }
@@ -34,15 +37,23 @@ export class ExerciseComponent implements OnInit {
     const data:any = {
       "toLoop": this.exercises,
       "topLayer": 'muscle',
-      "edit": this.openEditExercise,
-      "delete": this.openDeleteExercise,
       "hasStart": false            
     };
     return data;
   }
 
-    openEditExercise(){}
-    openDeleteExercise(){}
+    openEditExercise(){
+      const dialogRef = this.dialog.open(DialogExerciseComponent, {
+        width: '90%',
+        height: '90%',
+      });
+    }
+    openDeleteExercise(){
+      const dialogRef = this.dialog.open(DialogExerciseComponent, {
+        width: '90%',
+        height: '90%',
+      });
+    }
    openAddExercise() {
     const dialogRef = this.dialog.open(DialogExerciseComponent, {
       width: '90%',
@@ -53,5 +64,19 @@ export class ExerciseComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
     */
+  }
+
+  catchDialogEvent(value:string){
+    switch(value){
+      case"start":
+      console.log("start Workout was called in exercise!")      
+      break;
+      case"edit":
+      this.openEditExercise();      
+      break;
+      case"delete":
+      this.openDeleteExercise();
+      break;
+    }
   }
 }

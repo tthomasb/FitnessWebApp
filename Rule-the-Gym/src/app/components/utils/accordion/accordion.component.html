@@ -8,14 +8,14 @@
         </mat-expansion-panel-header>
         
         <div *ngFor="let workout of Data.toLoop">
-          <!-- <div *ngIf="workout.type===w"> -->
+          <div *ngIf="workout[Data.topLayer]===w">
             <mat-card class="test">
               <mat-card-title>{{ workout.name }}</mat-card-title>
               <mat-card-subtitle>{{ workout.description }}</mat-card-subtitle>
               <mat-card-actions>
                 <button
                   mat-button
-                  (click)=Data.edit()
+                  (click)="dialogEvent.emit('edit')"
                   color="primary"
                   class="button-edit"
                 >
@@ -23,16 +23,25 @@
                 </button>
                 <button
                   mat-button
-                  (click)=Data.delete()
+                  (click)="dialogEvent.emit('delete')"
                   color="primary"
                   class="button-start"
                 >
                   DELETE
                 </button>
+
+                <button *ngIf="Data.hasStart"
+                  mat-button
+                  (click)="dialogEvent.emit('start')"
+                  color="primary"
+                  class="button-start"
+                >
+                  Start Workout
+                </button>
               </mat-card-actions>
             </mat-card>
            </div>
-        <!-- </div> -->
+        </div>
         <!-- <mat-card>
           <mat-card-title>Cable Row</mat-card-title>
           <mat-card-subtitle>Cables</mat-card-subtitle>

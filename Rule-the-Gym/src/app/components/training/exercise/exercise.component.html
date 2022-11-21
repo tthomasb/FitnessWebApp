@@ -1,4 +1,4 @@
-<app-accordion [Data]="getAccordionData()"></app-accordion>
+<app-accordion [Data]="getAccordionData()" (dialogEvent)="catchDialogEvent($event)"></app-accordion>
 <!-- <mat-accordion>
   <div *ngFor='let exercise of exercises'>
     <mat-expansion-panel hideToggle>

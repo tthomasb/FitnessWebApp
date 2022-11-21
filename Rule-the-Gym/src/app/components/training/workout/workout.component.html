@@ -2,7 +2,7 @@
   <div class="workout">
      <!-- <mat-card class="workout-card" *ngFor="let workout of workouts" class="list"></mat-card>  -->
     
-     <app-accordion [Data]=accordionConfig ></app-accordion>
+     <app-accordion [Data]=accordionConfig (dialogEvent)="catchDialogEvent($event)"></app-accordion>
     <br />
 
     <br />

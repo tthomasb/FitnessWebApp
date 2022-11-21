@@ -56,11 +56,8 @@ export class WorkoutComponent implements OnInit {
   getAccordionData(): any {
     const data:any = {
       "toLoop": this.workouts,
-      "topLayer": 'type',
-      "edit": this.openEditWorkout,
-      "delete": this.openStartWorkout,
-      "hasStart": true,
-      "start": this.openStartWorkout
+      "topLayer": 'type',      
+      "hasStart": true,      
     };
     return data;
   }
@@ -98,12 +95,24 @@ export class WorkoutComponent implements OnInit {
       width: '90%',
       height: '90%',
     });
-
     /**
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
     */
+  }
+  catchDialogEvent(value:string){
+    switch(value){
+      case"start":
+      this.openStartWorkout();
+      break;
+      case"edit":
+      this.openEditWorkout();
+      break;
+      case"delete":
+      this.openEditWorkout();
+      break;
+    }
   }
 }
 // function getAccordionData() {
