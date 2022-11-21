@@ -14,32 +14,56 @@ import { Sets } from 'src/app/models/sets.model';
 })
 export class WorkoutComponent implements OnInit {
   workouts: WorkoutData[];
-  wotype:Set<string>;
+  typestring: string = 'type';
+  accordionConfig: any;
   constructor(public dialog: MatDialog) {
     //initialize dummy data
     this.workouts = [
-      new WorkoutData('Biceps1',"Workout1", [
-        new ExerciseModel('Curls', 'biceps curls','biceps',"Dumbell")
-      ],new Sets([12,12,12],[30,30,30],60,[20,20,20]),"Gym"),
-      
-      new WorkoutData('Biceps1', "Workout1",[
-        new ExerciseModel('Curls', 'biceps curls','biceps',"Dumbell")
-      ],new Sets([12,12,12],[30,30,30],60,[20,20,20]),"Gym"),
+      new WorkoutData(
+        'Push',
+        'Workout1',
+        [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
+        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        'Gym'
+      ),
 
-      new WorkoutData('Biceps1',"Workout1", [
-        new ExerciseModel('handstand', 'biceps curls','biceps',"Dumbell")
-      ],new Sets([12,12,12],[30,30,30],60,[20,20,20]),"Calysthenics"),
+      new WorkoutData(
+        'Pull',
+        'Workout1',
+        [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
+        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        'Gym'
+      ),
+
+      new WorkoutData(
+        'Legs',
+        'Workout1',
+        [new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell')],
+        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        'Calysthenics'
+      ),
     ];
 
-    //loop over data to create top level tree structure
-    this.wotype=new Set<string>();
-    for(let w of this.workouts){
-      this.wotype.add(w.type);
-    }
+    
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //set accordionConfig
+    this.accordionConfig = this.getAccordionData();
+  }
 
+  //Get The Accordion Data
+  getAccordionData(): any {
+    const data:any = {
+      "toLoop": this.workouts,
+      "topLayer": 'type',
+      "edit": this.openEditWorkout,
+      "delete": this.openStartWorkout,
+      "hasStart": true,
+      "start": this.openStartWorkout
+    };
+    return data;
+  }
   /**
    * Open the workout dialog
    */
@@ -82,3 +106,6 @@ export class WorkoutComponent implements OnInit {
     */
   }
 }
+// function getAccordionData() {
+//   throw new Error('Function not implemented.');
+// }
