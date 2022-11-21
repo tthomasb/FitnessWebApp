@@ -1,56 +1,8 @@
 <div class="container">
   <div class="workout">
-    <!-- <mat-card class="workout-card" *ngFor="let workout of workouts" class="list">
-
-    </mat-card> -->
-    <mat-accordion>
-      <div *ngFor="let w of wotype" class="toplayer">
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{ w }}
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div *ngFor="let workout of workouts">
-            <div *ngIf="workout.type === w">
-              <mat-card class="test">
-                <mat-card-title>{{ workout.name }}</mat-card-title>
-                <mat-card-subtitle>{{ workout.description }}</mat-card-subtitle>
-                <mat-card-actions>
-                  <button
-                    mat-button
-                    (click)="openStartWorkout()"
-                    color="primary"
-                    class="button-start"
-                  >
-                    Start
-                  </button>
-                  <button
-                    mat-button
-                    (click)="openEditWorkout()"
-                    color="primary"
-                    class="button-edit"
-                  >
-                    Edit
-                  </button>
-                  <button mat-button color="primary" class="button-start">
-                    Delete
-                  </button>
-                </mat-card-actions>
-              </mat-card>
-            </div>
-          </div>
-          <!-- <mat-card>
-            <mat-card-title>Cable Row</mat-card-title>
-            <mat-card-subtitle>Cables</mat-card-subtitle>
-            <mat-card-actions>
-              <button mat-button>EDIT</button>
-              <button mat-button>DELETE</button>
-            </mat-card-actions>
-          </mat-card> -->
-        </mat-expansion-panel>
-      </div>
-    </mat-accordion>
+     <!-- <mat-card class="workout-card" *ngFor="let workout of workouts" class="list"></mat-card>  -->
+    
+     <app-accordion [Data]=accordionConfig ></app-accordion>
     <br />
 
     <br />

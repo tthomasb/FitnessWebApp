@@ -19,6 +19,8 @@ import { DialogWorkoutAddExerciseComponent } from './dialogues/dialog-workout/di
 import { DialogStartWorkoutComponent } from './dialogues/dialog-start-workout/dialog-start-workout.component';
 import { DialogEditWorkoutComponent } from './dialogues/dialog-edit-workout/dialog-edit-workout.component';
 import { DialogStartWorkoutTimeComponent } from './dialogues/dialog-start-workout/dialog-start-workout-time/dialog-start-workout-time.component';
+import { AccordionComponent } from './components/utils/accordion/accordion.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { DialogStartWorkoutTimeComponent } from './dialogues/dialog-start-workou
     DialogExerciseComponent,
     DialogWorkoutAddExerciseComponent,
     DialogStartWorkoutComponent,
+    DialogEditWorkoutComponent,
+    AccordionComponent,
     DialogEditWorkoutComponent,
     DialogStartWorkoutTimeComponent
   ],
