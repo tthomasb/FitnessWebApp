@@ -1,17 +1,8 @@
 <div class="dialog">
   <div mat-dialog-container>
-    <mat-card-title
-      ><h1 mat-dialog-title>Edit a workout plan</h1></mat-card-title
-    >
+    <mat-card-title><h1 mat-dialog-title>Workout title</h1></mat-card-title>
     <mat-card-subtitle>
       <div mat-dialog-content>
-        <form class="example-form">
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Workout title</mat-label>
-            <input matInput value="" />
-          </mat-form-field>
-        </form>
-
         <div class="Exercises">
           <mat-accordion>
             <section class="exercise-section">
@@ -26,24 +17,72 @@
                   <mat-panel-title> Dumbell Rows </mat-panel-title>
                   <mat-panel-description> Back </mat-panel-description>
                 </mat-expansion-panel-header>
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Sets</mat-label>
-                  <input matInput placeholder="" value="" />
-                </mat-form-field>
+                <mat-card appearance="fill">
+                  Set 1:
+                  <br>
+                  <mat-label>Weight (kg): 
+                    <mat-icon color="primary">add</mat-icon>
+                    <input matInput value=""/>
+                    <mat-icon color="primary">remove</mat-icon>
+                  </mat-label>
+                  <br />
+                  <mat-label>Reps: <input matInput value="" /></mat-label>
+                  <br />
+                  <button mat-flat-button (click)="startTime()" color="primary">Finish set</button>
+                </mat-card>
                 <br />
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Reps</mat-label>
-                  <input matInput placeholder="" value="" />
-                </mat-form-field>
+                <mat-card appearance="fill">
+                  Set 2
+                  <mat-label
+                    >Weight (kg): <input matInput value=""
+                  /></mat-label>
+                  <mat-label>Reps: <input matInput value="" /></mat-label>
+                  <button mat-flat-button color="primary">Finish set</button>
+                </mat-card>
                 <br />
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Break time</mat-label>
-                  <input matInput placeholder="Always seconds" value="30" />
-                </mat-form-field>
-                <mat-card-actions>
-                  <button mat-flat-button color="primary">Save</button>
-                  <button mat-flat-button color="primary">Cancel</button>
-                </mat-card-actions>
+                <mat-card appearance="fill">
+                  Set i
+                  <mat-label
+                    >Weight (kg): <input matInput value=""
+                  /></mat-label>
+                  <mat-label>Reps: <input matInput value="" /></mat-label>
+                  <button mat-flat-button color="primary">Finish set</button>
+                </mat-card>
+                <br />
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title> Hammer curls </mat-panel-title>
+                  <mat-panel-description> Arms </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-card appearance="fill">
+                  Set 1:
+                  <mat-label
+                    >Weight (kg): <input matInput value=""
+                  /></mat-label>
+                  <mat-label>Reps: <input matInput value="" /></mat-label>
+                  <button mat-flat-button color="primary">Finish set</button>
+                </mat-card>
+                <br />
+                <mat-card appearance="fill">
+                  Set 2
+                  <mat-label
+                    >Weight (kg): <input matInput value=""
+                  /></mat-label>
+                  <mat-label>Reps: <input matInput value="" /></mat-label>
+                  <button mat-flat-button color="primary">Finish set</button>
+                </mat-card>
+                <br />
+                <mat-card appearance="fill">
+                  Set i
+                  <mat-label
+                    >Weight (kg): <input matInput value=""
+                  /></mat-label>
+                  <mat-label>Reps: <input matInput value="" /></mat-label>
+                  <button mat-flat-button color="primary">Finish set</button>
+                </mat-card>
+                <br />
               </mat-expansion-panel>
             </section>
           </mat-accordion>
@@ -61,8 +100,9 @@
       </button> -->
     </form>
     <div mat-dialog-actions>
-      <button mat-flat-button color="primary" mat-dialog-close>Save</button>
-      <button mat-flat-button color="primary" mat-dialog-close>Cancel</button>
+      <button mat-flat-button color="primary" mat-dialog-close>
+        Finish Workout
+      </button>
     </div>
   </div>
 </div>

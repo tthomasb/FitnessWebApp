@@ -18,6 +18,7 @@ import { DialogExerciseComponent } from './dialogues/dialog-exercise/dialog-exer
 import { DialogWorkoutAddExerciseComponent } from './dialogues/dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
 import { DialogStartWorkoutComponent } from './dialogues/dialog-start-workout/dialog-start-workout.component';
 import { DialogEditWorkoutComponent } from './dialogues/dialog-edit-workout/dialog-edit-workout.component';
+import { DialogStartWorkoutTimeComponent } from './dialogues/dialog-start-workout/dialog-start-workout-time/dialog-start-workout-time.component';
 import { AccordionComponent } from './components/utils/accordion/accordion.component';
 
 
@@ -36,6 +37,8 @@ import { AccordionComponent } from './components/utils/accordion/accordion.compo
     DialogStartWorkoutComponent,
     DialogEditWorkoutComponent,
     AccordionComponent,
+    DialogEditWorkoutComponent,
+    DialogStartWorkoutTimeComponent
   ],
   imports: [
     BrowserModule,
