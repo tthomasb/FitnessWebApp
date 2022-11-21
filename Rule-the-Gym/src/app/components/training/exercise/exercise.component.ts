@@ -14,28 +14,17 @@ import { Dialog } from '@angular/cdk/dialog';
   styleUrls: ['./exercise.component.scss'],
 })
 export class ExerciseComponent implements OnInit {
- exercises:ExerciseModel[]
- mgChest:ExerciseModel[]=[];
- mgBack: ExerciseModel[]=[];
- mgLegs: ExerciseModel[]=[];
+ exercises:ExerciseModel[];
  dialog: Dialog;
  
 
   constructor(dialog:Dialog) { 
     this.dialog=dialog
-    this.exercises=[new ExerciseModel("Curls","biceps curls",5,4,60,"Chest","Dumbell"),new ExerciseModel("Curls","biceps curls",5,4,60,"biceps","Dumbell")];
+    this.exercises=[
+      new ExerciseModel("Curls","biceps curls","Chest","Dumbell"),
+      new ExerciseModel("Curls","biceps curls","biceps","Dumbell")
+    ];
    
-    for(let i=0; i<this.exercises.length; i++){
-      if(this.exercises[i].muscle==="Chest"){
-        this.mgChest[this.mgChest.length]=this.exercises[i];
-      }
-      if(this.exercises[i].muscle==="Back"){
-        this.mgBack[this.mgBack.length]=this.exercises[i];
-      }
-      if(this.exercises[i].muscle==="Legs"){
-        this.mgLegs[this.mgLegs.length]=this.exercises[i];
-      }
-    }
     
   }
 
@@ -44,16 +33,50 @@ export class ExerciseComponent implements OnInit {
   /**
    * Open the workout dialog
    */
+   getAccordionData(): any {
+    const data:any = {
+      "toLoop": this.exercises,
+      "topLayer": 'muscle',
+      "hasStart": false            
+    };
+    return data;
+  }
+
+    openEditExercise(){
+      const dialogRef = this.dialog.open(DialogExerciseComponent, {
+        width: '90%',
+        height: '90%',
+      });
+    }
+    openDeleteExercise(){
+      const dialogRef = this.dialog.open(DialogExerciseComponent, {
+        width: '90%',
+        height: '90%',
+      });
+    }
    openAddExercise() {
     const dialogRef = this.dialog.open(DialogExerciseComponent, {
       width: '90%',
       height: '90%',
     });
-
     /**
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
     */
+  }
+
+  catchDialogEvent(value:string){
+    switch(value){
+      case"start":
+      console.log("start Workout was called in exercise!")      
+      break;
+      case"edit":
+      this.openEditExercise();      
+      break;
+      case"delete":
+      this.openDeleteExercise();
+      break;
+    }
   }
 }

@@ -1,39 +1,8 @@
 <div class="container">
-  <div class="workout" *ngFor="let workout of workouts">
-    <mat-card class="workout-card">
-      <mat-grid-list cols="3" rows="5" rowHeight="50px">
-        <mat-grid-tile colspan="2" rowspan="1"
-          ><mat-card-title>{{ workout.name }}</mat-card-title></mat-grid-tile
-        >
-        <mat-grid-tile colspan="1" rowspan="4">
-          <img
-            style="width: 70%; height: 70%"
-            mat-card-image
-            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FHTB1q3PrauuSBuNjSsplq6ze8pXad%2FBarbell-gym-muscle-man-bodybuilder-Living-room-home-art-decor-wood-frame-fabric-poster-Accept-customization.jpg&f=1&nofb=1&ipt=40e6c236d6e0673a327f675e9edb4df72f15aa9c6ea16895d21306ed6fd570b2&ipo=images"
-            alt="Gym pic"
-          />
-        </mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="1" style="height: 3%"
-        ><div style="height: 100%; background: blueviolet"></div
-        ></mat-grid-tile>
-
-        
-        <mat-grid-tile
-          colspan="2"
-          rowspan="1"
-          *ngFor="let exercises of workout.exercises"
-          ><mat-card-content
-            ><p>{{ exercises.name }}</p>
-          </mat-card-content></mat-grid-tile
-        >
-        <mat-grid-tile colspan="2" rowspan="1"
-          ><mat-card-actions
-            ><button mat-button>Start</button
-            ><button mat-button>Edit</button></mat-card-actions
-          >
-        </mat-grid-tile>
-      </mat-grid-list>
-    </mat-card>
+  <div class="workout">
+     <!-- <mat-card class="workout-card" *ngFor="let workout of workouts" class="list"></mat-card>  -->
+    
+     <app-accordion [Data]=accordionConfig (dialogEvent)="catchDialogEvent($event)"></app-accordion>
     <br />
 
     <br />

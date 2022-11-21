@@ -3,6 +3,9 @@ import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { WorkoutData } from 'src/app/models/workout-data.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogWorkoutComponent } from 'src/app/dialogues/dialog-workout/dialog-workout.component';
+import { DialogEditWorkoutComponent } from 'src/app/dialogues/dialog-edit-workout/dialog-edit-workout.component';
+import { DialogStartWorkoutComponent } from 'src/app/dialogues/dialog-start-workout/dialog-start-workout.component';
+import { Sets } from 'src/app/models/sets.model';
 
 @Component({
   selector: 'app-workout',
@@ -11,20 +14,53 @@ import { DialogWorkoutComponent } from 'src/app/dialogues/dialog-workout/dialog-
 })
 export class WorkoutComponent implements OnInit {
   workouts: WorkoutData[];
+  typestring: string = 'type';
+  accordionConfig: any;
   constructor(public dialog: MatDialog) {
+    //initialize dummy data
     this.workouts = [
-      new WorkoutData('Biceps1', [
-        new ExerciseModel('Curls', 'biceps curls', 5, 4, 60, 'biceps',"Dumbell")
-      ]),
-      new WorkoutData('Biceps2', [
-        new ExerciseModel('Curls', 'biceps curls', 5, 4, 60, 'biceps',"Dumbell"),
-        new ExerciseModel('Hammer Curls', 'Hammer curls', 5, 4, 60, 'biceps',"Dumbell"),
-      ]),
+      new WorkoutData(
+        'Push',
+        'Workout1',
+        [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
+        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        'Gym'
+      ),
+
+      new WorkoutData(
+        'Pull',
+        'Workout1',
+        [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
+        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        'Gym'
+      ),
+
+      new WorkoutData(
+        'Legs',
+        'Workout1',
+        [new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell')],
+        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        'Calysthenics'
+      ),
     ];
+
+    
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //set accordionConfig
+    this.accordionConfig = this.getAccordionData();
+  }
 
+  //Get The Accordion Data
+  getAccordionData(): any {
+    const data:any = {
+      "toLoop": this.workouts,
+      "topLayer": 'type',      
+      "hasStart": true,      
+    };
+    return data;
+  }
   /**
    * Open the workout dialog
    */
@@ -40,4 +76,45 @@ export class WorkoutComponent implements OnInit {
     });
     */
   }
+
+  openEditWorkout() {
+    const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
+      width: '90%',
+      height: '90%',
+    });
+
+    /**
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+    */
+  }
+
+  openStartWorkout() {
+    const dialogRef = this.dialog.open(DialogStartWorkoutComponent, {
+      width: '90%',
+      height: '90%',
+    });
+    /**
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+    */
+  }
+  catchDialogEvent(value:string){
+    switch(value){
+      case"start":
+      this.openStartWorkout();
+      break;
+      case"edit":
+      this.openEditWorkout();
+      break;
+      case"delete":
+      this.openEditWorkout();
+      break;
+    }
+  }
 }
+// function getAccordionData() {
+//   throw new Error('Function not implemented.');
+// }

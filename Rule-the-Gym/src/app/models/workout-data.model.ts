@@ -1,12 +1,21 @@
 import { ExerciseModel } from "./exercise-model.model";
+import { Sets } from "./sets.model"; 
 
 export class WorkoutData {
 
     name: string;
     exercises: ExerciseModel[];
-constructor(name:string, exercises:ExerciseModel[]){
+    sets:Sets;
+    type:string;
+    description:string;
+    
+
+constructor(name:string,description:string, exercises:ExerciseModel[], sets:Sets, type:string){
     this.name=name;
     this.exercises=exercises
+    this.sets=sets;
+    this.type=type;
+    this.description=description;
 }
 }
 
