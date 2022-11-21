@@ -1,4 +1,5 @@
-<mat-accordion>
+<app-accordion [Data]="getAccordionData()"></app-accordion>
+<!-- <mat-accordion>
   <div *ngFor='let exercise of exercises'>
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
@@ -26,7 +27,7 @@
       </mat-card>
     </mat-expansion-panel>
   </div>
-</mat-accordion>
+</mat-accordion> -->
 <!-- Floating-Actions -->
 <div class="action-container">
   <button

@@ -14,10 +14,7 @@ import { Dialog } from '@angular/cdk/dialog';
   styleUrls: ['./exercise.component.scss'],
 })
 export class ExerciseComponent implements OnInit {
- exercises:ExerciseModel[]
- mgChest:ExerciseModel[]=[];
- mgBack: ExerciseModel[]=[];
- mgLegs: ExerciseModel[]=[];
+ exercises:ExerciseModel[];
  dialog: Dialog;
  
 
@@ -25,17 +22,6 @@ export class ExerciseComponent implements OnInit {
     this.dialog=dialog
     this.exercises=[new ExerciseModel("Curls","biceps curls","Chest","Dumbell"),new ExerciseModel("Curls","biceps curls","biceps","Dumbell")];
    
-    for(let i=0; i<this.exercises.length; i++){
-      if(this.exercises[i].muscle==="Chest"){
-        this.mgChest[this.mgChest.length]=this.exercises[i];
-      }
-      if(this.exercises[i].muscle==="Back"){
-        this.mgBack[this.mgBack.length]=this.exercises[i];
-      }
-      if(this.exercises[i].muscle==="Legs"){
-        this.mgLegs[this.mgLegs.length]=this.exercises[i];
-      }
-    }
     
   }
 
@@ -44,12 +30,24 @@ export class ExerciseComponent implements OnInit {
   /**
    * Open the workout dialog
    */
+   getAccordionData(): any {
+    const data:any = {
+      "toLoop": this.exercises,
+      "topLayer": 'muscle',
+      "edit": this.openEditExercise,
+      "delete": this.openDeleteExercise,
+      "hasStart": false            
+    };
+    return data;
+  }
+
+    openEditExercise(){}
+    openDeleteExercise(){}
    openAddExercise() {
     const dialogRef = this.dialog.open(DialogExerciseComponent, {
       width: '90%',
       height: '90%',
     });
-
     /**
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
