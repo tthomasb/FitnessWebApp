@@ -1,12 +1,8 @@
-import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
-import { ListFormat } from 'typescript';
-
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExerciseComponent } from 'src/app/dialogues/dialog-exercise/dialog-exercise.component';
-import { Dialog } from '@angular/cdk/dialog';
+
 
 @Component({
   selector: 'app-exercise',
@@ -15,11 +11,11 @@ import { Dialog } from '@angular/cdk/dialog';
 })
 export class ExerciseComponent implements OnInit {
  exercises:ExerciseModel[];
- dialog: Dialog;
+ 
  
 
-  constructor(dialog:Dialog) { 
-    this.dialog=dialog
+  constructor(public dialog:MatDialog) { 
+    
     this.exercises=[
       new ExerciseModel("Curls","biceps curls","Chest","Dumbell"),
       new ExerciseModel("Curls","biceps curls","biceps","Dumbell")
@@ -42,22 +38,27 @@ export class ExerciseComponent implements OnInit {
     return data;
   }
 
-    openEditExercise(){
+    openEditExercise(index:number){      
       const dialogRef = this.dialog.open(DialogExerciseComponent, {
         width: '90%',
         height: '90%',
+        data:{data: this.exercises, index:index}
       });
     }
-    openDeleteExercise(){
+
+    openDeleteExercise(index:number){
       const dialogRef = this.dialog.open(DialogExerciseComponent, {
         width: '90%',
         height: '90%',
+        data:{data: this.exercises, index:index}
       });
     }
+
    openAddExercise() {
     const dialogRef = this.dialog.open(DialogExerciseComponent, {
       width: '90%',
       height: '90%',
+      data:this.exercises
     });
     /**
     dialogRef.afterClosed().subscribe((result) => {
@@ -66,16 +67,16 @@ export class ExerciseComponent implements OnInit {
     */
   }
 
-  catchDialogEvent(value:string){
-    switch(value){
+  catchDialogEvent(value:any){
+    switch(value.event){
       case"start":
       console.log("start Workout was called in exercise!")      
       break;
       case"edit":
-      this.openEditExercise();      
+      this.openEditExercise(value.source);      
       break;
       case"delete":
-      this.openDeleteExercise();
+      this.openDeleteExercise(value.source);
       break;
     }
   }

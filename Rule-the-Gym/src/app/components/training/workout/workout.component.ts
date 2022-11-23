@@ -68,6 +68,7 @@ export class WorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogWorkoutComponent, {
       width: '90%',
       height: '90%',
+      data:{data:this.workouts}
     });
 
     /**
@@ -77,10 +78,11 @@ export class WorkoutComponent implements OnInit {
     */
   }
 
-  openEditWorkout() {
+  openEditWorkout(index:number) {
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
+      data:{data:this.workouts, index:index}
     });
 
     /**
@@ -89,11 +91,19 @@ export class WorkoutComponent implements OnInit {
     });
     */
   }
+  openDeleteWorkout(index:number) {
+    const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
+      width: '90%',
+      height: '90%',
+      data:{data:this.workouts, index:index}
+    });
+  }
 
-  openStartWorkout() {
+  openStartWorkout(index:number) {
     const dialogRef = this.dialog.open(DialogStartWorkoutComponent, {
       width: '90%',
       height: '90%',
+      data: {data: this.workouts[index]}
     });
     /**
     dialogRef.afterClosed().subscribe((result) => {
@@ -101,16 +111,16 @@ export class WorkoutComponent implements OnInit {
     });
     */
   }
-  catchDialogEvent(value:string){
-    switch(value){
+  catchDialogEvent(value:any){
+    switch(value.event){
       case"start":
-      this.openStartWorkout();
+      this.openStartWorkout(value.index);
       break;
       case"edit":
-      this.openEditWorkout();
+      this.openEditWorkout(value.index);
       break;
       case"delete":
-      this.openEditWorkout();
+      this.openEditWorkout(value.index);
       break;
     }
   }

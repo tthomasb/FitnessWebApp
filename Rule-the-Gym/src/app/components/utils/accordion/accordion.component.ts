@@ -31,7 +31,7 @@ export class AccordionComponent implements OnInit {
 
 
   //Event emitter for Dialogs in Parent
-  @Output() dialogEvent:EventEmitter<string>=new EventEmitter<string>();
+  @Output() dialogEvent:EventEmitter<any>=new EventEmitter<any>();
   
   topLayer!: string[];
   topLayer2!: String[];
