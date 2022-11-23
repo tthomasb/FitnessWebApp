@@ -120,7 +120,7 @@ export class WorkoutComponent implements OnInit {
       this.openEditWorkout(value.index);
       break;
       case"delete":
-      this.openEditWorkout(value.index);
+      this.openDeleteWorkout(value.index);
       break;
     }
   }

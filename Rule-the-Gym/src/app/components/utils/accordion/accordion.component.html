@@ -23,7 +23,7 @@
                 </button>
                 <button
                   mat-button
-                  (click)="dialogEvent.emit('delete')"
+                  (click)="dialogEvent.emit({event:'delete', source: index})"
                   color="primary"
                   class="button-start"
                 >
@@ -32,7 +32,7 @@
 
                 <button *ngIf="Data.hasStart"
                   mat-button
-                  (click)="dialogEvent.emit('start')"
+                  (click)="dialogEvent.emit({event:'start', source: index})"
                   color="primary"
                   class="button-start"
                 >
