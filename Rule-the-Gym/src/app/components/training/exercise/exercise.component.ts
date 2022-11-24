@@ -42,24 +42,27 @@ export class ExerciseComponent implements OnInit {
       const dialogRef = this.dialog.open(DialogExerciseComponent, {
         width: '90%',
         height: '90%',
-        data:{data: this.exercises, index:index}
+        data:{data: this.exercises, index:index, dialogName:"Edit"}
       });
     }
 
     openDeleteExercise(index:number){
-      const dialogRef = this.dialog.open(DialogExerciseComponent, {
-        width: '90%',
-        height: '90%',
-        data:{data: this.exercises, index:index}
-      });
+      // const dialogRef = this.dialog.open(DialogExerciseComponent, {
+      //   width: '90%',
+      //   height: '90%',
+      //   data:{data: this.exercises, index:index}
+      // });
+      console.log(this.exercises);
+      this.exercises.splice(index,1);
+      console.log(this.exercises);
     }
 
    openAddExercise() {
     const dialogRef = this.dialog.open(DialogExerciseComponent, {
       width: '90%',
       height: '90%',
-      data:this.exercises
-    });
+      data:{data:this.exercises,dialogName:"Create"}
+    } );
     /**
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);

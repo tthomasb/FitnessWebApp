@@ -1,23 +1,33 @@
 <div class="dialog">
   <div mat-dialog-container>
-    <h1 mat-dialog-title>Create an exercise</h1>
+    <h1 mat-dialog-title>{{data.dialogName}} an exercise</h1>
     <div class="Exercises">
       <section class="exercise-section">
         <mat-card>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput placeholder="" value="" />
+            <input matInput placeholder=""  [(ngModel)]="name" />
           </mat-form-field>
           <br>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Description</mat-label>
-            <input matInput placeholder="" value="" />
+            <input #inputName matInput placeholder="" [(ngModel)]="description" />
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Muscle</mat-label>
+            <input matInput placeholder="" [(ngModel)]="muscle" />
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Equipment</mat-label>
+            <input matInput placeholder="" [(ngModel)]=equipment/>
           </mat-form-field>
         </mat-card>
       </section>
     </div>
     <div mat-dialog-actions>
-      <button mat-flat-button color="primary" mat-dialog-close>Save</button>
+      <button mat-flat-button color="primary" mat-dialog-close (click)="safeData()">Save</button>
       <button mat-flat-button color="primary" mat-dialog-close>Cancel</button>
     </div>
   </div>
