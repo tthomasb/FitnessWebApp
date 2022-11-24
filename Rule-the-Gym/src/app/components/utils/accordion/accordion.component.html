@@ -13,7 +13,7 @@
               <mat-card-title>{{ workout.name }}</mat-card-title>
               <mat-card-subtitle>{{ workout.description }}</mat-card-subtitle>
               <mat-card-actions>
-                <button
+                <button *ngIf="Data.hasStart"
                   mat-button
                   (click)="dialogEvent.emit({event: 'start', source: index})"
                   color="primary"
@@ -30,7 +30,7 @@
                   Edit
                 </button>
 
-                <button *ngIf="Data.hasStart"
+                <button 
                   mat-button
                   (click)="dialogEvent.emit({event:'delete', source: index})"
                   color="primary"
