@@ -1,7 +1,8 @@
 <div class="container">
   <div class="workout">
     <div class="spinner">
-      <mat-progress-spinner value="100" mode="determinate" color="primary"></mat-progress-spinner>
+      <mat-progress-spinner [value]="value"></mat-progress-spinner>
+      <h3>{{time | date: 'mm | ss'}}</h3>
     </div>
   </div>
 </div>

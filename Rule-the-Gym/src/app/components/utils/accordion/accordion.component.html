@@ -15,28 +15,28 @@
               <mat-card-actions>
                 <button
                   mat-button
-                  (click)="dialogEvent.emit({event: 'edit', source: index})"
-                  color="primary"
-                  class="button-edit"
-                >
-                  EDIT
-                </button>
-                <button
-                  mat-button
-                  (click)="dialogEvent.emit({event:'delete', source: index})"
-                  color="primary"
-                  class="button-start"
-                >
-                  DELETE
-                </button>
-
-                <button *ngIf="Data.hasStart"
-                  mat-button
-                  (click)="dialogEvent.emit({event:'start', source: index})"
+                  (click)="dialogEvent.emit({event: 'start', source: index})"
                   color="primary"
                   class="button-start"
                 >
                   Start Workout
+                </button>
+                <button
+                  mat-button
+                  (click)="dialogEvent.emit({event:'edit', source: index})"
+                  color="primary"
+                  class="button-edit"
+                >
+                  Edit
+                </button>
+
+                <button *ngIf="Data.hasStart"
+                  mat-button
+                  (click)="dialogEvent.emit({event:'delete', source: index})"
+                  color="primary"
+                  class="button-delete"
+                >
+                  Delete
                 </button>
               </mat-card-actions>
             </mat-card>
