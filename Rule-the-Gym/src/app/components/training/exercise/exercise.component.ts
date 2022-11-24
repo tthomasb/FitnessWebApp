@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExerciseComponent } from 'src/app/dialogues/dialog-exercise/dialog-exercise.component';
+import { Dialog } from 'src/app/enums/dialog';
 
 
 @Component({
@@ -42,7 +43,7 @@ export class ExerciseComponent implements OnInit {
       const dialogRef = this.dialog.open(DialogExerciseComponent, {
         width: '90%',
         height: '90%',
-        data:{data: this.exercises, index:index, dialogName:"Edit"}
+        data:{data: this.exercises, index:index, dialogName:Dialog.EDIT}
       });
     }
 
@@ -61,7 +62,7 @@ export class ExerciseComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogExerciseComponent, {
       width: '90%',
       height: '90%',
-      data:{data:this.exercises,dialogName:"Create"}
+      data:{data:this.exercises,dialogName:Dialog.CREATE}
     } );
     /**
     dialogRef.afterClosed().subscribe((result) => {
@@ -72,13 +73,13 @@ export class ExerciseComponent implements OnInit {
 
   catchDialogEvent(value:any){
     switch(value.event){
-      case"start":
+      case Dialog.START:
       console.log("start Workout was called in exercise!")      
       break;
-      case"edit":
+      case Dialog.EDIT:
       this.openEditExercise(value.source);      
       break;
-      case"delete":
+      case Dialog.DELETE:
       this.openDeleteExercise(value.source);
       break;
     }
