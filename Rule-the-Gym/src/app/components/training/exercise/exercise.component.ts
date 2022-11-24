@@ -3,6 +3,7 @@ import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExerciseComponent } from 'src/app/dialogues/dialog-exercise/dialog-exercise.component';
 import { Dialog } from 'src/app/enums/dialog';
+import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 
 
 @Component({
@@ -48,14 +49,21 @@ export class ExerciseComponent implements OnInit {
     }
 
     openDeleteExercise(index:number){
-      // const dialogRef = this.dialog.open(DialogExerciseComponent, {
-      //   width: '90%',
-      //   height: '90%',
-      //   data:{data: this.exercises, index:index}
-      // });
-      console.log(this.exercises);
-      this.exercises.splice(index,1);
-      console.log(this.exercises);
+      const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
+        width: '20%',
+        height: '25%',
+        data:{data: this.exercises, index:index,answer: false},      
+      });
+      const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {
+        if(e)this.deleteExercise(index);                
+      });
+      dialogRef.afterClosed().subscribe(() => {
+        dialogRef.componentInstance.Emitter.unsubscribe();
+      });
+
+    }
+    deleteExercise(index:number){      
+      this.exercises.splice(index,1);      
     }
 
    openAddExercise() {
