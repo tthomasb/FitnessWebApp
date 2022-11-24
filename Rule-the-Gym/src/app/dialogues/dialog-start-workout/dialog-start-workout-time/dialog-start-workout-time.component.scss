@@ -1,0 +1,8 @@
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX X(-50%) translateY (-50%);
+  -webkit-transform: translateX X(-50%) translateY Y(-50%);
+  transform: translateX X(-50%) translateY (-50%);
+}

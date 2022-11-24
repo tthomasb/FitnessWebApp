@@ -1,31 +1,120 @@
 import { Component, OnInit } from '@angular/core';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { WorkoutData } from 'src/app/models/workout-data.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogWorkoutComponent } from 'src/app/dialogues/dialog-workout/dialog-workout.component';
+import { DialogEditWorkoutComponent } from 'src/app/dialogues/dialog-edit-workout/dialog-edit-workout.component';
+import { DialogStartWorkoutComponent } from 'src/app/dialogues/dialog-start-workout/dialog-start-workout.component';
+import { Sets } from 'src/app/models/sets.model';
 
 @Component({
   selector: 'app-workout',
   templateUrl: './workout.component.html',
-  styleUrls: ['./workout.component.scss']
+  styleUrls: ['./workout.component.scss'],
 })
 export class WorkoutComponent implements OnInit {
+  workouts: WorkoutData[];
+  typestring: string = 'type';
+  accordionConfig: any;
+  constructor(public dialog: MatDialog) {
+    //initialize dummy data
+    this.workouts = [
+      new WorkoutData(
+        'Push',
+        'Workout1',
+        [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
+        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        'Gym'
+      ),
 
-  constructor() { }
-  workouts:WorkoutData[]=[
-  new WorkoutData("Biceps1",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")]), 
-  new WorkoutData("Biceps2",[new ExerciseModel("Curls","biceps curls",5,4,60,"biceps"),new ExerciseModel("Hammer Curls","Hammer curls",5,4,60,"biceps")])
-];
-  
+      new WorkoutData(
+        'Pull',
+        'Workout1',
+        [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
+        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        'Gym'
+      ),
+
+      new WorkoutData(
+        'Legs',
+        'Workout1',
+        [new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell')],
+        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        'Calysthenics'
+      ),
+    ];
+
+    
+  }
 
   ngOnInit(): void {
-      
+    //set accordionConfig
+    this.accordionConfig = this.getAccordionData();
   }
 
-}
-
-/**
-   * Open the dialog for adding an Event
-   * openAdd(): void {
-  
+  //Get The Accordion Data
+  getAccordionData(): any {
+    const data:any = {
+      "toLoop": this.workouts,
+      "topLayer": 'type',      
+      "hasStart": true,      
+    };
+    return data;
   }
+  /**
+   * Open the workout dialog
    */
- 
+  openAddWorkout() {
+    const dialogRef = this.dialog.open(DialogWorkoutComponent, {
+      width: '90%',
+      height: '90%',
+    });
+
+    /**
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+    */
+  }
+
+  openEditWorkout() {
+    const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
+      width: '90%',
+      height: '90%',
+    });
+
+    /**
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+    */
+  }
+
+  openStartWorkout() {
+    const dialogRef = this.dialog.open(DialogStartWorkoutComponent, {
+      width: '90%',
+      height: '90%',
+    });
+    /**
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+    */
+  }
+  catchDialogEvent(value:string){
+    switch(value){
+      case"start":
+      this.openStartWorkout();
+      break;
+      case"edit":
+      this.openEditWorkout();
+      break;
+      case"delete":
+      this.openEditWorkout();
+      break;
+    }
+  }
+}
+// function getAccordionData() {
+//   throw new Error('Function not implemented.');
+// }
