@@ -6,6 +6,7 @@ import { DialogWorkoutComponent } from 'src/app/dialogues/dialog-workout/dialog-
 import { DialogEditWorkoutComponent } from 'src/app/dialogues/dialog-edit-workout/dialog-edit-workout.component';
 import { DialogStartWorkoutComponent } from 'src/app/dialogues/dialog-start-workout/dialog-start-workout.component';
 import { Sets } from 'src/app/models/sets.model';
+import { Dialog } from 'src/app/enums/dialog';
 
 @Component({
   selector: 'app-workout',
@@ -113,17 +114,19 @@ export class WorkoutComponent implements OnInit {
   }
   catchDialogEvent(value:any){
     switch(value.event){
-      case"start":
+      case Dialog.START:
+      console.log("start caught");
       this.openStartWorkout(value.index);
       break;
-      case"edit":
+      case Dialog.EDIT:
       this.openEditWorkout(value.index);
       break;
-      case"delete":
+      case Dialog.DELETE:
       //this.openDeleteWorkout(value.index);
       break;
     }
   }
+
 }
 // function getAccordionData() {
 //   throw new Error('Function not implemented.');
