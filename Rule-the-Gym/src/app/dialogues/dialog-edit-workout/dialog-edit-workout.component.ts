@@ -8,6 +8,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,} from '@angular/material/dialo
   styleUrls: ['./dialog-edit-workout.component.scss'],
 })
 export class DialogEditWorkoutComponent implements OnInit {
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DialogEditWorkoutComponent>,
