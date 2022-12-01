@@ -7,6 +7,7 @@ import { DialogEditWorkoutComponent } from 'src/app/dialogues/dialog-edit-workou
 import { DialogStartWorkoutComponent } from 'src/app/dialogues/dialog-start-workout/dialog-start-workout.component';
 import { Sets } from 'src/app/models/sets.model';
 import { Dialog } from 'src/app/enums/dialog';
+import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 
 @Component({
   selector: 'app-workout',
@@ -93,11 +94,17 @@ export class WorkoutComponent implements OnInit {
     */
   }
   openDeleteWorkout(index:number) {
-    const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
-      width: '90%',
-      height: '90%',
+    const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
+      width: '20%',
+      height: '16%',
       data:{data:this.workouts, index:index}
     });
+    const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {
+      if(e)this.deleteWorkout(index);
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      dialogRef.componentInstance.Emitter.unsubscribe();
+    })
   }
 
   openStartWorkout(index:number) {
@@ -112,6 +119,9 @@ export class WorkoutComponent implements OnInit {
     });
     */
   }
+  deleteWorkout(index:number) {
+    this.workouts.splice(index, 1);
+  }
   catchDialogEvent(value:any){
     switch(value.event){
       case Dialog.START:
@@ -122,7 +132,7 @@ export class WorkoutComponent implements OnInit {
       this.openEditWorkout(value.index);
       break;
       case Dialog.DELETE:
-      //this.openDeleteWorkout(value.index);
+      this.openDeleteWorkout(value.index);
       break;
     }
   }
