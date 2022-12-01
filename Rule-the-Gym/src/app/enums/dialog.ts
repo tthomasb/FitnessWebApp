@@ -4,6 +4,7 @@ export enum Dialog {
     EDIT="Edit",
     DELETE="delete",
     CREATE="Create",
-    DELETETRUE="DeleteTrue"
+    DELETETRUE="DeleteTrue",
+    ADD="add"
 
 }

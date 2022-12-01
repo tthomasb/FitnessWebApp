@@ -58,7 +58,7 @@ export class WorkoutComponent implements OnInit {
     const data:any = {
       "toLoop": this.workouts,
       "topLayer": 'type',      
-      "hasStart": true,      
+      "type": Dialog.START,      
     };
     return data;
   }

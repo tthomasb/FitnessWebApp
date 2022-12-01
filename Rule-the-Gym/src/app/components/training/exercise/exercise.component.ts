@@ -35,7 +35,7 @@ export class ExerciseComponent implements OnInit {
     const data:any = {
       "toLoop": this.exercises,
       "topLayer": 'muscle',
-      "hasStart": false            
+      "type": Dialog.EDIT            
     };
     return data;
   }

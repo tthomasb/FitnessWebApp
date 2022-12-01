@@ -1,4 +1,5 @@
 import { Component,EventEmitter,Input, OnInit, Output } from '@angular/core';
+import { DefaultGridAlignColumnsDirective } from '@angular/flex-layout';
 import { Dialog } from 'src/app/enums/dialog';
 
 @Component({
@@ -31,6 +32,7 @@ export class AccordionComponent implements OnInit {
   edit:Dialog.EDIT=Dialog.EDIT;
   start:Dialog.START=Dialog.START;
   delete:Dialog.DELETE=Dialog.DELETE;
+  add:Dialog.ADD=Dialog.ADD;
 
 
   //Event emitter for Dialogs in Parent
