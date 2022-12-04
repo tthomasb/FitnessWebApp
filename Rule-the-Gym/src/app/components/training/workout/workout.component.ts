@@ -70,7 +70,7 @@ export class WorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data:{data:this.workouts}
+      data:{data:this.workouts, dialogName:Dialog.CREATE}
     });
 
     /**
@@ -84,9 +84,10 @@ export class WorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data:{data:this.workouts, index:index}
+      data:{data:this.workouts, index:index, dialogName:Dialog.EDIT}
     });
 
+    console.log(index)
     /**
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -126,13 +127,13 @@ export class WorkoutComponent implements OnInit {
     switch(value.event){
       case Dialog.START:
       console.log("start caught");
-      this.openStartWorkout(value.index);
+      this.openStartWorkout(value.source);
       break;
       case Dialog.EDIT:
-      this.openEditWorkout(value.index);
+      this.openEditWorkout(value.source);
       break;
       case Dialog.DELETE:
-      this.openDeleteWorkout(value.index);
+      this.openDeleteWorkout(value.source);
       break;
     }
   }

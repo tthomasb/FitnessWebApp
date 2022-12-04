@@ -25,7 +25,7 @@ export class DialogEditWorkoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //    console.log(this.data);
+    console.log(this.data.data[this.data.index]);
     this.name = this.data.data[this.data.index].name;
     this.sets = this.data.data[this.data.index].sets;
     this.reps = this.data.data[this.data.index].reps;
