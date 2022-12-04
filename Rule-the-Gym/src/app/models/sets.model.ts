@@ -3,6 +3,7 @@ export class Sets {
     pause:number[];
     weight?:number[];
     exercisepause:number;
+    sets_Id?:string;
 
     constructor(reps:number[],
                 pause:number[],

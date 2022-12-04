@@ -8,6 +8,7 @@ export class WorkoutData {
     sets:Sets;
     type:string;
     description:string;
+    workout_Id?:string;
     
 
 constructor(name:string,description:string, exercises:ExerciseModel[], sets:Sets, type:string){
