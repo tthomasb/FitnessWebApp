@@ -25,34 +25,34 @@ export class DialogEditWorkoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data.data[this.data.index]);
-    this.name = this.data.data[this.data.index].name;
-    this.sets = this.data.data[this.data.index].sets;
-    this.reps = this.data.data[this.data.index].reps;
-    this.breaktime = this.data.data[this.data.index].breaktime;
-    this.description = this.data.data[this.data.index].description;
-    this.type = this.data.data[this.data.index].type;
-    this.exercises = this.data.data[this.data.index].exercises;
+    console.log(this.data.workouts[this.data.index]);
+    this.name = this.data.workouts[this.data.index].name;
+    this.sets = this.data.workouts[this.data.index].sets;
+    this.reps = this.data.workouts[this.data.index].reps;
+    this.breaktime = this.data.workouts[this.data.index].breaktime;
+    this.description = this.data.workouts[this.data.index].description;
+    this.type = this.data.workouts[this.data.index].type;
+    this.exercises = this.data.workouts[this.data.index].exercises;
   }
 
   safeData() {
     console.log(this.data.data);
     console.log(this.name);
     if (this.data.dialogName === 'Edit') {
-      this.data.data[this.data.index].name = this.name;
-      this.data.data[this.data.index].sets = this.sets;
-      this.data.data[this.data.index].reps = this.reps;
-      this.data.data[this.data.index].breaktime = this.breaktime;
-      this.data.data[this.data.index].description = this.description;
-      this.data.data[this.data.index].type = this.type;
-      this.data.data[this.data.index].exercises = this.exercises;
+      this.data.workouts[this.data.index].name = this.name;
+      this.data.workouts[this.data.index].sets = this.sets;
+      this.data.workouts[this.data.index].reps = this.reps;
+      this.data.workouts[this.data.index].breaktime = this.breaktime;
+      this.data.workouts[this.data.index].description = this.description;
+      this.data.workouts[this.data.index].type = this.type;
+      this.data.workouts[this.data.index].exercises = this.exercises;
       
-      console.log(this.data.data);
+      console.log(this.data.workouts);
     }
 
     //Safe data Create
     if (this.data.dialogName === 'Create') {
-      this.data.data.push(
+      this.data.workouts.push(
         new WorkoutData(
           this.name,
           this.description,
@@ -70,9 +70,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
       width: '90%',
       height: '90%',
-      data:{
-        workout:this.data
-      }
-    });
+      data:this.data
+  });
   }
 }

@@ -1,3 +1,4 @@
+import { ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
 import { Component, Input, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ExerciseComponent } from 'src/app/components/training/exercise/exercise.component';
@@ -21,8 +22,7 @@ Allexercises:ExerciseModel[];
     this.Allexercises=[
       new ExerciseModel("Curls","biceps curls","Chest","Dumbell"),
       new ExerciseModel("Curls","biceps curls","biceps","Dumbell")      
-    ];
-    
+    ];    
    }
 
   ngOnInit(): void {
@@ -46,17 +46,19 @@ Allexercises:ExerciseModel[];
       case Dialog.DELETE:
       
       break;
-      case Dialog.ADD:
-        this.AddExercise(value.index);
+      case Dialog.ADD:        
+        this.AddExercise(value.source);
     }
   }
-  AddExercise(value:number){
+  AddExercise(index:number){
+    console.log(this.data);
       if(this.data.dialogName===Dialog.EDIT){
         console.log(this.data.index);
-      this.data.data[this.data.index].exercises.push(this.Allexercises[value]);
+      this.data.workouts[this.data.index].exercises.push(this.Allexercises[index]);
+      console.log(this.data.workouts[this.data.index]);
       }
       if(this.data.dialogName===Dialog.CREATE){
-        this.data.data 
+        this.data.workouts 
         //Todo add new workout
 
       }

@@ -84,7 +84,7 @@ export class WorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data:{data:this.workouts, index:index, dialogName:Dialog.EDIT}
+      data:{workouts:this.workouts, index:index, dialogName:Dialog.EDIT}
     });
 
     console.log(index)
@@ -98,7 +98,7 @@ export class WorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
       width: '20%',
       height: '16%',
-      data:{data:this.workouts, index:index}
+      data:{workouts:this.workouts, index:index}
     });
     const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {
       if(e)this.deleteWorkout(index);
