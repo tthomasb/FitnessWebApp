@@ -48,6 +48,7 @@ workout?:WorkoutData;
     }
   }
   AddExercise(value:number){
+      
       this.workout?.exercises.push(this.Allexercises[value]);
   }
 }
