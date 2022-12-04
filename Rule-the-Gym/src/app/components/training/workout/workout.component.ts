@@ -23,7 +23,7 @@ export class WorkoutComponent implements OnInit {
     this.workouts = [
       new WorkoutData(
         'Push',
-        'Workout1',
+        'Workout1',                        
         [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
         "3", "8 -12", "30",
         'Gym'

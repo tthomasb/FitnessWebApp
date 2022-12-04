@@ -3,6 +3,7 @@ export class ExerciseModel {
   description: string;
   muscle: string;
   equipment: string;
+  exercise_id?:string;
   constructor(name: string, description: string, muscle: any, equipment: any) {
     this.name = name;
     this.description = description;

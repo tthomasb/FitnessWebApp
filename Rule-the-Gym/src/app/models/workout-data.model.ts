@@ -9,15 +9,16 @@ export class WorkoutData {
   type: String;
   breaktime: String;
   description: String;
-
+  workout_id?:string;
   constructor(
     name: string,
     description: string,
     exercises: ExerciseModel[],
     sets: String,
     reps: String,
+    breaktime: String,
     type: string,
-    breaktime: String
+    
   ) {
     this.name = name;
     this.exercises = exercises;

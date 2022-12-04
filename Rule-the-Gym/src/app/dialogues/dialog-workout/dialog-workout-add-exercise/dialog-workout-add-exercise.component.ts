@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Input, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ExerciseComponent } from 'src/app/components/training/exercise/exercise.component';
 import { Dialog } from 'src/app/enums/dialog';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { WorkoutData } from 'src/app/models/workout-data.model';
+import { DialogEditWorkoutComponent } from '../../dialog-edit-workout/dialog-edit-workout.component';
 
 @Component({
   selector: 'app-dialog-workout-add-exercise',
@@ -14,7 +15,9 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
   @Input() search:string="";
 Allexercises:ExerciseModel[];
 workout?:WorkoutData;
-  constructor(public dialog:MatDialog) {
+  constructor(@Inject(MAT_DIALOG_DATA)public data: any,
+  public MatDialogRef: MatDialogRef<DialogEditWorkoutComponent>,public dialog:MatDialog) {
+
     this.Allexercises=[
       new ExerciseModel("Curls","biceps curls","Chest","Dumbell"),
       new ExerciseModel("Curls","biceps curls","biceps","Dumbell")      
