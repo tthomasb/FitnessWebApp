@@ -1,9 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
 
 @Component({
@@ -23,8 +19,7 @@ export class DialogExerciseComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-//    console.log(this.data);
-
+    //    console.log(this.data);
     this.name = this.data.data[this.data.index].name;
     this.description = this.data.data[this.data.index].description;
     this.muscle = this.data.data[this.data.index].muscle;
@@ -37,10 +32,9 @@ export class DialogExerciseComponent implements OnInit {
     if (this.data.dialogName === 'Edit') {
       this.data.data[this.data.index].name = this.name;
       this.data.data[this.data.index].description = this.description;
-      this.muscle = this.data.data[this.data.index].muscle = this.muscle;
+      this.data.data[this.data.index].muscle = this.muscle;
       this.data.data[this.data.index].equipment = this.equipment;
       console.log(this.data.data);
-      
     }
 
     //Safe data Create

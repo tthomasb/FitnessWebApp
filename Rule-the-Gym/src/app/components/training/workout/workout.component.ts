@@ -25,7 +25,7 @@ export class WorkoutComponent implements OnInit {
         'Push',
         'Workout1',
         [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
-        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        "3", "8 -12", "30",
         'Gym'
       ),
 
@@ -33,7 +33,7 @@ export class WorkoutComponent implements OnInit {
         'Pull',
         'Workout1',
         [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
-        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        "3", "8 -12", "30",
         'Gym'
       ),
 
@@ -41,7 +41,7 @@ export class WorkoutComponent implements OnInit {
         'Legs',
         'Workout1',
         [new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell')],
-        new Sets([12, 12, 12], [30, 30, 30], 60, [20, 20, 20]),
+        "3", "8 -12", "30",
         'Calysthenics'
       ),
     ];
@@ -111,7 +111,7 @@ export class WorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogStartWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data: {data: this.workouts[index]}
+      data: {data: this.workouts[index], dialogName:Dialog.START}
     });
     /**
     dialogRef.afterClosed().subscribe((result) => {
