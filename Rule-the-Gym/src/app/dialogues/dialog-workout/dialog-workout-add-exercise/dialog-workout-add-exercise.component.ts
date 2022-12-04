@@ -14,7 +14,7 @@ import { DialogEditWorkoutComponent } from '../../dialog-edit-workout/dialog-edi
 export class DialogWorkoutAddExerciseComponent implements OnInit {
   @Input() search:string="";
 Allexercises:ExerciseModel[];
-workout?:WorkoutData;
+
   constructor(@Inject(MAT_DIALOG_DATA)public data: any,
   public MatDialogRef: MatDialogRef<DialogEditWorkoutComponent>,public dialog:MatDialog) {
 
@@ -51,7 +51,14 @@ workout?:WorkoutData;
     }
   }
   AddExercise(value:number){
-      
-      this.workout?.exercises.push(this.Allexercises[value]);
+      if(this.data.dialogName===Dialog.EDIT){
+        console.log(this.data.index);
+      this.data.data[this.data.index].exercises.push(this.Allexercises[value]);
+      }
+      if(this.data.dialogName===Dialog.CREATE){
+        this.data.data 
+        //Todo add new workout
+
+      }
   }
 }
