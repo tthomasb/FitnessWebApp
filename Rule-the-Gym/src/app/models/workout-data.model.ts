@@ -1,12 +1,10 @@
+import { ExerciseDataModel } from './exercise-data-model.model';
 import { ExerciseModel } from './exercise-model.model';
 
 export class WorkoutData {
   name: String;
-  exercises: ExerciseModel[];
-  sets: String[];
-  reps: String[];
-  weight?: String[];
-  breaktime: String[];
+  exerciseMap:Map<ExerciseModel,ExerciseDataModel>;
+  
   type: String;
   description: String;
   workout_id?:string;
@@ -14,23 +12,17 @@ export class WorkoutData {
   constructor(
     name: string,
     description: string,
-    exercises: ExerciseModel[],
-    sets: String[],
-    reps: String[],    
-    breaktime: String[],
-    type: string,
-    weight?: String[],
+    type: string,  
+    exerciseMap:Map<ExerciseModel,ExerciseDataModel>,    
+      
   ) {
-    this.name = name;
-    this.exercises = exercises;
-    this.sets = sets;
-    this.reps = reps;
-    this.breaktime = breaktime;
-    this.type = type;
-    this.description = description;
-    this.weight= weight;
+    this.name = name;   
+    this.description = description; 
+    this.type = type;    
+    this.exerciseMap=exerciseMap;
   }
 }
+
 
 // export namespace WorkoutData{
 //     export function parseWorkoutData(obj:any):WorkoutData{

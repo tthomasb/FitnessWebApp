@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,} from '@angular/material/dialo
 import { WorkoutData } from 'src/app/models/workout-data.model';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { convertTypeAcquisitionFromJson } from 'typescript';
+import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
 
 @Component({
   selector: 'app-dialog-edit-workout',
@@ -67,11 +68,9 @@ weight3:string[]=[];
         new WorkoutData(
           this.name,
           this.description,
-          this.exercises,
-          this.sets,
-          this.reps,
-          this.breaktime,
-          this.type,
+          this.type, 
+          new Map<ExerciseModel, ExerciseDataModel>()
+
         )
       );
     }

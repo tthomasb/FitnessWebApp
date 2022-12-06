@@ -7,6 +7,7 @@ import { DialogEditWorkoutComponent } from 'src/app/dialogues/dialog-edit-workou
 import { DialogStartWorkoutComponent } from 'src/app/dialogues/dialog-start-workout/dialog-start-workout.component';
 import { Dialog } from 'src/app/enums/dialog';
 import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
+import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
 
 @Component({
   selector: 'app-workout',
@@ -18,32 +19,33 @@ export class WorkoutComponent implements OnInit {
   typestring: string = 'type';
   accordionConfig: any;
   constructor(public dialog: MatDialog) {
-    //initialize dummy data
+    //initialize dummy data        
+    let testmap=new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]);
     this.workouts = [
       new WorkoutData(
         'Push',
-        'Workout1',                        
-        [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
-        ["3"], ["8 -12"],["30"],
-        'Gym',["20"]
-      ),
+        'Workout1',
+        'Gym',
+        new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
+        new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]),
+        ),
 
       new WorkoutData(
         'Pull',
         'Workout1',
-        [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
-        ["3"], ["8 -12"],["30"],
-        'Gym',["20"]
-      ),
-
+        'Gym',
+        new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
+        new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]),
+        ),
+        
       new WorkoutData(
         'Legs',
         'Workout1',
-        [new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell')],
-        ["3"], ["8 -12"],["30"],
-        'Calysthenics'
-      ),
-    ];
+        'Calysthenics',
+        new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
+        new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]),
+        )
+      ];
 
     
   }
