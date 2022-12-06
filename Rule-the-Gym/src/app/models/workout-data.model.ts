@@ -1,24 +1,25 @@
 import { ExerciseModel } from './exercise-model.model';
-import { Sets } from './sets.model';
 
 export class WorkoutData {
   name: String;
   exercises: ExerciseModel[];
-  sets: String;
-  reps: String;
+  sets: String[];
+  reps: String[];
+  weight?: String[];
+  breaktime: String[];
   type: String;
-  breaktime: String;
   description: String;
   workout_id?:string;
+  
   constructor(
     name: string,
     description: string,
     exercises: ExerciseModel[],
-    sets: String,
-    reps: String,
-    breaktime: String,
+    sets: String[],
+    reps: String[],    
+    breaktime: String[],
     type: string,
-    
+    weight?: String[],
   ) {
     this.name = name;
     this.exercises = exercises;
@@ -27,6 +28,7 @@ export class WorkoutData {
     this.breaktime = breaktime;
     this.type = type;
     this.description = description;
+    this.weight= weight;
   }
 }
 

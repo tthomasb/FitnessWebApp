@@ -23,6 +23,7 @@ import { AccordionComponent } from './components/utils/accordion/accordion.compo
 import { DialogAskDeleteComponent } from './dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { DialogAskDeleteComponent } from './dialogues/dialog-ask-delete/dialog-a
     AccordionComponent,
     DialogEditWorkoutComponent,
     DialogStartWorkoutTimeComponent,
-    DialogAskDeleteComponent
+    DialogAskDeleteComponent,
+    
   ],
   imports: [
     BrowserModule,

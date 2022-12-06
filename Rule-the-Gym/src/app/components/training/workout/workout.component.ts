@@ -5,7 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogWorkoutComponent } from 'src/app/dialogues/dialog-workout/dialog-workout.component';
 import { DialogEditWorkoutComponent } from 'src/app/dialogues/dialog-edit-workout/dialog-edit-workout.component';
 import { DialogStartWorkoutComponent } from 'src/app/dialogues/dialog-start-workout/dialog-start-workout.component';
-import { Sets } from 'src/app/models/sets.model';
 import { Dialog } from 'src/app/enums/dialog';
 import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 
@@ -25,23 +24,23 @@ export class WorkoutComponent implements OnInit {
         'Push',
         'Workout1',                        
         [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
-        "3", "8 -12", "30",
-        'Gym'
+        ["3"], ["8 -12"],["30"],
+        'Gym',["20"]
       ),
 
       new WorkoutData(
         'Pull',
         'Workout1',
         [new ExerciseModel('Curls', 'biceps curls', 'biceps', 'Dumbell')],
-        "3", "8 -12", "30",
-        'Gym'
+        ["3"], ["8 -12"],["30"],
+        'Gym',["20"]
       ),
 
       new WorkoutData(
         'Legs',
         'Workout1',
         [new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell')],
-        "3", "8 -12", "30",
+        ["3"], ["8 -12"],["30"],
         'Calysthenics'
       ),
     ];
