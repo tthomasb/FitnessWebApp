@@ -14,8 +14,7 @@
         <mat-card class="test" *ngIf='exercise.name.toUpperCase().match(search.toUpperCase())'>
           <mat-card-title>{{ exercise.name }}</mat-card-title>
               <mat-card-subtitle>{{ exercise.description }}</mat-card-subtitle>
-              
-
+              <button mat-flat-button color="primary" mat-dialog-close (click)="addExerciseToWorkout(exercise)">Add</button>
         </mat-card>
       </div>
     </mat-expansion-panel>

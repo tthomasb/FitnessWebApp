@@ -20,13 +20,13 @@ export class WorkoutComponent implements OnInit {
   accordionConfig: any;
   constructor(public dialog: MatDialog) {
     //initialize dummy data        
-    let testmap=new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]);
+    let testmap=new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbells'),new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]);
     this.workouts = [
       new WorkoutData(
         'Push',
         'Workout1',
         'Gym',
-        new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
+        new Map([[new ExerciseModel('Bench Press', 'Push dumbells up', 'Chest', 'Dumbells'),
         new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]),
         ),
 
@@ -34,7 +34,7 @@ export class WorkoutComponent implements OnInit {
         'Pull',
         'Workout1',
         'Gym',
-        new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
+        new Map([[new ExerciseModel('Rows', 'Pull the weight to you', 'Back', 'Dumbells'),
         new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]),
         ),
         
@@ -42,7 +42,7 @@ export class WorkoutComponent implements OnInit {
         'Legs',
         'Workout1',
         'Calysthenics',
-        new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
+        new Map([[new ExerciseModel('Squat', 'Push yourself away from floor', 'Legs', 'Barbell'),
         new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]),
         )
       ];
