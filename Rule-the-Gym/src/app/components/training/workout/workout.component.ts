@@ -104,7 +104,7 @@ export class WorkoutComponent implements OnInit {
   openDeleteWorkout(index:number) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
       width: '20%',
-      height: '16%',
+      height: '25%',
       data:{workouts:this.workouts, index:index}
     });
     const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {
