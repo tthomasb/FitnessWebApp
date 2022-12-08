@@ -26,8 +26,8 @@ export class WorkoutComponent implements OnInit {
         'Push',
         'Workout1',
         'Gym',
-        new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
-        new ExerciseDataModel("3","8 -12","30","20")]]),
+        new Map([[new ExerciseModel('Bench Press', 'Push dumbells up', 'Chest', 'Dumbells'),
+        new ExerciseDataModel("3","8 -12","30","20"])]]),
         ),
 
       new WorkoutData(

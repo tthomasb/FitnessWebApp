@@ -5,6 +5,7 @@ import { WorkoutData } from 'src/app/models/workout-data.model';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { convertTypeAcquisitionFromJson } from 'typescript';
 import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
+import { DialogAskDeleteComponent } from '../dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 
 @Component({
   selector: 'app-dialog-edit-workout',
@@ -22,7 +23,7 @@ export class DialogEditWorkoutComponent implements OnInit {
   weight!: string|undefined;  
   dummyMap!:Map<ExerciseModel,ExerciseDataModel>;
   index!:number;
-
+  workout: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -49,17 +50,31 @@ export class DialogEditWorkoutComponent implements OnInit {
     console.log(exData);
     console.log(this.dummyMap.get(exercise));
   }
-
-  safeExerciseData(exMapKey:ExerciseModel){
-    this.dummyMap.get(exMapKey)!.sets= this.sets!;
-    this.dummyMap.get(exMapKey)!.reps= this.reps!;
-    this.dummyMap.get(exMapKey)!.breaktime = this.breaktime!;
-    this.dummyMap.get(exMapKey)!.weight = this.weight!;
-      console.log(this.sets,this.reps,this.breaktime,this.weight);
-      console.log("Safed ExerciseData: ", this.data.workout, "index:");
+  safeExerciseData(index:number){
+    this.workout.sets[index] = this.sets[index];
+      this.workout.reps[index] = this.reps[index];
+      this.workout.breaktime[index] = this.breaktime[index];
+      this.workout.weight[index] = this.weight2[index].weight;
+      console.log("Safed ExerciseData: ", this.workout, "index:",index);
+  }
+  openDeleteExercise(index:number) {
+    const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
+      width: '20%',
+      height: '16%',
+      data:{exercises:this.exercises, index:index}
+    });
+    const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {
+      if(e)this.deleteExercise(index);
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      dialogRef.componentInstance.Emitter.unsubscribe();
+    })
+  }
+  deleteExercise(index: any) {
+    this.data.workouts[this.data.index].exerciseMap.delete(index);
   }
   safeWorkoutData() {
-    console.log(this.data.workouts[this.data.index]);
+    console.log(this.workout);
     console.log(this.name);
     if (this.data.dialogName === 'Edit') {
       this.data.workout.name = this.name;

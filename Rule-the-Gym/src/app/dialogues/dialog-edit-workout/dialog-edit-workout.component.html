@@ -30,7 +30,7 @@
                   <mat-panel-title> {{exercise.name}}</mat-panel-title>
                   <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
                   <mat-panel-description> 
-                    <button class="delete-button" mat-flat-button color="primary">Delete</button>
+                    <button class="delete-button" mat-flat-button color="primary" (click)="openDeleteExercise(exercise)">Delete</button>
                   </mat-panel-description>
 
                 </mat-expansion-panel-header >
