@@ -1,3 +1,9 @@
+import { ExampleUserItemsComponent } from './components/backend-examples/example-user-items/example-user-items.component';
+import { ExampleAllItemsComponent } from './components/backend-examples/example-all-items/example-all-items.component';
+import { ExampleTemplateComponent } from './components/backend-examples/example-template/example-template.component';
+import { ExampleItemByIdComponent } from './components/backend-examples/example-item-by-id/example-item-by-id.component';
+import { ExampleEditItemComponent } from './components/backend-examples/example-edit-item/example-edit-item.component';
+import { ExampleCreateItemComponent } from './components/backend-examples/example-create-item/example-create-item.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -5,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MaterialModule } from "./modules/material.module";
+import { MaterialModule } from './modules/material.module';
 import { MatTreeModule } from '@angular/material/tree';
 import { TrainingComponent } from './components/training/training.component';
 import { BmiComponent } from './components/bmi/bmi.component';
@@ -21,8 +27,7 @@ import { DialogEditWorkoutComponent } from './dialogues/dialog-edit-workout/dial
 import { DialogStartWorkoutTimeComponent } from './dialogues/dialog-start-workout/dialog-start-workout-time/dialog-start-workout-time.component';
 import { AccordionComponent } from './components/utils/accordion/accordion.component';
 import { DialogAskDeleteComponent } from './dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,12 @@ import { DialogAskDeleteComponent } from './dialogues/dialog-ask-delete/dialog-a
     DialogEditWorkoutComponent,
     DialogStartWorkoutTimeComponent,
     DialogAskDeleteComponent,
-    
+    ExampleAllItemsComponent,
+    ExampleCreateItemComponent,
+    ExampleEditItemComponent,
+    ExampleItemByIdComponent,
+    ExampleTemplateComponent,
+    ExampleUserItemsComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,9 +61,10 @@ import { DialogAskDeleteComponent } from './dialogues/dialog-ask-delete/dialog-a
     BrowserAnimationsModule,
     MatToolbarModule,
     MaterialModule,
-    MatTreeModule
+    MatTreeModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
