@@ -50,12 +50,13 @@ export class DialogEditWorkoutComponent implements OnInit {
     console.log(exData);
     console.log(this.dummyMap.get(exercise));
   }
-  safeExerciseData(index:number){
-    this.workout.sets[index] = this.sets[index];
-      this.workout.reps[index] = this.reps[index];
-      this.workout.breaktime[index] = this.breaktime[index];
-      this.workout.weight[index] = this.weight2[index].weight;
-      console.log("Safed ExerciseData: ", this.workout, "index:",index);
+  safeExerciseData(exMapKey:ExerciseModel){
+    this.dummyMap.get(exMapKey)!.sets= this.sets!;
+    this.dummyMap.get(exMapKey)!.reps= this.reps!;
+    this.dummyMap.get(exMapKey)!.breaktime = this.breaktime!;
+    this.dummyMap.get(exMapKey)!.weight = this.weight!;
+      console.log(this.sets,this.reps,this.breaktime,this.weight);
+      console.log("Safed ExerciseData: ", this.data.workout, "index:");
   }
   openDeleteExercise(index:number) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
