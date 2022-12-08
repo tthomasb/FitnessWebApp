@@ -10,6 +10,7 @@ import { Dialog } from 'src/app/enums/dialog';
 import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { WorkoutData } from 'src/app/models/workout-data.model';
+import { DataServiceService } from 'src/app/services/data-service.service';
 import { DialogEditWorkoutComponent } from '../../dialog-edit-workout/dialog-edit-workout.component';
 
 @Component({
@@ -20,18 +21,14 @@ import { DialogEditWorkoutComponent } from '../../dialog-edit-workout/dialog-edi
 export class DialogWorkoutAddExerciseComponent implements OnInit {
   @Input() search: string = '';
   Allexercises: ExerciseModel[];
-
+  dataService:DataServiceService;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public MatDialogRef: MatDialogRef<DialogEditWorkoutComponent>,
-    public dialog: MatDialog
+    public dialog: MatDialog, dataService:DataServiceService
   ) {
-    this.Allexercises = [
-      new ExerciseModel('Curls', 'Biceps curls', 'Chest', 'Dumbell'),
-      new ExerciseModel('Seated Curls', 'Biceps curls', 'Biceps', 'Barbell'),
-      new ExerciseModel('Bench Press', 'Push dumbells up', 'Chest', 'Dumbells'),
-      new ExerciseModel('Rows', 'Pull the weight to you', 'Back', 'Dumbells')
-    ];
+    this.dataService=dataService;
+    this.Allexercises = this.dataService.getAllExercises();
   }
 
   ngOnInit(): void {
