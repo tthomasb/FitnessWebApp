@@ -71,16 +71,22 @@ export class WorkoutComponent implements OnInit {
    * Open the workout dialog
    */
   openAddWorkout() {
+    //create an empty workout
+    let newWorkout=new WorkoutData("","","",new Map([[new ExerciseModel('', '', '', ''),    
+    new ExerciseDataModel("","","","")]]));
+    this.workouts.push(newWorkout);
+    newWorkout.exerciseMap.clear();
+    console.log(this.workouts);
+
+    //Open dialog with empty workout
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data:{workout:new WorkoutData("","","",new Map([[new ExerciseModel('', '', '', ''),
-      new ExerciseDataModel("","","","")]]),
-      ), dialogName:Dialog.CREATE}
+      data:{workout:newWorkout, dialogName:Dialog.CREATE}
     });    
-    dialogRef.afterClosed().subscribe((result) => {
-      this.workouts.push(result.workout);
-    });
+     dialogRef.afterClosed().subscribe((result) => {
+      this.ngOnInit();
+     });
    
   }
 
@@ -90,13 +96,10 @@ export class WorkoutComponent implements OnInit {
       height: '90%',
       data:{workout:this.workouts[index], dialogName:Dialog.EDIT}
     });
-
-    console.log(index)
-    /**
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
-    */
+      this.ngOnInit();
+     });
+    console.log(index)   
   }
   openDeleteWorkout(index:number) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {

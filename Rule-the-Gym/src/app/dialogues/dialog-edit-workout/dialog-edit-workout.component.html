@@ -7,12 +7,17 @@
       <div mat-dialog-content>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Name</mat-label>
-          <input matInput placeholder="" [(ngModel)]="name" />
+          <input matInput placeholder="" [(ngModel)]="data.workout.name" />
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Type</mat-label>
-          <input matInput placeholder="" [(ngModel)]="type" />
+          <input matInput placeholder="" [(ngModel)]="data.workout.type" />
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="" [(ngModel)]="data.workout.description" />
         </mat-form-field>
         <br>
         <div class="Exercises">
@@ -75,8 +80,7 @@
       </button>
     </form>
     <div mat-dialog-actions>
-      <button mat-flat-button color="primary" (click)="close()">Save</button>
-      <button mat-flat-button color="primary" mat-dialog-close>Cancel</button>
+      <button mat-flat-button color="primary" mat-dialog-close>Done</button>  
     </div>
   </div>
 </div>

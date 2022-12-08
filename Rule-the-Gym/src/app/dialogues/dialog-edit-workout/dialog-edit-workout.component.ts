@@ -68,6 +68,7 @@ export class DialogEditWorkoutComponent implements OnInit {
       if(e)this.deleteExercise(index);
     });
     dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
       dialogRef.componentInstance.Emitter.unsubscribe();
     })
   }
@@ -83,7 +84,7 @@ export class DialogEditWorkoutComponent implements OnInit {
       this.data.workout.description = this.description;
       this.data.workout.type = this.type;
     
-      
+    
       console.log(this.data.workouts);
     }
 
