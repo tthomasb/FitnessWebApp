@@ -26,9 +26,12 @@ export class WorkoutComponent implements OnInit {
         'Push',
         'Workout1',
         'Gym',
-        new Map([[new ExerciseModel('Bench Press', 'Push dumbells up', 'Chest', 'Dumbells'),
-        new ExerciseDataModel("3","8 -12","30","20"])]]),
+        new Map([
+                  [new ExerciseModel('Bench Press', 'Push dumbells up', 'Chest', 'Dumbells'),
+                  new ExerciseDataModel("3","8 -12","30","20")]
+                ])
         ),
+      
 
       new WorkoutData(
         'Pull',
@@ -45,7 +48,7 @@ export class WorkoutComponent implements OnInit {
         new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
         new ExerciseDataModel("3","8 -12","30","20")]]),
         )
-      ];
+    ];
 
     
   }
@@ -68,17 +71,17 @@ export class WorkoutComponent implements OnInit {
    * Open the workout dialog
    */
   openAddWorkout() {
-    const dialogRef = this.dialog.open(DialogWorkoutComponent, {
+    const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data:{data:this.workouts, dialogName:Dialog.CREATE}
-    });
-
-    /**
+      data:{workout:new WorkoutData("","","",new Map([[new ExerciseModel('', '', '', ''),
+      new ExerciseDataModel("","","","")]]),
+      ), dialogName:Dialog.CREATE}
+    });    
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.workouts.push(result.workout);
     });
-    */
+   
   }
 
   openEditWorkout(index:number) {

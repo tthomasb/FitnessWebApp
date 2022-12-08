@@ -53,24 +53,13 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
         break;
       case Dialog.DELETE:
         break;
-      case Dialog.ADD:
-        console.log(value)
-        this.addExerciseToWorkout(this.Allexercises[value.source]);
-        // this.AddExercise(value.source);
+      case Dialog.ADD:              
+        this.AddExercise(value.source);
     }
   }
-  AddExercise(index:number){
-    console.log(this.data);
-      if(this.data.dialogName===Dialog.EDIT){
-        console.log("if works");
+  AddExercise(index:number){              
       this.data.workout.exerciseMap.set(this.Allexercises[index],{});
-      console.log(this.data.workout.exerciseMap);      
-      }
-      if(this.data.dialogName===Dialog.CREATE){
-        this.data.workouts 
-        //Todo add new workout
-        this.data.workout.exerciseMap
-      }
+      console.log('Added Exercise');
   }
 
   // AddExercise(index: number) {
