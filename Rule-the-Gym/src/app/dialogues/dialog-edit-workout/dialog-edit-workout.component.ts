@@ -58,7 +58,7 @@ export class DialogEditWorkoutComponent implements OnInit {
       console.log(this.sets,this.reps,this.breaktime,this.weight);
       console.log("Safed ExerciseData: ", this.data.workout, "index:");
   }
-  openDeleteExercise(index:number) {
+  openDeleteExercise(index: any) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
       width: '20%',
       height: '16%',
@@ -72,7 +72,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     })
   }
   deleteExercise(index: any) {
-    this.data.workouts[this.data.index].exerciseMap.delete(index);
+    this.data.workout.exerciseMap.delete(index);
   }
   safeWorkoutData() {
     console.log(this.workout);
