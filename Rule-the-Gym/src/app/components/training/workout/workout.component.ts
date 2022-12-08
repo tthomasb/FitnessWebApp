@@ -8,6 +8,7 @@ import { DialogStartWorkoutComponent } from 'src/app/dialogues/dialog-start-work
 import { Dialog } from 'src/app/enums/dialog';
 import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
+import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-workout',
@@ -18,39 +19,11 @@ export class WorkoutComponent implements OnInit {
   workouts: WorkoutData[];
   typestring: string = 'type';
   accordionConfig: any;
-  constructor(public dialog: MatDialog) {
+  dataService:DataServiceService;
+  constructor(dataService:DataServiceService ,public dialog: MatDialog) {
     //initialize dummy data        
-    
-    this.workouts = [
-      new WorkoutData(
-        'Push',
-        'Workout1',
-        'Gym',
-        new Map([
-                  [new ExerciseModel('Bench Press', 'Push dumbells up', 'Chest', 'Dumbells'),
-                  new ExerciseDataModel("3","8 -12","30","20")]
-                ])
-        ),
-      
-
-      new WorkoutData(
-        'Pull',
-        'Workout1',
-        'Gym',
-        new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
-        new ExerciseDataModel("3","8 -12","30","20")]]),
-        ),
-        
-      new WorkoutData(
-        'Legs',
-        'Workout1',
-        'Calysthenics',
-        new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
-        new ExerciseDataModel("3","8 -12","30","20")]]),
-        )
-    ];
-
-    
+    this.dataService=dataService;
+    this.workouts = this.dataService.getAllWorkouts();    
   }
 
   ngOnInit(): void {

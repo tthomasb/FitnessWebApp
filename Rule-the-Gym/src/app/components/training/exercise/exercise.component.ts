@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogExerciseComponent } from 'src/app/dialogues/dialog-exercise/dialog-exercise.component';
 import { Dialog } from 'src/app/enums/dialog';
 import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
+import { DataServiceService } from 'src/app/services/data-service.service';
 
 
 @Component({
@@ -13,15 +14,12 @@ import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/di
 })
 export class ExerciseComponent implements OnInit {
  exercises:ExerciseModel[];
- 
+ dataService:DataServiceService;
  
 
-  constructor(public dialog:MatDialog) { 
-    
-    this.exercises=[
-      new ExerciseModel("Curls","biceps curls","Chest","Dumbell"),
-      new ExerciseModel("Curls","biceps curls","biceps","Dumbell")
-    ];
+  constructor(dataService:DataServiceService , public dialog:MatDialog) { 
+    this.dataService=dataService;
+    this.exercises=dataService.getAllExercises();
    
     
   }
