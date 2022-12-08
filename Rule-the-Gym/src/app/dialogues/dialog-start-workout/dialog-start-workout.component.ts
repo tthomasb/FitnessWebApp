@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogStartWorkoutTimeComponent } from 'src/app/dialogues/dialog-start-workout/dialog-start-workout-time/dialog-start-workout-time.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -10,7 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DialogStartWorkoutComponent implements OnInit {
 
-  constructor(public DialogRef:MatDialogRef<DialogStartWorkoutComponent>,public dialog: MatDialog) { }
+  constructor(@Inject (MAT_DIALOG_DATA) public data: any,
+  public DialogRef:MatDialogRef<DialogStartWorkoutComponent>,public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
