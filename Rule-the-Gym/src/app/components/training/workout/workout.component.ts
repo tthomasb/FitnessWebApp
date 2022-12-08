@@ -109,6 +109,7 @@ export class WorkoutComponent implements OnInit {
     });
     const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {
       if(e)this.deleteWorkout(index);
+      this.ngOnInit();
     });
     dialogRef.afterClosed().subscribe(() => {
       dialogRef.componentInstance.Emitter.unsubscribe();
