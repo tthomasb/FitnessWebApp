@@ -20,14 +20,14 @@ export class WorkoutComponent implements OnInit {
   accordionConfig: any;
   constructor(public dialog: MatDialog) {
     //initialize dummy data        
-    let testmap=new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]);
+    
     this.workouts = [
       new WorkoutData(
         'Push',
         'Workout1',
         'Gym',
         new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
-        new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]),
+        new ExerciseDataModel("3","8 -12","30","20")]]),
         ),
 
       new WorkoutData(
@@ -35,7 +35,7 @@ export class WorkoutComponent implements OnInit {
         'Workout1',
         'Gym',
         new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
-        new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]),
+        new ExerciseDataModel("3","8 -12","30","20")]]),
         ),
         
       new WorkoutData(
@@ -43,7 +43,7 @@ export class WorkoutComponent implements OnInit {
         'Workout1',
         'Calysthenics',
         new Map([[new ExerciseModel('handstand', 'biceps curls', 'biceps', 'Dumbell'),
-        new ExerciseDataModel(["3"],["8 -12"],["30"],["20"])]]),
+        new ExerciseDataModel("3","8 -12","30","20")]]),
         )
       ];
 
@@ -85,7 +85,7 @@ export class WorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data:{workouts:this.workouts, index:index, dialogName:Dialog.EDIT}
+      data:{workout:this.workouts[index], dialogName:Dialog.EDIT}
     });
 
     console.log(index)

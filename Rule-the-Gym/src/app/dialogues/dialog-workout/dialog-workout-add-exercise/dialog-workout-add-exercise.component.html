@@ -10,11 +10,20 @@
       <mat-expansion-panel-header>
         <mat-panel-title>All exercises</mat-panel-title>
       </mat-expansion-panel-header>
-      <div *ngFor='let exercise of Allexercises'>
+      <div *ngFor='let exercise of Allexercises; let index=index'>
         <mat-card class="test" *ngIf='exercise.name.toUpperCase().match(search.toUpperCase())'>
           <mat-card-title>{{ exercise.name }}</mat-card-title>
               <mat-card-subtitle>{{ exercise.description }}</mat-card-subtitle>
-              
+          <mat-card-actions>
+            <button  
+                  mat-flat-button
+                  (click)="AddExercise(index)"
+                  color="primary"
+                  class="button-delete"
+                >
+                  Add
+                </button>
+          </mat-card-actions>
 
         </mat-card>
       </div>

@@ -4,7 +4,6 @@ import { ExerciseModel } from './exercise-model.model';
 export class WorkoutData {
   name: String;
   exerciseMap:Map<ExerciseModel,ExerciseDataModel>;
-  
   type: String;
   description: String;
   workout_id?:string;

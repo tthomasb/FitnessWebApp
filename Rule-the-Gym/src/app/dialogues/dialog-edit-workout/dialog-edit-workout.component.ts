@@ -12,15 +12,17 @@ import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
   styleUrls: ['./dialog-edit-workout.component.scss'],
 })
 export class DialogEditWorkoutComponent implements OnInit {
-  name!: string;
-  sets!: string[];
-  reps!: string[];
-  breaktime!: string[];
-  description!: string;
-  type!: string;
-  exercises!: ExerciseModel[];
-  weight2!: any[];  
-weight3:string[]=[];
+  name!: string|undefined;
+  sets!: string|undefined;
+  reps!: string|undefined;
+  breaktime!: string|undefined;
+  description!: string|undefined;
+  type!: string|undefined;
+  exercises!: ExerciseModel;
+  weight!: string|undefined;  
+  dummyMap!:Map<ExerciseModel,ExerciseDataModel>;
+  index!:number;
+
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -29,46 +31,53 @@ weight3:string[]=[];
   ) {};
 
   ngOnInit(): void {
-    console.log(this.data.workouts[this.data.index]);
-    this.name = this.data.workouts[this.data.index].name;
-    this.sets = this.data.workouts[this.data.index].sets;
-    this.reps = this.data.workouts[this.data.index].reps;
-    this.breaktime = this.data.workouts[this.data.index].breaktime;
-    this.description = this.data.workouts[this.data.index].description;
-    this.type = this.data.workouts[this.data.index].type;
-    this.exercises = this.data.workouts[this.data.index].exercises;
-    this.weight2=this.data.workouts[this.data.index].weight;
+    this.name=this.data.workout.name;
+    this.type=this.data.workout.type;
+    this.description=this.data.workout.description;
+    this.dummyMap=this.data.workout.exerciseMap;
+
+
   }
-  safeExerciseData(index:number){
-    this.data.workouts[this.data.index].sets[index] = this.sets[index];
-      this.data.workouts[this.data.index].reps[index] = this.reps[index];
-      this.data.workouts[this.data.index].breaktime[index] = this.breaktime[index];
-      this.data.workouts[this.data.index].weight[index] = this.weight2[index].weight;
-      console.log("Safed ExerciseData: ", this.data.workouts[this.data.index], "index:",index);
+  loadExerciseData(exercise:ExerciseModel){
+    console.log(this.dummyMap.get(exercise!));
+    let exData=this.dummyMap.get(exercise);
+    this.sets=exData?.sets;
+    this.reps=exData?.reps;
+    this.breaktime=exData?.breaktime;
+    this.weight=exData?.weight;
+    console.log(this.sets,this.reps,this.breaktime,this.weight);
+    console.log(exData);
+    console.log(this.dummyMap.get(exercise));
+  }
+
+  safeExerciseData(exMapKey:ExerciseModel){
+    this.dummyMap.get(exMapKey)!.sets= this.sets!;
+    this.dummyMap.get(exMapKey)!.reps= this.reps!;
+    this.dummyMap.get(exMapKey)!.breaktime = this.breaktime!;
+    this.dummyMap.get(exMapKey)!.weight = this.weight!;
+      console.log(this.sets,this.reps,this.breaktime,this.weight);
+      console.log("Safed ExerciseData: ", this.data.workout, "index:");
   }
   safeWorkoutData() {
     console.log(this.data.workouts[this.data.index]);
     console.log(this.name);
     if (this.data.dialogName === 'Edit') {
-      this.data.workouts[this.data.index].name = this.name;
-      this.data.workouts[this.data.index].sets = this.sets;
-      this.data.workouts[this.data.index].reps = this.reps;
-      this.data.workouts[this.data.index].breaktime = this.breaktime;
-      this.data.workouts[this.data.index].description = this.description;
-      this.data.workouts[this.data.index].type = this.type;
-      this.data.workouts[this.data.index].exercises = this.exercises;
-      this.data.workouts[this.data.index].weight = this.weight2;
+      this.data.workout.name = this.name;
+      this.data.workout.exerciseMap=this.dummyMap;
+      this.data.workout.description = this.description;
+      this.data.workout.type = this.type;
+    
       
       console.log(this.data.workouts);
     }
 
-    //Safe data Create
-    if (this.data.dialogName === 'Create') {
-      this.data.workouts.push(
-        new WorkoutData(
-          this.name,
-          this.description,
-          this.type, 
+    //Safe Data Create
+    if (this.data.dialogName === 'Create') {      
+        this.dialogRef.close(
+          new WorkoutData(
+          this.name!,
+          this.description!,
+          this.type!, 
           new Map<ExerciseModel, ExerciseDataModel>()
 
         )
@@ -82,5 +91,10 @@ weight3:string[]=[];
       height: '90%',
       data:this.data
   });
+  console.log(this.data);
+  }
+
+  close() {
+    
   }
 }

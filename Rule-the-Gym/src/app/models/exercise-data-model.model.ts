@@ -1,10 +1,10 @@
 export class ExerciseDataModel {
-    sets: String[];
-  reps: String[];
-  weight?: String[];
-  breaktime: String[];
+    sets: string;
+  reps: string;
+  weight?: string;
+  breaktime: string;
 
-  constructor(sets:String[],reps:String[],breaktime:String[],weight?:String[]){
+  constructor(sets:string,reps:string,breaktime:string,weight?:string){
     this.sets=sets;
     this.reps=reps;
     this.breaktime=breaktime;

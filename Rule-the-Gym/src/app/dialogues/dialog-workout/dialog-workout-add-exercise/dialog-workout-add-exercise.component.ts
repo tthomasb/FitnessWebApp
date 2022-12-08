@@ -53,14 +53,14 @@ Allexercises:ExerciseModel[];
   AddExercise(index:number){
     console.log(this.data);
       if(this.data.dialogName===Dialog.EDIT){
-        console.log(this.data.index);
-      this.data.workouts[this.data.index].exercises.push(this.Allexercises[index]);
-      console.log(this.data.workouts[this.data.index]);
+        console.log("if works");
+      this.data.workout.exerciseMap.set(this.Allexercises[index],{});
+      console.log(this.data.workout.exerciseMap);      
       }
       if(this.data.dialogName===Dialog.CREATE){
         this.data.workouts 
         //Todo add new workout
-
+        this.data.workout.exerciseMap
       }
   }
 }
