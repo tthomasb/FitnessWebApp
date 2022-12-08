@@ -20,6 +20,8 @@ import { DialogStartWorkoutComponent } from './dialogues/dialog-start-workout/di
 import { DialogEditWorkoutComponent } from './dialogues/dialog-edit-workout/dialog-edit-workout.component';
 import { DialogStartWorkoutTimeComponent } from './dialogues/dialog-start-workout/dialog-start-workout-time/dialog-start-workout-time.component';
 import { AccordionComponent } from './components/utils/accordion/accordion.component';
+import { DialogAskDeleteComponent } from './dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
+
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { AccordionComponent } from './components/utils/accordion/accordion.compo
     DialogEditWorkoutComponent,
     AccordionComponent,
     DialogEditWorkoutComponent,
-    DialogStartWorkoutTimeComponent
+    DialogStartWorkoutTimeComponent,
+    DialogAskDeleteComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,24 @@
 <div class="dialog">
   <div mat-dialog-container>
-    <mat-card-title
-      ><h1 mat-dialog-title>Edit a workout plan</h1></mat-card-title
-    >
+    <mat-card-title>
+      <h1 mat-dialog-title>{{data.dialogName}} a workout plan</h1>
+    </mat-card-title>
     <mat-card-subtitle>
       <div mat-dialog-content>
-        <h3>Workout title</h3>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="" [(ngModel)]="data.workout.name" />
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Type</mat-label>
+          <input matInput placeholder="" [(ngModel)]="data.workout.type" />
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="" [(ngModel)]="data.workout.description" />
+        </mat-form-field>
         <br>
         <div class="Exercises">
           <mat-accordion>
@@ -14,59 +27,41 @@
                 <mat-expansion-panel-header>
                   <mat-panel-title> Exercise name </mat-panel-title>
                   <mat-panel-description> Muscle group </mat-panel-description>
+                  <mat-panel-description> Delete </mat-panel-description>        
                 </mat-expansion-panel-header>
               </mat-expansion-panel>
-              <mat-expansion-panel>
+              <mat-expansion-panel *ngFor="let exercise of data.workout.exerciseMap.keys()" (opened)="loadExerciseData(exercise)">
                 <mat-expansion-panel-header>
-                  <mat-panel-title> Dumbell Rows </mat-panel-title>
-                  <mat-panel-description> Back </mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Sets</mat-label>
-                  <input matInput placeholder="" value="" />
-                </mat-form-field>
-                <br />
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Reps</mat-label>
-                  <input matInput placeholder="" value="" />
-                </mat-form-field>
-                <br />
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Break time</mat-label>
-                  <input matInput placeholder="Always seconds" value="30" />
-                </mat-form-field>
-                <mat-card-actions>
-                  <button mat-flat-button color="primary">Save</button>
-                  <button mat-flat-button color="primary">Cancel</button>
-                  <br />
-                  Should be a green text after edit!
-                </mat-card-actions>
-              </mat-expansion-panel>
+                  <mat-panel-title> {{exercise.name}}</mat-panel-title>
+                  <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
+                  <mat-panel-description> 
+                    <button class="delete-button" mat-flat-button color="primary" (click)="openDeleteExercise(exercise)">Delete</button>
+                  </mat-panel-description>
 
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title> Lat Pulldown </mat-panel-title>
-                  <mat-panel-description> Back </mat-panel-description>
-                </mat-expansion-panel-header>
+                </mat-expansion-panel-header >
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Sets</mat-label>
-                  <input matInput placeholder="" value="" />
+                  <input matInput placeholder="" [(ngModel)]="sets" />
                 </mat-form-field>
                 <br />
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Reps</mat-label>
-                  <input matInput placeholder="" value="" />
+                  <input matInput placeholder="" [(ngModel)]="reps" />
                 </mat-form-field>
                 <br />
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Break time</mat-label>
-                  <input matInput placeholder="Always seconds" value="30" />
+                  <input matInput placeholder="Always seconds" [(ngModel)]="breaktime" />
+                </mat-form-field>
+                <br />
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Weight</mat-label>
+                  <input matInput placeholder="" type=text [(ngModel)]="weight"/>
                 </mat-form-field>
                 <mat-card-actions>
-                  <button mat-flat-button color="primary">Save</button>
+                  <button mat-flat-button color="primary" (click)="safeExerciseData(exercise)">Save</button>
                   <button mat-flat-button color="primary">Cancel</button>
-                  <br />
-                  Should be a green text after edit!
+                  <br />                  
                 </mat-card-actions>
               </mat-expansion-panel>
             </section>
@@ -85,8 +80,7 @@
       </button>
     </form>
     <div mat-dialog-actions>
-      <button mat-flat-button color="primary" mat-dialog-close>Save</button>
-      <button mat-flat-button color="primary" mat-dialog-close>Cancel</button>
+      <button mat-flat-button color="primary" mat-dialog-close>Done</button>  
     </div>
   </div>
 </div>

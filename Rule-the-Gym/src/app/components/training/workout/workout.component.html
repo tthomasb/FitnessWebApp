@@ -1,11 +1,11 @@
 <div class="container">
   <div class="workout">
-     <!-- <mat-card class="workout-card" *ngFor="let workout of workouts" class="list"></mat-card>  -->
-    
-     <app-accordion [Data]=accordionConfig (dialogEvent)="catchDialogEvent($event)"></app-accordion>
-    <br />
+    <!-- <mat-card class="workout-card" *ngFor="let workout of workouts" class="list"></mat-card>  -->
 
-    <br />
+    <app-accordion
+      [Data]="accordionConfig"
+      (dialogEvent)="catchDialogEvent($event)"
+    ></app-accordion>
 
     <!-- Floating-Actions -->
     <div class="action-container">

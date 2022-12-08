@@ -1,55 +1,57 @@
 <mat-accordion>        
     <div *ngFor="let w of topLayer2"   class="toplayer">
-      <mat-expansion-panel hideToggle>
+      <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{ w }}
           </mat-panel-title>
         </mat-expansion-panel-header>
         
-        <div *ngFor="let workout of Data.toLoop">
+        <div *ngFor="let workout of Data.toLoop; let index =  index">
           <div *ngIf="workout[Data.topLayer]===w">
             <mat-card class="test">
               <mat-card-title>{{ workout.name }}</mat-card-title>
               <mat-card-subtitle>{{ workout.description }}</mat-card-subtitle>
               <mat-card-actions>
-                <button
-                  mat-button
-                  (click)="dialogEvent.emit('edit')"
+                <button *ngIf="Data.type===start"
+                  mat-flat-button
+                  (click)="dialogEvent.emit({event: start, source: index})" 
+                  color="primary"
+                  class="button-start"
+                  appearance="fill"
+                >
+                  Start Workout
+                </button>
+                <button *ngIf="Data.type===start || Data.type===edit" 
+                  mat-flat-button
+                  (click)="dialogEvent.emit({event:edit, source: index})"
                   color="primary"
                   class="button-edit"
                 >
-                  EDIT
-                </button>
-                <button
-                  mat-button
-                  (click)="dialogEvent.emit('delete')"
-                  color="primary"
-                  class="button-start"
-                >
-                  DELETE
+                  Edit
                 </button>
 
-                <button *ngIf="Data.hasStart"
-                  mat-button
-                  (click)="dialogEvent.emit('start')"
+                <button *ngIf="Data.type===start || Data.type===edit" 
+                  mat-flat-button
+                  (click)="dialogEvent.emit({event: delete, source: index})"
                   color="primary"
-                  class="button-start"
+                  class="button-delete"
                 >
-                  Start Workout
+                  Delete
+                </button>
+
+                <button *ngIf="Data.type===add" 
+                  mat-flat-button
+                  (click)="dialogEvent.emit({event: add, source: index})"
+                  color="primary"
+                  class="button-add"
+                >
+                  Add
                 </button>
               </mat-card-actions>
             </mat-card>
            </div>
         </div>
-        <!-- <mat-card>
-          <mat-card-title>Cable Row</mat-card-title>
-          <mat-card-subtitle>Cables</mat-card-subtitle>
-          <mat-card-actions>
-            <button mat-button>EDIT</button>
-            <button mat-button>DELETE</button>
-          </mat-card-actions>
-        </mat-card> -->
       </mat-expansion-panel>
     </div>
   </mat-accordion>

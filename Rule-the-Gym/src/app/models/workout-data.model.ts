@@ -1,23 +1,27 @@
-import { ExerciseModel } from "./exercise-model.model";
-import { Sets } from "./sets.model"; 
+import { ExerciseDataModel } from './exercise-data-model.model';
+import { ExerciseModel } from './exercise-model.model';
 
 export class WorkoutData {
-
-    name: string;
-    exercises: ExerciseModel[];
-    sets:Sets;
-    type:string;
-    description:string;
-    
-
-constructor(name:string,description:string, exercises:ExerciseModel[], sets:Sets, type:string){
-    this.name=name;
-    this.exercises=exercises
-    this.sets=sets;
-    this.type=type;
-    this.description=description;
+  name: String;
+  exerciseMap:Map<ExerciseModel,ExerciseDataModel>;
+  type: String;
+  description: String;
+  workout_id?:string;
+  
+  constructor(
+    name: string,
+    description: string,
+    type: string,  
+    exerciseMap:Map<ExerciseModel,ExerciseDataModel>,    
+      
+  ) {
+    this.name = name;   
+    this.description = description; 
+    this.type = type;    
+    this.exerciseMap=exerciseMap;
+  }
 }
-}
+
 
 // export namespace WorkoutData{
 //     export function parseWorkoutData(obj:any):WorkoutData{
@@ -33,7 +37,6 @@ constructor(name:string,description:string, exercises:ExerciseModel[], sets:Sets
 //                         ctr++;
 //                 }
 //             }
-            
 //         }
 //         return new WorkoutData;
 //     }
