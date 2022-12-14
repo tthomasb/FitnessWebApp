@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 export interface Tile {
-  color: string;
+  //color: string;
   cols: number;
   rows: number;
   text: string;
+  picture: string;
 }
 
 /**
@@ -21,9 +22,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {}
 
   tiles: Tile[] = [
-    { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
-    { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
-    { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
-    { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
+    { text: 'leer', cols: 4, rows: 1, picture: '' },
+    { text: 'One', cols: 2, rows: 1, picture: '/assets/pictures/Trainingssitzungen.png' },
+    { text: 'Two', cols: 2, rows: 1, picture: '/assets/pictures/Gesamtzeit.png' },
+    { text: 'Three', cols: 2, rows: 1, picture: '/assets/pictures/Sitzungsdauer.png'  },
+    { text: 'Four', cols: 2, rows: 1, picture: '/assets/pictures/Sätze.png'  },
+    { text: 'Five', cols: 4, rows: 4, picture: '/assets/pictures/Muskeln.png'  },
+    { text: 'leer', cols: 4, rows: 1, picture: '' },
   ];
 }
