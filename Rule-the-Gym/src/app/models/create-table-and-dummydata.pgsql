@@ -41,7 +41,7 @@ CREATE TABLE sethistory (
     set_history_id SERIAL PRIMARY KEY,
     reps integer NOT NULL,
 	weight integer,
-	record_time 
+	record_time
 );
 insert into users ( username, password, birthdate)
 	values
@@ -49,10 +49,15 @@ insert into users ( username, password, birthdate)
 		('username2','password2','2022-02-10'),
 		('username3','password3','2022-03-11')
 		;
-insert into workouts ( workoutname, type)
+insert into workout ( workoutname, type)
 	values
 		('workoutname1','gym'),
 		('workoutname2','calysthenics')
+		;
+insert into workout ( workoutname, type user_id)
+	values
+		('workoutname3','gym', 1),
+		('workoutname4','calysthenics', 1)
 		;
 insert into exercise ( exercisename, description, equipment, muscle)
 	values
@@ -61,6 +66,14 @@ insert into exercise ( exercisename, description, equipment, muscle)
 		('exercisename3','description exercise 3','equiment3','chest'),
 		('exercisename4','description exercise 4','equiment4','biceps'),
 		('exercisename5','description exercise 5','equiment5','biceps')
+		;
+insert into exercise ( exercisename, description, equipment, muscle, user_id)
+	values
+		('exercisename6','description exercise 6','equiment6','chest', 1),
+		('exercisename7','description exercise 7','equiment7','chest', 1),
+		('exercisename8','description exercise 8','equiment8','chest', 1),
+		('exercisename9','description exercise 9','equiment9','biceps', 1),
+		('exercisename10','description exercise 10','equiment10','biceps', 1)
 		;
 insert into wocomp ( w_id, e_id)
 	values
