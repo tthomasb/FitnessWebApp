@@ -1,0 +1,50 @@
+body {
+    border-style: double;
+    border-color: rgba(0, 0, 0, 0.411);
+    text-align: center;
+    background-color: #424242;
+}
+
+p {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+label {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+    color: white;
+}
+
+input[type="text"] {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    margin-bottom: 1.5rem;
+    margin-top: 1.0rem;
+    width: 60%;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(43, 42, 42);
+    color: white;
+}
+
+button {
+    background-color: blueviolet;
+    color: #fff;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 5%;
+
+    &:hover {
+        background-color: rgb(110, 10, 204);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(106, 72, 168, 0.5);
+    }
+}
