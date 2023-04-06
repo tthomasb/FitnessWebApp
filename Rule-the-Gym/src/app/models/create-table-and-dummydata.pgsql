@@ -36,6 +36,7 @@ CREATE TABLE set (
 
 CREATE TABLE set_history (
     set_history_id SERIAL PRIMARY KEY,
+	set_id FOREIGN KEY NOT NULL,
     reps integer NOT NULL,
 	  weight integer,
 	  record_date date,
