@@ -1,10 +1,11 @@
 CREATE TABLE users (
-    u_id SERIAL PRIMARY KEY,
+    user_id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
+    height integer,
+	weight integer,
     birthdate DATE NOT NULL
 );
-CREATE TABLE workouts (
+CREATE TABLE workout (
     w_id SERIAL PRIMARY KEY,
     workoutname VARCHAR(255) unique,
     type VARCHAR(255) NOT NULL
@@ -21,16 +22,24 @@ CREATE TABLE wocomp (
     w_id integer NOT NULL,
     e_id integer NOT NULL
 );
-CREATE TABLE sets (
-    s_id SERIAL PRIMARY KEY,
+CREATE TABLE workout_exercise (
+    workout_exercise_id SERIAL PRIMARY KEY,
     wc_id integer NOT NULL,
-    exercisepause integer NOT NULL
+    exercisepause integer
 );
-CREATE TABLE rpset (
-    rp_id SERIAL PRIMARY KEY,
-    s_id integer NOT NULL,
-    repnumber integer NOT NULL,
-	pausetime integer NOT NULL
+CREATE TABLE set (
+    set_id SERIAL PRIMARY KEY,
+    workout_exercise_id FOREIGN KEY NOT NULL,
+    reps integer NOT NULL,
+	pause integer NOT NULL,
+	weight integer
+);
+
+CREATE TABLE sethistory (
+    set_history_id SERIAL PRIMARY KEY,
+    reps integer NOT NULL,
+	weight integer,
+	record_time 
 );
 insert into users ( username, password, birthdate)
 	values
