@@ -4,17 +4,19 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     birthdate DATE NOT NULL
 );
-CREATE TABLE workouts (
+CREATE TABLE workout (
     w_id SERIAL PRIMARY KEY,
     workoutname VARCHAR(255) unique,
-    type VARCHAR(255) NOT NULL
+    type VARCHAR(255) NOT NULL,
+    u_id integer
 );
 CREATE TABLE exercise (
     e_id SERIAL PRIMARY KEY,
     exercisename VARCHAR(255) unique,
     description VARCHAR(255) NOT NULL,
     equipment VARCHAR(255) NOT NULL,
-    muscle VARCHAR(255) NOT NULL
+    muscle VARCHAR(255) NOT NULL,
+    u_id integer
 );
 CREATE TABLE wocomp (
     wc_id SERIAL PRIMARY KEY,
