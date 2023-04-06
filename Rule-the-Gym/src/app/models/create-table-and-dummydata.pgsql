@@ -1,4 +1,4 @@
-CREATE TABLE user (
+CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     height integer,
@@ -9,7 +9,7 @@ CREATE TABLE workout (
     workout_id SERIAL PRIMARY KEY,
     workoutname VARCHAR(255) unique,
     type VARCHAR(255) NOT NULL,
-    user_id FOREIGN KEY
+    user_id integer
 );
 CREATE TABLE exercise (
     exercise_id SERIAL PRIMARY KEY,
@@ -17,18 +17,18 @@ CREATE TABLE exercise (
     description VARCHAR(255) NOT NULL,
     equipment VARCHAR(255),
     muscle VARCHAR(255) NOT NULL,
-    user_id FOREIGN KEY
+    user_id integer
 );
 
 CREATE TABLE workout_exercise (
     workout_exercise_id SERIAL PRIMARY KEY,
-    workout_id FOREIGN KEY NOT NULL,
-	  exercise_id FOREIGN KEY NOT NULL,
+    workout_id integer NOT NULL,
+	  exercise_id integer NOT NULL,
     exercisepause integer
 );
 CREATE TABLE set (
     set_id SERIAL PRIMARY KEY,
-    workout_exercise_id FOREIGN KEY NOT NULL,
+    workout_exercise_id integer NOT NULL,
     reps integer NOT NULL,
 	  pause integer NOT NULL,
 	  weight integer
@@ -36,24 +36,24 @@ CREATE TABLE set (
 
 CREATE TABLE set_history (
     set_history_id SERIAL PRIMARY KEY,
-	set_id FOREIGN KEY NOT NULL,
+	set_id integer NOT NULL,
     reps integer NOT NULL,
 	  weight integer,
 	  record_date date,
 	  record_time time
 );
-insert into user (username, height, weight, birthdate)
+insert into users (username, height, weight, birthdate)
 	values
 		('username1',190, 90,'2022-01-12'),
-		('username2',180, 80 '2022-02-10'),
-		('username3',170, 50 '2022-03-11')
+		('username2',180, 80, '2022-02-10'),
+		('username3',170, 50,'2022-03-11')
 		;
 insert into workout ( workoutname, type)
 	values
 		('workoutname1','gym'),
 		('workoutname2','calysthenics')
 		;
-insert into workout ( workoutname, type user_id)
+insert into workout ( workoutname, type ,user_id)
 	values
 		('workoutname3','gym', 1),
 		('workoutname4','calysthenics', 1)
