@@ -3,30 +3,27 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL,
     height integer,
 	weight integer,
-    birthdate DATE NOT NULL
+    birthdate DATE
 );
 CREATE TABLE workout (
-    w_id SERIAL PRIMARY KEY,
+    workout_id SERIAL PRIMARY KEY,
     workoutname VARCHAR(255) unique,
     type VARCHAR(255) NOT NULL,
-    u_id integer
+    user_id FOREIGN KEY
 );
 CREATE TABLE exercise (
-    e_id SERIAL PRIMARY KEY,
+    exercise_id SERIAL PRIMARY KEY,
     exercisename VARCHAR(255) unique,
     description VARCHAR(255) NOT NULL,
-    equipment VARCHAR(255) NOT NULL,
+    equipment VARCHAR(255),
     muscle VARCHAR(255) NOT NULL,
-    u_id integer
+    user_id FOREIGN KEY
 );
-CREATE TABLE wocomp (
-    wc_id SERIAL PRIMARY KEY,
-    w_id integer NOT NULL,
-    e_id integer NOT NULL
-);
+
 CREATE TABLE workout_exercise (
     workout_exercise_id SERIAL PRIMARY KEY,
-    wc_id integer NOT NULL,
+    workout_id FOREIGN KEY NOT NULL,
+	exercise_id FOREIGN KEY NTO NULL,
     exercisepause integer
 );
 CREATE TABLE set (
@@ -37,17 +34,21 @@ CREATE TABLE set (
 	weight integer
 );
 
-CREATE TABLE sethistory (
+CREATE TABLE set_history (
     set_history_id SERIAL PRIMARY KEY,
     reps integer NOT NULL,
 	weight integer,
+<<<<<<< HEAD
 	record_time
+=======
+	record_date date,
+	record_time time
 );
-insert into users ( username, password, birthdate)
+insert into users (username, height, weight, birthdate)
 	values
-		('username1','password1','2022-01-12'),
-		('username2','password2','2022-02-10'),
-		('username3','password3','2022-03-11')
+		('username1',190, 90,'2022-01-12'),
+		('username2',180, 80 '2022-02-10'),
+		('username3',170, 50 '2022-03-11')
 		;
 insert into workout ( workoutname, type)
 	values
@@ -67,6 +68,7 @@ insert into exercise ( exercisename, description, equipment, muscle)
 		('exercisename4','description exercise 4','equiment4','biceps'),
 		('exercisename5','description exercise 5','equiment5','biceps')
 		;
+<<<<<<< HEAD
 insert into exercise ( exercisename, description, equipment, muscle, user_id)
 	values
 		('exercisename6','description exercise 6','equiment6','chest', 1),
@@ -76,25 +78,19 @@ insert into exercise ( exercisename, description, equipment, muscle, user_id)
 		('exercisename10','description exercise 10','equiment10','biceps', 1)
 		;
 insert into wocomp ( w_id, e_id)
+=======
+
+insert into set (  workout_exercise_id, reps, pause, weight )
 	values
-		('1','1'),
-		('1','2'),
-		('1','3'),
-		('2','4'),
-		('2','5'),
-		('2','1')
+		(1,'1','30',20),
+		(1,'1','40',20),
+		(1,'2','40',20),
+		(1,'2','30',20),
+		(1,'3','30',20),
+		(1,'4','20',20),
+		(1,'5','30',20)
 		;
-insert into sets ( wc_id, exercisepause )
-	values
-		('1','30'),
-		('1','40'),
-		('2','40'),
-		('2','30'),
-		('3','30'),
-		('4','20'),
-		('5','30')
-		;
-insert into rpset ( s_id, repnumber, pausetime)
+insert into set_history ( s_id, repnumber, pausetime)
 	values
 		('1','12','30'),
 		('1','10','40'),
