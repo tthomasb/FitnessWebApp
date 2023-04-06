@@ -1,9 +1,9 @@
-CREATE TABLE users (
+CREATE TABLE user (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     height integer,
-	weight integer,
-    birthdate DATE 
+	  weight integer,
+    birthdate DATE
 );
 CREATE TABLE workout (
     workout_id SERIAL PRIMARY KEY,
@@ -23,34 +23,39 @@ CREATE TABLE exercise (
 CREATE TABLE workout_exercise (
     workout_exercise_id SERIAL PRIMARY KEY,
     workout_id FOREIGN KEY NOT NULL,
-	exercise_id FOREIGN KEY NTO NULL,
+	  exercise_id FOREIGN KEY NTO NULL,
     exercisepause integer
 );
 CREATE TABLE set (
     set_id SERIAL PRIMARY KEY,
     workout_exercise_id FOREIGN KEY NOT NULL,
     reps integer NOT NULL,
-	pause integer NOT NULL,
-	weight integer
+	  pause integer NOT NULL,
+	  weight integer
 );
 
 CREATE TABLE set_history (
     set_history_id SERIAL PRIMARY KEY,
     reps integer NOT NULL,
-	weight integer,
-	record_date date,
-	record_time time
+	  weight integer,
+	  record_date date,
+	  record_time time
 );
-insert into users (username, height, weight, birthdate)
+insert into user (username, height, weight, birthdate)
 	values
 		('username1',190, 90,'2022-01-12'),
 		('username2',180, 80 '2022-02-10'),
 		('username3',170, 50 '2022-03-11')
 		;
-insert into workouts ( workoutname, type)
+insert into workout ( workoutname, type)
 	values
 		('workoutname1','gym'),
 		('workoutname2','calysthenics')
+		;
+insert into workout ( workoutname, type user_id)
+	values
+		('workoutname3','gym', 1),
+		('workoutname4','calysthenics', 1)
 		;
 insert into exercise ( exercisename, description, equipment, muscle)
 	values
@@ -60,7 +65,14 @@ insert into exercise ( exercisename, description, equipment, muscle)
 		('exercisename4','description exercise 4','equiment4','biceps'),
 		('exercisename5','description exercise 5','equiment5','biceps')
 		;
-
+insert into exercise ( exercisename, description, equipment, muscle, user_id)
+	values
+		('exercisename6','description exercise 6','equiment6','chest', 1),
+		('exercisename7','description exercise 7','equiment7','chest', 1),
+		('exercisename8','description exercise 8','equiment8','chest', 1),
+		('exercisename9','description exercise 9','equiment9','biceps', 1),
+		('exercisename10','description exercise 10','equiment10','biceps', 1)
+		;
 insert into set (  workout_exercise_id, reps, pause, weight )
 	values
 		(1,'1','30',20),
