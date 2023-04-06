@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'bmi', component: BmiComponent },
   { path: 'nutrition', component: NutritionComponent },
   { path: 'training', component: TrainingComponent },
-  { path: '**', redirectTo: 'dashboard' },
+  //{ path: '**', redirectTo: 'dashboard' },
   { path: 'example-user-items', component: ExampleUserItemsComponent },
   { path: 'example-create', component: ExampleCreateItemComponent },
   { path: 'example-edit/:id', component: ExampleEditItemComponent },
