@@ -23,7 +23,7 @@ CREATE TABLE exercise (
 CREATE TABLE workout_exercise (
     workout_exercise_id SERIAL PRIMARY KEY,
     workout_id FOREIGN KEY NOT NULL,
-	  exercise_id FOREIGN KEY NTO NULL,
+	  exercise_id FOREIGN KEY NOT NULL,
     exercisepause integer
 );
 CREATE TABLE set (
