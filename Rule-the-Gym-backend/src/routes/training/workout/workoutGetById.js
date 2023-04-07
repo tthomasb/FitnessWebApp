@@ -1,19 +1,17 @@
 import Boom from "@hapi/boom";
 import { db } from "../../../database";
 
-export const workoutById = {
+export const workoutGetById = {
   method: "GET",
-  path: "/api/workout/id/{w_id}",
+  path: "/api/workout/{workout_id}",
   handler: async (req, h) => {
-    const w_id = req.params.w_id;
+    const workout_id = req.params.workout_id;
 
     const { results } = await db.query(
-      "SELECT * FROM workouts WHERE w_id = $1",
-      [w_id]
+      "SELECT * FROM workout WHERE workout_id = $1",
+      [workout_id]
     );
     const workout_table = results.rows[0];
-    if (!workout_table)
-      throw Boom.notFound(`Workout does not exist with id ${w_id}`);
     return workout_table;
   },
 };

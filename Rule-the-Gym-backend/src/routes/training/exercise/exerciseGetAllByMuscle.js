@@ -10,7 +10,7 @@ export const exerciseGetAllByMuscle = {
     const { results } = await db.query("SELECT * FROM exercise where muscle=$1", [
       muscle,
     ]);
-    const exercise_table = results.rows[0];
+    const exercise_table = results.rows;
     if (!exercise_table) throw Boom.notFound(`Exercise does not exist with muscle ${muscle}`);
     return exercise_table;
   },

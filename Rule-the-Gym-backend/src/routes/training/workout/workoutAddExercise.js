@@ -2,20 +2,17 @@ import { db } from "../../../database";
 
 export const workoutAddExercise = {
   method: "POST",
-  path: "/api/wocomp/id/{w_id}",
+  path: "/api/workout/{workout_id}",
   handler: async (req, h) => {
-    const { w_id } = req.params;
-    const { e_id } = req.payload;
+    const { workout_id } = req.params;
+    const { exercise_id, exercisepause } = req.payload;
     await db.query(
       `
-      INSERT INTO wocomp (w_id, e_id)
-      VALUES ($1, $2);
+      INSERT INTO workout_exercise (workout_id, exercise_id, exercisepause)
+      VALUES ($1, $2, $3);
           `,
-      [w_id, e_id]
+      [workout_id, exercise_id, exercisepause]
     );
-    const { results } = await db.query("SELECT * FROM wocomp WHERE w_id=$1", [
-      w_id,
-    ]);
-    return results.rows[0];
+    return { workout_id, exercise_id, exercisepause };
   },
 };

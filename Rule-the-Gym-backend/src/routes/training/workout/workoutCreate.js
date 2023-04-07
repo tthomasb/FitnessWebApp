@@ -2,18 +2,19 @@ import { db } from "../../../database";
 
 export const workoutCreate = {
   method: "POST",
-  path: "/api/workout/id",
+  path: "/api/workout",
   handler: async (req, h) => {
     const { workoutname = "", type = "" } = req.payload;
+    const user_id ="1";
 
     await db.query(
       `
-            INSERT INTO workouts (workoutname, type)
-              VALUES ($1, $2);
+            INSERT INTO workout (workoutname, type, user_id)
+              VALUES ($1, $2, $3);
         `,
-      [workoutname, type]
+      [workoutname, type, user_id]
     );
 
-    return { workoutname, type };
+    return { workoutname, type, user_id };
   },
 };

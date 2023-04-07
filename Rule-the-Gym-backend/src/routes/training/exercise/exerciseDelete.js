@@ -2,12 +2,12 @@ import { db } from "../../../database";
 
 export const exerciseDelete = {
     method: 'DELETE',
-    path: '/api/exercise/id/{e_id}',
+    path: '/api/exercise/{exercise_id}',
     handler: async (req, h) => {
-        const { e_id } = req.params;
+        const { exercise_id } = req.params;
         await db.query(
-            'DELETE FROM exercise WHERE e_id=$1',
-            [e_id],
+            'DELETE FROM exercise WHERE exercise_id=$1',
+            [exercise_id],
         );
         return { message: 'Success!' };
     }

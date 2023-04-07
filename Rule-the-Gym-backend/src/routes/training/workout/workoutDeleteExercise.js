@@ -2,14 +2,14 @@ import { db } from "../../../database";
 
 export const workoutDeleteExercise = {
   method: "Delete",
-  path: "/api/wocomp/id/{wc_id}",
+  path: "/api/workout/exercise/{workout_exercise_id}",
   handler: async (req, h) => {
-    const { wc_id } = req.params;
+    const { workout_exercise_id } = req.params;
     await db.query(
       `
-      DELETE FROM wocomp WHERE wc_id=$1
+      DELETE FROM workout_exercise WHERE workout_exercise_id=$1
           `,
-      [wc_id]
+      [workout_exercise_id]
     );
     return { message: "Success!" };
   },

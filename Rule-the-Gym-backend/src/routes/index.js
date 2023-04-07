@@ -7,17 +7,18 @@ import { exampleUpdateItemRoute } from "./examples/exampleUpdateItem";
 import { exerciseCreate } from "./training/exercise/exerciseCreate";
 import { exerciseDelete } from "./training/exercise/exerciseDelete";
 import { exerciseEdit } from "./training/exercise/exerciseEdit";
+import { exerciseGetAll } from "./training/exercise/exerciseGetAll";
 import { exerciseGetAllByMuscle } from "./training/exercise/exerciseGetAllByMuscle";
 import { exerciseById } from "./training/exercise/exerciseGetById";
-import { exerciseGetAll } from "./training/workout/exerciseGetAll";
 import { workoutAddExercise } from "./training/workout/workoutAddExercise";
 import { workoutCreate } from "./training/workout/workoutCreate";
 import { workoutDelete } from "./training/workout/workoutDelete";
 import { workoutDeleteExercise } from "./training/workout/workoutDeleteExercise";
 import { workoutEdit } from "./training/workout/workoutEdit";
+import { workoutEditExercise } from "./training/workout/workoutEditExercise";
 import { workoutGetAllByType } from "./training/workout/workoutGetAllByType";
-import { workoutGetAllExerciseByW_id } from "./training/workout/workoutGetAllExercisesByW_Id";
-import { workoutById } from "./training/workout/workoutGetById";
+import { workoutGetAllExercise } from "./training/workout/workoutGetAllExercises";
+import { workoutGetById } from "./training/workout/workoutGetById";
 
 export default [
   exampleCreateItemRoute,
@@ -26,18 +27,19 @@ export default [
   exampleGetItemRoute,
   exampleGetUserItemsRoute,
   exampleUpdateItemRoute,
-  workoutGetAllByType,
-  workoutGetAllExerciseByW_id,
-  exerciseGetAll,
   exerciseGetAllByMuscle,
+  exerciseGetAll,
   exerciseById,
   exerciseCreate,
   exerciseDelete,
   exerciseEdit,
   workoutCreate,
   workoutDelete,
-  workoutById,
+  workoutGetById,
   workoutEdit,
   workoutAddExercise,
   workoutDeleteExercise,
+  workoutEditExercise,
+  workoutGetAllByType,
+  workoutGetAllExercise
 ];

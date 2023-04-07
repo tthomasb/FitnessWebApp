@@ -5,7 +5,7 @@ const connection = new Client({
     user: 'postgres',
     port: 5432,
     password: '1234',
-    database: 'dvdrental2',
+    database: 'fitness-web-app',
 });
 
 export const db = {
