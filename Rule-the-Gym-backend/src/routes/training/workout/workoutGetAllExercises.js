@@ -13,6 +13,8 @@ export const workoutGetAllExercise = {
           AND workout.workout_id=$1`,
       [workout_id]
     );
-    return results.rows;
+var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    return time;
   },
 };

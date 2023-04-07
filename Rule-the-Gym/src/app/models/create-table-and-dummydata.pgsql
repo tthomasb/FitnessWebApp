@@ -36,11 +36,10 @@ CREATE TABLE set (
 
 CREATE TABLE set_history (
     set_history_id SERIAL PRIMARY KEY,
-	set_id integer NOT NULL,
+	  set_id integer NOT NULL,
     reps integer NOT NULL,
 	  weight integer,
-	  record_date date,
-	  record_time time
+	  recorded_time timestamp without time zone
 );
 insert into users (username, height, weight, birthdate)
 	values
@@ -84,7 +83,7 @@ insert into set (  workout_exercise_id, reps, pause, weight )
 		(6,'4','20',20),
 		(7,'5','30',20)
 		;
-insert into set_history ( set_id, reps, weight, record_date, record_time)
+insert into set_history ( set_id, reps, weight, recorded_date, recorded_time)
 	values
 		('1','12','30','2022-01-12','20:40'),
 		('1','10','40','2022-02-13','20:41'),
