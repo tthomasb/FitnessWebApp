@@ -10,8 +10,8 @@ export const workoutGetAllByType = {
     const { results } = await db.query("SELECT * FROM workout where type=$1", [
       type,
     ]);
-    const exercise_table = results.rows;
-    if (!exercise_table) throw Boom.notFound(`Exercise does not exist with type ${type}`);
-    return exercise_table;
+    const workout_table = results.rows;
+    if (!workout_table) throw Boom.notFound(`Workout does not exist with type ${type}`);
+    return workout_table;
   },
 };

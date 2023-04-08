@@ -2,8 +2,9 @@ CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     height integer,
-	  weight integer,
-    birthdate DATE
+	weight integer,
+    birthdate DATE,
+    darkmode boolean
 );
 CREATE TABLE workout (
     workout_id SERIAL PRIMARY KEY,
@@ -23,23 +24,23 @@ CREATE TABLE exercise (
 CREATE TABLE workout_exercise (
     workout_exercise_id SERIAL PRIMARY KEY,
     workout_id integer NOT NULL,
-	  exercise_id integer NOT NULL,
+	exercise_id integer NOT NULL,
     exercisepause integer
 );
 CREATE TABLE set (
     set_id SERIAL PRIMARY KEY,
     workout_exercise_id integer NOT NULL,
     reps integer NOT NULL,
-	  pause integer NOT NULL,
-	  weight integer
+	pause integer NOT NULL,
+	weight integer
 );
 
 CREATE TABLE set_history (
     set_history_id SERIAL PRIMARY KEY,
-	  set_id integer NOT NULL,
+	set_id integer NOT NULL,
     reps integer NOT NULL,
-	  weight integer,
-	  recorded_time timestamp without time zone
+	weight integer,
+	record_time timestamp without time zone
 );
 insert into users (username, height, weight, birthdate)
 	values
@@ -73,6 +74,22 @@ insert into exercise ( exercisename, description, equipment, muscle, user_id)
 		('exercisename9','description exercise 9','equiment9','biceps', 1),
 		('exercisename10','description exercise 10','equiment10','biceps', 1)
 		;
+insert into workout_exercise ( workout_id, exercise_id, exercisepause )
+	values
+		(1, 1,'20'),
+		(1, 2,'20'),
+		(1, 3,'20'),
+		(1, 4,'20'),
+		(1, 5,'20'),
+		(1, 6,'20'),
+		(2, 7,'20'),
+		(2, 8,'20'),
+		(2, 9,'20'),
+		(2, 10,'20'),
+		(2, 4,'20'),
+		(2, 6,'20'),
+		(2, 1,'20')
+		;
 insert into set (  workout_exercise_id, reps, pause, weight )
 	values
 		(1,'1','30',20),
@@ -83,7 +100,7 @@ insert into set (  workout_exercise_id, reps, pause, weight )
 		(6,'4','20',20),
 		(7,'5','30',20)
 		;
-insert into set_history ( set_id, reps, weight, recorded_date, recorded_time)
+insert into set_history ( set_id, reps, weight, record_time)
 	values
 		('1','12','30','2023-04-07 16:45:25.091'),
 		('1','10','40','2023-05-07 16:45:25.091'),
@@ -94,9 +111,9 @@ insert into set_history ( set_id, reps, weight, recorded_date, recorded_time)
 		('3','18','40','2023-10-07 16:45:25.091'),
 		('3','15','50','2023-11-07 16:45:25.091'),
 		('4','10','25','2023-12-07 16:45:25.091'),
-		('4','7' ,'35','2023-13-07 16:45:25.091'),
-		('5','12','30','2023-13-07 16:45:25.091'),
-		('6','12','40','2023-14-07 16:45:25.091'),
-		('7','12','45','2023-15-07 16:45:25.091'),
-		('7','10','60','2023-16-07 16:45:25.091'),
+		('4','7' ,'35','2023-11-07 16:45:25.091'),
+		('5','12','30','2023-11-07 16:45:25.091'),
+		('6','12','40','2023-11-07 16:45:25.091'),
+		('7','12','45','2023-11-07 16:45:25.091'),
+		('7','10','60','2023-11-07 16:45:25.091')
 		;
