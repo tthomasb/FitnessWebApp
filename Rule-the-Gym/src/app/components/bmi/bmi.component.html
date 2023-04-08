@@ -1,1 +1,22 @@
-<p>bmi works!</p>
+<div>
+
+    <head>
+        <title>BMI Calculator</title>
+    </head>
+
+    <body>
+        <p class="header">Body Mass Index Calculator</p>
+        <button (click)="changeGender('Male')">Male</button>
+        <button (click)="changeGender('Female')">Female</button>
+        <form>
+            <label>Enter your weight (in kg)</label><br />
+            <input type="text" name="age" placeholder="Enter your age" [(ngModel)]="age" /><br />
+            <label>Enter your weight (in kg)</label><br />
+            <input type="text" name="weight" placeholder="Enter your weight" [(ngModel)]="weight" /><br />
+            <label>Enter your height (in cm)</label><br />
+            <input type="text" name="height" placeholder="Enter your height" [(ngModel)]="height" /><br />
+            <button title="calculate" (click)="getBmi()">Calculate</button>
+            <p class="result"> {{result}} </p>
+        </form>
+    </body>
+</div>
