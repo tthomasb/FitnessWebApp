@@ -44,8 +44,9 @@ export class WorkoutComponent implements OnInit {
    * Open the workout dialog
    */
   openAddWorkout() {
+    //TODO Fix this
     //create an empty workout
-    let newWorkout=new WorkoutData("","","",new Map([[new ExerciseModel('', '', '', ''),    
+    let newWorkout=new WorkoutData("","","",new Map([[new ExerciseModel(0, 0, '', '','',''),    
     new ExerciseDataModel("","","","")]]));
     this.workouts.push(newWorkout);
     newWorkout.exerciseMap.clear();

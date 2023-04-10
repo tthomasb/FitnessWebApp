@@ -5,6 +5,7 @@ import { DialogExerciseComponent } from 'src/app/dialogues/dialog-exercise/dialo
 import { Dialog } from 'src/app/enums/dialog';
 import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
+import { Observable, Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,10 +15,10 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 })
 export class ExerciseComponent implements OnInit {
  exercises:ExerciseModel[];
- dataService:DataServiceService;
+ 
  
 
-  constructor(dataService:DataServiceService , public dialog:MatDialog) { 
+  constructor(public dataService:DataServiceService , public dialog:MatDialog) { 
     this.dataService=dataService;
     this.exercises=dataService.getAllExercises();
    

@@ -36,17 +36,17 @@ export class DialogExerciseComponent implements OnInit {
       this.data.data[this.data.index].equipment = this.equipment;
       console.log(this.data.data);
     }
-
+//TODO Fix Create Exercise
     //Safe data Create
-    if (this.data.dialogName === 'Create') {
-      this.data.data.push(
-        new ExerciseModel(
-          this.name,
-          this.description,
-          this.muscle,
-          this.equipment
-        )
-      );
-    }
+    // if (this.data.dialogName === 'Create') {
+    //   this.data.data.push(
+    //     new ExerciseModel(
+    //       this.name,
+    //       this.description,
+    //       this.muscle,
+    //       this.equipment
+    //     )
+    //   );
+    // }
   }
 }
