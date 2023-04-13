@@ -25,5 +25,6 @@ Features:
 - Nick (Project Manager)
 - Willi (Software Architect)
 - Johannes (System Analyst)
+- Niko (Integrator)
 
 
