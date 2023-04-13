@@ -14,15 +14,15 @@ const httpOptions = {
 })
 export class DataServiceService {
   constructor(private http: HttpClient) {}
-
+   
   getAllExercises(): Observable<Exercise[]> {
     return this.http.get<Exercise[]>('/api/exercise');
   }
 
   getExerciseById(id: string): Observable<Exercise> {
     return this.http.get<Exercise>(`/api/exercise/${id}`);
-  }
-
+      }
+    
   deleteExercise(id: string): Observable<any> {
     return this.http.delete(`/api/exercise/${id}`);
   }

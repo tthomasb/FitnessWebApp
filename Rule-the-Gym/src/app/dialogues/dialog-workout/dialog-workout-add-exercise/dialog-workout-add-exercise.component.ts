@@ -50,11 +50,11 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
         break;
       case Dialog.DELETE:
         break;
-      case Dialog.ADD:
+      case Dialog.ADD:              
         this.AddExercise(value.source);
     }
   }
-  AddExercise(index:number){
+  AddExercise(index:number){              
       this.data.workout.exerciseMap.set(this.Allexercises[index],{});
       console.log('Added Exercise');
   }
