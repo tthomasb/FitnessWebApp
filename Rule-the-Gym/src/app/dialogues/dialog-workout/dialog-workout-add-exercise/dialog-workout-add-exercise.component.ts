@@ -28,7 +28,7 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
     public dialog: MatDialog, dataService:DataServiceService
   ) {
     this.dataService=dataService;
-    this.Allexercises = this.dataService.getAllExercises();
+    this.Allexercises = this.dataService.getAllExercises123();
   }
 
   ngOnInit(): void {
@@ -50,11 +50,11 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
         break;
       case Dialog.DELETE:
         break;
-      case Dialog.ADD:              
+      case Dialog.ADD:
         this.AddExercise(value.source);
     }
   }
-  AddExercise(index:number){              
+  AddExercise(index:number){
       this.data.workout.exerciseMap.set(this.Allexercises[index],{});
       console.log('Added Exercise');
   }

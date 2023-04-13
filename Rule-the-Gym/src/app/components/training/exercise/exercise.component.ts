@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExerciseComponent } from 'src/app/dialogues/dialog-exercise/dialog-exercise.component';
 import { Dialog } from 'src/app/enums/dialog';
 import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
-import { Observable, Subscription } from 'rxjs';
+import { Exercise } from 'src/app/models/models';
 
 
 @Component({
@@ -14,18 +13,15 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./exercise.component.scss'],
 })
 export class ExerciseComponent implements OnInit {
- exercises:ExerciseModel[];
- 
- 
+ exercises:Exercise[]=[];
+ constructor(private dataService: DataServiceService, public dialog:MatDialog) {
+  this.dataService=dataService;
+}
 
-  constructor(public dataService:DataServiceService , public dialog:MatDialog) { 
-    this.dataService=dataService;
-    this.exercises=dataService.getAllExercises();
-   
-    
-  }
-
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.dataService
+    .getAllExercises()
+    .subscribe((exercises) => (this.exercises = exercises));}
 
   /**
    * Open the workout dialog
@@ -34,12 +30,12 @@ export class ExerciseComponent implements OnInit {
     const data:any = {
       "toLoop": this.exercises,
       "topLayer": 'muscle',
-      "type": Dialog.EDIT            
+      "type": Dialog.EDIT
     };
     return data;
   }
 
-    openEditExercise(index:number){      
+    openEditExercise(index:number){
       const dialogRef = this.dialog.open(DialogExerciseComponent, {
         width: '90%',
         height: '90%',
@@ -51,18 +47,20 @@ export class ExerciseComponent implements OnInit {
       const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
         width: '20%',
         height: '25%',
-        data:{data: this.exercises, index:index,answer: false},      
+        data:{data: this.exercises, index:index,answer: false},
       });
       const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {
-        if(e)this.deleteExercise(index);                
+        if(e)this.deleteExercise(this.exercises[index].exercise_id);
       });
       dialogRef.afterClosed().subscribe(() => {
         dialogRef.componentInstance.Emitter.unsubscribe();
       });
 
     }
-    deleteExercise(index:number){      
-      this.exercises.splice(index,1);      
+    deleteExercise(index:string): void {
+        this.dataService.deleteExercise(index).subscribe(() => {
+          this.exercises = this.exercises.filter((exercise) => exercise.exercise_id !== index);
+        });
     }
 
    openAddExercise() {
@@ -81,10 +79,10 @@ export class ExerciseComponent implements OnInit {
   catchDialogEvent(value:any){
     switch(value.event){
       case Dialog.START:
-      console.log("start Workout was called in exercise!")      
+      console.log("start Workout was called in exercise!")
       break;
       case Dialog.EDIT:
-      this.openEditExercise(value.source);      
+      this.openEditExercise(value.source);
       break;
       case Dialog.DELETE:
       this.openDeleteExercise(value.source);

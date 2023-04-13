@@ -31,7 +31,6 @@ import { workoutExerciseGetSets } from "./training/workout/workoutExerciseGetSet
 import { workoutGetAllByType } from "./training/workout/workoutGetAllByType";
 import { workoutGetAllExercise } from "./training/workout/workoutGetAllExercises";
 import { workoutGetById } from "./training/workout/workoutGetById";
-import { workoutGetAll } from "./training/workout/workoutGetAll";
 
 export default [
   exampleCreateItemRoute,
@@ -66,6 +65,5 @@ export default [
   userById,
   userCreate,
   userDelete,
-  userEdit,
-  workoutGetAll
+  userEdit
 ];
