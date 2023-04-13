@@ -3,8 +3,7 @@
     *ngFor="let tile of tiles"
     [colspan]="tile.cols"
     [rowspan]="tile.rows"
-    [style.background]="tile.color"
   >
-    {{ tile.text }}
+    <img [src]="tile.picture">
   </mat-grid-tile>
 </mat-grid-list>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DialogWorkoutAddExerciseComponent } from 'src/app/dialogues/dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,} from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,} from '@angular/material/legacy-dialog';
 import { WorkoutData } from 'src/app/models/workout-data.model';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { convertTypeAcquisitionFromJson } from 'typescript';
