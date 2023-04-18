@@ -1,25 +1,6 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
-//  The following line adds:
-//    1. Default typography styles for all components
-//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
-//  If you specify typography styles for the components you use elsewhere, you should delete this line.
-//  If you don't need the default component typographies but still want the hierarchy styles,
-//  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy(mat.define-typography-config());`
-/* TODO(mdc-migration): Remove all-legacy-component-typographies once all legacy components are migrated*/
-@include mat.all-legacy-component-typographies();
-@include mat.all-component-typographies();
-/* TODO(mdc-migration): Remove legacy-core once all legacy components are migrated*/
-@include mat.legacy-core();
-@include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -27,7 +8,61 @@
 //$Angular-RuletheGym-primary: mat.define-palette(mat.$teal-palette);
 //$Angular-RuletheGym-accent: mat.define-palette(mat.$gray-palette, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
-//$Angular-RuletheGym-warn: mat.define-palette(mat.$red-palette);
-
 /* Costum colors. */
+
+// Define a light theme. Not implemented
+$light-primary: mat.define-palette(mat.$grey-palette);
+$light-accent: mat.define-palette(mat.$grey-palette);
+
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $light-primary,
+      accent: $light-accent,
+    ),
+  )
+);
+
+// Define a dark theme
+// $dark-primary: mat.define-palette(mat.$purple-palette);
+$dark-primary: mat.define-palette(mat.$green-palette, 700);
+
+// Liste was gemacht werden muss
+$dark-accent: mat.define-palette(mat.$blue-grey-palette);
+$dark-sidenav-primary: mat.define-palette(mat.$grey-palette);
+$dark-sidenav-secondary: mat.define-palette(mat.$grey-palette);
+$dark-background-primary: mat.define-palette(mat.$grey-palette);
+$dark-background-secondary: mat.define-palette(mat.$grey-palette);
+$dark-font-headline-color: mat.define-palette(mat.$grey-palette);
+$dark-font-subheadline-color: mat.define-palette(mat.$grey-palette);
+$dark-font-text-color: mat.define-palette(mat.$grey-palette);
+
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+    ),
+  )
+);
+
+// Include überarbeiten
+@include mat.all-legacy-component-themes($dark-theme);
+@include mat.legacy-core();
+@include mat.all-legacy-component-typographies();
+
+@include mat.all-component-typographies();
+@include mat.core();
+@include mat.all-component-themes($dark-theme);
+
+// Apply the dark theme by default
+.dark-theme {
+    // Nochmal anschauen
+    @include mat.all-component-themes($dark-theme);
+}
+
+// Apply the light theme only when the `.my-light-theme` CSS class is applied
+// to an ancestor element of the components (such as `body`).
+.light-theme {
+  @include mat.all-legacy-component-themes($dark-theme);
+}
