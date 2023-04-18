@@ -22,7 +22,8 @@ export class ExerciseComponent implements OnInit {
   ngOnInit() {
     this.dataService
     .getAllExercises()
-    .subscribe((exercises) => (this.exercises = exercises));}
+    .subscribe((exercises) => {(this.exercises = exercises)
+    });}
 
   /**
    * Open the workout dialog

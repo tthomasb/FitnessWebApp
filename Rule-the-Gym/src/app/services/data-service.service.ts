@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Exercise } from '../models/models';
+import { Exercise, Workout } from '../models/models';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -54,10 +54,77 @@ export class DataServiceService {
     );
   }
 
-  getAllWorkouts(): any[] {
+  getAllWorkouts(): Observable<Workout[]> {
+    return this.http.get<Workout[]>("/api/workout/type/gym",
+    httpOptions);    
+  }
+  EditWorkout(): any[] {
     let res: any[] = [];
     return res;
   }
+
+  DeleteWorkout(): any[] {
+    let res: any[] = [];
+    return res;
+  }
+
+  CreateWorkout(): any[] {
+    let res: any[] = [];
+    return res;
+  }
+
+
+
+  getWorkoutExerciseByWorkoutId():any[]{
+    let res: any[] = [];
+    return res;
+  }
+
+  editWorkoutExercise():any[]{
+    let res: any[] = [];
+    return res;
+  }
+
+
+  deleteWorkoutExercise():any[]{
+    let res: any[] = [];
+    return res;
+  }
+
+  createWorkoutExercise():any[]{
+    let res: any[] = [];
+    return res;
+  }
+  getSetsByWorkoutExerciseId():any[]{
+    let res: any[] = [];
+    return res;
+  }
+
+  editSet():any[]{
+    let res: any[] = [];
+    return res;
+  }
+
+  DeleteSet():any[]{
+    let res: any[] = [];
+    return res;
+  }
+  createSet():any[]{
+    let res: any[] = [];
+    return res;
+  }
+
+  getSetHistoryBySetId():any[]{
+    let res: any[] = [];
+    return res;
+  }
+
+  createSetHistory():any[]{
+    let res: any[] = [];
+    return res;
+  }
+
+
 
   getAllExercises123(): any[] {
     let res: any[] = [];

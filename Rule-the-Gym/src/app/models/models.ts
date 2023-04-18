@@ -6,3 +6,10 @@ export interface Exercise{
   exercise_id: string,
   user_id: string,
 }
+
+export interface Workout{
+  workout_id:string,
+  workoutname:string,
+  type: string,
+  user_id: number
+}

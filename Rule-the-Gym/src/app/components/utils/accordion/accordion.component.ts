@@ -11,7 +11,7 @@ export class AccordionComponent implements OnInit {
   //setter for Data, so it can be loaded when passed 
   _data:any;
   @Input()set Data(value:any){
-    // console.log(value);
+    console.log(value);
     this._data=value;
     if(!value)return;
     this.topLayer2=[];

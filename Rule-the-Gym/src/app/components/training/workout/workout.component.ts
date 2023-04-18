@@ -9,6 +9,7 @@ import { Dialog } from 'src/app/enums/dialog';
 import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
+import { Workout } from 'src/app/models/models';
 
 @Component({
   selector: 'app-workout',
@@ -16,19 +17,28 @@ import { DataServiceService } from 'src/app/services/data-service.service';
   styleUrls: ['./workout.component.scss'],
 })
 export class WorkoutComponent implements OnInit {
-  workouts: WorkoutData[];
+  workouts!: Workout[];
   typestring: string = 'type';
   accordionConfig: any;
   dataService:DataServiceService;
   constructor(dataService:DataServiceService ,public dialog: MatDialog) {
     //initialize dummy data        
-    this.dataService=dataService;
-    this.workouts = this.dataService.getAllWorkouts();    
+    this.dataService=dataService;    
   }
 
   ngOnInit(): void {
     //set accordionConfig
-    this.accordionConfig = this.getAccordionData();
+    //this.accordionConfig = 
+    
+    
+    this.dataService.getAllWorkouts().subscribe((data)=>{
+      this.workouts=data;
+      console.log(data);
+      console.log(this.workouts);
+      this.accordionConfig=this.getAccordionData();
+      console.log(this.accordionConfig);
+    });
+    
   }
 
   //Get The Accordion Data
@@ -46,17 +56,17 @@ export class WorkoutComponent implements OnInit {
   openAddWorkout() {
     //TODO Fix this
     //create an empty workout
-    let newWorkout=new WorkoutData("","","",new Map([[new ExerciseModel(0, 0, '', '','',''),    
-    new ExerciseDataModel("","","","")]]));
-    this.workouts.push(newWorkout);
-    newWorkout.exerciseMap.clear();
-    console.log(this.workouts);
+    // let newWorkout=new WorkoutData("","","",new Map([[new ExerciseModel(0, 0, '', '','',''),    
+    // new ExerciseDataModel("","","","")]]));
+    // this.workouts.push(newWorkout);
+    // newWorkout.exerciseMap.clear();
+    // console.log(this.workouts);
 
     //Open dialog with empty workout
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data:{workout:newWorkout, dialogName:Dialog.CREATE}
+      data:{workout:{}, dialogName:Dialog.CREATE}
     });    
      dialogRef.afterClosed().subscribe((result) => {
       this.ngOnInit();

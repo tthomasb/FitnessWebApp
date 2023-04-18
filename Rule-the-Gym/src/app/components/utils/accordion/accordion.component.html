@@ -10,8 +10,8 @@
         <div *ngFor="let workout of Data.toLoop; let index =  index">
           <div *ngIf="workout[Data.topLayer]===w">
             <mat-card class="test">
-              <mat-card-title>{{ workout.name }}</mat-card-title>
-              <mat-card-subtitle>{{ workout.description }}</mat-card-subtitle>
+              <mat-card-title>{{ workout.workoutname ?? workout.exercisename }}</mat-card-title>
+              <mat-card-subtitle>{{ workout.type ?? workout.description}}</mat-card-subtitle>
               <mat-card-actions>
                 <button *ngIf="Data.type===start"
                   mat-flat-button
