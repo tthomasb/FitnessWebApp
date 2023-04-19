@@ -8,7 +8,6 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 170%;
-  //color: #333;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,7 +24,7 @@ h6 {
 
 p {
   margin: 0;
-  color: white;
+  color: mat.get-color-from-palette($dark-font-color);
 }
 
 .spacer {
@@ -33,7 +32,7 @@ p {
 }
 
 .toolbar {
-  color: white;
+  color: mat.get-color-from-palette($dark-font-color);
   display: flex;
   position: absolute;
   flex-direction: column;
@@ -44,33 +43,30 @@ p {
 }
 
 .mat-toolbar {
-  background: black;
-  //color: $dark-primary;
+  background: mat.get-color-from-palette($dark-background);
+  border-color: rgba(255, 255, 255, 0.059);
+  border-bottom-style: solid;
 }
 
 .mat-drawer {
-  background-color: rgb(43, 42, 42);
+  background-color: mat.get-color-from-palette($dark-background);
 }
 
 .sidenav-container {
   height: 100%;
-  background-color: rgb(41, 41, 41);
+  background-color: mat.get-color-from-palette($dark-background);
 }
 
 .sidenav-content {
   display: flex;
   height: 100%;
-  //align-items: center;
-  //justify-content: center;
 }
 
 .sidenav {
-  //width: 15%;
   padding: 1%;
 }
 
 .mat-list-item {
-  //margin-right: 8px;
   font-size: 70%;
   cursor: pointer;
 }
@@ -107,11 +103,11 @@ p {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: blueviolet; 
+  background: mat.get-color-from-palette($dark-primary); 
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(110, 10, 204); 
+  background: mat.get-color-from-palette($dark-primary); 
 }
