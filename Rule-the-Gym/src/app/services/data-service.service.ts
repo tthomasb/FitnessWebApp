@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Exercise, Workout } from '../models/models';
+import { Exercise, Set, Workout, WorkoutExercise } from '../models/models';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,15 +14,15 @@ const httpOptions = {
 })
 export class DataServiceService {
   constructor(private http: HttpClient) {}
-   
+
   getAllExercises(): Observable<Exercise[]> {
     return this.http.get<Exercise[]>('/api/exercise');
   }
 
-  getExerciseById(id: string): Observable<Exercise> {
+  getExerciseById(id: number): Observable<Exercise> {
     return this.http.get<Exercise>(`/api/exercise/${id}`);
-      }
-    
+  }
+
   deleteExercise(id: string): Observable<any> {
     return this.http.delete(`/api/exercise/${id}`);
   }
@@ -55,17 +55,17 @@ export class DataServiceService {
   }
 
   getAllWorkouts(): Observable<Workout[]> {
-    return this.http.get<Workout[]>("/api/workout/type/gym",
-    httpOptions);    
+    return this.http.get<Workout[]>('/api/workout/type/gym', httpOptions);
   }
   EditWorkout(): any[] {
     let res: any[] = [];
     return res;
   }
 
-  DeleteWorkout(): any[] {
-    let res: any[] = [];
-    return res;
+  DeleteWorkout(id: string) {
+    this.http.delete(`api/workout/delete/${id}`, httpOptions).subscribe((e) => {
+      console.log(e);
+    });
   }
 
   CreateWorkout(): any[] {
@@ -73,60 +73,62 @@ export class DataServiceService {
     return res;
   }
 
+  getWorkoutExerciseByWorkoutId(id: number): Observable<WorkoutExercise[]> {
+    return this.http.get<WorkoutExercise[]>(
+      'api/workout/exercise/1',
+      httpOptions
+    );
+  }
 
-
-  getWorkoutExerciseByWorkoutId():any[]{
+  editWorkoutExercise(): any[] {
     let res: any[] = [];
     return res;
   }
 
-  editWorkoutExercise():any[]{
+  deleteWorkoutExercise(id: string) {
+    this.http
+      .delete(`api/workout/exercise/delete/${id}`, httpOptions)
+      .subscribe((e) => {
+        console.log(e);
+      });
+  }
+
+  createWorkoutExercise(): any[] {
+    let res: any[] = [];
+    return res;
+  }
+  getSetsByWorkoutExerciseId(id: string): Observable<Set[]> {
+    return this.http.get<Set[]>(`api/workout/exercise/set/${id}`, httpOptions);
+  }
+
+  editSet(id: number, reps: number, weight: number, pause: number) {
+    this.http
+      .put<Set|object>(
+        `api/workout/exercise/set/${id}`,
+        { reps: reps, weight: weight, pause: pause },
+        httpOptions
+      )
+      .subscribe((data) => {
+        
+        console.log(data);
+      });
+  }
+
+  DeleteSet(): any[] {
+    let res: any[] = [];
+    return res;
+  }
+  createSet(): any[] {
     let res: any[] = [];
     return res;
   }
 
-
-  deleteWorkoutExercise():any[]{
+  getSetHistoryBySetId(): any[] {
     let res: any[] = [];
     return res;
   }
 
-  createWorkoutExercise():any[]{
-    let res: any[] = [];
-    return res;
-  }
-  getSetsByWorkoutExerciseId():any[]{
-    let res: any[] = [];
-    return res;
-  }
-
-  editSet():any[]{
-    let res: any[] = [];
-    return res;
-  }
-
-  DeleteSet():any[]{
-    let res: any[] = [];
-    return res;
-  }
-  createSet():any[]{
-    let res: any[] = [];
-    return res;
-  }
-
-  getSetHistoryBySetId():any[]{
-    let res: any[] = [];
-    return res;
-  }
-
-  createSetHistory():any[]{
-    let res: any[] = [];
-    return res;
-  }
-
-
-
-  getAllExercises123(): any[] {
+  createSetHistory(): any[] {
     let res: any[] = [];
     return res;
   }

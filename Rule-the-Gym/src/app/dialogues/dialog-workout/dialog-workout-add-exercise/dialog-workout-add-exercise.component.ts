@@ -12,6 +12,7 @@ import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { WorkoutData } from 'src/app/models/workout-data.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { DialogEditWorkoutComponent } from '../../dialog-edit-workout/dialog-edit-workout.component';
+import { Exercise } from 'src/app/models/models';
 
 @Component({
   selector: 'app-dialog-workout-add-exercise',
@@ -20,7 +21,7 @@ import { DialogEditWorkoutComponent } from '../../dialog-edit-workout/dialog-edi
 })
 export class DialogWorkoutAddExerciseComponent implements OnInit {
   @Input() search: string = '';
-  Allexercises: ExerciseModel[];
+  Allexercises: Exercise[]=[];
   dataService:DataServiceService;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -28,7 +29,9 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
     public dialog: MatDialog, dataService:DataServiceService
   ) {
     this.dataService=dataService;
-    this.Allexercises = this.dataService.getAllExercises123();
+    this.dataService.getAllExercises().subscribe((data)=>{
+      	this.Allexercises=data;
+    });
   }
 
   ngOnInit(): void {
@@ -54,9 +57,10 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
         this.AddExercise(value.source);
     }
   }
-  AddExercise(index:number){              
-      this.data.workout.exerciseMap.set(this.Allexercises[index],{});
-      console.log('Added Exercise');
+  AddExercise(index:number){     
+    this.dataService.createWorkoutExercise()
+      // this.data.workout.exerciseMap.set(this.Allexercises[index],{});
+      // console.log('Added Exercise');
   }
 
   // AddExercise(index: number) {

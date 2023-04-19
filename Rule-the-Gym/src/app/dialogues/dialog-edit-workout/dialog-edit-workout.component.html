@@ -7,7 +7,7 @@
       <div mat-dialog-content>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Name</mat-label>
-          <input matInput placeholder="" [(ngModel)]="data.workout.name" />
+          <input matInput placeholder={{data.workout.workoutname}} [(ngModel)]="data.workout.workoutname" />
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width" appearance="fill">
@@ -30,36 +30,31 @@
                   <mat-panel-description> Delete </mat-panel-description>        
                 </mat-expansion-panel-header>
               </mat-expansion-panel>
-              <mat-expansion-panel *ngFor="let exercise of data.workout.exerciseMap.keys()" (opened)="loadExerciseData(exercise)">
+              <mat-expansion-panel *ngFor="let exercise of exercises; let index=index" (opened)="loadExerciseData(index)">
                 <mat-expansion-panel-header>
-                  <mat-panel-title> {{exercise.name}}</mat-panel-title>
+                  <mat-panel-title> {{exercise.exercisename}}</mat-panel-title>
                   <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
                   <mat-panel-description> 
-                    <button class="delete-button" mat-flat-button color="primary" (click)="openDeleteExercise(exercise)">Delete</button>
+                    <button class="delete-button" mat-flat-button color="primary" (click)="openDeleteExercise(index)">Delete</button>
                   </mat-panel-description>
 
                 </mat-expansion-panel-header >
                 <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Sets</mat-label>
-                  <input matInput placeholder="" [(ngModel)]="sets" />
-                </mat-form-field>
-                <br />
-                <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Reps</mat-label>
-                  <input matInput placeholder="" [(ngModel)]="reps" />
+                  <input matInput placeholder="" [(ngModel)]="sets[0].reps" />
                 </mat-form-field>
                 <br />
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Break time</mat-label>
-                  <input matInput placeholder="Always seconds" [(ngModel)]="breaktime" />
+                  <input matInput placeholder="Always seconds" [(ngModel)]="sets[0].pause" />
                 </mat-form-field>
                 <br />
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Weight</mat-label>
-                  <input matInput placeholder="" type=text [(ngModel)]="weight"/>
+                  <input matInput placeholder="" type=text [(ngModel)]="sets[0].weight"/>
                 </mat-form-field>
                 <mat-card-actions>
-                  <button mat-flat-button color="primary" (click)="safeExerciseData(exercise)">Save</button>
+                  <button mat-flat-button color="primary" (click)="safeExerciseData(0)">Save</button>
                   <button mat-flat-button color="primary">Cancel</button>
                   <br />                  
                 </mat-card-actions>
