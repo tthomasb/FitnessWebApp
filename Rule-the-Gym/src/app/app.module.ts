@@ -19,7 +19,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NutritionComponent } from './components/nutrition/nutrition.component';
 import { WorkoutComponent } from './components/training/workout/workout.component';
 import { ExerciseComponent } from './components/training/exercise/exercise.component';
-import { DialogWorkoutComponent } from './dialogues/dialog-workout/dialog-workout.component';
+//import { DialogWorkoutComponent } from './dialogues/dialog-workout/dialog-workout.component';
 import { DialogExerciseComponent } from './dialogues/dialog-exercise/dialog-exercise.component';
 import { DialogWorkoutAddExerciseComponent } from './dialogues/dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
 import { DialogStartWorkoutComponent } from './dialogues/dialog-start-workout/dialog-start-workout.component';
@@ -38,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     NutritionComponent,
     WorkoutComponent,
     ExerciseComponent,
-    DialogWorkoutComponent,
+    //DialogWorkoutComponent,
     DialogExerciseComponent,
     DialogWorkoutAddExerciseComponent,
     DialogStartWorkoutComponent,
