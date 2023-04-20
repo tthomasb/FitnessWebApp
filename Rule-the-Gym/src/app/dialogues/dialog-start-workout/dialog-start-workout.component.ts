@@ -16,6 +16,7 @@ export class DialogStartWorkoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Open the dialog to set the start time
   startTime() {
     const dialogRef = this.dialog.open(DialogStartWorkoutTimeComponent, {
       width: '60%',

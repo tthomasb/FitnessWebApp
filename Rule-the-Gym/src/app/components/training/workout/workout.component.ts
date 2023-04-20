@@ -63,6 +63,7 @@ export class WorkoutComponent implements OnInit {
    
   }
 
+  // Open the edit dialog
   openEditWorkout(index:number) {
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
@@ -74,6 +75,7 @@ export class WorkoutComponent implements OnInit {
      });
     console.log(index)   
   }
+  // Open the delete dialog
   openDeleteWorkout(index:number) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
       width: '20%',
@@ -88,7 +90,7 @@ export class WorkoutComponent implements OnInit {
       dialogRef.componentInstance.Emitter.unsubscribe();
     })
   }
-
+  // Open the start dialog
   openStartWorkout(index:number) {
     const dialogRef = this.dialog.open(DialogStartWorkoutComponent, {
       width: '90%',
@@ -101,9 +103,11 @@ export class WorkoutComponent implements OnInit {
     });
     */
   }
+  // Delete the workout
   deleteWorkout(index:number) {
     this.workouts.splice(index, 1);
   }
+  // Catch the dialog event
   catchDialogEvent(value:any){
     switch(value.event){
       case Dialog.START:

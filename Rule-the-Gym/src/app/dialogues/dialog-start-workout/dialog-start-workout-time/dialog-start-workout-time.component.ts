@@ -22,6 +22,7 @@ export class DialogStartWorkoutTimeComponent {
     this.beginnTimer(3);
   }
 
+  // Calculate the time
   calcTime(): void {
     this.current = new Date();
     let progress = this.current.getTime() - this.begin.getTime();
@@ -34,6 +35,7 @@ export class DialogStartWorkoutTimeComponent {
     }
   }
 
+  // Start the timer
   beginnTimer(second: number): void {
     this.begin = new Date();
     this.end = new Date(new Date().getTime() + second * 1000);
