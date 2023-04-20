@@ -46,10 +46,11 @@ button {
     margin-bottom: 1%;
 
     &:hover {
-        background-color: rgb(110, 10, 204);
+       
     }
 
     &:focus {
+        background-color: rgb(110, 10, 204);
         outline: none;
         box-shadow: 0 0 0 2px rgba(106, 72, 168, 0.5);
     }

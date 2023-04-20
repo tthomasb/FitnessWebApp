@@ -25,7 +25,7 @@ export class BmiComponent implements OnInit {
   }
 
   // Method to get the BMI category based on the BMI value
-  getAdvancedBmiCategory(): string {
+  getAdvancedBmiCategoryForMan(): string {
     if (this.bmi < 16) {
       return "Severe Thinness";
     } else if (this.bmi >= 16 && this.bmi < 17) {
@@ -46,21 +46,64 @@ export class BmiComponent implements OnInit {
       return "No BMI calculated";
     }
   }
+
+  getAdvancedBmiCategoryForWoman(): string {
+    if (this.bmi < 15) {
+      return "Severe Thinness";
+    } else if (this.bmi >= 15 && this.bmi < 16) {
+      return "Moderate Thinness";
+    } else if (this.bmi >= 16 && this.bmi < 17.5) {
+      return "Mild Thinness";
+    } else if (this.bmi >= 17.5 && this.bmi < 24) {
+      return "Normal";
+    } else if (this.bmi >= 24 && this.bmi < 29) {
+      return "Overweight";
+    } else if (this.bmi >= 19 && this.bmi < 34) {
+      return "Obese Class I";
+    } else if (this.bmi >= 34 && this.bmi < 39) {
+      return "Obese Class II";
+    } else if (this.bmi >= 39) {
+      return "Obese Class III";
+    } else {
+      return "No BMI calculated";
+    }
+  }
+
+  //Change Gender Method
+  changeGender(gender: string) {
+    this.gender = gender;
+    console.log(this.gender);
+  }
   
   // Method to calculate BMI based on height, weight and gender input
   getBmi() {
     const parsedWeight = parseInt(this.weight);
     const parsedHeight = parseInt(this.height);
-    if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
+
+  /*  if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
       this.bmi = parsedWeight / (Math.pow(parsedHeight, 2)/10000);
-      this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategory()}`;
+      this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForMan()}`;
     } else {
       this.result = "Fill in valid data";
     }
+  } */
+
+  if(this.gender == "Male"){
+      if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
+        this.bmi = parsedWeight / (Math.pow(parsedHeight, 2)/10000);
+        this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForMan()}`;
+      } else {
+        this.result = "Fill in valid data";
+      }
+    } else {
+      if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
+        this.bmi = parsedWeight / (Math.pow(parsedHeight, 2)/10000);
+        this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForWoman()}`;
+      } else {
+        this.result = "Fill in valid data";
+      }
+    }
   }
 
-  changeGender(gender: string) {
-    this.gender = gender;
-    console.log(this.gender);
-  }
+  
 }
