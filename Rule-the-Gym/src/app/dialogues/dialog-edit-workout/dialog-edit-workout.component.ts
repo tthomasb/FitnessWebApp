@@ -5,10 +5,6 @@ import {
   MatLegacyDialogRef as MatDialogRef,
   MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
 } from '@angular/material/legacy-dialog';
-import { WorkoutData } from 'src/app/models/workout-data.model';
-import { ExerciseModel } from 'src/app/models/exercise-model.model';
-import { convertTypeAcquisitionFromJson } from 'typescript';
-import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
 import { DialogAskDeleteComponent } from '../dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { Exercise, Set } from 'src/app/models/models';
@@ -72,7 +68,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     // console.log(this.sets, this.reps, this.breaktime, this.weight);
     // console.log('Safed ExerciseData: ', this.data.workout, 'index:');
     this.dataService.editSet(
-      this.workoutexercises[0].workout_exercise_id,
+      this.workoutexercises[id].workout_exercise_id,
       this.sets[0].reps,
       this.sets[0].weight,
       this.sets[0].pause
@@ -131,7 +127,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
       width: '90%',
       height: '90%',
-      data: this.data,
+      data: {"workout_id":this.data.workout.workout_id},
     });
     console.log(this.data);
   }

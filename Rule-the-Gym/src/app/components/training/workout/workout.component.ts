@@ -20,10 +20,8 @@ export class WorkoutComponent implements OnInit {
   workouts!: Workout[];
   typestring: string = 'type';
   accordionConfig: any;
-  dataService:DataServiceService;
-  constructor(dataService:DataServiceService ,public dialog: MatDialog) {
-    //initialize dummy data        
-    this.dataService=dataService;    
+  constructor(public dataService:DataServiceService ,public dialog: MatDialog) {
+    //initialize dummy data           
   }
 
   ngOnInit(): void {
@@ -64,7 +62,7 @@ export class WorkoutComponent implements OnInit {
       width: '90%',
       height: '90%',
       data:{workout:{}, dialogName:Dialog.CREATE}
-    });    
+    });
      dialogRef.afterClosed().subscribe((result) => {
       this.ngOnInit();
      });
@@ -76,7 +74,7 @@ export class WorkoutComponent implements OnInit {
       width: '90%',
       height: '90%',
       data:{workout:this.workouts[index], dialogName:Dialog.EDIT}
-    });
+    });    
     dialogRef.afterClosed().subscribe((result) => {
       this.ngOnInit();
      });

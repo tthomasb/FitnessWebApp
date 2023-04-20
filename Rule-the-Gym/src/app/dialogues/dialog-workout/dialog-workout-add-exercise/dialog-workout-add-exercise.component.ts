@@ -58,7 +58,9 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
     }
   }
   AddExercise(index:number){     
-    this.dataService.createWorkoutExercise()
+    this.dataService.createWorkoutExercise(this.data.id,this.Allexercises[index].exercise_id).subscribe((data)=>{
+      console.log(data);
+    });
       // this.data.workout.exerciseMap.set(this.Allexercises[index],{});
       // console.log('Added Exercise');
   }

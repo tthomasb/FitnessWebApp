@@ -93,10 +93,10 @@ export class DataServiceService {
       });
   }
 
-  createWorkoutExercise(): any[] {
-    let res: any[] = [];
-    return res;
+  createWorkoutExercise(workout_id:number, exercise_id:string):Observable<object> {
+    return this.http.post<object>(`api/workout/exercise/add`,{"workout_id":workout_id, "exercise_id":exercise_id})
   }
+
   getSetsByWorkoutExerciseId(id: string): Observable<Set[]> {
     return this.http.get<Set[]>(`api/workout/exercise/set/${id}`, httpOptions);
   }
