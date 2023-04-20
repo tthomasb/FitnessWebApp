@@ -26,6 +26,7 @@ export class DialogExerciseComponent implements OnInit {
     this.equipment = this.data.data[this.data.index].equipment;
   }
 
+  // Safe Exercise Data
   safeData() {
     console.log(this.data.data);
     console.log(this.name);

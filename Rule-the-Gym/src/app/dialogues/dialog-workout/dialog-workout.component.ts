@@ -14,6 +14,7 @@ export class DialogWorkoutComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // Open the dialog to add an exercise
   addExercise() {
     const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
       width: '90%',

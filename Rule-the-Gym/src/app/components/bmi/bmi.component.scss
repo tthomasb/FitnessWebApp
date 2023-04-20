@@ -1,56 +1,55 @@
-body {
-    border-style: double;
-    border-color: rgba(0, 0, 0, 0.411);
-    text-align: center;
-    background-color: #424242;
+.example-stepper {
+    margin-top: 8px;
+    }
+    
+.mat-mdc-form-field {
+    margin-top: 16px;
 }
 
-.header {
-    font-size: 2rem;
-    color: #ffffff;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+.buttonGender {
+    margin-left: 1%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 20px;
 }
 
-.result {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    margin-top: 0.5rem;
-}
-
-label {
-    font-size: 1.25rem;
-    margin-top: 1.5rem;
-    color: white;
-}
-
-input[type="text"] {
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: none;
-    margin-bottom: 1.5rem;
-    margin-top: 1.0rem;
-    width: 400px;
-    transition: all 0.3s ease-in-out;
-    background-color: rgb(43, 42, 42);
-    color: white;
-}
-
-button {
-    background-color: blueviolet;
-    color: #fff;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
+.buttonGender:hover {
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    margin-bottom: 1%;
+    background-color: #800488;
+  }
 
-    &:hover {
-        background-color: rgb(110, 10, 204);
-    }
+  button:hover {
+    cursor: pointer;
+    background-color: #393839;
+  }
 
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(106, 72, 168, 0.5);
-    }
+.form-field {
+    margin-block: 1%;
+    margin-inline: 1%;
+    font-size: 20px;
 }
+
+.mat-form-field {
+    margin-block: 1%;
+    margin-inline: 1%;
+    font-size: 20px;
+}
+
+.mat-card {
+    margin-block: 1%;
+    margin-inline: 1%;
+    font-size: 20px;
+}
+
+.example-container {
+    height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+
+  h3 {
+    text-align: center;
+  }

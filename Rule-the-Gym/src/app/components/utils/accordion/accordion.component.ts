@@ -29,6 +29,7 @@ export class AccordionComponent implements OnInit {
   get Data():any{
     return this._data;
   };
+  // Dialogs
   edit:Dialog.EDIT=Dialog.EDIT;
   start:Dialog.START=Dialog.START;
   delete:Dialog.DELETE=Dialog.DELETE;
