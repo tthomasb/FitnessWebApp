@@ -71,8 +71,15 @@ p {
   cursor: pointer;
 }
 
+.mat-icon-sidenav {
+  font-size: 130%;
+  color: mat.get-color-from-palette($dark-primary);
+}
+
 .mat-icon {
   font-size: 130%;
+  color: white;
+  background-color: mat.get-color-from-palette($dark-primary);
 }
 
 .content {
