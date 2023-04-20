@@ -44,9 +44,8 @@ export class BmiComponent implements OnInit {
 
   // Constructor to initialize the form builder and breakpoint observer
   constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) { 
-    this.gender = "Male";
     this.bmi = 0;
-    this.result = "-";
+    this.result = "Fill in valid data";
     this.stepperOrientation = breakpointObserver
     .observe('(min-width: 800px)')
     .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
