@@ -34,6 +34,7 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data);
   }
+  // Get Data for Accordion
   getAccordionData(): any {
     const data: any = {
       toLoop: this.Allexercises,
@@ -42,6 +43,7 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
     };
     return data;
   }
+  // Catch Dialog Event
   catchDialogEvent(value: any) {
     switch (value.event) {
       case Dialog.START:
@@ -54,6 +56,7 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
         this.AddExercise(value.source);
     }
   }
+  // Add Exercise to Workout
   AddExercise(index:number){              
       this.data.workout.exerciseMap.set(this.Allexercises[index],{});
       console.log('Added Exercise');

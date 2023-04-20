@@ -7,15 +7,16 @@ import { Dialog } from 'src/app/enums/dialog';
   styleUrls: ['./dialog-ask-delete.component.scss']
 })
 export class DialogAskDeleteComponent implements OnInit {
-@Output() Emitter:EventEmitter<boolean>=new EventEmitter<boolean>();
+  //Event emitter for Dialogs in Parent
+  @Output() Emitter: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(public dialogRef: MatDialogRef<DialogAskDeleteComponent>,
     public dialog: MatDialog
-  ) {}
-  
-  ngOnInit(): void {    
+  ) { }
+
+  ngOnInit(): void {
   }
 
-  clickYes(){
-    
+  clickYes() {
+
   }
 }
