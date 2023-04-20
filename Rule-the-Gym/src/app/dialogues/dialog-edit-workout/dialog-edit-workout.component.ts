@@ -13,6 +13,7 @@ import { DialogAskDeleteComponent } from '../dialog-ask-delete/dialog-ask-delete
   styleUrls: ['./dialog-edit-workout.component.scss'],
 })
 export class DialogEditWorkoutComponent implements OnInit {
+
   name!: string|undefined;
   sets!: string|undefined;
   reps!: string|undefined;
@@ -39,6 +40,8 @@ export class DialogEditWorkoutComponent implements OnInit {
 
 
   }
+
+  // Load the data of the selected exercise
   loadExerciseData(exercise:ExerciseModel){
     console.log(this.dummyMap.get(exercise!));
     let exData=this.dummyMap.get(exercise);
@@ -50,6 +53,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     console.log(exData);
     console.log(this.dummyMap.get(exercise));
   }
+  // Save the data of the selected exercise
   safeExerciseData(exMapKey:ExerciseModel){
     this.dummyMap.get(exMapKey)!.sets= this.sets!;
     this.dummyMap.get(exMapKey)!.reps= this.reps!;
@@ -58,6 +62,7 @@ export class DialogEditWorkoutComponent implements OnInit {
       console.log(this.sets,this.reps,this.breaktime,this.weight);
       console.log("Safed ExerciseData: ", this.data.workout, "index:");
   }
+  // Open the Dialog to delete an exercise
   openDeleteExercise(index: any) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
       width: '20%',
@@ -72,9 +77,11 @@ export class DialogEditWorkoutComponent implements OnInit {
       dialogRef.componentInstance.Emitter.unsubscribe();
     })
   }
+  // Delete the selected exercise
   deleteExercise(index: any) {
     this.data.workout.exerciseMap.delete(index);
   }
+  // Save the data of the workout
   safeWorkoutData() {
     console.log(this.workout);
     console.log(this.name);
@@ -102,6 +109,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     }
   }
 
+  // Open the Dialog to add an exercise
   addExercise() {
     const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
       width: '90%',

@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   constructor() {}
   ngOnInit(): void {}
 
+  // Images for the tiles
   tiles: Tile[] = [
     { text: 'leer', cols: 4, rows: 1, picture: '' },
     { text: 'One', cols: 2, rows: 1, picture: '/assets/pictures/Trainingssitzungen.png' },
