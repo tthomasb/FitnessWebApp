@@ -16,6 +16,7 @@ $light-accent: mat.define-palette(mat.$indigo-palette);
 // Define a dark theme
 $dark-primary: mat.define-palette(mat.$green-palette, 700);
 $dark-background: mat.define-palette(mat.$grey-palette, 900);
+$dark-content-background: mat.define-palette(mat.$grey-palette, 400);
 $dark-font-color: mat.define-palette(mat.$grey-palette, 100);
 $dark-accent: mat.define-palette(mat.$grey-palette);
 
