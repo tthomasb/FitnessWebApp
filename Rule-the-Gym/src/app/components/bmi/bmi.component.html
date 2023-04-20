@@ -1,3 +1,4 @@
+<h3>BMI Category Table</h3>
 <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
     <mat-step [stepControl]="firstFormGroup" label="Choose your gender">
         <form [formGroup]="firstFormGroup">
@@ -45,12 +46,38 @@
                 <button mat-button matStepperNext (click)="getBmi()">Next</button>
             </div>
         </form>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Your BMI</ng-template>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Your BMI</ng-template>
             <mat-card>{{result}}</mat-card>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-        </div>
-    </mat-step>
-</mat-stepper>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+            </div>
+        </mat-step>
+        </mat-stepper>
+        
+        <h3>BMI Category Table</h3>
+        <section class="example-container mat-elevation-z8" tabindex="0">
+            <table mat-table [dataSource]="dataSource">
+
+                <!-- Category Column -->
+                <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef> Category </th>
+                    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                </ng-container>
+                <!-- Bmi Column -->
+                <ng-container matColumnDef="bmi">
+                    <th mat-header-cell *matHeaderCellDef> BMI </th>
+                    <td mat-cell *matCellDef="let element"> {{element.bmi}} </td>
+                </ng-container>
+                <!-- Risk Column -->
+                <ng-container matColumnDef="risk">
+                    <th mat-header-cell *matHeaderCellDef> Risk </th>
+                    <td mat-cell *matCellDef="let element"> {{element.risk}} </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </section>
+  
