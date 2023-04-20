@@ -1,22 +1,83 @@
-<div>
-
-    <head>
-        <title>BMI Calculator</title>
-    </head>
-
-    <body>
-        <p class="header">Body Mass Index Calculator</p>
-        <button (click)="changeGender('Male')">Male</button>
-        <button (click)="changeGender('Female')">Female</button>
-        <form>
-            <label>Enter your weight (in kg)</label><br />
-            <input type="text" name="age" placeholder="Enter your age" [(ngModel)]="age" /><br />
-            <label>Enter your weight (in kg)</label><br />
-            <input type="text" name="weight" placeholder="Enter your weight" [(ngModel)]="weight" /><br />
-            <label>Enter your height (in cm)</label><br />
-            <input type="text" name="height" placeholder="Enter your height" [(ngModel)]="height" /><br />
-            <button title="calculate" (click)="getBmi()">Calculate</button>
-            <p class="result"> {{result}} </p>
+<h3>BMI Calculator</h3>
+<mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
+    <mat-step [stepControl]="firstFormGroup" label="Choose your gender">
+        <form [formGroup]="firstFormGroup">
+                <button mat-raised-button color="primary" class="buttonGender"
+                    (click)="changeGender('Male')">Male</button>
+                <button mat-raised-button color="primary" class="buttonGender"
+                    (click)="changeGender('Female')">Female</button>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
         </form>
-    </body>
-</div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Fill out your age">
+        <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+                <mat-label>Age</mat-label>
+                <input matInput formControlName="thirdCtrl" placeholder="Ex. 21" [(ngModel)]="height" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" label="Fill out your height">
+        <form [formGroup]="thirdFormGroup">
+            <mat-form-field>
+                <mat-label>Height(in cm)</mat-label>
+                <input matInput formControlName="thirdCtrl" placeholder="Ex. 181" [(ngModel)]="height" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup" label="Fill out your weight">
+        <form [formGroup]="fourthFormGroup">
+            <mat-form-field>
+                <mat-label>Weight</mat-label>
+                <input matInput formControlName="fourthCtrl" placeholder="Ex. 85" [(ngModel)]="weight" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext (click)="getBmi()">Next</button>
+            </div>
+        </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Your BMI</ng-template>
+            <mat-card>{{result}}</mat-card>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+            </div>
+        </mat-step>
+        </mat-stepper>
+        
+        <h3>BMI Category Table</h3>
+        <section class="example-container mat-elevation-z8" tabindex="0">
+            <table mat-table [dataSource]="dataSource">
+
+                <!-- Category Column -->
+                <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef> Category </th>
+                    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                </ng-container>
+                <!-- Bmi Column -->
+                <ng-container matColumnDef="bmi">
+                    <th mat-header-cell *matHeaderCellDef> BMI </th>
+                    <td mat-cell *matCellDef="let element"> {{element.bmi}} </td>
+                </ng-container>
+                <!-- Risk Column -->
+                <ng-container matColumnDef="risk">
+                    <th mat-header-cell *matHeaderCellDef> Risk </th>
+                    <td mat-cell *matCellDef="let element"> {{element.risk}} </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </section>
+  
