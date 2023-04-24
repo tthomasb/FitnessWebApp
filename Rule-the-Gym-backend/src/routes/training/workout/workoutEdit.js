@@ -6,17 +6,23 @@ export const workoutEdit = {
   handler: async (req, h) => {
     const { workout_id } = req.params;
     const { workoutname, type } = req.payload;
-    await db.query(
-      `
+    await db
+      .query(
+        `
               UPDATE workout
                   SET workoutname=$1, type=$2
                   WHERE workout_id=$3
           `,
-      [workoutname, type, workout_id]
+        [workoutname, type, workout_id]
+      )
+      .catch((e) => {
+        message.message = e;
+        return message;
+      });
+    const { results } = await db.query(
+      "SELECT * FROM workout WHERE workout_id=$1",
+      [workout_id]
     );
-    const { results } = await db.query("SELECT * FROM workout WHERE workout_id=$1", [
-      workout_id,
-    ]);
     return results.rows[0];
   },
 };
