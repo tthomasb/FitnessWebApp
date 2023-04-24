@@ -14,9 +14,12 @@ export const workoutExerciseEditSet = {
           `,
       [reps, pause, weight, set_id]
     );
-    const { results } = await db.query("SELECT * FROM set WHERE set_id=$1", [
-        set_id,
-    ]);
+    const { results } = await db
+      .query("SELECT * FROM set WHERE set_id=$1", [set_id])
+      .catch((e) => {
+        message.message = e;
+        return message;
+      });
     return results.rows[0];
   },
 };

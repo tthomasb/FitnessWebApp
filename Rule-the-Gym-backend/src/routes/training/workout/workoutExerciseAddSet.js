@@ -6,13 +6,18 @@ export const workoutExerciseAddSet = {
   handler: async (req, h) => {
     const { workout_exercise_id } = req.params;
     const { reps, pause, weight } = req.payload;
-    await db.query(
-      `
+    await db
+      .query(
+        `
       INSERT INTO set (workout_exercise_id, reps, pause, weight)
       VALUES ($1, $2, $3, $4);
           `,
-      [workout_exercise_id, reps, pause, weight]
-    );
-    return { workout_exercise_id, reps, pause, weight};
+        [workout_exercise_id, reps, pause, weight]
+      )
+      .catch((e) => {
+        message.message = e;
+        return message;
+      });
+    return { workout_exercise_id, reps, pause, weight };
   },
 };

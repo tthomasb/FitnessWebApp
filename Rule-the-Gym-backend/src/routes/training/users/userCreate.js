@@ -11,13 +11,18 @@ export const userCreate = {
       birthdate = "",
     } = req.payload;
 
-    await db.query(
-      `
+    await db
+      .query(
+        `
             INSERT INTO users (username, weight, height, birthdate)
               VALUES ($1, $2, $3, $4);
         `,
-      [username, weight, height, birthdate]
-    );
+        [username, weight, height, birthdate]
+      )
+      .catch((e) => {
+        message.message = e;
+        return message;
+      });
 
     return { username, weight, height, birthdate };
   },

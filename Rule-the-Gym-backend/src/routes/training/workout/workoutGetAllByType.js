@@ -7,11 +7,15 @@ export const workoutGetAllByType = {
   handler: async (req, h) => {
     const type = req.params.type;
 
-    const { results } = await db.query("SELECT * FROM workout where type=$1", [
-      type,
-    ]);
+    const { results } = await db
+      .query("SELECT * FROM workout where type=$1", [type])
+      .catch((e) => {
+        message.message = e;
+        return message;
+      });
     const workout_table = results.rows;
-    if (!workout_table) throw Boom.notFound(`Workout does not exist with type ${type}`);
+    if (!workout_table)
+      throw Boom.notFound(`Workout does not exist with type ${type}`);
     return workout_table;
   },
 };

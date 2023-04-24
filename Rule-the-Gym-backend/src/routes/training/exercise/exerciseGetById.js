@@ -7,11 +7,15 @@ export const exerciseById = {
   handler: async (req, h) => {
     const exercise_id = req.params.exercise_id;
 
-    const { results } = await db.query("SELECT * FROM exercise WHERE exercise_id = $1", [
-      exercise_id,
-    ]);
+    const { results } = await db
+      .query("SELECT * FROM exercise WHERE exercise_id = $1", [exercise_id])
+      .catch((e) => {
+        message.message = e;
+        return message;
+      });
     const exercise_table = results.rows[0];
-    if (!exercise_table) throw Boom.notFound(`Exercise does not exist with id ${exercise_id}`);
+    if (!exercise_table)
+      throw Boom.notFound(`Exercise does not exist with id ${exercise_id}`);
     return exercise_table;
   },
 };
