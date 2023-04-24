@@ -9,6 +9,8 @@ export class NutritionComponent implements OnInit {
 
   constructor() { }
 
+  lotsOfTabs = new Array(30).fill(0).map((_, index) => `${index}`);
+
   ngOnInit(): void {
   }
 
