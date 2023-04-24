@@ -17,10 +17,11 @@ const start = async () => {
     console.log(`Server is listening on ${server.info.uri}`);
 }
 
-process.on('unhandledRejection', err => {
+process.on('uncaughtException', err => {
     console.log(err);
     process.exit(1);
 });
+
 
 process.on('SIGINT', async () => {
     console.log('Stopping server...');

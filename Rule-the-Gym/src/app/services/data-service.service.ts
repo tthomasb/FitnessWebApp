@@ -68,14 +68,13 @@ export class DataServiceService {
     });
   }
 
-  CreateWorkout(): any[] {
-    let res: any[] = [];
-    return res;
+  CreateWorkout(name:string,type:string,id:number) {
+    return this.http.post(`api/workout/add`,{workoutname: name, type: type, user_id: id});
   }
 
   getWorkoutExerciseByWorkoutId(id: number): Observable<WorkoutExercise[]> {
     return this.http.get<WorkoutExercise[]>(
-      'api/workout/exercise/1',
+      `api/workout/exercise/${id}`,
       httpOptions
     );
   }
@@ -93,8 +92,8 @@ export class DataServiceService {
       });
   }
 
-  createWorkoutExercise(workout_id:number, exercise_id:string):Observable<object> {
-    return this.http.post<object>(`api/workout/exercise/add`,{"workout_id":workout_id, "exercise_id":exercise_id})
+  createWorkoutExercise(workout_id:number, exercise_id:string):Observable<WorkoutExercise> {
+    return this.http.post<WorkoutExercise>(`api/workout/exercise/add`,{"workout_id":workout_id, "exercise_id":exercise_id},httpOptions);
   }
 
   getSetsByWorkoutExerciseId(id: string): Observable<Set[]> {

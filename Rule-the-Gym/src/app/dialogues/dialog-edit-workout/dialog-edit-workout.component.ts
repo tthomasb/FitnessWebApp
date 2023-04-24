@@ -32,7 +32,7 @@ export class DialogEditWorkoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService
-      .getWorkoutExerciseByWorkoutId(this.data.workout)
+      .getWorkoutExerciseByWorkoutId(this.data.workout.workout_id)
       .subscribe((data) => {
         this.workoutexercises = data;
         this.exercises = [];
@@ -130,6 +130,9 @@ export class DialogEditWorkoutComponent implements OnInit {
       data: {"workout_id":this.data.workout.workout_id},
     });
     console.log(this.data);
+    dialogRef.afterClosed().subscribe((e)=>{
+      this.ngOnInit();
+    })
   }
 
   close() {}

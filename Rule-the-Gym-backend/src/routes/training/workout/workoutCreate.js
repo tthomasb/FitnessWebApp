@@ -4,15 +4,15 @@ export const workoutCreate = {
   method: "POST",
   path: "/api/workout",
   handler: async (req, h) => {
-    const { workoutname = "", type = "" } = req.payload;
-    const user_id ="1";
+    const { workoutname = "", type = "", user_id=""} = req.payload;
+    
 
     await db.query(
       `
             INSERT INTO workout (workoutname, type, user_id)
-              VALUES ($1, $2, $3);
+              VALUES ($1, $2, 1);
         `,
-      [workoutname, type, user_id]
+      [workoutname, type]
     );
 
     return { workoutname, type, user_id };
