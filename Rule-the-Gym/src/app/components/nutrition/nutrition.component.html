@@ -1,7 +1,17 @@
 <div class="nutrition" role="main">
-    <mat-tab-group mat-stretch-tabs class="mat-tab-group">
-        <mat-tab [label]="tab" *ngFor="let tab of lotsOfTabs"></mat-tab>
-    </mat-tab-group>
+    <mat-tab-group>
+        <mat-tab *ngFor="let date of dates">
+          <ng-template mat-tab-label>
+            <div class="tab-header">
+              <span class="tab-date">{{ date | date: 'dd' }}</span>
+              <span class="tab-day">{{ date | date: 'EEE' }}</span>
+            </div>
+          </ng-template>
+          <div class="tab-content">
+            <!-- Tab-Inhalt -->
+          </div>
+        </mat-tab>
+      </mat-tab-group>      
     <div class="nutrition-card" >
         <mat-card>
             <mat-card-header>Übersicht<mat-icon>add</mat-icon></mat-card-header>
