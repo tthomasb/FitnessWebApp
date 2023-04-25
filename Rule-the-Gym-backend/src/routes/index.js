@@ -14,7 +14,6 @@ import { userCreate } from "./training/users/userCreate";
 import { userDelete } from "./training/users/userDelete";
 import { userEdit } from "./training/users/userEdit";
 import { userById } from "./training/users/userGetById";
-import { workoutAddExercise } from "./training/workout/workoutAddExercise";
 import { workoutCreate } from "./training/workout/workoutCreate";
 import { workoutDelete } from "./training/workout/workoutDelete";
 import { workoutDeleteExercise } from "./training/workout/workoutDeleteExercise";
@@ -28,7 +27,7 @@ import { workoutExerciseEditHistorySet } from "./training/workout/workoutExercis
 import { workoutExerciseEditSet } from "./training/workout/workoutExerciseEditSet";
 import { workoutExerciseGetHistorySets } from "./training/workout/workoutExerciseGetHistorySets";
 import { workoutExerciseGetSets } from "./training/workout/workoutExerciseGetSets";
-import { workoutGetAllByType } from "./training/workout/workoutGetAllByType";
+import { workoutGetAll } from "./training/workout/workoutGetAll";
 import { workoutGetAllExercise } from "./training/workout/workoutGetAllExercises";
 import { workoutGetById } from "./training/workout/workoutGetById";
 import { workoutExerciseDelete } from "./training/workout/workoutExerciseDelete";
@@ -51,10 +50,9 @@ export default [
   workoutDelete,
   workoutGetById,
   workoutEdit,
-  workoutAddExercise,
   workoutDeleteExercise,
   workoutEditExercise,
-  workoutGetAllByType,
+  workoutGetAll,
   workoutGetAllExercise,
   workoutExerciseAddSet,
   workoutExerciseDeleteSet,

@@ -52,29 +52,24 @@ export class DialogEditWorkoutComponent implements OnInit {
         this.workoutexercises[index].workout_exercise_id
       )
       .subscribe((data) => {
+        console.log(data)
         this.sets = [];
         for (let set of data) {
           this.sets.push(set);
         }
       });
-    console.log(this.sets);
   }
+
   safeExerciseData(id: number) {
-    //todo fix this
-    // this.dummyMap.get(exMapKey)!.sets = this.sets!;
-    // this.dummyMap.get(exMapKey)!.reps = this.reps!;
-    // this.dummyMap.get(exMapKey)!.breaktime = this.breaktime!;
-    // this.dummyMap.get(exMapKey)!.weight = this.weight!;
-    // console.log(this.sets, this.reps, this.breaktime, this.weight);
-    // console.log('Safed ExerciseData: ', this.data.workout, 'index:');
     this.dataService.editSet(
-      this.workoutexercises[id].workout_exercise_id,
+      this.sets[0].set_id,
       this.sets[0].reps,
       this.sets[0].weight,
       this.sets[0].pause
     );
     this.loadExerciseData(id);
   }
+
   openDeleteExercise(index: number) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
       width: '20%',
@@ -97,30 +92,9 @@ export class DialogEditWorkoutComponent implements OnInit {
       this.workoutexercises[index].workout_exercise_id
     );
     this.ngOnInit();
-    // this.data.workout.exerciseMap.delete(index);
   }
-  safeWorkoutData() {
-    //todo fix this
-    // console.log(this.workout);
-    // console.log(this.name);
-    // if (this.data.dialogName === 'Edit') {
-    //   this.data.workout.name = this.name;
-    //   this.data.workout.exerciseMap = this.dummyMap;
-    //   this.data.workout.description = this.description;
-    //   this.data.workout.type = this.type;
-    //   console.log(this.data.workouts);
-    // }
-    // //Safe Data Create
-    // if (this.data.dialogName === 'Create') {
-    //   this.dialogRef.close(
-    //     new WorkoutData(
-    //       this.name!,
-    //       this.description!,
-    //       this.type!,
-    //       new Map<ExerciseModel, ExerciseDataModel>()
-    //     )
-    //   );
-    // }
+  safeWorkoutData() {        
+    this.dataService.safeWorkout(this.data.workout);
   }
 
   addExercise() {
@@ -129,7 +103,6 @@ export class DialogEditWorkoutComponent implements OnInit {
       height: '90%',
       data: {"workout_id":this.data.workout.workout_id},
     });
-    console.log(this.data);
     dialogRef.afterClosed().subscribe((e)=>{
       this.ngOnInit();
     })

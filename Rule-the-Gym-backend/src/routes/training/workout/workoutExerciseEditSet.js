@@ -5,7 +5,8 @@ export const workoutExerciseEditSet = {
   path: "/api/workout/exercise/set/{set_id}",
   handler: async (req, h) => {
     const { set_id } = req.params;
-    const { reps, pause, weight } = req.payload;
+    const { reps, pause, weight } = req.payload;  
+     
     await db.query(
       `
               UPDATE set
@@ -17,9 +18,9 @@ export const workoutExerciseEditSet = {
     const { results } = await db
       .query("SELECT * FROM set WHERE set_id=$1", [set_id])
       .catch((e) => {
-        message.message = e;
-        return message;
+        //console.log(e);
       });
-    return results.rows[0];
+      
+    return {message:"success"};
   },
 };

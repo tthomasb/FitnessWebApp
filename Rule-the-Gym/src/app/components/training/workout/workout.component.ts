@@ -56,16 +56,21 @@ export class WorkoutComponent implements OnInit {
     // this.workouts.push(newWorkout);
     // newWorkout.exerciseMap.clear();
     // console.log(this.workouts);
+    let workout: Workout={workoutname:"", workout_id:"",type:"", description:"",user_id:1};
+    this.dataService.CreateWorkout("","",1).subscribe((e)=>{      
+      workout.workout_id=e.workout_id;
 
-    //Open dialog with empty workout
+      //Open dialog with empty workout
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data:{workout:{}, dialogName:Dialog.CREATE}
+      data:{workout:workout, dialogName:Dialog.CREATE}
     });
      dialogRef.afterClosed().subscribe((result) => {
       this.ngOnInit();
      });
+    });
+    
    
   }
 

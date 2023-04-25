@@ -75,7 +75,13 @@
       </button>
     </form>
     <div mat-dialog-actions>
-      <button mat-flat-button color="primary" mat-dialog-close>Done</button>  
+      <button 
+      mat-flat-button 
+      color="primary" 
+      (click)="safeWorkoutData()"
+      mat-dialog-close
+      >Done
+    </button>  
     </div>
   </div>
 </div>

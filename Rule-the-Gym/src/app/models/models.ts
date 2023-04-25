@@ -11,6 +11,7 @@ export interface Workout{
   workout_id:string,
   workoutname:string,
   type: string,
+  description:string,
   user_id: number
 }
 

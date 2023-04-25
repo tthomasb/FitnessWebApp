@@ -8,7 +8,8 @@ CREATE TABLE users (
 );
 CREATE TABLE workout (
     workout_id SERIAL PRIMARY KEY,
-    workoutname VARCHAR(255) unique,
+    workoutname VARCHAR(255),
+	description varchar(255),
     type VARCHAR(255) NOT NULL,
     user_id integer
 );
@@ -48,10 +49,10 @@ insert into users (username, height, weight, birthdate)
 		('username2',180, 80, '2022-02-10'),
 		('username3',170, 50,'2022-03-11')
 		;
-insert into workout ( workoutname, type)
+insert into workout ( workoutname, type, description)
 	values
-		('workoutname1','gym'),
-		('workoutname2','calysthenics')
+		('workoutname1','gym','desc1'),
+		('workoutname2','calysthenics','desc2')
 		;
 insert into workout ( workoutname, type ,user_id)
 	values

@@ -59,24 +59,9 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
   }
   AddExercise(index:number){     
     this.dataService.createWorkoutExercise(this.data.workout_id,this.Allexercises[index].exercise_id).subscribe((data)=>{
-      console.log(data);
+      
     });
       // this.data.workout.exerciseMap.set(this.Allexercises[index],{});
       // console.log('Added Exercise');
   }
-
-  // AddExercise(index: number) {
-  //   // console.log(this.data);
-  //   if (this.data.dialogName === Dialog.EDIT) {
-  //     console.log(this.data.index);
-  //     this.data.workouts[this.data.index].exercises.push(
-  //       this.Allexercises[index]
-  //     );
-  //     console.log(this.data.workouts[this.data.index]);
-  //   }
-  //   if (this.data.dialogName === Dialog.CREATE) {
-  //     this.data.workouts;
-  //     //Todo add new workout
-  //   }
-  // }
 }

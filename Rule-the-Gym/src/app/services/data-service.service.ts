@@ -55,8 +55,14 @@ export class DataServiceService {
   }
 
   getAllWorkouts(): Observable<Workout[]> {
-    return this.http.get<Workout[]>('/api/workout/type/gym', httpOptions);
+    return this.http.get<Workout[]>('/api/workout/type', httpOptions);
   }
+
+  safeWorkout(workout:Workout){
+    console.log(workout);
+    return this.http.put(`api/workout/${workout.workout_id}`,{workoutname:workout.workoutname, type:workout.type, description:workout.description},httpOptions).subscribe((e)=>console.log(e))
+  }
+
   EditWorkout(): any[] {
     let res: any[] = [];
     return res;
@@ -68,8 +74,8 @@ export class DataServiceService {
     });
   }
 
-  CreateWorkout(name:string,type:string,id:number) {
-    return this.http.post(`api/workout/add`,{workoutname: name, type: type, user_id: id});
+  CreateWorkout(name:string,type:string,id:number):Observable<any> {
+    return this.http.post<any>(`api/workout/add`,{workoutname: name, type: type, user_id: id});
   }
 
   getWorkoutExerciseByWorkoutId(id: number): Observable<WorkoutExercise[]> {

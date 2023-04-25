@@ -6,7 +6,7 @@ export const workoutGetAllExercise = {
   handler: async (req, h) => {
     const workout_id = req.params.workout_id;
 
-    const { results } = await db
+  const{results} = await db
       .query(
         `select * from workout, exercise, workout_exercise 
           where workout.workout_id = workout_exercise.workout_id 
@@ -15,9 +15,8 @@ export const workoutGetAllExercise = {
         [workout_id]
       )
       .catch((e) => {
-        message.message = e;
-        return message;
-      });
+        console.log(e);
+      });      
     return results.rows;
   },
 };
