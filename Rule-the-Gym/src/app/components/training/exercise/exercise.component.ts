@@ -28,8 +28,8 @@ export class ExerciseComponent implements OnInit {
   /**
    * Open the workout dialog
    */
-   getAccordionData(): any {
-    const data:any = {
+  getAccordionData(): any {
+    const data: any = {
       "toLoop": this.exercises,
       "topLayer": 'muscle',
       "type": Dialog.EDIT
@@ -65,12 +65,15 @@ export class ExerciseComponent implements OnInit {
         });
     }
 
-   openAddExercise() {
+
+
+  // Add Exercise Dialog
+  openAddExercise() {
     const dialogRef = this.dialog.open(DialogExerciseComponent, {
       width: '90%',
       height: '90%',
-      data:{data:this.exercises,dialogName:Dialog.CREATE}
-    } );
+      data: { data: this.exercises, dialogName: Dialog.CREATE }
+    });
     /**
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -78,17 +81,18 @@ export class ExerciseComponent implements OnInit {
     */
   }
 
-  catchDialogEvent(value:any){
-    switch(value.event){
+  // Catch the Dialog Event
+  catchDialogEvent(value: any) {
+    switch (value.event) {
       case Dialog.START:
-      console.log("start Workout was called in exercise!")
-      break;
+        console.log("start Workout was called in exercise!")
+        break;
       case Dialog.EDIT:
-      this.openEditExercise(value.source);
-      break;
+        this.openEditExercise(value.source);
+        break;
       case Dialog.DELETE:
-      this.openDeleteExercise(value.source);
-      break;
+        this.openDeleteExercise(value.source);
+        break;
     }
   }
 }

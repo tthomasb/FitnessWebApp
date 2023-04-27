@@ -84,6 +84,7 @@ export class DialogEditWorkoutComponent implements OnInit {
       dialogRef.componentInstance.Emitter.unsubscribe();
     });
   }
+  // Delete the selected exercise
   deleteExercise(index: any) {
     //todo fix this
     console.log(index);
@@ -97,6 +98,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     this.dataService.safeWorkout(this.data.workout);
   }
 
+  // Open the Dialog to add an exercise
   addExercise() {
     const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
       width: '90%',

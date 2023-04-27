@@ -1,7 +1,8 @@
 @use '../styles/styles_variables.scss';
+@use '../styles/restyle.scss';
 @use '../styles.scss';
 
-.mat-icon-button {
+.mat-icon {
     background-color: transparent;
-    color: rgb(110, 10, 204);
+    color: white;
 }

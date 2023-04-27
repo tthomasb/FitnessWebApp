@@ -1,76 +1,16 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
-
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
-//  The following line adds:
-//    1. Default typography styles for all components
-//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
-//  If you specify typography styles for the components you use elsewhere, you should delete this line.
-//  If you don't need the default component typographies but still want the hierarchy styles,
-//  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-@include mat.all-legacy-component-typographies();
-@include mat.legacy-core();
-
 
 //Mixins and Variables
 @import "./styles/styles_variables.scss";
 @import"./styles/restyle.scss";
-// Define a light theme
-$light-primary: mat.define-palette(mat.$teal-palette);
-$light-accent: mat.define-palette(mat.$pink-palette);
 
-$light-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $light-primary,
-      accent: $light-accent,
-    ),
-  )
-);
-
-
-// Define a dark theme
-$dark-primary: mat.define-palette(mat.$purple-palette);
-$dark-accent: mat.define-palette(mat.$blue-grey-palette);
-
-$dark-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $dark-primary,
-      accent: $dark-accent,
-    ),
-  )
-);
-
-@include mat.all-legacy-component-themes($dark-theme);
-
-// You can add global styles to this file, and also import other style files
 :host {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 170%;
-  //color: #333;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-// Apply the dark theme by default
-.dark-theme {
-  @include mat.all-legacy-component-themes($light-theme);
-}
-
-// Apply the light theme only when the `.my-light-theme` CSS class is applied
-// to an ancestor element of the components (such as `body`).
-.light-theme {
-  @include mat.all-legacy-component-themes($dark-theme);
 }
 
 h1,
@@ -84,7 +24,7 @@ h6 {
 
 p {
   margin: 0;
-  color: white;
+  color: mat.get-color-from-palette($dark-font-color);
 }
 
 .spacer {
@@ -92,7 +32,7 @@ p {
 }
 
 .toolbar {
-  color: white;
+  color: mat.get-color-from-palette($dark-font-color);
   display: flex;
   position: absolute;
   flex-direction: column;
@@ -102,57 +42,56 @@ p {
   right: 0;
 }
 
+// Sidenav Design
 .mat-toolbar {
-  background: black;
-  //color: $dark-primary;
+  background: mat.get-color-from-palette($dark-background);
+  border-color: rgba(255, 255, 255, 0.059);
+  border-bottom-style: solid;
 }
 
 .mat-drawer {
-  background-color: rgb(43, 42, 42);
+  background-color: mat.get-color-from-palette($dark-background);
 }
 
 .sidenav-container {
   height: 100%;
-  background-color: rgb(41, 41, 41);
-}
-
-.sidenav-content {
-  display: flex;
-  height: 100%;
-  //align-items: center;
-  //justify-content: center;
+  background-color: mat.get-color-from-palette($dark-background);
 }
 
 .sidenav {
-  //width: 15%;
   padding: 1%;
 }
 
 .mat-list-item {
-  //margin-right: 8px;
   font-size: 70%;
   cursor: pointer;
 }
 
-.mat-icon {
-  font-size: 130%;
-}
-
-.content {
-  display: flex;
-  margin: 82px auto 32px;
-  padding: 0 16px;
-  max-width: 960px;
-  flex-direction: column;
-  align-items: center;
-}
-
 .is-active {
   font-weight: bold;
-  color: #7b1fa2;;
+  color: mat.get-color-from-palette($dark-primary);
 }
 
-/* Scrollbar */
+// Mat-Icons Design
+.mat-icon {
+  font-size: 130%;
+  color: white;
+  background-color: mat.get-color-from-palette($dark-primary);
+}
+
+// Funktioniert noch nicht
+// Mat-Expanison Design
+.mat-expansion {
+  color: mat.get-color-from-palette($dark-content-background);
+}
+
+// Funktioniert noch nicht
+// Mat-Dialogs Design
+.mat-dialog {
+  color: mat.get-color-from-palette($dark-content-background);
+}
+
+// Scrollbar Design
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -166,11 +105,11 @@ p {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: blueviolet; 
+  background: mat.get-color-from-palette($dark-primary); 
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(110, 10, 204); 
+  background: mat.get-color-from-palette($dark-primary); 
 }

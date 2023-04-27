@@ -30,6 +30,7 @@ export class DialogExerciseComponent implements OnInit {
     this.equipment = this.data.data[this.data.index].equipment;
   }
 
+  // Safe Exercise Data
   safeData() {
     if (this.data.dialogName === 'Edit') {
       this.DataserviceService
