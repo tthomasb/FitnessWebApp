@@ -43,6 +43,9 @@ export class ExerciseComponent implements OnInit {
         height: '90%',
         data:{data: this.exercises, index:index, dialogName:Dialog.EDIT}
       });
+      dialogRef.afterClosed().subscribe((result) => {
+        this.ngOnInit();
+       });
     }
 
     openDeleteExercise(index:number){
@@ -74,11 +77,10 @@ export class ExerciseComponent implements OnInit {
       height: '90%',
       data: { data: this.exercises, dialogName: Dialog.CREATE }
     });
-    /**
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
-    */
+      this.ngOnInit();
+     });
+
   }
 
   // Catch the Dialog Event
