@@ -1,45 +1,49 @@
-@import "../../../styles/styles_variables.scss";
+.mat-tab-group {
+  margin-top: 5px;
+}
 
 .tab-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-  }
-  
-.tab-date {
-    font-size: 24px;
-    font-weight: bold;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
 }
-  
+
+.tab-month {
+  // Fix
+}
+
 .tab-day {
-    font-size: 16px;
-    font-weight: bold;
-    color: #999;
-    margin-bottom: 5px;
-}
-  
-.tab-content {
-    padding: 20px;
+  // Fix
 }
 
-.mat-tab-group {
-    margin-top: 5px;
+.span-month {
+}
+
+.span-day {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.span-day-label {
+  // Fix
+}
+
+.tab-content {
 }
 
 .mat-card {
-    margin: 8px;
+  margin: 8px;
 }
 
-.mat-card-header{
-    height: 50px;
+.mat-card-header {
+  height: 50px;
 }
 
-.mat-icon{
-    flex: 0%;
-    text-align: right;
-    height: 50px;
-    width: 50px;
-    background-color: transparent;
+.mat-icon {
+  flex: 0%;
+  text-align: right;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
 }
