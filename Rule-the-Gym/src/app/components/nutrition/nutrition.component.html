@@ -7,62 +7,48 @@
               <span class="tab-day">{{ date | date: 'EEE' }}</span>
             </div>
           </ng-template>
-          <div class="tab-content">
-            <!-- Tab-Inhalt -->
-          </div>
+          <div class="nutrition-card" >
+            <mat-card>
+                <mat-card-header>Übersicht</mat-card-header>
+                <mat-divider></mat-divider>
+                <mat-card-content>
+                   <mat-list>
+                        <mat-list-item>Goal - Eaten = Remaining</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>0g Fat   0g Carbs   0g Protein   0g kcal</mat-list-item>
+                    </mat-list> 
+                </mat-card-content>
+            </mat-card>
+            <mat-card>
+                <mat-card-header>Evening<mat-icon>add</mat-icon></mat-card-header>
+                <mat-divider></mat-divider>
+                    <mat-card-content>
+                        <mat-list>
+                            <mat-list>
+                                <mat-list-item>
+                                    <p>Bezeichnung     kcal</p>
+                                    <p>Grammanzahl     Nährwerte (Fat, Carbs, Protein)</p>
+                                </mat-list-item>
+                            </mat-list>
+                        </mat-list>
+                    </mat-card-content>
+            </mat-card>
+            <mat-card>
+                <mat-card-header>Noon<mat-icon>add</mat-icon></mat-card-header>
+                <mat-divider></mat-divider>
+                    <mat-card-content>
+
+                    </mat-card-content>
+            </mat-card>
+            <mat-card>
+                <mat-card-header>Morning<mat-icon>add</mat-icon></mat-card-header>
+                <mat-divider></mat-divider>
+                <mat-card-content>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
         </mat-tab>
       </mat-tab-group>      
-    <div class="nutrition-card" >
-        <mat-card>
-            <mat-card-header>Übersicht<mat-icon>add</mat-icon></mat-card-header>
-            <mat-divider></mat-divider>
-            <mat-card-content>
-               <mat-list>
-                    <mat-list-item>Goal - Eaten = Remaining</mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>0g Fat   0g Carbs   0g Protein   0g kcal</mat-list-item>
-                </mat-list> 
-            </mat-card-content>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>Evening<mat-icon>add</mat-icon></mat-card-header>
-            <mat-divider></mat-divider>
-                <mat-card-content>
-                    <mat-list>
-                        <mat-list>
-                            <mat-list-item>
-                                <p>Bezeichnung     kcal</p>
-                                <br>
-                                <p>Grammanzahl     Nährwerte (Fat, Carbs, Protein)</p>
-                            </mat-list-item>
-                            <mat-divider></mat-divider>
-                            <mat-list-item>Test</mat-list-item>
-                        </mat-list>
-                    </mat-list>
-                </mat-card-content>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>Noon<mat-icon>add</mat-icon></mat-card-header>
-            <mat-divider></mat-divider>
-                <mat-card-content>
-                    <mat-list>
-                        <mat-list-item>Test</mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>Test</mat-list-item>
-                    </mat-list>
-                </mat-card-content>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>Morning<mat-icon>add</mat-icon></mat-card-header>
-            <mat-divider></mat-divider>
-            <mat-card-content>
-                <mat-list>
-                    <mat-list-item>Test</mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>Test</mat-list-item>
-                </mat-list>
-            </mat-card-content>
-        </mat-card>
-    </div>
 </div>
   

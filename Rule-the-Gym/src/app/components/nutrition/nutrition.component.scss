@@ -1,13 +1,5 @@
 @import "../../../styles/styles_variables.scss";
 
-.mat-card {
-    margin: 8px;
-}
-
-.mat-tab-group {
-    margin-top: 5px;
-}
-
 .tab-header {
     display: flex;
     flex-direction: column;
@@ -31,7 +23,18 @@
 .tab-content {
     padding: 20px;
 }
-  
+
+.mat-tab-group {
+    margin-top: 5px;
+}
+
+.mat-card {
+    margin: 8px;
+}
+
+.mat-card-header{
+    height: 50px;
+}
 
 .mat-icon{
     flex: 0%;

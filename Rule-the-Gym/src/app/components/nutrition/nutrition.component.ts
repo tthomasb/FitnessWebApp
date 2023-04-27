@@ -13,6 +13,22 @@ interface Tab {
 })
 export class NutritionComponent implements OnInit {
 
+  // Data for Overview
+  goal!: number|undefined;
+  eaten!: number|undefined;
+  remaining!: number|undefined;
+  total_calories!: number|undefined;
+  total_fat!: number|undefined;
+  total_carbs!: number|undefined;
+  total_protein!: number|undefined;
+
+  // Data for Food
+  name!: string|undefined;
+  calories!: number|undefined;
+  fat!: number|undefined;
+  carbs!: number|undefined;
+  protein!: number|undefined;
+
   dates: Date[] = [];
   activeTabIndex = 0;
 
