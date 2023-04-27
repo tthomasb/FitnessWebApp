@@ -14,7 +14,7 @@
       </mat-tab-group>      
     <div class="nutrition-card" >
         <mat-card>
-            <mat-card-header>Übersicht<mat-icon>add</mat-icon></mat-card-header>
+            <mat-card-header>Übersicht</mat-card-header>
             <mat-divider></mat-divider>
             <mat-card-content>
                <mat-list>
@@ -25,7 +25,7 @@
             </mat-card-content>
         </mat-card>
         <mat-card>
-            <mat-card-header>Evening<mat-icon>add</mat-icon></mat-card-header>
+            <mat-card-header>Evening<mat-icon (click)="openAddNutritionDialog()">add</mat-icon></mat-card-header>
             <mat-divider></mat-divider>
                 <mat-card-content>
                     <mat-list>
@@ -42,7 +42,7 @@
                 </mat-card-content>
         </mat-card>
         <mat-card>
-            <mat-card-header>Noon<mat-icon>add</mat-icon></mat-card-header>
+            <mat-card-header>Noon<mat-icon (click)="openAddNutritionDialog()">add</mat-icon></mat-card-header>
             <mat-divider></mat-divider>
                 <mat-card-content>
                     <mat-list>
@@ -53,7 +53,7 @@
                 </mat-card-content>
         </mat-card>
         <mat-card>
-            <mat-card-header>Morning<mat-icon>add</mat-icon></mat-card-header>
+            <mat-card-header>Morning<mat-icon (click)="openAddNutritionDialog()">add</mat-icon></mat-card-header>
             <mat-divider></mat-divider>
             <mat-card-content>
                 <mat-list>

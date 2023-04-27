@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogAddNutritionComponent } from 'src/app/dialogues/dialog-add-nutrition/dialog-add-nutrition.component';
+import { Dialog } from 'src/app/enums/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+
 
 interface Tab {
   label: string;
@@ -16,7 +20,7 @@ export class NutritionComponent implements OnInit {
   dates: Date[] = [];
   activeTabIndex = 0;
 
-  constructor() { 
+  constructor(public dialog: MatDialog) { 
   }
 
   ngOnInit(): void {
@@ -33,4 +37,18 @@ export class NutritionComponent implements OnInit {
     const todayIndex = this.dates.findIndex(d => d.toDateString() === today.toDateString());
     console.log(today)
   }
+
+  testAlert() {
+    alert('test');
+  }
+
+  // Öffnet den Dialog zum Hinzufügen eines Nahrungsmittels
+  openAddNutritionDialog() {
+    const dialogRef = this.dialog.open(DialogAddNutritionComponent, {
+      width: '90%',
+      height: '90%',
+      data: { dialogName: Dialog.ADD }
+    });
+  }
+    
 }
