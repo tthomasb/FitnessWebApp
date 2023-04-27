@@ -20,7 +20,7 @@
                 </mat-card-content>
             </mat-card>
             <mat-card>
-                <mat-card-header>Evening<mat-icon>add</mat-icon></mat-card-header>
+                <mat-card-header>Evening<mat-icon (click)="openAddNutritionDialog()">add</mat-icon></mat-card-header>
                 <mat-divider></mat-divider>
                     <mat-card-content>
                         <mat-list>
@@ -31,24 +31,31 @@
                                 </mat-list-item>
                             </mat-list>
                         </mat-list>
-                    </mat-card-content>
-            </mat-card>
-            <mat-card>
-                <mat-card-header>Noon<mat-icon>add</mat-icon></mat-card-header>
-                <mat-divider></mat-divider>
-                    <mat-card-content>
-
-                    </mat-card-content>
-            </mat-card>
-            <mat-card>
-                <mat-card-header>Morning<mat-icon>add</mat-icon></mat-card-header>
-                <mat-divider></mat-divider>
-                <mat-card-content>
-
+                    </mat-list>
                 </mat-card-content>
-            </mat-card>
-        </div>
-        </mat-tab>
-      </mat-tab-group>      
+        </mat-card>
+        <mat-card>
+            <mat-card-header>Noon<mat-icon (click)="openAddNutritionDialog()">add</mat-icon></mat-card-header>
+            <mat-divider></mat-divider>
+                <mat-card-content>
+                    <mat-list>
+                        <mat-list-item>Test</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>Test</mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>Morning<mat-icon (click)="openAddNutritionDialog()">add</mat-icon></mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item>Test</mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>Test</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
   
