@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
+import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-dialog-exercise',
@@ -8,19 +9,22 @@ import { ExerciseModel } from 'src/app/models/exercise-model.model';
   styleUrls: ['./dialog-exercise.component.scss'],
 })
 export class DialogExerciseComponent implements OnInit {
-  name!: string;
+  exercise_id!: string;
+  exercisename!: string;
   description!: string;
   muscle!: string;
   equipment!: string;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public DialogRef: MatDialogRef<DialogExerciseComponent>,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private DataserviceService: DataServiceService
   ) {}
 
   ngOnInit(): void {
     //    console.log(this.data);
-    this.name = this.data.data[this.data.index].name;
+    this.exercise_id = this.data.data[this.data.index].exercise_id;
+    this.exercisename = this.data.data[this.data.index].exercisename;
     this.description = this.data.data[this.data.index].description;
     this.muscle = this.data.data[this.data.index].muscle;
     this.equipment = this.data.data[this.data.index].equipment;
@@ -28,26 +32,17 @@ export class DialogExerciseComponent implements OnInit {
 
   // Safe Exercise Data
   safeData() {
-    console.log(this.data.data);
-    console.log(this.name);
     if (this.data.dialogName === 'Edit') {
-      this.data.data[this.data.index].name = this.name;
-      this.data.data[this.data.index].description = this.description;
-      this.data.data[this.data.index].muscle = this.muscle;
-      this.data.data[this.data.index].equipment = this.equipment;
-      console.log(this.data.data);
+      this.DataserviceService
+      .editExercise(this.exercise_id, this.exercisename, this.description, this.muscle, this.equipment)
+      .subscribe(() => {});
     }
 
     //Safe data Create
     if (this.data.dialogName === 'Create') {
-      this.data.data.push(
-        new ExerciseModel(
-          this.name,
-          this.description,
-          this.muscle,
-          this.equipment
-        )
-      );
+      this.DataserviceService
+      .createExercise(this.exercisename, this.description, this.muscle, this.equipment)
+      .subscribe(() => {})
     }
   }
 }

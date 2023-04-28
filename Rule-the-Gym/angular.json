@@ -68,6 +68,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {"proxyConfig": "proxy.config.json"},
           "configurations": {
             "production": {
               "browserTarget": "Rule-the-Gym:build:production"

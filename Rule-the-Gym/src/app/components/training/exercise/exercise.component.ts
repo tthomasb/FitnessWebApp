@@ -5,6 +5,7 @@ import { DialogExerciseComponent } from 'src/app/dialogues/dialog-exercise/dialo
 import { Dialog } from 'src/app/enums/dialog';
 import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
+import { Exercise } from 'src/app/models/models';
 
 
 @Component({
@@ -13,18 +14,16 @@ import { DataServiceService } from 'src/app/services/data-service.service';
   styleUrls: ['./exercise.component.scss'],
 })
 export class ExerciseComponent implements OnInit {
-  exercises: ExerciseModel[];
-  dataService: DataServiceService;
+ exercises:Exercise[]=[];
+ constructor(private dataService: DataServiceService, public dialog:MatDialog) {
+  this.dataService=dataService;
+}
 
-
-  constructor(dataService: DataServiceService, public dialog: MatDialog) {
-    this.dataService = dataService;
-    this.exercises = dataService.getAllExercises();
-
-
-  }
-
-  ngOnInit(): void { }
+  ngOnInit() {
+    this.dataService
+    .getAllExercises()
+    .subscribe((exercises) => {(this.exercises = exercises)
+    });}
 
   /**
    * Open the workout dialog
@@ -38,34 +37,38 @@ export class ExerciseComponent implements OnInit {
     return data;
   }
 
-  // Edit Exercise Dialog 
-  openEditExercise(index: number) {
-    const dialogRef = this.dialog.open(DialogExerciseComponent, {
-      width: '90%',
-      height: '90%',
-      data: { data: this.exercises, index: index, dialogName: Dialog.EDIT }
-    });
-  }
+    openEditExercise(index:number){
+      const dialogRef = this.dialog.open(DialogExerciseComponent, {
+        width: '90%',
+        height: '90%',
+        data:{data: this.exercises, index:index, dialogName:Dialog.EDIT}
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        this.ngOnInit();
+       });
+    }
 
-  // Delete Exercise Dialog
-  openDeleteExercise(index: number) {
-    const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
-      width: '20%',
-      height: '25%',
-      data: { data: this.exercises, index: index, answer: false },
-    });
-    const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {
-      if (e) this.deleteExercise(index);
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      dialogRef.componentInstance.Emitter.unsubscribe();
-    });
+    openDeleteExercise(index:number){
+      const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
+        width: '20%',
+        height: '25%',
+        data:{data: this.exercises, index:index,answer: false},
+      });
+      const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {
+        if(e)this.deleteExercise(this.exercises[index].exercise_id);
+      });
+      dialogRef.afterClosed().subscribe(() => {
+        dialogRef.componentInstance.Emitter.unsubscribe();
+      });
 
-    // Delete Exercise
-  }
-  deleteExercise(index: number) {
-    this.exercises.splice(index, 1);
-  }
+    }
+    deleteExercise(index:string): void {
+        this.dataService.deleteExercise(index).subscribe(() => {
+          this.exercises = this.exercises.filter((exercise) => exercise.exercise_id !== index);
+        });
+    }
+
+
 
   // Add Exercise Dialog
   openAddExercise() {
@@ -74,11 +77,10 @@ export class ExerciseComponent implements OnInit {
       height: '90%',
       data: { data: this.exercises, dialogName: Dialog.CREATE }
     });
-    /**
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
-    */
+      this.ngOnInit();
+     });
+
   }
 
   // Catch the Dialog Event
