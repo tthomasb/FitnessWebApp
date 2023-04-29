@@ -44,9 +44,8 @@ export class BmiComponent implements OnInit {
 
   // Constructor to initialize the form builder and breakpoint observer
   constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) { 
-    this.gender = "Male";
     this.bmi = 0;
-    this.result = "-";
+    this.result = "Fill in valid data";
     this.stepperOrientation = breakpointObserver
     .observe('(min-width: 800px)')
     .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
@@ -56,44 +55,343 @@ export class BmiComponent implements OnInit {
   }
 
   // Method to get the BMI category based on the BMI value
-  getAdvancedBmiCategory(): string {
-    if (this.bmi < 16) {
-      return "Severe Thinness";
-    } else if (this.bmi >= 16 && this.bmi < 17) {
-      return "Moderate Thinness";
-    } else if (this.bmi >= 17 && this.bmi < 18.5) {
-      return "Mild Thinness";
-    } else if (this.bmi >= 18.5 && this.bmi < 25) {
-      return "Normal";
-    } else if (this.bmi >= 25 && this.bmi < 30) {
-      return "Overweight";
-    } else if (this.bmi >= 30 && this.bmi < 35) {
-      return "Obese Class I";
-    } else if (this.bmi >= 35 && this.bmi < 40) {
-      return "Obese Class II";
-    } else if (this.bmi >= 40) {
-      return "Obese Class III";
+  getAdvancedBmiCategoryForMan(): string {
+
+    console.log(this.age);
+    const parsedAge = parseInt(this.age);
+    
+    if (parsedAge >= 1 && parsedAge <= 18){
+      if (this.bmi < 13,2) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 13,2 && this.bmi < 14,2) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 14,2 && this.bmi < 15,7) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 15,7 && this.bmi < 22,2) {
+        return "Normal";
+      } else if (this.bmi >= 22,2 && this.bmi < 27,2) {
+        return "Overweight";
+      } else if (this.bmi >= 27,2 && this.bmi < 32,2) {
+        return "Obese Class I";
+      } else if (this.bmi >= 32,2 && this.bmi < 37,2) {
+        return "Obese Class II";
+      } else if (this.bmi >= 37,2) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 19 && parsedAge <= 24){
+      if (this.bmi < 16.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 16.5 && this.bmi < 17.5) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 17.5 && this.bmi < 19.5) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 19.5 && this.bmi < 25.5) {
+        return "Normal";
+      } else if (this.bmi >= 25.5 && this.bmi < 30.5) {
+        return "Overweight";
+      } else if (this.bmi >= 30.5 && this.bmi < 35.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 35.5 && this.bmi < 40.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 40.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 25 && parsedAge <= 34){
+      if (this.bmi < 17.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 17.5 && this.bmi < 18.5) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 18.5 && this.bmi < 20) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 20 && this.bmi < 26.5) {
+        return "Normal";
+      } else if (this.bmi >= 26.5 && this.bmi < 31.5) {
+        return "Overweight";
+      } else if (this.bmi >= 31.5 && this.bmi < 36.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 36.5 && this.bmi < 41.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 41.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 35 && parsedAge <= 44){
+      if (this.bmi < 18.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 18.5 && this.bmi < 19.5) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 19.5 && this.bmi < 23.5) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 23.5 && this.bmi < 28.5) {
+        return "Normal";
+      } else if (this.bmi >= 28.5 && this.bmi < 32.5) {
+        return "Overweight";
+      } else if (this.bmi >= 32.5 && this.bmi < 37.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 37.5 && this.bmi < 42.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 42.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 45 && parsedAge <= 54){
+      if (this.bmi < 19.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 19.5 && this.bmi < 20.5) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 20.5 && this.bmi < 22) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 22 && this.bmi < 28.5) {
+        return "Normal";
+      } else if (this.bmi >= 28.5 && this.bmi < 33.5) {
+        return "Overweight";
+      } else if (this.bmi >= 33.5 && this.bmi < 38.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 38.5 && this.bmi < 43.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 43.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 55 && parsedAge <= 64){
+      if (this.bmi < 20.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 20.5 && this.bmi < 21.5) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 21.5 && this.bmi < 23) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 23 && this.bmi < 29.5) {
+        return "Normal";
+      } else if (this.bmi >= 29.5 && this.bmi < 34,5) {
+        return "Overweight";
+      } else if (this.bmi >= 34.5 && this.bmi < 39.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 39.5 && this.bmi < 44.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 44.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 65){
+      if (this.bmi < 21.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 21.5 && this.bmi < 22.5) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 22.5 && this.bmi < 24) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 24 && this.bmi < 30.5) {
+        return "Normal";
+      } else if (this.bmi >= 30.5 && this.bmi < 35.5) {
+        return "Overweight";
+      } else if (this.bmi >= 35.5 && this.bmi < 40.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 40.5 && this.bmi < 45.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 45.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
     } else {
-      return "No BMI calculated";
+      return "Please, enter your age"
     }
+  }
+
+  getAdvancedBmiCategoryForWoman(): string {
+
+    console.log(this.age);
+    const parsedAge = parseInt(this.age);
+
+    if (parsedAge >= 1 && parsedAge <= 18){
+      if (this.bmi < 13,1) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 13,1 && this.bmi < 14,1) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 14,1 && this.bmi < 15,6) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 15,6 && this.bmi < 22,1) {
+        return "Normal";
+      } else if (this.bmi >= 22,1 && this.bmi < 27,1) {
+        return "Overweight";
+      } else if (this.bmi >= 27,1 && this.bmi < 32,1) {
+        return "Obese Class I";
+      } else if (this.bmi >= 32,1 && this.bmi < 37,1) {
+        return "Obese Class II";
+      } else if (this.bmi >= 37,1) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 19 && parsedAge <= 24){
+      if (this.bmi < 15.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 15.5 && this.bmi < 165) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 16.5 && this.bmi < 18) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 18 && this.bmi < 24.5) {
+        return "Normal";
+      } else if (this.bmi >= 24.5 && this.bmi < 29.5) {
+        return "Overweight";
+      } else if (this.bmi >= 29.5 && this.bmi < 34.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 34.5 && this.bmi < 39.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 39.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 25 && parsedAge <= 34){
+      if (this.bmi < 16.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 16.5 && this.bmi < 17.5) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 17.5 && this.bmi < 19) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 19 && this.bmi < 25.5) {
+        return "Normal";
+      } else if (this.bmi >= 25.5 && this.bmi < 30.5) {
+        return "Overweight";
+      } else if (this.bmi >= 30.5 && this.bmi < 35.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 35.5 && this.bmi < 40.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 40.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 35 && parsedAge <= 44){
+      if (this.bmi < 17.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 17.5 && this.bmi < 18.5) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 18.5 && this.bmi < 20) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 20 && this.bmi < 26.5) {
+        return "Normal";
+      } else if (this.bmi >= 26.5 && this.bmi < 31.5) {
+        return "Overweight";
+      } else if (this.bmi >= 31.5 && this.bmi < 36.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 36.5 && this.bmi < 41.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 41.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 45 && parsedAge <= 54){
+      if (this.bmi < 18.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 18.5 && this.bmi < 19.5) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 19.5 && this.bmi < 21) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 21 && this.bmi < 27.5) {
+        return "Normal";
+      } else if (this.bmi >= 27.5 && this.bmi < 32.5) {
+        return "Overweight";
+      } else if (this.bmi >= 32.5 && this.bmi < 37.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 37.5 && this.bmi < 42.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 42.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 55 && parsedAge <= 64){
+      if (this.bmi < 19.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 19.5 && this.bmi < 20.5) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 20.5 && this.bmi < 22) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 22 && this.bmi < 28.5) {
+        return "Normal";
+      } else if (this.bmi >= 28.5 && this.bmi < 33.5) {
+        return "Overweight";
+      } else if (this.bmi >= 33.5 && this.bmi < 38.5) {
+        return "Obese Class I";
+      } else if (this.bmi >= 38.5 && this.bmi < 43.5) {
+        return "Obese Class II";
+      } else if (this.bmi >= 43.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else if (parsedAge >= 65){
+      if (this.bmi < 20.5) {
+        return "Severe Thinness";
+      } else if (this.bmi >= 20.5 && this.bmi < 16) {
+        return "Moderate Thinness";
+      } else if (this.bmi >= 21.5 && this.bmi < 17.5) {
+        return "Mild Thinness";
+      } else if (this.bmi >= 23 && this.bmi < 24) {
+        return "Normal";
+      } else if (this.bmi >= 29.5 && this.bmi < 29) {
+        return "Overweight";
+      } else if (this.bmi >= 34.5 && this.bmi < 34) {
+        return "Obese Class I";
+      } else if (this.bmi >= 39.5 && this.bmi < 39) {
+        return "Obese Class II";
+      } else if (this.bmi >= 44.5) {
+        return "Obese Class III";
+      } else {
+        return "No BMI calculated";
+      }
+    } else {
+      return "Please, enter your age"
+    }
+  }
+
+  //Change Gender Method
+  changeGender(gender: string) {
+    this.gender = gender;
+    console.log(this.gender);
   }
   
   // Method to calculate BMI based on height, weight and gender input
   getBmi() {
     const parsedWeight = parseInt(this.weight);
     const parsedHeight = parseInt(this.height);
-    if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
+
+  /*  if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
       this.bmi = parsedWeight / (Math.pow(parsedHeight, 2)/10000);
-      this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategory()}`;
+      this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForMan()}`;
     } else {
       this.result = "Fill in valid data";
     }
+  } */
+
+  if(this.gender == "Male"){
+      if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
+        this.bmi = parsedWeight / (Math.pow(parsedHeight, 2)/10000);
+        this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForMan()}`;
+      } else {
+        this.result = "Fill in valid data";
+      }
+    } else {
+      if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
+        this.bmi = parsedWeight / (Math.pow(parsedHeight, 2)/10000);
+        this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForWoman()}`;
+      } else {
+        this.result = "Fill in valid data";
+      }
+    }
   }
 
-  changeGender(gender: string) {
-    this.gender = gender;
-    console.log(this.gender);
-  }
+  
 }
 
 // BMI table interface

@@ -11,8 +11,8 @@
         <mat-panel-title>All exercises</mat-panel-title>
       </mat-expansion-panel-header>
       <div *ngFor='let exercise of Allexercises; let index=index'>
-        <mat-card class="test" *ngIf='exercise.name.toUpperCase().match(search.toUpperCase())'>
-          <mat-card-title>{{ exercise.name }}</mat-card-title>
+        <mat-card class="test" *ngIf='exercise.exercisename.toUpperCase().match(search.toUpperCase())'>
+          <mat-card-title>{{ exercise.exercisename }}</mat-card-title>
               <mat-card-subtitle>{{ exercise.description }}</mat-card-subtitle>
           <mat-card-actions>
             <button  
