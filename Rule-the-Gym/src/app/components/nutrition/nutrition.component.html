@@ -1,74 +1,82 @@
 <div class="nutrition" role="main">
-    <mat-tab-group mat-stretch-tabs class="mat-tab-group">
-      <mat-tab label="mo"></mat-tab>
-      <mat-tab label="tu"></mat-tab>
-      <mat-tab label="we"></mat-tab>
-      <mat-tab label="th"></mat-tab>
-      <mat-tab label="fr"></mat-tab>
-      <mat-tab label="sa"></mat-tab>
-      <mat-tab label="su"></mat-tab>
-      <mat-tab label="->"></mat-tab>
-    </mat-tab-group>
-    <div class="nutrition-card" >
-        <mat-card>
-            <mat-card-header>Übersicht</mat-card-header>
-            <mat-divider></mat-divider>
-            <mat-list>
-                <mat-list-item>Goal - Eaten + Burned = Remaining</mat-list-item>
+  <mat-tab-group [selectedIndex]="activeTabIndexMonth">
+    <mat-tab *ngFor="let month of months" class="tab-month">
+      <ng-template mat-tab-label>
+        <span class="span-month">{{ month }}</span>
+      </ng-template>
+      <ng-template matTabContent>
+        <mat-tab-group [selectedIndex]="activeTabIndexDay">
+          <mat-tab *ngFor="let day of getDays(month)" class="tab-day">
+            <ng-template mat-tab-label>
+              <span class="span-day">{{ day }}</span>
+              <span *ngFor="let date of dates" class="tab-day-label">{{
+                date | date : "EEE"
+              }}</span>
+            </ng-template>
+            <div class="nutrition-card">
+              <mat-card>
+                <mat-card-header>Übersicht</mat-card-header>
                 <mat-divider></mat-divider>
-                <mat-list-item>0g Fat   0g Carbs   0g Protein   0g kcal</mat-list-item>
-            </mat-list>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>Evening<mat-icon>add</mat-icon></mat-card-header>
-            <mat-divider></mat-divider>
                 <mat-card-content>
-                    <mat-list>
-                        <mat-list>
-                            <mat-list-item>
-                                <p>Bezeichnung     kcal</p>
-                                <br>
-                                <p>Grammanzahl     Nährwerte (Fat, Carbs, Protein)</p>
-                            </mat-list-item>
-                            <mat-divider></mat-divider>
-                            <mat-list-item>Test</mat-list-item>
-                        </mat-list>
-                    </mat-list>
+                  <mat-list>
+                    <mat-list-item>Goal - Eaten = Remaining</mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item
+                      >0g Fat 0g Carbs 0g Protein 0g kcal</mat-list-item
+                    >
+                  </mat-list>
                 </mat-card-content>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>Noon<mat-icon>add</mat-icon></mat-card-header>
-            <mat-divider></mat-divider>
+              </mat-card>
+              <mat-card>
+                <mat-card-header
+                  >Evening<mat-icon (click)="openAddNutritionDialog()"
+                    >add</mat-icon
+                  ></mat-card-header
+                >
+                <mat-divider></mat-divider>
                 <mat-card-content>
-                    <mat-list>
-                        <mat-list-item>Test</mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>Test</mat-list-item>
-                    </mat-list>
+                  <mat-list>
+                    <mat-list-item>
+                      <p>Bezeichnung kcal</p>
+                      <p>Grammanzahl Nährwerte (Fat, Carbs, Protein)</p>
+                    </mat-list-item>
+                  </mat-list>
                 </mat-card-content>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>Morning<mat-icon>add</mat-icon></mat-card-header>
-            <mat-divider></mat-divider>
-            <mat-card-content>
-                <mat-list>
+              </mat-card>
+              <mat-card>
+                <mat-card-header
+                  >Noon<mat-icon (click)="openAddNutritionDialog()"
+                    >add</mat-icon
+                  ></mat-card-header
+                >
+                <mat-divider></mat-divider>
+                <mat-card-content>
+                  <mat-list>
                     <mat-list-item>Test</mat-list-item>
                     <mat-divider></mat-divider>
                     <mat-list-item>Test</mat-list-item>
-                </mat-list>
-            </mat-card-content>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>Activities<mat-icon>add</mat-icon></mat-card-header>
-            <mat-divider></mat-divider>
-            <mat-card-content>
-                <mat-list>
+                  </mat-list>
+                </mat-card-content>
+              </mat-card>
+              <mat-card>
+                <mat-card-header
+                  >Morning<mat-icon (click)="openAddNutritionDialog()"
+                    >add</mat-icon
+                  ></mat-card-header
+                >
+                <mat-divider></mat-divider>
+                <mat-card-content>
+                  <mat-list>
                     <mat-list-item>Test</mat-list-item>
                     <mat-divider></mat-divider>
                     <mat-list-item>Test</mat-list-item>
-                </mat-list>
-            </mat-card-content>
-        </mat-card>
-    </div>
+                  </mat-list>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
 </div>
-  

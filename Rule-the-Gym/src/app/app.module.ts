@@ -27,6 +27,7 @@ import { DialogEditWorkoutComponent } from './dialogues/dialog-edit-workout/dial
 import { DialogStartWorkoutTimeComponent } from './dialogues/dialog-start-workout/dialog-start-workout-time/dialog-start-workout-time.component';
 import { AccordionComponent } from './components/utils/accordion/accordion.component';
 import { DialogAskDeleteComponent } from './dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
+import { DialogAddNutritionComponent } from './dialogues/dialog-add-nutrition/dialog-add-nutrition.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -47,6 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     DialogEditWorkoutComponent,
     DialogStartWorkoutTimeComponent,
     DialogAskDeleteComponent,
+    DialogAddNutritionComponent,
     ExampleAllItemsComponent,
     ExampleCreateItemComponent,
     ExampleEditItemComponent,
