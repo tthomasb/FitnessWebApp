@@ -27,7 +27,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DialogEditWorkoutComponent>,
     public dialog: MatDialog,
-    private dataService: DataServiceService
+    public dataService: DataServiceService
   ) {}
 
   ngOnInit(): void {
