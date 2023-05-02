@@ -7,13 +7,14 @@ import {
 } from '@angular/material/legacy-dialog';
 import { DialogAskDeleteComponent } from '../dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
-import { Exercise, Set } from 'src/app/models/models';
+import { Exercise, Set, WorkoutExercise } from 'src/app/models/models';
 
 @Component({
   selector: 'app-dialog-edit-workout',
   templateUrl: './dialog-edit-workout.component.html',
   styleUrls: ['./dialog-edit-workout.component.scss'],
 })
+
 export class DialogEditWorkoutComponent implements OnInit {
   sets: Set[] = [
     { set_id: 0, workout_exercise_id: 0, reps: 0, weight: 0, pause: 0 },
@@ -21,7 +22,7 @@ export class DialogEditWorkoutComponent implements OnInit {
   exercises: Exercise[] = [];
   index!: number;
   workout: any;
-  workoutexercises!: any;
+  workoutexercises!: WorkoutExercise[];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -84,6 +85,7 @@ export class DialogEditWorkoutComponent implements OnInit {
       dialogRef.componentInstance.Emitter.unsubscribe();
     });
   }
+  
   // Delete the selected exercise
   deleteExercise(index: any) {
     //todo fix this
@@ -94,6 +96,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     );
     this.ngOnInit();
   }
+  
   safeWorkoutData() {        
     this.dataService.safeWorkout(this.data.workout);
   }

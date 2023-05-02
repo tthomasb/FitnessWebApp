@@ -19,7 +19,12 @@ export interface WorkoutExercise{
   workout_exercise_id:number,
   workout_id:number,
   exercise_id:number,
-  exercisepause:number
+  exercisepause:number,
+  exercisename:String,
+  description:String,
+  equipment:String,
+  muscle:String,
+  user_id:number
 }
 
 export interface Set{
@@ -28,4 +33,12 @@ export interface Set{
   reps:number,
   pause:number,
   weight:number
+}
+
+export interface Set_History{
+  set_id:number,
+  set_history_id:number,
+  reps:number,
+  weight:number,
+  record_time:Date
 }

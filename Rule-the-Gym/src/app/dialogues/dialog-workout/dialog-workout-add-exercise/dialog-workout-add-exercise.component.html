@@ -1,40 +1,37 @@
 <div class="dialog">
   <div mat-dialog-container>
     <h1 mat-dialog-title>Choose an exercise</h1>
-    <mat-card style="background-color:4b4b4b !important">
-    <mat-form-field>
-      <input type="text" matInput placeholder="Search in all exercises" [(ngModel)]='search'/>
-    </mat-form-field>
-    <div class="toplayer">
-    <mat-expansion-panel >
-      <mat-expansion-panel-header>
-        <mat-panel-title>All exercises</mat-panel-title>
-      </mat-expansion-panel-header>
-      <div *ngFor='let exercise of Allexercises; let index=index'>
-        <mat-card class="test" *ngIf='exercise.exercisename.toUpperCase().match(search.toUpperCase())'>
-          <mat-card-title>{{ exercise.exercisename }}</mat-card-title>
+    <mat-card style="background-color: 4b4b4b !important">
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Search in all exercises"
+          [(ngModel)]="search"
+        />
+      </mat-form-field>
+      <div class="toplayer">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>All exercises</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngFor="let exercise of Allexercises; let index = index">
+            <mat-card class="test" *ngIf="exercise.exercisename.toUpperCase().match(search.toUpperCase())">
+              <mat-card-title>{{ exercise.exercisename }}</mat-card-title>
               <mat-card-subtitle>{{ exercise.description }}</mat-card-subtitle>
-          <mat-card-actions>
-            <button  
-                  mat-flat-button
-                  (click)="AddExercise(index)"
-                  color="primary"
-                  class="button-delete"
-                >
+              <mat-card-actions>
+                <button mat-flat-button (click)="AddExercise(index)" color="primary" class="button-delete">
                   Add
                 </button>
-          </mat-card-actions>
-
-        </mat-card>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </mat-expansion-panel>
       </div>
-    </mat-expansion-panel>
-  </div>
-    <app-accordion [Data]="getAccordionData()" (dialogEvent)="catchDialogEvent($event)"></app-accordion>
-
-
-    <div mat-dialog-actions>
-      <button mat-flat-button color="primary" mat-dialog-close>Done</button>
-    </div>
-  </mat-card>
+      <app-accordion [Data]="getAccordionData()" (dialogEvent)="catchDialogEvent($event)"></app-accordion>
+      <div mat-dialog-actions>
+        <button mat-flat-button color="primary" mat-dialog-close>Finish</button>
+      </div>
+    </mat-card>
   </div>
 </div>

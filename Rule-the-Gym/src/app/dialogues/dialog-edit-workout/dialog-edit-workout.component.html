@@ -64,23 +64,12 @@
         </div>
       </div>
     </mat-card-subtitle>
-    <form class="example-form">
-      <button
-        mat-flat-button
-        (click)="addExercise()"
-        color="primary"
-        class="button-add"
-      >
-        Choose exercise
-      </button>
-    </form>
     <div mat-dialog-actions>
-      <button 
-      mat-flat-button 
-      color="primary" 
-      (click)="safeWorkoutData()"
-      mat-dialog-close
-      >Done
+      <button mat-flat-button (click)="addExercise()" color="primary" class="button-add">
+        Add exercise
+      </button>
+      <button mat-flat-button color="primary" (click)="safeWorkoutData()" mat-dialog-close>
+        Finish
     </button>  
     </div>
   </div>

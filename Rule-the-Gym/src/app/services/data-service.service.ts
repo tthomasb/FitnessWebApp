@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Exercise, Set, Workout, WorkoutExercise } from '../models/models';
+import { Exercise, Set, Set_History, Workout, WorkoutExercise } from '../models/models';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,6 +13,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class DataServiceService {
+  
   constructor(private http: HttpClient) {}
 
   getAllExercises(): Observable<Exercise[]> {
@@ -90,7 +91,7 @@ export class DataServiceService {
     return res;
   }
 
-  deleteWorkoutExercise(id: string) {
+  deleteWorkoutExercise(id: number) {
     this.http
       .delete(`api/workout/exercise/delete/${id}`, httpOptions)
       .subscribe((e) => {
@@ -102,7 +103,7 @@ export class DataServiceService {
     return this.http.post<WorkoutExercise>(`api/workout/exercise/add`,{"workout_id":workout_id, "exercise_id":exercise_id},httpOptions);
   }
 
-  getSetsByWorkoutExerciseId(id: string): Observable<Set[]> {
+  getSetsByWorkoutExerciseId(id: number): Observable<Set[]> {
     return this.http.get<Set[]>(`api/workout/exercise/set/${id}`, httpOptions);
   }
 
@@ -113,10 +114,6 @@ export class DataServiceService {
         { reps: reps, weight: weight, pause: pause },
         httpOptions
       )
-      .subscribe((data) => {
-        
-        console.log(data);
-      });
   }
 
   DeleteSet(): any[] {
@@ -128,9 +125,21 @@ export class DataServiceService {
     return res;
   }
 
-  getSetHistoryBySetId(): any[] {
-    let res: any[] = [];
-    return res;
+  getSetHistoryBySetId(id: number): Observable<Set_History> {
+    return this.http
+      .get<Set_History>(
+        `api/workout/exercise/set_history/${id}`,
+        httpOptions
+      )
+  }
+
+  safeSetHistoryData(set_history: Set_History) {
+    // console.log(set_history);
+    return this.http.put(`api/workout/exercise/set_history/${set_history.set_history_id}`,{reps:set_history.reps, weight:set_history.weight, record_time:set_history.record_time},httpOptions).subscribe((e)=>console.log(e))
+  }
+
+  workoutGetTime(workout_id: any) {
+    // return this.http.get<ExerciseTime>(`api/workout/exercise/time`, httpOptions);
   }
 
   createSetHistory(): any[] {

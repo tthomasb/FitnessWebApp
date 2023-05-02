@@ -1,6 +1,6 @@
 <div class="dialog">
   <div mat-dialog-container>
-    <mat-card-title><h1 mat-dialog-title>Workout title</h1></mat-card-title>
+    <mat-card-title><h1 mat-dialog-title>{{data.data.workoutname}}</h1></mat-card-title>
     <mat-card-subtitle>
       <div mat-dialog-content>
         <div class="Exercises">
@@ -12,73 +12,23 @@
                   <mat-panel-description> Muscle group </mat-panel-description>
                 </mat-expansion-panel-header>
               </mat-expansion-panel>
-              <mat-expansion-panel>
+              <mat-expansion-panel *ngFor="let exercise of workoutExercises; let index=index" (opened)="loadSetHistoryData(index)">
                 <mat-expansion-panel-header>
-                  <mat-panel-title> Dumbell Rows </mat-panel-title>
-                  <mat-panel-description> Back </mat-panel-description>
+                  <mat-panel-title> {{exercise.exercisename}} </mat-panel-title>
+                  <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
                 </mat-expansion-panel-header>
-                <mat-card appearance="fill">
-                  Set 1:
-                  <mat-label
-                    >Weight (kg):
-                    <input matInput value="" />
+                <mat-card appearance="fill" *ngFor="let set of setHistory; let setIndex=index">
+                    Set 1:
+                  <mat-label> Weight (kg):
+                    <!-- Binding fehlt -> Ask Bene -->
+                    <input matInput placeholder="" [(ngModel)]="setHistory[setIndex].weight"/>
                   </mat-label>
-                  <mat-label>Reps: <input matInput value="" /></mat-label>
-                  <button mat-flat-button (click)="startTime()" color="primary">
+                  <mat-label> Reps:
+                    <input matInput placeholder="" [(ngModel)]="setHistory[setIndex].reps"/>
+                  </mat-label>
+                  <button mat-flat-button (click)="startTime()" color="primary"> 
                     Finish set
                   </button>
-                </mat-card>
-                <br />
-                <mat-card appearance="fill">
-                  Set 2:
-                  <mat-label
-                    >Weight (kg): <input matInput value=""
-                  /></mat-label>
-                  <mat-label>Reps: <input matInput value="" /></mat-label>
-                  <button mat-flat-button color="primary">Finish set</button>
-                </mat-card>
-                <br />
-                <mat-card appearance="fill">
-                  Set 3:
-                  <mat-label
-                    >Weight (kg): <input matInput value=""
-                  /></mat-label>
-                  <mat-label>Reps: <input matInput value="" /></mat-label>
-                  <button mat-flat-button color="primary">Finish set</button>
-                </mat-card>
-                <br />
-              </mat-expansion-panel>
-
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title> Hammer curls </mat-panel-title>
-                  <mat-panel-description> Arms </mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-card appearance="fill">
-                  Set 1:
-                  <mat-label
-                    >Weight (kg): <input matInput value=""
-                  /></mat-label>
-                  <mat-label>Reps: <input matInput value="" /></mat-label>
-                  <button mat-flat-button color="primary">Finish set</button>
-                </mat-card>
-                <br />
-                <mat-card appearance="fill">
-                  Set 2:
-                  <mat-label
-                    >Weight (kg): <input matInput value=""
-                  /></mat-label>
-                  <mat-label>Reps: <input matInput value="" /></mat-label>
-                  <button mat-flat-button color="primary">Finish set</button>
-                </mat-card>
-                <br />
-                <mat-card appearance="fill">
-                  Set 3:
-                  <mat-label
-                    >Weight (kg): <input matInput value=""
-                  /></mat-label>
-                  <mat-label>Reps: <input matInput value="" /></mat-label>
-                  <button mat-flat-button color="primary">Finish set</button>
                 </mat-card>
                 <br />
               </mat-expansion-panel>
@@ -87,18 +37,12 @@
         </div>
       </div>
     </mat-card-subtitle>
-    <form class="example-form">
-      <!--<button
-        mat-flat-button
-        (click)="Exercise()"
-        color="primary"
-        class="button-add"
-      >
-        Choose exercise
-      </button> -->
-    </form>
     <div mat-dialog-actions>
-      <button mat-flat-button color="primary" mat-dialog-close>
+      <button mat-flat-button color="primary" (click)=null class="button-add">
+        Add exercise
+      </button>
+      <button mat-flat-button color="primary" (click)="safeSetHistoryData()" mat-dialog-close>
+        <!-- Liefert undefined zurück -->
         Finish Workout
       </button>
     </div>
