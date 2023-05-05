@@ -6,6 +6,7 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 import { WorkoutData } from 'src/app/models/workout-data.model';
 import { Exercise, Set_History, WorkoutExercise } from 'src/app/models/models';
 import { Dialog } from 'src/app/enums/dialog';
+import { DialogWorkoutAddExerciseComponent } from '../dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
 
 @Component({
   selector: 'app-dialog-start-workout',
@@ -19,7 +20,7 @@ export class DialogStartWorkoutComponent implements OnInit {
   setHistory:Set_History[] = [];
   
   constructor(@Inject (MAT_DIALOG_DATA) public data: any, public dataService: DataServiceService,
-  public DialogRef:MatDialogRef<DialogStartWorkoutComponent>,public dialog: MatDialog) { }
+  public DialogRef:MatDialogRef<DialogStartWorkoutComponent>,public dialog: MatDialog) {}
 
   ngOnInit(): void {
     // console.log(this.data)
@@ -38,16 +39,17 @@ export class DialogStartWorkoutComponent implements OnInit {
 
   // Open the Dialog to add an exercise
   addExercise() {
-    // const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
-    //   width: '90%',
-    //   height: '90%',
-    //   data: {"workout_id":this.data.workout.workout_id},
-    // });
-    // dialogRef.afterClosed().subscribe((e)=>{
-    //   this.ngOnInit();
-    // })
+    const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
+      width: '90%',
+      height: '90%',
+      // data: {"workout_id":this.data.workout.workout_id},
+    });
+    dialogRef.afterClosed().subscribe((e)=>{
+      this.ngOnInit();
+    })
   }
 
+  // Load Set Data
   loadSetHistoryData(index: number) {
     this.setHistory = []
     this.dataService
@@ -64,25 +66,24 @@ export class DialogStartWorkoutComponent implements OnInit {
       });
   }
 
-  // Safe History after start workout
+  // Safe History after start workout timer
+  // Not working
   safeSetHistoryData() {        
     this.dataService.safeSetHistoryData(this.data.workout);
   }
 
-  // Safe Data after add exercise -> Add to choose exercise
-  safeWorkoutData() {        
-    this.dataService.safeWorkout(this.data.workout);
+  // Add Exercise to the workout
+  AddExercise(index:number){     
+    this.dataService.createWorkoutExercise(this.data.workout_id,this.exercises[index].exercise_id).subscribe((data)=>{
+    });
+    this.safeWorkoutData()
+      // this.data.workout.exerciseMap.set(this.Allexercises[index],{});
+      // console.log('Added Exercise');
   }
 
-  // Catch the dialog event
-  catchDialogEvent(value:any){
-    switch(value.event){
-      case Dialog.START:
-      this.startTime();
-      break;
-      case Dialog.ADD:
-      // this.addExercise(value.source);
-      break;
-    }
+  // Safe Data after add exercise
+  // Not working
+  safeWorkoutData() {        
+    this.dataService.safeWorkout(this.data.workout);
   }
 }
