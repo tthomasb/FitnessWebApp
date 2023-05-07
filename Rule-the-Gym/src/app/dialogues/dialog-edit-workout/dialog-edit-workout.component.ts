@@ -110,5 +110,9 @@ export class DialogEditWorkoutComponent implements OnInit {
     })
   }
 
+  addSet(){
+    
+  }
+
   close() {}
 }
