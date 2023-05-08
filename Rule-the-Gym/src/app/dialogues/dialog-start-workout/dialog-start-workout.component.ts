@@ -33,8 +33,10 @@ export class DialogStartWorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogStartWorkoutTimeComponent, {
       width: '60%',
       height: '60%',
-      data: {dialogName:Dialog.START}
+      // Add the right path
+      data: {"workout_id":this.data.data.workout_id}
     });
+    console.log(this.data)
   }
 
   // Open the Dialog to add an exercise
@@ -67,6 +69,7 @@ export class DialogStartWorkoutComponent implements OnInit {
   }
 
   // Safe History after start workout timer or finish workout
+  // Need a fix (Siehe: DC Johannes)
   safeSetHistoryData() {
     // console.log()
     // this.dataService.safeSetHistoryData(this.set_History[index]);
