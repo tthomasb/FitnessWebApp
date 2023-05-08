@@ -138,9 +138,9 @@ export class DataServiceService {
     return this.http.put(`api/workout/exercise/set_history/${set_history.set_history_id}`,{reps:set_history.reps, weight:set_history.weight, record_time:set_history.record_time},httpOptions).subscribe((e)=>console.log(e))
   }
 
-  workoutGetTime(workout_id: any) {
-    // return this.http.get<ExerciseTime>(`api/workout/exercise/time`, httpOptions);
-  }
+  // workoutGetTime(workout_id: any) {
+  //   // return this.http.get<ExerciseTime>(`api/workout/exercise/time`, httpOptions);
+  // }
 
   createSetHistory(): any[] {
     let res: any[] = [];

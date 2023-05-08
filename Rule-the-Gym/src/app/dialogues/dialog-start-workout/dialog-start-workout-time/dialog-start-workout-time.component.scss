@@ -1,11 +1,30 @@
 .spinner {
-  position: absolute;
+  position: relative;
   top: 45%;
   left: 47%;
 }
 
 h3 {
-  position: absolute;
+  position: relative;
   top: 30%;
   left: 25%;
+}
+
+// Need a fix at the scrollbar
+.button-remove {
+  position: relative;
+  top: 50%;
+  left: 40%;
+}
+
+.button-add {
+  position: relative;
+  top: 50%;
+  left: 60%;
+}
+
+.button-finish {
+  position: relative;
+  top: 70%;
+  left: 50%;
 }

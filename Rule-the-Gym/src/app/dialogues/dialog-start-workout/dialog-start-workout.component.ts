@@ -23,9 +23,7 @@ export class DialogStartWorkoutComponent implements OnInit {
   public DialogRef:MatDialogRef<DialogStartWorkoutComponent>,public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    // console.log(this.data.data.workout_id)
-    this.dataService.getWorkoutExerciseByWorkoutId(this.data.data.workout_id)
-    .subscribe((lambda)=>{this.workoutExercises = lambda})
+    this.dataService.getWorkoutExerciseByWorkoutId(this.data.data.workout_id).subscribe((lambda)=>{this.workoutExercises = lambda})
   }
 
   // Open the dialog to set the start time
@@ -34,9 +32,10 @@ export class DialogStartWorkoutComponent implements OnInit {
       width: '60%',
       height: '60%',
       // Add the right path
-      data: {"workout_id":this.data.data.workout_id}
+      data: {"pause":this.loadSetHistoryData}
+      // data: {"workout_id":this.data.data.workout_id}
     });
-    console.log(this.data)
+    // console.log(this.data)
   }
 
   // Open the Dialog to add an exercise
@@ -54,16 +53,11 @@ export class DialogStartWorkoutComponent implements OnInit {
   // Load Set Data
   loadSetHistoryData(index: number) {
     this.setHistory = []
-    this.dataService
-      .getSetsByWorkoutExerciseId(
-        this.workoutExercises[index].workout_exercise_id
-      )
-      .subscribe((data) => {
-        console.log(data)
-        for(let set of data) {
-          this.dataService.getSetHistoryBySetId(set.set_id)
-          .subscribe((lambda)=>{this.setHistory.push(lambda)})
-          this.setHistory.push()
+    this.dataService.getSetsByWorkoutExerciseId(this.workoutExercises[index].workout_exercise_id).subscribe((data) => {
+      console.log(data)
+      for(let set of data) {
+        this.dataService.getSetHistoryBySetId(set.set_id).subscribe((lambda)=>{this.setHistory.push(lambda)})
+        this.setHistory.push()
         }
       });
   }

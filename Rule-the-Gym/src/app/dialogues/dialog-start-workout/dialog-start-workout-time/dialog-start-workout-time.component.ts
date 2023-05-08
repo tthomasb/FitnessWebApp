@@ -28,7 +28,6 @@ export class DialogStartWorkoutTimeComponent {
     // .subscribe((lambda)=>{this.workoutExercises = lambda; console.log(this.workoutExercises)})
   }
 
-
   // Calculate the time
   calcTime(): void {
     this.current = new Date();
@@ -59,7 +58,7 @@ export class DialogStartWorkoutTimeComponent {
     
   }
 
-  // Get back that the Timer is finish so the window close automataactly
+  // Get back that the Timer is finish so the window close automatactly
   safeTimerData() {        
     
   }
