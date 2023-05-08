@@ -18,19 +18,20 @@
                   <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
                 </mat-expansion-panel-header>
                 <mat-card appearance="fill" *ngFor="let set of setHistory; let setIndex=index">
-                    Set 1:
-                  <mat-label> Weight (kg):
-                    <!-- Binding fehlt -> Ask Bene -->
+                  Set 1:
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label> Weight (kg):</mat-label>
                     <input matInput placeholder="" [(ngModel)]="setHistory[setIndex].weight"/>
-                  </mat-label>
-                  <mat-label> Reps:
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label> Reps:</mat-label>
                     <input matInput placeholder="" [(ngModel)]="setHistory[setIndex].reps"/>
-                  </mat-label>
+                  </mat-form-field>
                   <button mat-flat-button (click)="startTime()" color="primary"> 
                     Finish set
                   </button>
                 </mat-card>
-                <br />
+                <br/>
               </mat-expansion-panel>
             </section>
           </mat-accordion>

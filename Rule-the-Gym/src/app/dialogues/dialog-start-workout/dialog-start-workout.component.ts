@@ -23,7 +23,7 @@ export class DialogStartWorkoutComponent implements OnInit {
   public DialogRef:MatDialogRef<DialogStartWorkoutComponent>,public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    // console.log(this.data)
+    // console.log(this.data.data.workout_id)
     this.dataService.getWorkoutExerciseByWorkoutId(this.data.data.workout_id)
     .subscribe((lambda)=>{this.workoutExercises = lambda})
   }
@@ -42,7 +42,7 @@ export class DialogStartWorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
       width: '90%',
       height: '90%',
-      // data: {"workout_id":this.data.workout.workout_id},
+      data: {"workout_id":this.data.data.workout_id},
     });
     dialogRef.afterClosed().subscribe((e)=>{
       this.ngOnInit();
@@ -66,24 +66,9 @@ export class DialogStartWorkoutComponent implements OnInit {
       });
   }
 
-  // Safe History after start workout timer
-  // Not working
-  safeSetHistoryData() {        
-    this.dataService.safeSetHistoryData(this.data.workout);
-  }
-
-  // Add Exercise to the workout
-  AddExercise(index:number){     
-    this.dataService.createWorkoutExercise(this.data.workout_id,this.exercises[index].exercise_id).subscribe((data)=>{
-    });
-    this.safeWorkoutData()
-      // this.data.workout.exerciseMap.set(this.Allexercises[index],{});
-      // console.log('Added Exercise');
-  }
-
-  // Safe Data after add exercise
-  // Not working
-  safeWorkoutData() {        
-    this.dataService.safeWorkout(this.data.workout);
+  // Safe History after start workout timer or finish workout
+  safeSetHistoryData() {
+    // console.log()
+    // this.dataService.safeSetHistoryData(this.set_History[index]);
   }
 }
