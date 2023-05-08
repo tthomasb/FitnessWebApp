@@ -40,28 +40,29 @@
 
                 </mat-expansion-panel-header >
 
-                <div *ngFor="let set of sets; let i = index">
-                  <mat-form-field class="example-full-width" appearance="fill">
+                <mat-card *ngFor="let set of sets; let i = index">
+                  <mat-form-field  appearance="fill">
                     <mat-label>Reps Set {{i+1}}</mat-label>
                     <input matInput placeholder="" [(ngModel)]="set.reps" />
                   </mat-form-field>
                   <br />
-                  <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-form-field  appearance="fill">
                     <mat-label>Break time Set {{i+1}}</mat-label>
                     <input matInput placeholder="Always seconds" [(ngModel)]="set.pause" />
                   </mat-form-field>
                   <br />
-                  <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-form-field  appearance="fill">
                     <mat-label>Weight Set {{i+1}}</mat-label>
                     <input matInput placeholder="" type="text" [(ngModel)]="set.weight"/>
                   </mat-form-field>
                   <mat-card-actions>
                     <button mat-flat-button color="primary" (click)="safeExerciseData(i)">Save</button>
-                    <button mat-flat-button color="primary" (click)="addSet()">Add Set</button>
-                    <button mat-flat-button color="primary">Cancel</button>
+                    <button mat-flat-button color="primary" (click)="deleteSet(i,index)">Delete Set</button> 
                     <br />                  
                   </mat-card-actions>
-                </div>
+                </mat-card>
+                <button class="addSet" mat-flat-button color="primary" (click)="addSet(index)">Add Set</button> 
+                <!-- </div> -->
                 <!-- <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Reps</mat-label>
                   <input matInput placeholder="" [(ngModel)]="sets[0].reps" />

@@ -51,8 +51,7 @@ export class DialogEditWorkoutComponent implements OnInit {
       .getSetsByWorkoutExerciseId(
         this.workoutexercises[index].workout_exercise_id
       )
-      .subscribe((data) => {
-        console.log(data)
+      .subscribe((data) => {        
         this.sets = [];
         for (let set of data) {
           this.sets.push(set);
@@ -110,9 +109,14 @@ export class DialogEditWorkoutComponent implements OnInit {
     })
   }
 
-  addSet(){
-    
+  addSet(index:number){
+    this.dataService.createSet(this.workoutexercises[index].workout_exercise_id);
+    this.loadExerciseData(index);
   }
 
+  deleteSet(set_index:number,workout_exercise_index:number){    
+    this.dataService.DeleteSet(this.sets[set_index].set_id);
+    this.loadExerciseData(workout_exercise_index);
+  }
   close() {}
 }
