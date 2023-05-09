@@ -48,18 +48,32 @@ export class DialogStartWorkoutTimeComponent {
     this.sub = setInterval(() => this.calcTime(), 250);
   }
 
-  // Button to finish the time early
-  finishTime() {
-    
-  }
-
   // Get the Time Data from workoutGetTime.js
   loadExerciseTimeData() {
     
   }
 
+  // Ideen: 
+  // Time aus der Datenbank holen und als lokale Variable speichern, 
+  // damit addTime() und removeTime() funktionieren
+
+  // Button to finish the time early (Just stop timer or set timer = 0)
+  finishTimeButton() {
+    // Evtl. nicht notwendig (Besprechen mit den anderen)
+    // time = 0
+  }
+
+  // Button to finish the time early (Just stop timer)
   // Get back that the Timer is finish so the window close automatactly
-  safeTimerData() {        
-    
+  finishTime() {
+    // Evtl. nicht notwendig (Besprechen mit den anderen)
+  }
+
+  addTime() {
+    // time = time + 15
+  }
+
+  removeTime() {
+    // time = time - 15
   }
 }

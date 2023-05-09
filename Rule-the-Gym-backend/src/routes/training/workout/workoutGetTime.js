@@ -9,7 +9,7 @@ export const workoutGetTime = {
     // await db
     //   .query(
     //     `
-    //           UPDATE workout_exercise
+    //           GET workout_exercise
     //             SET exercisepause = $1
     //             WHERE workout_exercise_id=$2
     //     `,

@@ -32,10 +32,10 @@ export class DialogStartWorkoutComponent implements OnInit {
       width: '60%',
       height: '60%',
       // Add the right path
-      data: {"pause":this.loadSetHistoryData}
+      data: {"pause":this.data.pause}
       // data: {"workout_id":this.data.data.workout_id}
     });
-    // console.log(this.data)
+    console.log(this.data)
   }
 
   // Open the Dialog to add an exercise
@@ -43,6 +43,7 @@ export class DialogStartWorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
       width: '90%',
       height: '90%',
+      // panelClass: 'no-scroll',
       data: {"workout_id":this.data.data.workout_id},
     });
     dialogRef.afterClosed().subscribe((e)=>{
