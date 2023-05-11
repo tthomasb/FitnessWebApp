@@ -353,6 +353,7 @@ export class BmiComponent implements OnInit {
     } else {
       return "Please, enter your age"
     }
+  }
     
   // Method to calculate BMI based on height, weight and gender input
   getBmi() {
