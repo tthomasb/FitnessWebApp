@@ -1,7 +1,7 @@
 .spinner {
   position: absolute;
-  top: 43%;
-  left: 43%;
+  top: 45%;
+  left: 45%;
 }
 
 h3 {
@@ -10,7 +10,6 @@ h3 {
   left: 25%;
 }
 
-// Fix the scrollbar
 .button-remove {
   position: absolute;
   top: 45%;
@@ -29,6 +28,10 @@ h3 {
   left: 42%;
 }
 
-// .no-scroll {
-//   overflow: hidden !important;
+::-webkit-scrollbar {
+    display: none;
+}
+
+// mat-progress-spinner {
+//   transform: scaleX(-1);
 // }

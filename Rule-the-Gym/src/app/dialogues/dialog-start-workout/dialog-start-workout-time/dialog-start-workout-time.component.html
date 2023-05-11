@@ -5,11 +5,11 @@
       <h3>{{time | date: 'mm | ss'}}</h3>
     </div>
     <div class="buttons">
-      <button mat-fab (click)= null color="primary" class="button-remove">
+      <button mat-fab (click)="changeTime(-15)" color="primary" class="button-remove">
         <mat-icon>remove</mat-icon>
         <mat-label>15</mat-label> 
       </button>
-      <button mat-fab (click)= null color="primary" class="button-add">
+      <button mat-fab (click)="changeTime(15)" color="primary" class="button-add">
         <mat-icon>add</mat-icon>
         <mat-label>15</mat-label> 
       </button>

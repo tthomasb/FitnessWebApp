@@ -12,27 +12,7 @@
                   <mat-panel-description> Muscle group </mat-panel-description>
                 </mat-expansion-panel-header>
               </mat-expansion-panel>
-              <mat-expansion-panel *ngFor="let exercise of workoutExercises; let index=index" (opened)="loadSetHistoryData(index)">
-                <mat-expansion-panel-header>
-                  <mat-panel-title> {{exercise.exercisename}} </mat-panel-title>
-                  <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-card appearance="fill" *ngFor="let set of setHistory; let setIndex=index">
-                  Set 1:
-                  <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label> Weight (kg):</mat-label>
-                    <input matInput placeholder="" [(ngModel)]="setHistory[setIndex].weight"/>
-                  </mat-form-field>
-                  <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label> Reps:</mat-label>
-                    <input matInput placeholder="" [(ngModel)]="setHistory[setIndex].reps"/>
-                  </mat-form-field>
-                  <button mat-flat-button (click)="startTime()" color="primary"> 
-                    Finish set
-                  </button>
-                </mat-card>
-                <br/>
-              </mat-expansion-panel>
+              <app-dialog-start-workout-item *ngFor="let exercise of workoutExercises; let index = index" [exercise]="exercise" [workoutExercise]="workoutExercises[index]"></app-dialog-start-workout-item>
             </section>
           </mat-accordion>
         </div>
