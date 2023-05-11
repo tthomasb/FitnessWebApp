@@ -57,7 +57,7 @@ export class BmiComponent implements OnInit {
   // Method to get the BMI category based on the BMI value
   getAdvancedBmiCategoryForMan(): string {
 
-    console.log(this.age);
+    console.log(this.age+"BMI:" + this.bmi);
     const parsedAge = parseInt(this.age);
 
     if (parsedAge >= 1 && parsedAge <= 18) {
@@ -207,7 +207,7 @@ export class BmiComponent implements OnInit {
 
   getAdvancedBmiCategoryForWoman(): string {
 
-    console.log(this.age);
+    //console.log(this.age);
     const parsedAge = parseInt(this.age);
 
     if (parsedAge >= 1 && parsedAge <= 18) {
@@ -353,20 +353,14 @@ export class BmiComponent implements OnInit {
     } else {
       return "Please, enter your age"
     }
-  }
-
-  //Change Gender Method
-  changeGender(gender: string) {
-    this.gender = gender;
-    console.log(this.gender);
-  }
-
+    
   // Method to calculate BMI based on height, weight and gender input
   getBmi() {
     const parsedWeight = parseInt(this.weight);
     const parsedHeight = parseInt(this.height);
 
     if (this.gender == "Male") {
+
       if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
         this.bmi = parsedWeight / (Math.pow(parsedHeight, 2) / 10000);
         this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForMan()}`;
@@ -393,12 +387,13 @@ export interface BmiTable {
 
 // BMI table data
 const ELEMENT_DATA: BmiTable[] = [
-  { category: "Severe Thinness", bmi: "< 16", risk: "Very high" },
-  { category: "Moderate Thinness", bmi: "16 - 17", risk: "High" },
-  { category: "Mild Thinness", bmi: "17 - 18.5", risk: "Enhanced" },
-  { category: "Normal", bmi: "18.5 - 25", risk: "Low" },
-  { category: "Overweight", bmi: "25 - 30", risk: "Enhanced" },
-  { category: "Obese Class I", bmi: "30 - 35", risk: "High" },
-  { category: "Obese Class II", bmi: "35 - 40", risk: "Very high" },
-  { category: "Obese Class III", bmi: "> 40", risk: "Very high" },
+  {category: "Severe Thinness", bmi: "< 16", risk: "Very high"},
+  {category: "Moderate Thinness", bmi: "16 - 17", risk: "High"},
+  {category: "Mild Thinness", bmi: "17 - 18.5", risk: "Enhanced"},
+  {category: "Normal", bmi: "18.5 - 25", risk: "Low"},
+  {category: "Overweight", bmi: "25 - 30", risk: "Enhanced"},
+  {category: "Obese Class I", bmi: "30 - 35", risk: "High"},
+  {category: "Obese Class II", bmi: "35 - 40", risk: "Very high"},
+  {category: "Obese Class III", bmi: "> 40", risk: "Very high"},
 ];
+

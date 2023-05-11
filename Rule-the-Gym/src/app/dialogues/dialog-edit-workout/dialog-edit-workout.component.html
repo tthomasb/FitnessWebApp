@@ -31,17 +31,46 @@
                 </mat-expansion-panel-header>
               </mat-expansion-panel>
               <mat-expansion-panel *ngFor="let exercise of exercises; let index=index"
-                (opened)="loadExerciseData(index)">
+                (opened)="loadExerciseData(index)" #panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title> {{exercise.exercisename}}</mat-panel-title>
                   <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
                   <mat-panel-description>
                     <button class="delete-button" mat-flat-button color="primary"
                       (click)="openDeleteExercise(index)">Delete</button>
+                    <button  mat-flat-button color="primary"
+                       (click)="addSet(index);panel.close()">Add Set</button>
                   </mat-panel-description>
 
                 </mat-expansion-panel-header>
-                <mat-form-field class="example-full-width" appearance="fill">
+
+                <mat-card *ngFor="let set of sets; let i = index">
+                  <div class="div">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Reps Set {{i+1}}</mat-label>
+                      <input matInput placeholder="" [(ngModel)]="set.reps" />
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="fill">
+                      <mat-label>Break time Set {{i+1}}</mat-label>
+                      <input matInput placeholder="Always seconds" [(ngModel)]="set.pause" />
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="fill">
+                      <mat-label>Weight Set {{i+1}}</mat-label>
+                      <input matInput placeholder="" type="text" [(ngModel)]="set.weight" />
+                    </mat-form-field>
+                    <mat-card-actions>
+                      <button mat-flat-button color="primary" (click)="safeExerciseData(i)">Save</button>
+                      <button mat-flat-button color="primary" (click)="deleteSet(i,index)">Delete Set</button>
+                      <br />
+                    </mat-card-actions>
+                  </div>
+                </mat-card>
+
+                <!-- </div> -->
+                <!-- <mat-form-field class="example-full-width" appearance="fill">
+
                   <mat-label>Reps</mat-label>
                   <input matInput placeholder="" [(ngModel)]="sets[0].reps" />
                 </mat-form-field>
@@ -58,8 +87,8 @@
                 <mat-card-actions>
                   <button mat-flat-button color="primary" (click)="safeExerciseData(0)">Save</button>
                   <button mat-flat-button color="primary">Cancel</button>
-                  <br />
-                </mat-card-actions>
+                  <br />                  
+                </mat-card-actions> -->
               </mat-expansion-panel>
             </section>
           </mat-accordion>

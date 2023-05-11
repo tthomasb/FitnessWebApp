@@ -119,13 +119,19 @@ export class DataServiceService {
       });
   }
 
-  DeleteSet(): any[] {
-    let res: any[] = [];
-    return res;
+  DeleteSet(set_id:number): Observable<any>{
+    this.http.delete(`api/workout/exercise/set/${set_id}`,httpOptions).subscribe();    
+    let obs=new Observable<any>()
+    return obs;    
   }
-  createSet(): any[] {
-    let res: any[] = [];
-    return res;
+  createSet(workoutexercise_id:number) {
+    console.log(workoutexercise_id);
+    this.http.post(
+      `api/workout/exercise/${workoutexercise_id}/set`,
+      {reps:0,pause:0,weight:0},
+      httpOptions
+      ).subscribe();
+    
   }
 
   getSetHistoryBySetId(): any[] {

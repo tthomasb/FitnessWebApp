@@ -4,6 +4,7 @@ export const workoutExerciseAddSet = {
   method: "POST",
   path: "/api/workout/exercise/{workout_exercise_id}/set",
   handler: async (req, h) => {
+    console.log("test")
     const { workout_exercise_id } = req.params;
     const { reps, pause, weight } = req.payload;
     await db
@@ -13,10 +14,11 @@ export const workoutExerciseAddSet = {
       VALUES ($1, $2, $3, $4);
           `,
         [workout_exercise_id, reps, pause, weight]
+      ).then(
+        (a)=>{console.log(a)}
       )
       .catch((e) => {
-        message.message = e;
-        return message;
+        console.log(e);
       });
     return { workout_exercise_id, reps, pause, weight };
   },
