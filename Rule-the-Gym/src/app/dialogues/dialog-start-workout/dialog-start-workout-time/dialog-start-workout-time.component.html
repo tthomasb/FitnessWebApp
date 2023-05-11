@@ -4,5 +4,18 @@
       <mat-progress-spinner [value]="value"></mat-progress-spinner>
       <h3>{{time | date: 'mm | ss'}}</h3>
     </div>
+    <div class="buttons">
+      <button mat-fab (click)="changeTime(-15)" color="primary" class="button-remove">
+        <mat-icon>remove</mat-icon>
+        <mat-label>15</mat-label> 
+      </button>
+      <button mat-fab (click)="changeTime(15)" color="primary" class="button-add">
+        <mat-icon>add</mat-icon>
+        <mat-label>15</mat-label> 
+      </button>
+      <button mat-flat-button color="primary" (click)=null class="button-finish" mat-dialog-close>
+        Finish Timer
+      </button>
+    </div>
   </div>
 </div>

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { WorkoutData } from 'src/app/models/workout-data.model';
-import { MatDialog } from '@angular/material/dialog';
-//import { DialogWorkoutComponent } from 'src/app/dialogues/dialog-workout/dialog-workout.component';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { DialogEditWorkoutComponent } from 'src/app/dialogues/dialog-edit-workout/dialog-edit-workout.component';
 import { DialogStartWorkoutComponent } from 'src/app/dialogues/dialog-start-workout/dialog-start-workout.component';
 import { Dialog } from 'src/app/enums/dialog';
@@ -27,8 +26,6 @@ export class WorkoutComponent implements OnInit {
   ngOnInit(): void {
     //set accordionConfig
     //this.accordionConfig = 
-    
-    
     this.dataService.getAllWorkouts().subscribe((data)=>{
       this.workouts=data;
       this.accordionConfig=this.getAccordionData();
@@ -57,10 +54,9 @@ export class WorkoutComponent implements OnInit {
     // newWorkout.exerciseMap.clear();
     // console.log(this.workouts);
     let workout: Workout={workoutname:"", workout_id:"",type:"", description:"",user_id:1};
-    this.dataService.CreateWorkout("","",1).subscribe((e)=>{      
-      workout.workout_id=e.workout_id;
-
-      //Open dialog with empty workout
+    this.dataService.CreateWorkout("","",1).subscribe((e)=>{workout.workout_id=e.workout_id;
+    
+    //Open dialog with empty workout
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
@@ -70,8 +66,6 @@ export class WorkoutComponent implements OnInit {
       this.ngOnInit();
      });
     });
-    
-   
   }
 
   // Open the edit dialog
@@ -85,6 +79,7 @@ export class WorkoutComponent implements OnInit {
       this.ngOnInit();
      });
   }
+
   // Open the delete dialog
   openDeleteWorkout(index:number) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
@@ -100,12 +95,13 @@ export class WorkoutComponent implements OnInit {
       dialogRef.componentInstance.Emitter.unsubscribe();
     })
   }
+
   // Open the start dialog
   openStartWorkout(index:number) {
     const dialogRef = this.dialog.open(DialogStartWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data: {data: this.workouts[index].workout_id, dialogName:Dialog.START}
+      data: {data: this.workouts[index], dialogName:Dialog.START}
     });
     /**
     dialogRef.afterClosed().subscribe((result) => {
@@ -113,6 +109,7 @@ export class WorkoutComponent implements OnInit {
     });
     */
   }
+
   // Delete the workout
   deleteWorkout(index:number) {
     //todo fix delete
@@ -121,6 +118,7 @@ export class WorkoutComponent implements OnInit {
     console.log(this.dataService.DeleteWorkout(this.workouts[index].workout_id));
     this.ngOnInit();
   }
+
   // Catch the dialog event
   catchDialogEvent(value:any){
     switch(value.event){
@@ -136,8 +134,8 @@ export class WorkoutComponent implements OnInit {
       break;
     }
   }
-
 }
+
 // function getAccordionData() {
 //   throw new Error('Function not implemented.');
 // }

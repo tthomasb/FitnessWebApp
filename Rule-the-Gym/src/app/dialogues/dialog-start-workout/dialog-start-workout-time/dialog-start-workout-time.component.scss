@@ -1,7 +1,7 @@
 .spinner {
   position: absolute;
   top: 45%;
-  left: 47%;
+  left: 45%;
 }
 
 h3 {
@@ -9,3 +9,29 @@ h3 {
   top: 30%;
   left: 25%;
 }
+
+.button-remove {
+  position: absolute;
+  top: 45%;
+  left: 35%;
+}
+
+.button-add {
+  position: absolute;
+  top: 45%;
+  right: 38%;
+}
+
+.button-finish {
+  position: absolute;
+  top: 55%;
+  left: 42%;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+// mat-progress-spinner {
+//   transform: scaleX(-1);
+// }

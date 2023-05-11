@@ -1,0 +1,14 @@
+<mat-card appearance="fill" *ngIf="history">
+    Set 1:
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> Weight (kg):</mat-label>
+      <input matInput placeholder="" [(ngModel)]="history.weight"/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> Reps:</mat-label>
+      <input matInput placeholder="" [(ngModel)]="history.reps"/>
+    </mat-form-field>
+    <button mat-flat-button (click)="startTime()" color="primary" #finish> 
+      Finish set
+    </button>
+</mat-card>

@@ -10,8 +10,8 @@ export const workoutEditExercise = {
       .query(
         `
               UPDATE workout_exercise
-                  SET exercisepause = $1
-                  WHERE workout_exercise_id=$2
+                SET exercisepause = $1
+                WHERE workout_exercise_id=$2
           `,
         [exercisepause, workout_exercise_id]
       )
