@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MaterialModule } from './modules/material.module';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatDialogModule } from '@angular/material/dialog';
 import { TrainingComponent } from './components/training/training.component';
 import { BmiComponent } from './components/bmi/bmi.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -49,6 +50,7 @@ import { DialogStartWorkoutItemHistoryComponent } from './dialogues/dialog-start
     DialogEditWorkoutComponent,
     DialogStartWorkoutTimeComponent,
     DialogAskDeleteComponent,
+    DialogAddNutritionComponent,
     ExampleAllItemsComponent,
     ExampleCreateItemComponent,
     ExampleEditItemComponent,
@@ -66,9 +68,10 @@ import { DialogStartWorkoutItemHistoryComponent } from './dialogues/dialog-start
     MatToolbarModule,
     MaterialModule,
     MatTreeModule,
+    MatDialogModule,
     HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [HttpClient, MatDialogModule],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

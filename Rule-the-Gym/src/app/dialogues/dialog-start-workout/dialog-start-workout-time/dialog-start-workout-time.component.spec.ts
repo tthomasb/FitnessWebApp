@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DialogStartWorkoutTimeComponent } from './dialog-start-workout-time.component';
 
 describe('DialogStartWorkoutTimeComponent', () => {
@@ -8,6 +8,7 @@ describe('DialogStartWorkoutTimeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ MatProgressSpinnerModule ],
       declarations: [ DialogStartWorkoutTimeComponent ]
     })
     .compileComponents();
@@ -19,5 +20,9 @@ describe('DialogStartWorkoutTimeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should start timer when component is created', () => {
+    expect(component.beginnTimer).toBeTruthy();
   });
 });

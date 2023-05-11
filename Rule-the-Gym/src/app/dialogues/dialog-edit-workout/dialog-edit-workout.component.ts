@@ -1,10 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DialogWorkoutAddExerciseComponent } from 'src/app/dialogues/dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
-import {
-  MatLegacyDialog as MatDialog,
-  MatLegacyDialogRef as MatDialogRef,
-  MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
-} from '@angular/material/legacy-dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogAskDeleteComponent } from '../dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { Exercise, Set, WorkoutExercise } from 'src/app/models/models';
@@ -28,7 +24,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DialogEditWorkoutComponent>,
     public dialog: MatDialog,
-    private dataService: DataServiceService
+    public dataService: DataServiceService
   ) {}
 
   ngOnInit(): void {
@@ -52,8 +48,7 @@ export class DialogEditWorkoutComponent implements OnInit {
       .getSetsByWorkoutExerciseId(
         this.workoutexercises[index].workout_exercise_id
       )
-      .subscribe((data) => {
-        console.log(data)
+      .subscribe((data) => {        
         this.sets = [];
         for (let set of data) {
           this.sets.push(set);
@@ -113,5 +108,15 @@ export class DialogEditWorkoutComponent implements OnInit {
     })
   }
 
+  addSet(index:number){
+    this.dataService.createSet(this.workoutexercises[index].workout_exercise_id);
+    this.loadExerciseData(index);
+  }
+
+  deleteSet(set_index:number,workout_exercise_index:number){    
+    this.dataService.DeleteSet(this.sets[set_index].set_id).subscribe(()=>
+    this.loadExerciseData(workout_exercise_index));
+
+  }
   close() {}
 }

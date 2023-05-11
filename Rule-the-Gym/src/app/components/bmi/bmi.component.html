@@ -6,11 +6,10 @@
             <div class="field"> 
             <mat-form-field>
                 <mat-label>Gender</mat-label>
-                <select matNativeControl required>
-                    <option value="Male" (click)="changeGender('Male')">Male</option>
-                    <option value="Female" (click)="changeGender('Female')">Female</option>
-                    <option value="Retarded">Retarded</option>
-                </select>
+                <mat-select [(value)]="gender">                    
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                  </mat-select>
             </mat-form-field>
             </div>
             <div>

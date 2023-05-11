@@ -12,9 +12,6 @@ export const workoutGetAll = {
       .catch((e) => {
         console.log(e);
       });
-    const workout_table = results.rows;
-    if (!workout_table)
-      throw Boom.notFound(`Workout does not exist with type ${type}`);
-    return workout_table;
+    return results.rows;
   },
 };

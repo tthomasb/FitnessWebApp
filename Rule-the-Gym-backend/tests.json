@@ -1,0 +1,1037 @@
+{
+	"info": {
+		"_postman_id": "2e2ead35-09ee-4c3f-a2ff-0c101fef5523",
+		"name": "Fitness-Web-App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24353470"
+	},
+	"item": [
+		{
+			"name": "Exercise",
+			"item": [
+				{
+					"name": "Basic Endpoint Tests",
+					"item": [
+						{
+							"name": "GetAllExercises",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Content-Type is application/json\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/exercise",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateExercise",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"pm.collectionVariables.set(\"exercise_id\", jsonData.exercise_id);\r",
+											"pm.collectionVariables.set(\"user_id\", jsonData.user_id);\r",
+											"\r",
+											"pm.test(\"Exercise exercisename was created\", function () {\r",
+											"    const exercisename = pm.collectionVariables.get(\"exercisename\");\r",
+											"    pm.expect(jsonData.exercisename).to.eql(exercisename);\r",
+											"});\r",
+											"pm.test(\"Exercise description was created\", function () {\r",
+											"    const description = pm.collectionVariables.get(\"description\");\r",
+											"    pm.expect(jsonData.description).to.eql(description);\r",
+											"});\r",
+											"pm.test(\"Exercise equipment was created\", function () {\r",
+											"    const equipment = pm.collectionVariables.get(\"equipment\");\r",
+											"    pm.expect(jsonData.equipment).to.eql(equipment);\r",
+											"});\r",
+											"pm.test(\"Exercise muscle was created\", function () {\r",
+											"    const muscle = pm.collectionVariables.get(\"muscle\");\r",
+											"    pm.expect(jsonData.muscle).to.eql(muscle);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"exercisename\": \"{{exercisename}}\",\r\n    \"description\": \"{{description}}\",\r\n    \"muscle\": \"{{muscle}}\",\r\n    \"equipment\": \"{{equipment}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/exercise",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetExerciseById",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"\r",
+											"pm.test(\"Expected Exercise exercisename returned\", function () {\r",
+											"    const exercisename = pm.collectionVariables.get(\"exercisename\");\r",
+											"    pm.expect(jsonData.exercisename).to.eql(exercisename);\r",
+											"});\r",
+											"pm.test(\"Expected Exercise description returned\", function () {\r",
+											"    const description = pm.collectionVariables.get(\"description\");\r",
+											"    pm.expect(jsonData.description).to.eql(description);\r",
+											"});\r",
+											"pm.test(\"Expected Exercise equipment returned\", function () {\r",
+											"    const equipment = pm.collectionVariables.get(\"equipment\");\r",
+											"    pm.expect(jsonData.equipment).to.eql(equipment);\r",
+											"});\r",
+											"pm.test(\"Expected Exercise muscle was created\", function () {\r",
+											"    const muscle = pm.collectionVariables.get(\"muscle\");\r",
+											"    pm.expect(jsonData.muscle).to.eql(muscle);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/exercise/{{exercise_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise",
+										"{{exercise_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateExercise",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Exercise exercisename updated\", function () {\r",
+											"    const exercisename = pm.collectionVariables.get(\"exercisename_updated\");\r",
+											"    pm.expect(jsonData.exercisename).to.eql(exercisename);\r",
+											"});\r",
+											"pm.test(\"Exercise description updated\", function () {\r",
+											"    const description = pm.collectionVariables.get(\"description_updated\");\r",
+											"    pm.expect(jsonData.description).to.eql(description);\r",
+											"});\r",
+											"pm.test(\"Exercise equipment updated\", function () {\r",
+											"    const equipment = pm.collectionVariables.get(\"equipment_updated\");\r",
+											"    pm.expect(jsonData.equipment).to.eql(equipment);\r",
+											"});\r",
+											"pm.test(\"Exercise muscle updated\", function () {\r",
+											"    const muscle = pm.collectionVariables.get(\"muscle_updated\");\r",
+											"    pm.expect(jsonData.muscle).to.eql(muscle);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"exercisename\": \"{{exercisename_updated}}\",\r\n    \"description\": \"{{description_updated}}\",\r\n    \"muscle\": \"{{muscle_updated}}\",\r\n    \"equipment\": \"{{equipment_updated}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/exercise/{{exercise_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise",
+										"{{exercise_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetExerciseById2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Expected Exercise exercisename returned\", function () {\r",
+											"    const exercisename = pm.collectionVariables.get(\"exercisename_updated\");\r",
+											"    pm.expect(jsonData.exercisename).to.eql(exercisename);\r",
+											"});\r",
+											"pm.test(\"Expected Exercise description returned\", function () {\r",
+											"    const description = pm.collectionVariables.get(\"description_updated\");\r",
+											"    pm.expect(jsonData.description).to.eql(description);\r",
+											"});\r",
+											"pm.test(\"Expected Exercise equipment returned\", function () {\r",
+											"    const equipment = pm.collectionVariables.get(\"equipment_updated\");\r",
+											"    pm.expect(jsonData.equipment).to.eql(equipment);\r",
+											"});\r",
+											"pm.test(\"Expected Exercise muscle returned\", function () {\r",
+											"    const muscle = pm.collectionVariables.get(\"muscle_updated\");\r",
+											"    pm.expect(jsonData.muscle).to.eql(muscle);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/exercise/{{exercise_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise",
+										"{{exercise_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteExercise",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/exercise/{{exercise_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise",
+										"{{exercise_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": []
+		},
+		{
+			"name": "Workout",
+			"item": [
+				{
+					"name": "Basic Endpoint Tests",
+					"item": [
+						{
+							"name": "GetAllWorkouts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Content-Type is application/json\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/workout/type",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										"type"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateWorkout",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"pm.collectionVariables.set(\"workout_id\", jsonData.workout_id);\r",
+											"\r",
+											"pm.test(\"Workout workout_id was created\", function () {\r",
+											"    const workout_id = pm.collectionVariables.get(\"workout_id\");\r",
+											"    pm.expect(jsonData.workout_id).to.eql(workout_id);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Workout workoutname was created\", function () {\r",
+											"    const workoutname = pm.collectionVariables.get(\"workoutname\");\r",
+											"    pm.expect(jsonData.workoutname).to.eql(workoutname);\r",
+											"\r",
+											"});\r",
+											"pm.test(\"Workout type was created\", function () {\r",
+											"    const type = pm.collectionVariables.get(\"type\");\r",
+											"    pm.expect(jsonData.type).to.eql(type);\r",
+											"\r",
+											"});\r",
+											"pm.test(\"Workout description was created\", function () {\r",
+											"    const description = pm.collectionVariables.get(\"description\");\r",
+											"    pm.expect(jsonData.description).to.eql(description);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"workoutname\": \"{{workoutname}}\",\r\n    \"type\": \"{{type}}\",\r\n    \"description\": \"{{description}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/workout/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetWorkoutById",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Workout workout_id was returned\", function () {\r",
+											"    const workout_id = pm.collectionVariables.get(\"workout_id\");\r",
+											"    pm.expect(jsonData.workout_id).to.eql(workout_id);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Workout workoutname was returned\", function () {\r",
+											"    const workoutname = pm.collectionVariables.get(\"workoutname\");\r",
+											"    pm.expect(jsonData.workoutname).to.eql(workoutname);\r",
+											"\r",
+											"});\r",
+											"pm.test(\"Workout type was returned\", function () {\r",
+											"    const type = pm.collectionVariables.get(\"type\");\r",
+											"    pm.expect(jsonData.type).to.eql(type);\r",
+											"\r",
+											"});\r",
+											"pm.test(\"Workout description was returned\", function () {\r",
+											"    const description = pm.collectionVariables.get(\"description\");\r",
+											"    pm.expect(jsonData.description).to.eql(description);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/workout/{{workout_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										"{{workout_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateWorkout",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"pm.collectionVariables.set(\"workout_id\", jsonData.workout_id);\r",
+											"pm.collectionVariables.set(\"user_id\", jsonData.user_id);\r",
+											"\r",
+											"pm.test(\"Workout workoutname was updated\", function () {\r",
+											"    const workoutname = pm.collectionVariables.get(\"workoutname_updated\");\r",
+											"    pm.expect(jsonData.workoutname).to.eql(workoutname);\r",
+											"\r",
+											"});\r",
+											"pm.test(\"Workout type was updated\", function () {\r",
+											"    const type = pm.collectionVariables.get(\"type_updated\");\r",
+											"    pm.expect(jsonData.type).to.eql(type);\r",
+											"\r",
+											"});\r",
+											"pm.test(\"Workout description was updated\", function () {\r",
+											"    const description = pm.collectionVariables.get(\"description_updated\");\r",
+											"    pm.expect(jsonData.description).to.eql(description);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"workoutname\": \"{{workoutname_updated}}\",\r\n    \"type\": \"{{type_updated}}\",\r\n    \"description\": \"{{description_updated}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/workout/{{workout_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										"{{workout_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetWorkoutById2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Workout workout_id was returned\", function () {\r",
+											"    const workout_id = pm.collectionVariables.get(\"workout_id\");\r",
+											"    pm.expect(jsonData.workout_id).to.eql(workout_id);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Workout workoutname was returned\", function () {\r",
+											"    const workoutname = pm.collectionVariables.get(\"workoutname_updated\");\r",
+											"    pm.expect(jsonData.workoutname).to.eql(workoutname);\r",
+											"\r",
+											"});\r",
+											"pm.test(\"Workout type was returned\", function () {\r",
+											"    const type = pm.collectionVariables.get(\"type_updated\");\r",
+											"    pm.expect(jsonData.type).to.eql(type);\r",
+											"\r",
+											"});\r",
+											"pm.test(\"Workout description was returned\", function () {\r",
+											"    const description = pm.collectionVariables.get(\"description_updated\");\r",
+											"    pm.expect(jsonData.description).to.eql(description);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/workout/{{workout_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										"{{workout_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteWorkout",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/workout/delete/{{workout_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										"delete",
+										"{{workout_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "WorkoutExercise",
+			"item": [
+				{
+					"name": "Basic Endpoint Tests",
+					"item": [
+						{
+							"name": "Setup CreateExercise",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"pm.collectionVariables.set(\"exercise_id\", jsonData.exercise_id);\r",
+											"pm.collectionVariables.set(\"user_id\", jsonData.user_id);\r",
+											"\r",
+											"pm.test(\"Exercise exercisename was created\", function () {\r",
+											"    const exercisename = pm.collectionVariables.get(\"exercisename\");\r",
+											"    pm.expect(jsonData.exercisename).to.eql(exercisename);\r",
+											"});\r",
+											"pm.test(\"Exercise description was created\", function () {\r",
+											"    const description = pm.collectionVariables.get(\"description\");\r",
+											"    pm.expect(jsonData.description).to.eql(description);\r",
+											"});\r",
+											"pm.test(\"Exercise equipment was created\", function () {\r",
+											"    const equipment = pm.collectionVariables.get(\"equipment\");\r",
+											"    pm.expect(jsonData.equipment).to.eql(equipment);\r",
+											"});\r",
+											"pm.test(\"Exercise muscle was created\", function () {\r",
+											"    const muscle = pm.collectionVariables.get(\"muscle\");\r",
+											"    pm.expect(jsonData.muscle).to.eql(muscle);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"exercisename\": \"{{exercisename}}\",\r\n    \"description\": \"{{description}}\",\r\n    \"muscle\": \"{{muscle}}\",\r\n    \"equipment\": \"{{equipment}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/exercise",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Setup CreateWorkout",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"pm.collectionVariables.set(\"workout_id\", jsonData.workout_id);\r",
+											"\r",
+											"pm.test(\"Workout workout_id was created\", function () {\r",
+											"    const workout_id = pm.collectionVariables.get(\"workout_id\");\r",
+											"    pm.expect(jsonData.workout_id).to.eql(workout_id);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Workout workoutname was created\", function () {\r",
+											"    const workoutname = pm.collectionVariables.get(\"workoutname\");\r",
+											"    pm.expect(jsonData.workoutname).to.eql(workoutname);\r",
+											"\r",
+											"});\r",
+											"pm.test(\"Workout type was created\", function () {\r",
+											"    const type = pm.collectionVariables.get(\"type\");\r",
+											"    pm.expect(jsonData.type).to.eql(type);\r",
+											"\r",
+											"});\r",
+											"pm.test(\"Workout description was created\", function () {\r",
+											"    const description = pm.collectionVariables.get(\"description\");\r",
+											"    pm.expect(jsonData.description).to.eql(description);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"workoutname\": \"{{workoutname}}\",\r\n    \"type\": \"{{type}}\",\r\n    \"description\": \"{{description}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/workout/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateWorkoutExercise",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"pm.collectionVariables.set(\"workout_exercise_id\", jsonData.workout_exercise_id);\r",
+											"pm.collectionVariables.set(\"exercisepause\", jsonData.exercisepause);\r",
+											"\r",
+											"pm.test(\"WorkoutExercise was created\", function () {\r",
+											"    const workout_id = pm.collectionVariables.get(\"workout_id\");\r",
+											"    pm.expect(jsonData.workout_id).to.eql(workout_id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"workout_id\": \"{{workout_id}}\",\r\n    \"exercise_id\": \"{{exercise_id}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/workout/exercise/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										"exercise",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteWorkoutExercise",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/workout/exercise/delete/{{workout_exercise_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										"exercise",
+										"delete",
+										"{{workout_exercise_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Setup DeleteWorkout",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/workout/delete/{{workout_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										"delete",
+										"{{workout_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Setup DeleteExercise",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/exercise/{{exercise_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise",
+										"{{exercise_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response time is less than 1000ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "exercise_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "exercisename",
+			"value": "Testname",
+			"type": "string"
+		},
+		{
+			"key": "exercisename_updated",
+			"value": "Testname_updated",
+			"type": "string"
+		},
+		{
+			"key": "workout_id",
+			"value": ""
+		},
+		{
+			"key": "workoutname",
+			"value": "Testname",
+			"type": "string"
+		},
+		{
+			"key": "workoutname_updated",
+			"value": "Testname_updated",
+			"type": "string"
+		},
+		{
+			"key": "workout_exercise_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "exercisepause",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "description",
+			"value": "I am a Test.",
+			"type": "string"
+		},
+		{
+			"key": "description_updated",
+			"value": "I am a Test updated.",
+			"type": "string"
+		},
+		{
+			"key": "equipment",
+			"value": "Testequipment",
+			"type": "string"
+		},
+		{
+			"key": "equipment_updated",
+			"value": "Testequipment_updated",
+			"type": "string"
+		},
+		{
+			"key": "muscle",
+			"value": "Testmuscle",
+			"type": "string"
+		},
+		{
+			"key": "muscle_updated",
+			"value": "Testmuscle_updated",
+			"type": "string"
+		},
+		{
+			"key": "type",
+			"value": "Testtype",
+			"type": "string"
+		},
+		{
+			"key": "type_updated",
+			"value": "Testtype_updated",
+			"type": "string"
+		}
+	]
+}

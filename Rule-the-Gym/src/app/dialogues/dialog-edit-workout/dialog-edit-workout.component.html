@@ -27,15 +27,19 @@
                 <mat-expansion-panel-header>
                   <mat-panel-title> Exercise name </mat-panel-title>
                   <mat-panel-description> Muscle group </mat-panel-description>
-                  <mat-panel-description> Delete </mat-panel-description>        
+                  <mat-panel-description> Delete </mat-panel-description>
                 </mat-expansion-panel-header>
               </mat-expansion-panel>
-              <mat-expansion-panel *ngFor="let exercise of exercises; let index=index" (opened)="loadExerciseData(index)">
+              <mat-expansion-panel *ngFor="let exercise of exercises; let index=index"
+                (opened)="loadExerciseData(index)" #panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title> {{exercise.exercisename}}</mat-panel-title>
                   <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
-                  <mat-panel-description> 
-                    <button class="delete-button" mat-flat-button color="primary" (click)="openDeleteExercise(index)">Delete</button>
+                  <mat-panel-description>
+                    <button class="delete-button" mat-flat-button color="primary"
+                      (click)="openDeleteExercise(index)">Delete</button>
+                    <button  mat-flat-button color="primary"
+                       (click)="addSet(index);panel.close()">Add Set</button>
                   </mat-panel-description>
                 </mat-expansion-panel-header >
                 <mat-form-field class="example-full-width" appearance="fill">
@@ -50,13 +54,13 @@
                 <br />
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Weight</mat-label>
-                  <input matInput placeholder="" type=text [(ngModel)]="sets[0].weight"/>
+                  <input matInput placeholder="" type=text [(ngModel)]="sets[0].weight" />
                 </mat-form-field>
                 <mat-card-actions>
                   <button mat-flat-button color="primary" (click)="safeExerciseData(0)">Save</button>
                   <button mat-flat-button color="primary">Cancel</button>
                   <br />                  
-                </mat-card-actions>
+                </mat-card-actions> -->
               </mat-expansion-panel>
             </section>
           </mat-accordion>
