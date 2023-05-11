@@ -9,6 +9,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogAddNutritionComponent } from 'src/app/dialogues/dialog-add-nutrition/dialog-add-nutrition.component';
 import { Dialog } from 'src/app/enums/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 describe('NutritionComponent', () => {
   let component: NutritionComponent;
@@ -16,8 +18,8 @@ describe('NutritionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ MatDialogModule, MatTabsModule, BrowserAnimationsModule, MatCardModule, MatDividerModule, MatListModule, MatIconModule ],
-      declarations: [ NutritionComponent ]
+      imports: [ MatDialogModule, MatTabsModule, BrowserAnimationsModule, MatCardModule, MatDividerModule, MatListModule, MatIconModule, MatFormFieldModule ],
+      declarations: [ NutritionComponent, DialogAddNutritionComponent ]
     })
     .compileComponents();
 
