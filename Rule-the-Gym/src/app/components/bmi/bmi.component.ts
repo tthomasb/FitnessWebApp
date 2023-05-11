@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { createLoopVariable } from 'typescript';
-import {FormBuilder, Validators} from '@angular/forms';
-import {BreakpointObserver} from '@angular/cdk/layout';
-import {StepperOrientation} from '@angular/material/stepper';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { FormBuilder, Validators } from '@angular/forms';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { StepperOrientation } from '@angular/material/stepper';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bmi',
@@ -30,7 +30,7 @@ export class BmiComponent implements OnInit {
   fourthFormGroup = this._formBuilder.group({
     fourthCtrl: ['', Validators.required],
   });
-  
+
   // Observable to change the stepper orientation based on the screen size
   stepperOrientation!: Observable<StepperOrientation>;
 
@@ -43,13 +43,13 @@ export class BmiComponent implements OnInit {
   age!: string;
 
   // Constructor to initialize the form builder and breakpoint observer
-  constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) { 
+  constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) {
     this.bmi = 0;
     this.result = "Fill in valid data";
     this.stepperOrientation = breakpointObserver
-    .observe('(min-width: 800px)')
-    .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
-   }
+      .observe('(min-width: 800px)')
+      .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
+  }
 
   ngOnInit(): void {
   }
@@ -59,28 +59,28 @@ export class BmiComponent implements OnInit {
 
     console.log(this.age+"BMI:" + this.bmi);
     const parsedAge = parseInt(this.age);
-    
-    if (parsedAge >= 1 && parsedAge <= 18){
-      if (this.bmi < 13,2) {
+
+    if (parsedAge >= 1 && parsedAge <= 18) {
+      if (this.bmi < 13, 2) {
         return "Severe Thinness";
-      } else if (this.bmi >= 13,2 && this.bmi < 14,2) {
+      } else if (this.bmi >= 13, 2 && this.bmi < 14, 2) {
         return "Moderate Thinness";
-      } else if (this.bmi >= 14,2 && this.bmi < 15,7) {
+      } else if (this.bmi >= 14, 2 && this.bmi < 15, 7) {
         return "Mild Thinness";
-      } else if (this.bmi >= 15,7 && this.bmi < 22,2) {
+      } else if (this.bmi >= 15, 7 && this.bmi < 22, 2) {
         return "Normal";
-      } else if (this.bmi >= 22,2 && this.bmi < 27,2) {
+      } else if (this.bmi >= 22, 2 && this.bmi < 27, 2) {
         return "Overweight";
-      } else if (this.bmi >= 27,2 && this.bmi < 32,2) {
+      } else if (this.bmi >= 27, 2 && this.bmi < 32, 2) {
         return "Obese Class I";
-      } else if (this.bmi >= 32,2 && this.bmi < 37,2) {
+      } else if (this.bmi >= 32, 2 && this.bmi < 37, 2) {
         return "Obese Class II";
-      } else if (this.bmi >= 37,2) {
+      } else if (this.bmi >= 37, 2) {
         return "Obese Class III";
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 19 && parsedAge <= 24){
+    } else if (parsedAge >= 19 && parsedAge <= 24) {
       if (this.bmi < 16.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 16.5 && this.bmi < 17.5) {
@@ -100,7 +100,7 @@ export class BmiComponent implements OnInit {
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 25 && parsedAge <= 34){
+    } else if (parsedAge >= 25 && parsedAge <= 34) {
       if (this.bmi < 17.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 17.5 && this.bmi < 18.5) {
@@ -120,7 +120,7 @@ export class BmiComponent implements OnInit {
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 35 && parsedAge <= 44){
+    } else if (parsedAge >= 35 && parsedAge <= 44) {
       if (this.bmi < 18.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 18.5 && this.bmi < 19.5) {
@@ -140,7 +140,7 @@ export class BmiComponent implements OnInit {
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 45 && parsedAge <= 54){
+    } else if (parsedAge >= 45 && parsedAge <= 54) {
       if (this.bmi < 19.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 19.5 && this.bmi < 20.5) {
@@ -160,7 +160,7 @@ export class BmiComponent implements OnInit {
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 55 && parsedAge <= 64){
+    } else if (parsedAge >= 55 && parsedAge <= 64) {
       if (this.bmi < 20.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 20.5 && this.bmi < 21.5) {
@@ -169,7 +169,7 @@ export class BmiComponent implements OnInit {
         return "Mild Thinness";
       } else if (this.bmi >= 23 && this.bmi < 29.5) {
         return "Normal";
-      } else if (this.bmi >= 29.5 && this.bmi < 34,5) {
+      } else if (this.bmi >= 29.5 && this.bmi < 34, 5) {
         return "Overweight";
       } else if (this.bmi >= 34.5 && this.bmi < 39.5) {
         return "Obese Class I";
@@ -180,7 +180,7 @@ export class BmiComponent implements OnInit {
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 65){
+    } else if (parsedAge >= 65) {
       if (this.bmi < 21.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 21.5 && this.bmi < 22.5) {
@@ -210,27 +210,27 @@ export class BmiComponent implements OnInit {
     //console.log(this.age);
     const parsedAge = parseInt(this.age);
 
-    if (parsedAge >= 1 && parsedAge <= 18){
-      if (this.bmi < 13,1) {
+    if (parsedAge >= 1 && parsedAge <= 18) {
+      if (this.bmi < 13, 1) {
         return "Severe Thinness";
-      } else if (this.bmi >= 13,1 && this.bmi < 14,1) {
+      } else if (this.bmi >= 13, 1 && this.bmi < 14, 1) {
         return "Moderate Thinness";
-      } else if (this.bmi >= 14,1 && this.bmi < 15,6) {
+      } else if (this.bmi >= 14, 1 && this.bmi < 15, 6) {
         return "Mild Thinness";
-      } else if (this.bmi >= 15,6 && this.bmi < 22,1) {
+      } else if (this.bmi >= 15, 6 && this.bmi < 22, 1) {
         return "Normal";
-      } else if (this.bmi >= 22,1 && this.bmi < 27,1) {
+      } else if (this.bmi >= 22, 1 && this.bmi < 27, 1) {
         return "Overweight";
-      } else if (this.bmi >= 27,1 && this.bmi < 32,1) {
+      } else if (this.bmi >= 27, 1 && this.bmi < 32, 1) {
         return "Obese Class I";
-      } else if (this.bmi >= 32,1 && this.bmi < 37,1) {
+      } else if (this.bmi >= 32, 1 && this.bmi < 37, 1) {
         return "Obese Class II";
-      } else if (this.bmi >= 37,1) {
+      } else if (this.bmi >= 37, 1) {
         return "Obese Class III";
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 19 && parsedAge <= 24){
+    } else if (parsedAge >= 19 && parsedAge <= 24) {
       if (this.bmi < 15.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 15.5 && this.bmi < 165) {
@@ -250,7 +250,7 @@ export class BmiComponent implements OnInit {
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 25 && parsedAge <= 34){
+    } else if (parsedAge >= 25 && parsedAge <= 34) {
       if (this.bmi < 16.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 16.5 && this.bmi < 17.5) {
@@ -270,7 +270,7 @@ export class BmiComponent implements OnInit {
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 35 && parsedAge <= 44){
+    } else if (parsedAge >= 35 && parsedAge <= 44) {
       if (this.bmi < 17.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 17.5 && this.bmi < 18.5) {
@@ -290,7 +290,7 @@ export class BmiComponent implements OnInit {
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 45 && parsedAge <= 54){
+    } else if (parsedAge >= 45 && parsedAge <= 54) {
       if (this.bmi < 18.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 18.5 && this.bmi < 19.5) {
@@ -310,7 +310,7 @@ export class BmiComponent implements OnInit {
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 55 && parsedAge <= 64){
+    } else if (parsedAge >= 55 && parsedAge <= 64) {
       if (this.bmi < 19.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 19.5 && this.bmi < 20.5) {
@@ -330,7 +330,7 @@ export class BmiComponent implements OnInit {
       } else {
         return "No BMI calculated";
       }
-    } else if (parsedAge >= 65){
+    } else if (parsedAge >= 65) {
       if (this.bmi < 20.5) {
         return "Severe Thinness";
       } else if (this.bmi >= 20.5 && this.bmi < 16) {
@@ -353,28 +353,29 @@ export class BmiComponent implements OnInit {
     } else {
       return "Please, enter your age"
     }
-  }  
+    
   // Method to calculate BMI based on height, weight and gender input
   getBmi() {
     const parsedWeight = parseInt(this.weight);
     const parsedHeight = parseInt(this.height);
 
-  if(this.gender == "Male"){
+    if (this.gender == "Male") {
+
       if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
-        this.bmi = parsedWeight / (Math.pow(parsedHeight, 2)/10000);
+        this.bmi = parsedWeight / (Math.pow(parsedHeight, 2) / 10000);
         this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForMan()}`;
       } else {
         this.result = "Fill in valid data";
       }
     } else {
       if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
-        this.bmi = parsedWeight / (Math.pow(parsedHeight, 2)/10000);
+        this.bmi = parsedWeight / (Math.pow(parsedHeight, 2) / 10000);
         this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForWoman()}`;
       } else {
         this.result = "Fill in valid data";
       }
     }
-  }  
+  }
 }
 
 // BMI table interface

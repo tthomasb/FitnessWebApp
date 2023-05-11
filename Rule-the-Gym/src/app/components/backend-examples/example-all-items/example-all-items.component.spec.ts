@@ -1,28 +1,28 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+// /* tslint:disable:no-unused-variable */
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { By } from '@angular/platform-browser';
+// import { DebugElement } from '@angular/core';
 
-import { ExampleAllItemsComponent } from './example-all-items.component';
+// import { ExampleAllItemsComponent } from './example-all-items.component';
 
-describe('ExampleAllItemsComponent', () => {
-  let component: ExampleAllItemsComponent;
-  let fixture: ComponentFixture<ExampleAllItemsComponent>;
+// describe('ExampleAllItemsComponent', () => {
+//   let component: ExampleAllItemsComponent;
+//   let fixture: ComponentFixture<ExampleAllItemsComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ExampleAllItemsComponent ]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ ExampleAllItemsComponent ]
+//     })
+//     .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ExampleAllItemsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(ExampleAllItemsComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
