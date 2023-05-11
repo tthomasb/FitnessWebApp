@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogAddNutritionComponent } from 'src/app/dialogues/dialog-add-nutrition/dialog-add-nutrition.component';
 import { Dialog } from 'src/app/enums/dialog';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Tab {
   label: string;

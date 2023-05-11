@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MaterialModule } from './modules/material.module';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatDialogModule } from '@angular/material/dialog';
 import { TrainingComponent } from './components/training/training.component';
 import { BmiComponent } from './components/bmi/bmi.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -28,7 +29,7 @@ import { DialogStartWorkoutTimeComponent } from './dialogues/dialog-start-workou
 import { AccordionComponent } from './components/utils/accordion/accordion.component';
 import { DialogAskDeleteComponent } from './dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { DialogAddNutritionComponent } from './dialogues/dialog-add-nutrition/dialog-add-nutrition.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -64,9 +65,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MaterialModule,
     MatTreeModule,
+    MatDialogModule,
     HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [HttpClient, MatDialogModule],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
