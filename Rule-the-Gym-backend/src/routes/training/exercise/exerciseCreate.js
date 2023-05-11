@@ -12,11 +12,11 @@ export const exerciseCreate = {
     } = req.payload;
     const user_id = "1";
 
-    await db
+    const { results } = await db
       .query(
         `
             INSERT INTO exercise (exercisename, description, muscle, equipment, user_id)
-              VALUES ($1, $2, $3, $4, $5);
+              VALUES ($1, $2, $3, $4, $5) RETURNING*;
         `,
         [exercisename, description, muscle, equipment, user_id]
       )
@@ -25,6 +25,6 @@ export const exerciseCreate = {
         return message;
       });
 
-    return message;
+    return results.rows[0];
   },
 };

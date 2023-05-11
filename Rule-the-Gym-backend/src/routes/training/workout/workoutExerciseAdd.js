@@ -9,7 +9,7 @@ export const workoutExerciseAdd = {
     const {results} =await db.query(
       `
       INSERT INTO workout_exercise(exercise_id,workout_id,exercisepause)
-      VALUES ($1, $2, 20) RETURNING workout_exercise_id;
+      VALUES ($1, $2, 20) RETURNING *;
           `,[exercise_id,workout_id]
       
     ).catch((e)=>{
@@ -28,6 +28,6 @@ export const workoutExerciseAdd = {
 
 
 
-    return {message:"Success"};
+    return results.rows[0];
   },
 };
