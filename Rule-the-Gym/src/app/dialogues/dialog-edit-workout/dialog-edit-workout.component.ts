@@ -115,8 +115,9 @@ export class DialogEditWorkoutComponent implements OnInit {
   }
 
   deleteSet(set_index:number,workout_exercise_index:number){    
-    this.dataService.DeleteSet(this.sets[set_index].set_id);
-    this.loadExerciseData(workout_exercise_index);
+    this.dataService.DeleteSet(this.sets[set_index].set_id).subscribe(()=>
+    this.loadExerciseData(workout_exercise_index));
+
   }
   close() {}
 }

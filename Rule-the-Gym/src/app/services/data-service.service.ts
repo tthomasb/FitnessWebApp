@@ -119,9 +119,10 @@ export class DataServiceService {
       });
   }
 
-  DeleteSet(set_id:number) {
-    this.http.delete(`api/workout/exercise/set/${set_id}`,httpOptions).subscribe();
-    
+  DeleteSet(set_id:number): Observable<any>{
+    this.http.delete(`api/workout/exercise/set/${set_id}`,httpOptions).subscribe();    
+    let obs=new Observable<any>()
+    return obs;    
   }
   createSet(workoutexercise_id:number) {
     console.log(workoutexercise_id);
