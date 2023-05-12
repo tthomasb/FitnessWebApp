@@ -4,7 +4,7 @@ const connection = new Client({
     host: 'localhost',
     user: 'postgres',
     port: 5432,
-    password: 'thomas123',
+    password: '1234',
     database: 'fitness-web-app',
 });
 

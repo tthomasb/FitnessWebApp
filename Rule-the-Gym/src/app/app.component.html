@@ -1,5 +1,5 @@
 <!-- Toolbar -->
-<div class="toolbar" role="main">
+<div *ngIf="auth.user | async" class="toolbar" role="main">
   <mat-toolbar>
     <button
       mat-icon-button
@@ -50,6 +50,11 @@
         BMI
         <br />
       </mat-list-item>
+      <mat-list-item (click)="signOutClicked()" [routerLink]="['/dashboard']">
+        <mat-icon></mat-icon>
+        SIGN OUT
+        <br />
+      </mat-list-item>
     </mat-drawer>
 
     <div class="sidenav-content">
@@ -59,6 +64,21 @@
       <router-outlet></router-outlet>
     </mat-drawer-content>
   </mat-drawer-container>
+</div>
+<div *ngIf="!(auth.user | async)">
+  <form *ngIf="!registerMode" (ngSubmit)="signInWithEmail(email.value, password.value)">
+    <input type="email" placeholder="Email" #email>
+    <input type="password" placeholder="Password" #password>
+    <button type="submit">Sign in</button>
+  </form>
+  <form *ngIf="registerMode" (ngSubmit)="registerWithEmail(email.value, password.value)">
+    <input type="email" placeholder="Email" #email>
+    <input type="password" placeholder="Password" #password>
+    <button type="submit">Register</button>
+  </form>
+  <button (click)="signInWithGoogle()">Sign in with Google</button>
+  <button (click)="registerMode = false">Sign in with Email</button>
+  <button (click)="registerMode = true">Register with Email</button>
 </div>
 
 <!--
