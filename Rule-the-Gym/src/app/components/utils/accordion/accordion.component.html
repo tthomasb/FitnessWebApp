@@ -1,57 +1,68 @@
-<mat-accordion>        
-    <div *ngFor="let w of topLayer2"   class="toplayer">
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{ w }}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        
-        <div *ngFor="let workout of Data.toLoop; let index =  index">
-          <div *ngIf="workout[Data.topLayer]===w">
-            <mat-card class="test">
-              <mat-card-title>{{ workout.workoutname ?? workout.exercisename }}</mat-card-title>
-              <mat-card-subtitle>{{ workout.type ?? workout.description}}</mat-card-subtitle>
-              <mat-card-actions>
-                <button *ngIf="Data.type===start"
-                  mat-flat-button
-                  (click)="dialogEvent.emit({event: start, source: index})" 
-                  color="primary"
-                  class="button-start"
-                  appearance="fill"
-                >
-                  Start Workout
-                </button>
-                <button *ngIf="Data.type===start || Data.type===edit" 
-                  mat-flat-button
-                  (click)="dialogEvent.emit({event:edit, source: index})"
-                  color="primary"
-                  class="button-edit"
-                >
-                  Edit
-                </button>
+<mat-accordion>
+  <div *ngFor="let w of topLayer2" class="toplayer">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ w }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
 
-                <button *ngIf="Data.type===start || Data.type===edit" 
-                  mat-flat-button
-                  (click)="dialogEvent.emit({event: delete, source: index})"
-                  color="primary"
-                  class="button-delete"
-                >
-                  Delete
-                </button>
+      <div *ngFor="let workout of Data.toLoop; let index = index">
+        <div *ngIf="workout[Data.topLayer] === w">
+          <mat-card class="test">
+            <mat-card-title>{{
+              workout.workoutname ?? workout.exercisename
+            }}</mat-card-title>
+            <mat-card-subtitle>{{
+              workout.type ?? workout.description
+            }}</mat-card-subtitle>
+            <mat-card-actions>
+              <button
+                *ngIf="Data.type === start"
+                mat-flat-button
+                (click)="dialogEvent.emit({ event: start, source: index })"
+                color="primary"
+                class="button-start"
+                appearance="fill"
+              >
+                Start Workout
+              </button>
+              <button
+                *ngIf="Data.type === start || Data.type === edit"
+                mat-flat-button
+                (click)="dialogEvent.emit({ event: edit, source: index })"
+                color="primary"
+                class="button-edit"
+              >
+                Edit
+              </button>
 
-                <button *ngIf="Data.type===add" 
-                  mat-flat-button
-                  (click)="dialogEvent.emit({event: add, source: index})"
-                  color="primary"
-                  class="button-add"
-                >
-                  Add
-                </button>
-              </mat-card-actions>
-            </mat-card>
-           </div>
+              <button
+                *ngIf="
+                  (Data.type === start || Data.type === edit) &&
+                  workout.user_id !== '1'
+                "
+                mat-flat-button
+                (click)="dialogEvent.emit({ event: delete, source: index })"
+                color="primary"
+                class="button-delete"
+              >
+                Delete
+              </button>
+
+              <button
+                *ngIf="Data.type === add"
+                mat-flat-button
+                (click)="dialogEvent.emit({ event: add, source: index })"
+                color="primary"
+                class="button-add"
+              >
+                Add
+              </button>
+            </mat-card-actions>
+          </mat-card>
         </div>
-      </mat-expansion-panel>
-    </div>
-  </mat-accordion>
+      </div>
+    </mat-expansion-panel>
+  </div>
+</mat-accordion>
