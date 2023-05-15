@@ -34,13 +34,16 @@ export class BmiComponent implements OnInit {
   // Observable to change the stepper orientation based on the screen size
   stepperOrientation!: Observable<StepperOrientation>;
 
-  value = 'Clear me';
+  favoriteSeason!: string;
+  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   bmi!: number;
   result!: string;
   weight!: string;
   height!: string;
   gender!: string;
   age!: string;
+  physicalStatus!: number;
+  calories!: string;
 
   // Constructor to initialize the form builder and breakpoint observer
   constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) {
@@ -356,27 +359,35 @@ export class BmiComponent implements OnInit {
   }
     
   // Method to calculate BMI based on height, weight and gender input
-  getBmi() {
+  getBmiAndCalories() {
     const parsedWeight = parseInt(this.weight);
     const parsedHeight = parseInt(this.height);
 
     if (this.gender == "Male") {
 
       if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
+        this.calories = (this.physicalStatus * (655 + (9.56 * parseInt(this.weight)) + (1.81 * parseInt(this.height)) - (4.7 * parseInt(this.age)))).toFixed(0);
+        this.calories = (this.physicalStatus * (66.5 + (13.75 * parseInt(this.weight)) + (5 * parseInt(this.height)) - (6.76 * parseInt(this.age)))).toFixed(0);
         this.bmi = parsedWeight / (Math.pow(parsedHeight, 2) / 10000);
-        this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForMan()}`;
+        this.result = `Your Calories are ${this.calories}, Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForMan()}`;
       } else {
         this.result = "Fill in valid data";
       }
     } else {
       if (parsedHeight !== 0 && !isNaN(parsedWeight) && !isNaN(parsedHeight)) {
+        this.calories = (this.physicalStatus * (655 + (9.56 * parseInt(this.weight)) + (1.81 * parseInt(this.height)) - (4.7 * parseInt(this.age)))).toFixed(0);
         this.bmi = parsedWeight / (Math.pow(parsedHeight, 2) / 10000);
-        this.result = `Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForWoman()}`;
+        this.result = `Your Calories are ${this.calories}, Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategoryForWoman()}`;
       } else {
         this.result = "Fill in valid data";
       }
     }
   }
+
+  setPhysicalStatus(pal: number) {
+    this.physicalStatus = pal;
+  }
+
 }
 
 // BMI table interface
@@ -397,4 +408,3 @@ const ELEMENT_DATA: BmiTable[] = [
   {category: "Obese Class II", bmi: "35 - 40", risk: "Very high"},
   {category: "Obese Class III", bmi: "> 40", risk: "Very high"},
 ];
-
