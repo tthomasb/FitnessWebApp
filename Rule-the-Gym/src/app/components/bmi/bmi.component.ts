@@ -47,6 +47,7 @@ export class BmiComponent implements OnInit {
 
   // Constructor to initialize the form builder and breakpoint observer
   constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) {
+    this.calories = "0";
     this.bmi = 0;
     this.result = "Fill in valid data";
     this.stepperOrientation = breakpointObserver
