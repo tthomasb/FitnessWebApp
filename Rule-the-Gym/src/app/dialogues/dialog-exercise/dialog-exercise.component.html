@@ -4,22 +4,22 @@
     <div class="Exercises">
       <section class="exercise-section">
         <mat-card>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field>
             <mat-label>Name</mat-label>
             <input matInput placeholder=""  [(ngModel)]="exercisename" />
           </mat-form-field>
           <br>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field>
             <mat-label>Description</mat-label>
             <input #inputName matInput placeholder="" [(ngModel)]="description" />
           </mat-form-field>
           <br>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field>
             <mat-label>Muscle</mat-label>
             <input matInput placeholder="" [(ngModel)]="muscle" />
           </mat-form-field>
           <br>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field>
             <mat-label>Equipment</mat-label>
             <input matInput placeholder="" [(ngModel)]="equipment"/>
           </mat-form-field>
@@ -27,8 +27,8 @@
       </section>
     </div>
     <div mat-dialog-actions>
-      <button mat-flat-button color="primary" mat-dialog-close (click)="safeData()">Save</button>
-      <button mat-flat-button color="primary" mat-dialog-close>Cancel</button>
+      <button mat-flat-button color="primary" mat-dialog-close class="action-buttons" (click)="safeData()">Save</button>
+      <button mat-flat-button color="primary" mat-dialog-close class="action-buttons">Cancel</button>
     </div>
   </div>
 </div>

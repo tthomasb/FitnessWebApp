@@ -29,9 +29,9 @@ $dark-theme: mat.define-dark-theme(
   )
 );
 
-@include mat.all-legacy-component-themes($dark-theme);
-@include mat.legacy-core();
-@include mat.all-legacy-component-typographies();
+@include mat.all-component-themes($dark-theme);
+@include mat.core();
+@include mat.all-component-typographies();
 
 // @include mat.all-component-typographies();
 // @include mat.core();
@@ -42,4 +42,4 @@ $dark-theme: mat.define-dark-theme(
     @include mat.all-component-themes($dark-theme);
 }
 
-mat.$theme-ignore-duplication-warnings: true;
+$theme-ignore-duplication-warnings: true;

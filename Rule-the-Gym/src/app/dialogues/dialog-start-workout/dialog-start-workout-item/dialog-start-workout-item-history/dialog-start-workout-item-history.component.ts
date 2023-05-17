@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Set_History, Set } from 'src/app/models/models';
 import { DialogStartWorkoutTimeComponent } from '../../dialog-start-workout-time/dialog-start-workout-time.component';
 import { MatButton } from '@angular/material/button';

@@ -1,6 +1,6 @@
 <p class="dialog-ask-delete-text">Are you sure you want to delete?</p>
 <br />
-<div class="group"> 
+<div class="buttons"> 
     <button 
         mat-flat-button 
         (click)="Emitter.emit(true)" 
@@ -9,7 +9,7 @@
         mat-dialog-close>
         Yes
     </button>
-    <button 
+    <button  
         mat-flat-button      
         (click)="Emitter.emit(false)"           
         color="primary" 

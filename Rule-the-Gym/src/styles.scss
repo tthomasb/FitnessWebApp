@@ -1,6 +1,4 @@
 @use "@angular/material" as mat;
-
-//Mixins and Variables
 @import "./styles/styles_variables.scss";
 @import"./styles/restyle.scss";
 
@@ -43,7 +41,7 @@ p {
 }
 
 // Sidenav Design
-.mat-toolbar {
+mat-toolbar {
   background: mat.get-color-from-palette($dark-background);
   border-color: rgba(255, 255, 255, 0.059);
   border-bottom-style: solid;
@@ -58,11 +56,19 @@ p {
   background-color: mat.get-color-from-palette($dark-background);
 }
 
+button {
+  width: 100%;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
 .sidenav {
   padding: 1%;
 }
 
-.mat-list-item {
+mat-list-item {
   font-size: 70%;
   cursor: pointer;
 }
@@ -73,21 +79,17 @@ p {
 }
 
 // Mat-Icons Design
-.mat-icon {
+mat-icon {
   font-size: 130%;
   color: white;
   background-color: transparent;
 }
 
-// Funktioniert noch nicht
-// Mat-Expanison Design
-.mat-expansion {
+mat-expansion {
   color: mat.get-color-from-palette($dark-content-background);
 }
 
-// Funktioniert noch nicht
-// Mat-Dialogs Design
-.mat-dialog {
+mat-dialog {
   color: mat.get-color-from-palette($dark-content-background);
 }
 

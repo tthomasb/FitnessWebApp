@@ -1,7 +1,7 @@
 <div class="dialog">
   <div mat-dialog-container>
     <h1 mat-dialog-title>Choose an exercise</h1>
-    <mat-card style="background-color: 4b4b4b !important">
+    <mat-card>
       <mat-form-field>
         <input
           type="text"
@@ -29,9 +29,9 @@
         </mat-expansion-panel>
       </div>
       <app-accordion [Data]="getAccordionData()" (dialogEvent)="catchDialogEvent($event)"></app-accordion>
+      </mat-card>
       <div mat-dialog-actions>
-        <button mat-flat-button color="primary" mat-dialog-close>Finish</button>
+        <button mat-flat-button color="primary" class="action-buttons" mat-dialog-close>Finish</button>
       </div>
-    </mat-card>
   </div>
 </div>
