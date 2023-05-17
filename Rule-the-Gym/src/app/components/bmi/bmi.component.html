@@ -1,9 +1,8 @@
 <mat-card> 
-<p>BMI Calculator</p>
+<p>Calorie & BMI Calculator</p>
 <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
     <mat-step [stepControl]="firstFormGroup" label="Choose your gender">
         <form [formGroup]="firstFormGroup">
-            <div class="field"> 
             <mat-form-field>
                 <mat-label>Gender</mat-label>
                 <mat-select [(value)]="gender">                    
@@ -11,7 +10,6 @@
                     <mat-option value="Female">Female</mat-option>
                   </mat-select>
             </mat-form-field>
-            </div>
             <div>
                 <button mat-button matStepperNext>Next</button>
             </div>
@@ -49,17 +47,35 @@
             </mat-form-field>
             <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext (click)="getBmi()">Next</button>
+                <button mat-button matStepperNext>Next</button>
             </div>
         </form>
     </mat-step>
     <mat-step>
-        <ng-template matStepLabel>Your BMI</ng-template>
+        <ng-template matStepLabel>Your physical activity</ng-template>
+        <mat-selection-list #shoes [multiple]="false" >
+            <mat-list-option (click)="setPhysicalStatus(1.2)">Only sitting/laying acitvities</mat-list-option>
+            <mat-list-option (click)="setPhysicalStatus(1.4)">Only sitting activities, working at a desk job</mat-list-option>
+            <mat-list-option (click)="setPhysicalStatus(1.6)">Mainly sitting but partly walking or standing activities</mat-list-option>
+            <mat-list-option (click)="setPhysicalStatus(1.8)">Mainly standing or walking activities with some sports</mat-list-option>
+            <mat-list-option (click)="setPhysicalStatus(2.1)">Heavy physical work or sports</mat-list-option>
+        </mat-selection-list>
+        <br>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Your Calories & BMI</ng-template>
         <div class="result">{{result}}</div>
         <br>
         <div>
             <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="getBmiAndCalories()">Calculate</button>
         </div>
+        <br>
+        <mat-card class="info">Info: To build muscle mass, add 300 calories to the result. To lose weight, subtract 300 calories from the result.</mat-card>
     </mat-step>
 </mat-stepper>
 </mat-card>
