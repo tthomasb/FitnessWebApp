@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ExerciseModel } from 'src/app/models/exercise-model.model';
-import { WorkoutData } from 'src/app/models/workout-data.model';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+// import { ExerciseModel } from 'src/app/models/exercise-model.model';
+// import { WorkoutData } from 'src/app/models/workout-data.model';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogEditWorkoutComponent } from 'src/app/dialogues/dialog-edit-workout/dialog-edit-workout.component';
 import { DialogStartWorkoutComponent } from 'src/app/dialogues/dialog-start-workout/dialog-start-workout.component';
 import { Dialog } from 'src/app/enums/dialog';
 import { DialogAskDeleteComponent } from 'src/app/dialogues/dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
-import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
+// import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { Workout } from 'src/app/models/models';
 

@@ -6,10 +6,9 @@
             {{ w }}
           </mat-panel-title>
         </mat-expansion-panel-header>
-        
         <div *ngFor="let workout of Data.toLoop; let index =  index">
           <div *ngIf="workout[Data.topLayer]===w">
-            <mat-card class="test">
+            <mat-card>
               <mat-card-title>{{ workout.workoutname ?? workout.exercisename }}</mat-card-title>
               <mat-card-subtitle>{{ workout.type ?? workout.description}}</mat-card-subtitle>
               <mat-card-actions>
@@ -17,29 +16,31 @@
                   mat-flat-button
                   (click)="dialogEvent.emit({event: start, source: index})" 
                   color="primary"
-                  class="button-start"
-                  appearance="fill"
+                  class="action-buttons"
                 >
                   Start Workout
                 </button>
+              </mat-card-actions>
+              <mat-card-actions>
                 <button *ngIf="Data.type===start || Data.type===edit" 
                   mat-flat-button
                   (click)="dialogEvent.emit({event:edit, source: index})"
                   color="primary"
-                  class="button-edit"
+                  class="action-buttons"
                 >
                   Edit
                 </button>
-
+              </mat-card-actions>
+              <mat-card-actions>
                 <button *ngIf="Data.type===start || Data.type===edit" 
                   mat-flat-button
                   (click)="dialogEvent.emit({event: delete, source: index})"
                   color="primary"
-                  class="button-delete"
+                  class="action-buttons"
                 >
                   Delete
                 </button>
-
+              </mat-card-actions>
                 <button *ngIf="Data.type===add" 
                   mat-flat-button
                   (click)="dialogEvent.emit({event: add, source: index})"
@@ -48,7 +49,6 @@
                 >
                   Add
                 </button>
-              </mat-card-actions>
             </mat-card>
            </div>
         </div>
