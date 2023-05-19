@@ -4,5 +4,4 @@
       <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
     </mat-expansion-panel-header>
     <app-dialog-start-workout-item-history *ngFor="let history of getMapHistories(); let index = index" [history]="history" [set]="sets[index]"></app-dialog-start-workout-item-history>
-    <br/>
 </mat-expansion-panel>

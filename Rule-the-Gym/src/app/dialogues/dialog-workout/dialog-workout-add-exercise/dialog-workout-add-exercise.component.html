@@ -1,14 +1,9 @@
 <div class="dialog">
-  <div mat-dialog-container>
+  <div class mat-dialog-container>
     <h1 mat-dialog-title>Choose an exercise</h1>
     <mat-card>
       <mat-form-field>
-        <input
-          type="text"
-          matInput
-          placeholder="Search in all exercises"
-          [(ngModel)]="search"
-        />
+        <input type="text" matInput placeholder="Search in all exercises" [(ngModel)]="search"/>
       </mat-form-field>
       <div class="toplayer">
         <mat-expansion-panel>
@@ -16,7 +11,7 @@
             <mat-panel-title>All exercises</mat-panel-title>
           </mat-expansion-panel-header>
           <div *ngFor="let exercise of Allexercises; let index = index">
-            <mat-card class="test" *ngIf="exercise.exercisename.toUpperCase().match(search.toUpperCase())">
+            <mat-card class="inner-mat-card" *ngIf="exercise.exercisename.toUpperCase().match(search.toUpperCase())">
               <mat-card-title>{{ exercise.exercisename }}</mat-card-title>
               <mat-card-subtitle>{{ exercise.description }}</mat-card-subtitle>
               <mat-card-actions>
