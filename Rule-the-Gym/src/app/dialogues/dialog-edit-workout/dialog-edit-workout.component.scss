@@ -1,20 +1,3 @@
-mat-card{
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-mat-form-field{
-    margin-right: 10px;
-    button{
-        margin-left: 10px;
-    }
-}
-.div{
-    display:flex;
-    justify-content: center;
-    flex-direction: row;
-}
-.addSet{
-    top: 5px
+.action-buttons {
+    margin-top: 5px;
 }

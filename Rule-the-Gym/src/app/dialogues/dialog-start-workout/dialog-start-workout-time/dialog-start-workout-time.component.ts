@@ -1,8 +1,8 @@
 import { DialogRef } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
-import { LegacyProgressSpinnerMode as ProgressSpinnerMode } from '@angular/material/legacy-progress-spinner';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({

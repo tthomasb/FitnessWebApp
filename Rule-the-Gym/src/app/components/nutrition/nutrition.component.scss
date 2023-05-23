@@ -1,23 +1,12 @@
-.mat-tab-group {
+mat-tab-group {
   margin-top: 5px;
 }
 
-.tab-header {
+mat-tab-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
-}
-
-.tab-month {
-  // Fix
-}
-
-.tab-day {
-  // Fix
-}
-
-.span-month {
 }
 
 .span-day {
@@ -25,22 +14,15 @@
   font-weight: bold;
 }
 
-.span-day-label {
-  // Fix
-}
-
-.tab-content {
-}
-
-.mat-card {
+mat-card {
   margin: 8px;
 }
 
-.mat-card-header {
+mat-card-header {
   height: 50px;
 }
 
-.mat-icon {
+mat-icon {
   flex: 0%;
   text-align: right;
   height: 50px;

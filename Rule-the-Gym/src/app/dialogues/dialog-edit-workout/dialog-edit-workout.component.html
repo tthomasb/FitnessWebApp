@@ -5,17 +5,17 @@
     </mat-card-title>
     <mat-card-subtitle>
       <div mat-dialog-content>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field>
           <mat-label>Name</mat-label>
           <input matInput placeholder={{data.workout.workoutname}} [(ngModel)]="data.workout.workoutname" />
         </mat-form-field>
         <br>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field>
           <mat-label>Type</mat-label>
           <input matInput placeholder="" [(ngModel)]="data.workout.type" />
         </mat-form-field>
         <br>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field>
           <mat-label>Description</mat-label>
           <input matInput placeholder="" [(ngModel)]="data.workout.description" />
         </mat-form-field>
@@ -41,26 +41,30 @@
                     <button  mat-flat-button color="primary"
                        (click)="addSet(index);panel.close()">Add Set</button>
                   </mat-panel-description>
-                </mat-expansion-panel-header >
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Reps</mat-label>
-                  <input matInput placeholder="" [(ngModel)]="sets[0].reps" />
-                </mat-form-field>
-                <br />
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Break time</mat-label>
-                  <input matInput placeholder="Always seconds" [(ngModel)]="sets[0].pause" />
-                </mat-form-field>
-                <br />
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Weight</mat-label>
-                  <input matInput placeholder="" type=text [(ngModel)]="sets[0].weight" />
-                </mat-form-field>
-                <mat-card-actions>
-                  <button mat-flat-button color="primary" (click)="safeExerciseData(0)">Save</button>
-                  <button mat-flat-button color="primary">Cancel</button>
-                  <br />                  
-                </mat-card-actions> -->
+                </mat-expansion-panel-header>
+                <mat-card *ngFor="let set of sets; let i = index">
+                  <div class="div">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Reps Set {{i+1}}</mat-label>
+                      <input matInput placeholder="" [(ngModel)]="set.reps" />
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="fill">
+                      <mat-label>Break time Set {{i+1}}</mat-label>
+                      <input matInput placeholder="Always seconds" [(ngModel)]="set.pause" />
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="fill">
+                      <mat-label>Weight Set {{i+1}}</mat-label>
+                      <input matInput placeholder="" type="text" [(ngModel)]="set.weight" />
+                    </mat-form-field>
+                    <mat-card-actions>
+                      <button mat-flat-button color="primary" (click)="safeExerciseData(i)">Save</button>
+                      <button mat-flat-button color="primary" (click)="deleteSet(i,index)">Delete Set</button>
+                      <br />
+                    </mat-card-actions>
+                  </div>
+                </mat-card>
               </mat-expansion-panel>
             </section>
           </mat-accordion>
@@ -68,10 +72,10 @@
       </div>
     </mat-card-subtitle>
     <div mat-dialog-actions>
-      <button mat-flat-button (click)="addExercise()" color="primary" class="button-add">
+      <button mat-flat-button (click)="addExercise()" color="primary" class="action-buttons">
         Add exercise
       </button>
-      <button mat-flat-button color="primary" (click)="safeWorkoutData()" mat-dialog-close>
+      <button mat-flat-button color="primary" (click)="safeWorkoutData()" class="action-buttons" mat-dialog-close>
         Finish
     </button>  
     </div>

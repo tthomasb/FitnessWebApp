@@ -2,7 +2,8 @@
 @use '../styles/restyle.scss';
 @use '../styles.scss';
 
-.mat-icon {
-    background-color: transparent;
-    color: white;
+mat-toolbar {
+    mat-icon {
+        margin-top: -3px;
+    }
 }
