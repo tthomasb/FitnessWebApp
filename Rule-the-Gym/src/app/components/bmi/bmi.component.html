@@ -1,11 +1,11 @@
-<mat-card> 
+<mat-card>
 <p>Calorie & BMI Calculator</p>
 <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
     <mat-step [stepControl]="firstFormGroup" label="Choose your gender">
         <form [formGroup]="firstFormGroup">
             <mat-form-field>
                 <mat-label>Gender</mat-label>
-                <mat-select [(value)]="gender">                    
+                <mat-select [(value)]="gender">
                     <mat-option value="Male">Male</mat-option>
                     <mat-option value="Female">Female</mat-option>
                   </mat-select>
@@ -46,8 +46,8 @@
                 <input matInput formControlName="fourthCtrl" placeholder="Ex. 85" [(ngModel)]="weight" required>
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext (click)="getBmi()">Next</button>
                 <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
             </div>
         </form>
     </mat-step>
