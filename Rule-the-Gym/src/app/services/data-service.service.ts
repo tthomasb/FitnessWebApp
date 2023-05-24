@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Exercise, Set, Set_History, Workout, WorkoutExercise } from '../models/models';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -9,15 +10,41 @@ const httpOptions = {
   }),
 };
 
+const httpOptionsWithAuthToken = (token: any) => ({
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    AuthToken: token,
+  }),
+});
+
 @Injectable({
   providedIn: 'root',
 })
 export class DataServiceService {
-  
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient, private auth: AngularFireAuth) {}
 
   getAllExercises(): Observable<Exercise[]> {
-    return this.http.get<Exercise[]>('/api/exercise');
+    //return this.http.get<Exercise[]>('/api/exercise');
+    return new Observable<Exercise[]>((observer) => {
+      this.auth.user.subscribe((user) => {
+        user &&
+          user.getIdToken().then((token) => {
+            if (user && token) {
+              this.http
+                .get<Exercise[]>(
+                  `/api/exercises/${user.uid}`,
+                  httpOptionsWithAuthToken(token)
+                )
+                .subscribe((Exercises) => {
+                  observer.next(Exercises);
+                });
+            } else {
+              observer.next([]);
+            }
+          });
+      });
+    });
   }
 
   getExerciseById(id: number): Observable<Exercise> {
@@ -34,11 +61,17 @@ export class DataServiceService {
     muscle: string,
     equipment: string
   ): Observable<Exercise> {
-    return this.http.post<Exercise>(
-      '/api/exercise',
-      { exercisename, description, muscle, equipment },
-      httpOptions
-    );
+    return new Observable<Exercise>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          this.http.post<Exercise>(
+            '/api/exercise',
+            { exercisename, description, muscle, equipment },
+            httpOptionsWithAuthToken(token),
+          ).subscribe(() => observer.next());
+        })
+      })
+    })
   }
 
   editExercise(
@@ -117,9 +150,9 @@ export class DataServiceService {
   }
 
   DeleteSet(set_id:number): Observable<any>{
-    this.http.delete(`api/workout/exercise/set/${set_id}`,httpOptions).subscribe();    
+    this.http.delete(`api/workout/exercise/set/${set_id}`,httpOptions).subscribe();
     let obs=new Observable<any>()
-    return obs;    
+    return obs;
   }
   createSet(workoutexercise_id:number) {
     console.log(workoutexercise_id);
@@ -128,7 +161,7 @@ export class DataServiceService {
       {reps:0,pause:0,weight:0},
       httpOptions
       ).subscribe();
-    
+
   }
 
   getSetHistoryBySetId(id: number): Observable<Set_History> {

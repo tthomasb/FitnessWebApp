@@ -1,4 +1,4 @@
-<mat-accordion>        
+<mat-accordion>
     <div *ngFor="let w of topLayer2"   class="toplayer">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -14,7 +14,7 @@
               <mat-card-actions>
                 <button *ngIf="Data.type===start"
                   mat-flat-button
-                  (click)="dialogEvent.emit({event: start, source: index})" 
+                  (click)="dialogEvent.emit({event: start, source: index})"
                   color="primary"
                   class="action-buttons"
                 >
@@ -22,7 +22,7 @@
                 </button>
               </mat-card-actions>
               <mat-card-actions>
-                <button *ngIf="Data.type===start || Data.type===edit" 
+                <button *ngIf="Data.type===start || Data.type===edit"
                   mat-flat-button
                   (click)="dialogEvent.emit({event:edit, source: index})"
                   color="primary"
@@ -32,7 +32,7 @@
                 </button>
               </mat-card-actions>
               <mat-card-actions>
-                <button *ngIf="Data.type===start || Data.type===edit" 
+                <button *ngIf="Data.type===start || Data.type===edit"
                   mat-flat-button
                   (click)="dialogEvent.emit({event: delete, source: index})"
                   color="primary"
@@ -41,7 +41,7 @@
                   Delete
                 </button>
               </mat-card-actions>
-                <button *ngIf="Data.type===add" 
+                <button *ngIf="Data.type===add"
                   mat-flat-button
                   (click)="dialogEvent.emit({event: add, source: index})"
                   color="primary"
