@@ -32,7 +32,7 @@
                 </button>
               </mat-card-actions>
               <mat-card-actions>
-                <button *ngIf="Data.type===start || Data.type===edit"
+                <button *ngIf="(Data.type===start || Data.type===edit) && workout.user_id !== '1'"
                   mat-flat-button
                   (click)="dialogEvent.emit({event: delete, source: index})"
                   color="primary"

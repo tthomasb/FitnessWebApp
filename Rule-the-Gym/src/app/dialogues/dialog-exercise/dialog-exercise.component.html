@@ -6,28 +6,28 @@
         <mat-card>
           <mat-form-field>
             <mat-label>Name</mat-label>
-            <input matInput placeholder=""  [(ngModel)]="exercisename" />
+            <input matInput placeholder=""  [(ngModel)]="exercisename" [disabled]="user_id === '1'"/>
           </mat-form-field>
           <br>
           <mat-form-field>
             <mat-label>Description</mat-label>
-            <input #inputName matInput placeholder="" [(ngModel)]="description" />
+            <input #inputName matInput placeholder="" [(ngModel)]="description" [disabled]="user_id === '1'"/>
           </mat-form-field>
           <br>
           <mat-form-field>
             <mat-label>Muscle</mat-label>
-            <input matInput placeholder="" [(ngModel)]="muscle" />
+            <input matInput placeholder="" [(ngModel)]="muscle" [disabled]="user_id === '1'"/>
           </mat-form-field>
           <br>
           <mat-form-field>
             <mat-label>Equipment</mat-label>
-            <input matInput placeholder="" [(ngModel)]="equipment"/>
+            <input matInput placeholder="" [(ngModel)]="equipment" [disabled]="user_id === '1'"/>
           </mat-form-field>
         </mat-card>
       </section>
     </div>
     <div mat-dialog-actions>
-      <button mat-flat-button color="primary" mat-dialog-close class="action-buttons" (click)="safeData()">Save</button>
+      <button *ngIf="user_id !='1'" mat-flat-button color="primary" mat-dialog-close class="action-buttons" (click)="safeData()">Save</button>
       <button mat-flat-button color="primary" mat-dialog-close class="action-buttons">Cancel</button>
     </div>
   </div>
