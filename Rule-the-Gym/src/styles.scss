@@ -58,6 +58,8 @@ mat-toolbar {
 
 button {
   width: 100%;
+  height: 50px;
+  color: mat.get-color-from-palette($dark-primary);
 }
 
 mat-form-field{
