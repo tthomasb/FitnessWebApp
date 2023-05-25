@@ -6,6 +6,7 @@ export const exerciseCreate = {
   path: "/api/exercise",
   handler: async (req, h) => {
     const token = req.headers.authtoken;
+    console.log(token);
     const user = await admin.auth().verifyIdToken(token);
     const user_id = user.user_id;
     const {

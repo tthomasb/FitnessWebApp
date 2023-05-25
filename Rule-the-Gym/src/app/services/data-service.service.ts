@@ -109,7 +109,6 @@ export class DataServiceService {
                 )
                 .subscribe((Workouts) => {
                   observer.next(Workouts);
-                  console.log(Workouts);
                 });
             } else {
               observer.next([]);
@@ -145,20 +144,33 @@ export class DataServiceService {
   }
 
   CreateWorkout(name: string, type: string, id: number): Observable<any> {
-    return this.http.post<any>(`api/workout/add`, {
-      workoutname: name,
-      type: type,
-      user_id: id,
+    return new Observable<any>((observer) => {
+      this.auth.user.subscribe((user) => {
+        if (user) {
+          user.getIdToken().then((token) => {
+            this.http
+              .post<any>(
+                '/api/workout/add',
+                {
+                  workoutname: name,
+                  type: type,
+                  user_id: id,
+                },
+                httpOptionsWithAuthToken(token)
+              )
+              .subscribe((response) => {
+                observer.next(response); // Emit the entire response object if needed
+                observer.complete(); // Complete the observer if necessary
+              }, (error) => {
+                observer.error(error); // Handle and propagate the error if needed
+              });
+          });
+        }
+      });
     });
   }
 
-  CreateWorkout(name: string, type: string, id: number): Observable<any> {
-    return this.http.post<any>(`api/workout/add`, {
-      workoutname: name,
-      type: type,
-      user_id: id,
-    });
-  }
+
 
   getWorkoutExerciseByWorkoutId(id: number): Observable<WorkoutExercise[]> {
     return this.http.get<WorkoutExercise[]>(
