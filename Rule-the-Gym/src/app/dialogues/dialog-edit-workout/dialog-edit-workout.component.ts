@@ -27,13 +27,14 @@ export class DialogEditWorkoutComponent implements OnInit {
     public dataService: DataServiceService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.dataService
       .getWorkoutExerciseByWorkoutId(this.data.workout.workout_id)
-      .subscribe((data) => {
+      .subscribe((data) => {        
         this.workoutexercises = data;
         this.exercises = [];
         for (let workoutexercise of data) {
+          console.log(workoutexercise)
           this.dataService
             .getExerciseById(workoutexercise.exercise_id)
             .subscribe((data) => {
@@ -68,8 +69,8 @@ export class DialogEditWorkoutComponent implements OnInit {
 
   openDeleteExercise(index: number) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
-      width: '20%',
-      height: '25%',
+      width: '60%',
+      height: '200px',
       data: { exercises: this.exercises, index: index },
     });
     const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {

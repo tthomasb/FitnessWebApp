@@ -83,8 +83,8 @@ export class WorkoutComponent implements OnInit {
   // Open the delete dialog
   openDeleteWorkout(index:number) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
-      width: '20%',
-      height: '25%',
+      width: '60%',
+      height: '200px',
       data:{workouts:this.workouts, index:index}
     });
     const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {      
@@ -111,11 +111,8 @@ export class WorkoutComponent implements OnInit {
   }
 
   // Delete the workout
-  deleteWorkout(index:number) {
-    //todo fix delete
-    console.log(index);
-    console.log(this.workouts[index].workout_id);
-    console.log(this.dataService.DeleteWorkout(this.workouts[index].workout_id));
+  deleteWorkout(index:number) {       
+    this.dataService.DeleteWorkout(this.workouts[index].workout_id);
     this.ngOnInit();
   }
 

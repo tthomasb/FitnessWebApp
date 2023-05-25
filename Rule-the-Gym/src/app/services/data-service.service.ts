@@ -120,7 +120,6 @@ export class DataServiceService {
   }
 
   safeWorkout(workout: Workout) {
-    console.log(workout);
     return this.http
       .put(
         `api/workout/${workout.workout_id}`,
@@ -131,7 +130,7 @@ export class DataServiceService {
         },
         httpOptions
       )
-      .subscribe((e) => console.log(e));
+      .subscribe((e) => {});
   }
 
   EditWorkout(): any[] {
@@ -140,8 +139,16 @@ export class DataServiceService {
   }
 
   DeleteWorkout(id: string) {
-    this.http.delete(`api/workout/delete/${id}`, httpOptions).subscribe((e) => {
-      console.log(e);
+    this.http
+      .delete(`api/workout/delete/${id}`, httpOptions)
+      .subscribe((e) => {});
+  }
+
+  CreateWorkout(name: string, type: string, id: number): Observable<any> {
+    return this.http.post<any>(`api/workout/add`, {
+      workoutname: name,
+      type: type,
+      user_id: id,
     });
   }
 

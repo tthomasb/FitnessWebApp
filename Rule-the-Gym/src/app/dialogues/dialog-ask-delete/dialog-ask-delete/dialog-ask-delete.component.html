@@ -1,20 +1,21 @@
-<p class="dialog-ask-delete-text">Are you sure you want to delete?</p>
-<br />
-<div class="buttons"> 
-    <button 
-        mat-flat-button 
-        (click)="Emitter.emit(true)" 
-        color="primary" 
-        class="button-delete"
-        mat-dialog-close>
-        Yes
-    </button>
-    <button  
-        mat-flat-button      
-        (click)="Emitter.emit(false)"           
-        color="primary" 
-        class="button-delete"
-        mat-dialog-close>
-        No
-    </button>
+<div class="container">
+    <p class="dialog-ask-delete-text">Are you sure you want to delete?</p>
+    <div class="buttons"> 
+        <button 
+            mat-flat-button 
+            (click)="Emitter.emit(true)" 
+            color="primary" 
+            class="button-delete"
+            mat-dialog-close>
+            Yes
+        </button>
+        <button  
+            mat-flat-button      
+            (click)="Emitter.emit(false)"           
+            color="primary" 
+            class="button-delete"
+            mat-dialog-close>
+            No
+        </button>
+    </div>
 </div>

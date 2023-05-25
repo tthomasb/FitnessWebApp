@@ -31,7 +31,7 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data);
+    
   }
 
   // Get Data for Accordion
@@ -60,7 +60,6 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
 
   AddExercise(index:number){     
     this.dataService.createWorkoutExercise(this.data.workout_id,this.Allexercises[index].exercise_id).subscribe((data)=>{
-    });
-    console.log('Added Exercise');
+    });    
   }
 }

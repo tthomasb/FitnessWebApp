@@ -1,11 +1,13 @@
-<app-accordion [Data]="getAccordionData()" (dialogEvent)="catchDialogEvent($event)"></app-accordion>
-<div class="action-container">
-  <button
-    mat-fab
-    (click)="openAddExercise()"
-    color="primary"
-    class="button-add"
-  >
-    <mat-icon>add</mat-icon>
-  </button>
+<div class="container">
+  <app-accordion [Data]="getAccordionData()" (dialogEvent)="catchDialogEvent($event)"></app-accordion>
+  <div class="action-container">
+    <button
+      mat-fab
+      (click)="openAddExercise()"
+      color="primary"
+      class="button-add"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>

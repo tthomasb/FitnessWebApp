@@ -1,12 +1,12 @@
 <mat-accordion>
-    <div *ngFor="let w of topLayer2"   class="toplayer">
+    <div *ngFor="let w of topLayer2" class="toplayer">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{ w }}
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div *ngFor="let workout of Data.toLoop; let index =  index">
+        <div class="div-mat-card" *ngFor="let workout of Data.toLoop; let index =  index">
           <div *ngIf="workout[Data.topLayer]===w">
             <mat-card>
               <mat-card-title>{{ workout.workoutname ?? workout.exercisename }}</mat-card-title>
@@ -18,7 +18,7 @@
                   color="primary"
                   class="action-buttons"
                 >
-                  Start Workout
+                  Start
                 </button>
               </mat-card-actions>
               <mat-card-actions>

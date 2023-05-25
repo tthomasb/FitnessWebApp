@@ -1,49 +1,30 @@
 <!-- Toolbar -->
 <div *ngIf="auth.user | async" class="toolbar" role="main">
   <mat-toolbar>
-    <button
-      mat-icon-button
-      class="toolbar-icon"
-      aria-label="Toolbar icon-button"
-      mat-icon
-      (click)="drawer.toggle()"
-    >
+    <button mat-icon-button class="toolbar-icon" aria-label="Toolbar icon-button" mat-icon (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Rule the Gym</span>
   </mat-toolbar>
-
   <mat-drawer-container class="sidenav-container" fxFlex autosize>
     <mat-drawer #drawer class="sidenav" mode="side" opened>
-      <mat-list-item
-        [routerLink]="['/dashboard']"
-        [routerLinkActive]="['is-active']"
-      >
+      <mat-list-item [routerLink]="['/dashboard']" [routerLinkActive]="['is-active']">
         <mat-icon>dashboard</mat-icon>
         Dashboard
         <br />
       </mat-list-item>
-
       <mat-divider></mat-divider>
-      <mat-list-item
-        [routerLink]="['/training']"
-        [routerLinkActive]="['is-active']"
-      >
+      <mat-list-item [routerLink]="['/training']" [routerLinkActive]="['is-active']">
         <mat-icon>fitness_center</mat-icon>
         Training
         <br />
       </mat-list-item>
-
       <mat-divider></mat-divider>
-      <mat-list-item
-        [routerLink]="['/nutrition']"
-        [routerLinkActive]="['is-active']"
-      >
+      <mat-list-item [routerLink]="['/nutrition']" [routerLinkActive]="['is-active']">
         <mat-icon>fastfood</mat-icon>
         Nutrition
         <br />
       </mat-list-item>
-
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="['/bmi']" [routerLinkActive]="['is-active']">
         <mat-icon>sync</mat-icon>
@@ -56,7 +37,6 @@
         <br />
       </mat-list-item>
     </mat-drawer>
-
     <div class="sidenav-content">
       <div class="content" role="main"></div>
     </div>
