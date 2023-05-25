@@ -8,7 +8,7 @@ export const exerciseById = {
     const exercise_id = req.params.exercise_id;
 
     const { results } = await db
-      .query(`SELECT * FROM exercise WHERE exercise_id = ${exercise_id}`).then((data)=>console.log(data))
+      .query(`SELECT * FROM exercise WHERE exercise_id = ${exercise_id}`)
       .catch((e) => {        
         return e;
       });
