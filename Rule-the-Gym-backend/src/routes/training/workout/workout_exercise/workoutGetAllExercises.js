@@ -1,5 +1,5 @@
 import { workout_exercise_adapter } from "../../../../workout_exercise_adapter";
-import { db } from "../../../database";
+import { db } from "../../../../database";
 
 export const workoutGetAllExercise = {
   method: "GET",
@@ -18,17 +18,24 @@ export const workoutGetAllExercise = {
       .catch((e) => {
         console.log(e);
       });
-    rows = result.rows;
-    return new workout_exercise_adapter(
-      rows.workout_exercise_id,
-      rows.workout_id,
-      rows.exxercise_id,
-      rows.exercisepause,
-      rows.exercisename,
-      rows.description,
-      rows.equipment,
-      rows.muscle,
-      rows.user_id
-    );
+    const rows = await results.rows;
+    let list=[];
+    for(let row of rows)
+    {                  
+      let obj=new workout_exercise_adapter(
+        row.workout_exercise_id,
+        row.workout_id,
+        row.exercise_id,
+        row.exercisepause,
+        row.exercisename,
+        row.description,
+        row.equipment,
+        row.muscle,
+        row.user_id
+      )
+      
+      list.push(obj)
+    }    
+    return list;
   },
 };

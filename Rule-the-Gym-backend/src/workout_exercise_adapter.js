@@ -1,15 +1,6 @@
-export class workout_exercise_adapter{
-    workout_exercise_id
-    workout_id
-    exercise_id
-    exercisepause
-    exercisename
-    description
-    equipment
-    muscle
-    user_id
+export class workout_exercise_adapter {
 
-    consturctor(
+    constructor(
         workout_exercise_id,
         workout_id,
         exercise_id,

@@ -8,14 +8,13 @@ export const exerciseById = {
     const exercise_id = req.params.exercise_id;
 
     const { results } = await db
-      .query("SELECT * FROM exercise WHERE exercise_id = $1", [exercise_id])
-      .catch((e) => {
-        message.message = e;
-        return message;
+      .query(`SELECT * FROM exercise WHERE exercise_id = ${exercise_id}`).then((data)=>console.log(data))
+      .catch((e) => {        
+        return e;
       });
     const exercise_table = results.rows[0];
     if (!exercise_table)
-      throw Boom.notFound(`Exercise does not exist with id ${exercise_id}`);
+      throw Boom.notFound(`Exercise does not exist with id ${exercise_id}`);    
     return exercise_table;
   },
 };

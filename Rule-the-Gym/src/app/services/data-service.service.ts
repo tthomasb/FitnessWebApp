@@ -6,6 +6,7 @@ import { Exercise, Set, Set_History, Workout, WorkoutExercise } from '../models/
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
+
   }),
 };
 
