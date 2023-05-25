@@ -1,9 +1,15 @@
-.mat-dialog-actions {
-  position: fixed;
-  bottom: 5%;
-  right: 11%;
+mat-form-field {
+  padding-top: 10px;
 }
 
 .action-buttons {
   margin: 5px;
+}
+
+.dialog {
+  margin: 10px;
+}
+
+.inner-mat-card {
+  margin-top: 5px;
 }
