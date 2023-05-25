@@ -27,13 +27,14 @@ export class DialogEditWorkoutComponent implements OnInit {
     public dataService: DataServiceService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.dataService
       .getWorkoutExerciseByWorkoutId(this.data.workout.workout_id)
-      .subscribe((data) => {
+      .subscribe((data) => {        
         this.workoutexercises = data;
         this.exercises = [];
         for (let workoutexercise of data) {
+          console.log(workoutexercise)
           this.dataService
             .getExerciseById(workoutexercise.exercise_id)
             .subscribe((data) => {

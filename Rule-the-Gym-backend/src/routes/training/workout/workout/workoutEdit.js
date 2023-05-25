@@ -1,8 +1,8 @@
-import { db } from "../../../database";
+import { db } from "../../../../database";
 
 export const workoutEdit = {
   method: "PUT",
-  path: "/api/workout",
+  path: "/api/workout/{workout_id}",
   handler: async (req, h) => {
     const { workout_id } = req.params;
     const { workoutname, type, description } = req.payload;

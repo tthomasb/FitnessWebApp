@@ -111,11 +111,8 @@ export class WorkoutComponent implements OnInit {
   }
 
   // Delete the workout
-  deleteWorkout(index:number) {
-    //todo fix delete
-    console.log(index);
-    console.log(this.workouts[index].workout_id);
-    console.log(this.dataService.DeleteWorkout(this.workouts[index].workout_id));
+  deleteWorkout(index:number) {       
+    this.dataService.DeleteWorkout(this.workouts[index].workout_id);
     this.ngOnInit();
   }
 
