@@ -30,6 +30,7 @@ export class DialogEditWorkoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.user_id = this.data.workout.user_id;
     this.dataService
       .getWorkoutExerciseByWorkoutId(this.data.workout.workout_id)
       .subscribe((data) => {

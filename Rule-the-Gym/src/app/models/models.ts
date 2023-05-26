@@ -12,7 +12,7 @@ export interface Workout{
   workoutname:string,
   type: string,
   description:string,
-  user_id: number
+  user_id: string
 }
 
 export interface WorkoutExercise{

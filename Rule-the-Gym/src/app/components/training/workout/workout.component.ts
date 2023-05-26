@@ -19,26 +19,28 @@ export class WorkoutComponent implements OnInit {
   workouts!: Workout[];
   typestring: string = 'type';
   accordionConfig: any;
-  constructor(public dataService:DataServiceService ,public dialog: MatDialog) {
-    //initialize dummy data           
+  constructor(
+    public dataService: DataServiceService,
+    public dialog: MatDialog
+  ) {
+    //initialize dummy data
   }
 
   ngOnInit(): void {
     //set accordionConfig
-    //this.accordionConfig = 
-    this.dataService.getAllWorkouts().subscribe((data)=>{
-      this.workouts=data;
-      this.accordionConfig=this.getAccordionData();
+    //this.accordionConfig =
+    this.dataService.getAllWorkouts().subscribe((data) => {
+      this.workouts = data;
+      this.accordionConfig = this.getAccordionData();
     });
-    
   }
 
   //Get The Accordion Data
   getAccordionData(): any {
-    const data:any = {
-      "toLoop": this.workouts,
-      "topLayer": 'type',      
-      "type": Dialog.START,      
+    const data: any = {
+      toLoop: this.workouts,
+      topLayer: 'type',
+      type: Dialog.START,
     };
     return data;
   }
@@ -48,60 +50,68 @@ export class WorkoutComponent implements OnInit {
   openAddWorkout() {
     //TODO Fix this
     //create an empty workout
-    // let newWorkout=new WorkoutData("","","",new Map([[new ExerciseModel(0, 0, '', '','',''),    
+    // let newWorkout=new WorkoutData("","","",new Map([[new ExerciseModel(0, 0, '', '','',''),
     // new ExerciseDataModel("","","","")]]));
     // this.workouts.push(newWorkout);
     // newWorkout.exerciseMap.clear();
     // console.log(this.workouts);
-    let workout: Workout={workoutname:"", workout_id:"",type:"", description:"",user_id:1};
-    this.dataService.CreateWorkout("","",1).subscribe((e)=>{workout.workout_id=e.workout_id;
-    
-    //Open dialog with empty workout
-    const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
-      width: '90%',
-      height: '90%',
-      data:{workout:workout, dialogName:Dialog.CREATE}
-    });
-     dialogRef.afterClosed().subscribe((result) => {
-      this.ngOnInit();
-     });
+    let workout: Workout = {
+      workoutname: '',
+      workout_id: '',
+      type: '',
+      description: '',
+      user_id: '',
+    };
+    this.dataService.CreateWorkout('', '', 1).subscribe((e) => {
+      workout.workout_id = e.workout_id;
+      workout.user_id = e.user_id;
+      console.log(e.user_id);
+      //Open dialog with empty workout
+      const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
+        width: '90%',
+        height: '90%',
+        data: { workout: workout, dialogName: Dialog.CREATE },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        this.ngOnInit();
+      });
     });
   }
 
   // Open the edit dialog
-  openEditWorkout(index:number) {
+  openEditWorkout(index: number) {
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data:{workout:this.workouts[index], dialogName:Dialog.EDIT}
-    });    
+      data: { workout: this.workouts[index], dialogName: Dialog.EDIT },
+    });
     dialogRef.afterClosed().subscribe((result) => {
       this.ngOnInit();
-     });
+    });
   }
 
   // Open the delete dialog
-  openDeleteWorkout(index:number) {
+  openDeleteWorkout(index: number) {
     const dialogRef = this.dialog.open(DialogAskDeleteComponent, {
       width: '60%',
       height: '200px',
-      data:{workouts:this.workouts, index:index}
+      data: { workouts: this.workouts, index: index },
     });
-    const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {      
-      if(e)this.deleteWorkout(index);
+    const sub = dialogRef.componentInstance.Emitter.subscribe((e) => {
+      if (e) this.deleteWorkout(index);
       this.ngOnInit();
     });
     dialogRef.afterClosed().subscribe(() => {
       dialogRef.componentInstance.Emitter.unsubscribe();
-    })
+    });
   }
 
   // Open the start dialog
-  openStartWorkout(index:number) {
+  openStartWorkout(index: number) {
     const dialogRef = this.dialog.open(DialogStartWorkoutComponent, {
       width: '90%',
       height: '90%',
-      data: {data: this.workouts[index], dialogName:Dialog.START}
+      data: { data: this.workouts[index], dialogName: Dialog.START },
     });
     /**
     dialogRef.afterClosed().subscribe((result) => {
@@ -111,24 +121,24 @@ export class WorkoutComponent implements OnInit {
   }
 
   // Delete the workout
-  deleteWorkout(index:number) {       
+  deleteWorkout(index: number) {
     this.dataService.DeleteWorkout(this.workouts[index].workout_id);
     this.ngOnInit();
   }
 
   // Catch the dialog event
-  catchDialogEvent(value:any){
-    switch(value.event){
+  catchDialogEvent(value: any) {
+    switch (value.event) {
       case Dialog.START:
-      console.log("start caught");
-      this.openStartWorkout(value.source);
-      break;
+        console.log('start caught');
+        this.openStartWorkout(value.source);
+        break;
       case Dialog.EDIT:
-      this.openEditWorkout(value.source);
-      break;
+        this.openEditWorkout(value.source);
+        break;
       case Dialog.DELETE:
-      this.openDeleteWorkout(value.source);
-      break;
+        this.openDeleteWorkout(value.source);
+        break;
     }
   }
 }
