@@ -1,26 +1,41 @@
 <!-- Toolbar -->
 <div *ngIf="auth.user | async" class="toolbar" role="main">
   <mat-toolbar>
-    <button mat-icon-button class="toolbar-icon" aria-label="Toolbar icon-button" mat-icon (click)="drawer.toggle()">
+    <button
+      mat-icon-button
+      class="toolbar-icon"
+      aria-label="Toolbar icon-button"
+      mat-icon
+      (click)="drawer.toggle()"
+    >
       <mat-icon>menu</mat-icon>
     </button>
     <span>Rule the Gym</span>
   </mat-toolbar>
   <mat-drawer-container class="sidenav-container" fxFlex autosize>
     <mat-drawer #drawer class="sidenav" mode="side" opened>
-      <mat-list-item [routerLink]="['/dashboard']" [routerLinkActive]="['is-active']">
+      <mat-list-item
+        [routerLink]="['/dashboard']"
+        [routerLinkActive]="['is-active']"
+      >
         <mat-icon>dashboard</mat-icon>
         Dashboard
         <br />
       </mat-list-item>
       <mat-divider></mat-divider>
-      <mat-list-item [routerLink]="['/training']" [routerLinkActive]="['is-active']">
+      <mat-list-item
+        [routerLink]="['/training']"
+        [routerLinkActive]="['is-active']"
+      >
         <mat-icon>fitness_center</mat-icon>
         Training
         <br />
       </mat-list-item>
       <mat-divider></mat-divider>
-      <mat-list-item [routerLink]="['/nutrition']" [routerLinkActive]="['is-active']">
+      <mat-list-item
+        [routerLink]="['/nutrition']"
+        [routerLinkActive]="['is-active']"
+      >
         <mat-icon>fastfood</mat-icon>
         Nutrition
         <br />
@@ -46,15 +61,23 @@
   </mat-drawer-container>
 </div>
 <div *ngIf="!(auth.user | async)">
-  <form *ngIf="!registerMode" (ngSubmit)="signInWithEmail(email.value, password.value)">
-    <input type="email" placeholder="Email" #email>
-    <input type="password" placeholder="Password" #password>
+  <form
+    *ngIf="!registerMode"
+    (ngSubmit)="signInWithEmail(email.value, password.value)"
+  >
+    <input type="email" placeholder="Email" #email />
+    <input type="password" placeholder="Password" #password />
     <button type="submit">Sign in</button>
+    <button (click)="resetPassword(email.value, $event)">Reset Password</button>
   </form>
-  <form *ngIf="registerMode" (ngSubmit)="registerWithEmail(email.value, password.value)">
-    <input type="email" placeholder="Email" #email>
-    <input type="password" placeholder="Password" #password>
+  <form
+    *ngIf="registerMode"
+    (ngSubmit)="registerWithEmail(email.value, password.value)"
+  >
+    <input type="email" placeholder="Email" #email />
+    <input type="password" placeholder="Password" #password />
     <button type="submit">Register</button>
+    <button (click)="resetPassword(email.value, $event)">Reset Password</button>
   </form>
   <button (click)="signInWithGoogle()">Sign in with Google</button>
   <button (click)="registerMode = false">Sign in with Email</button>

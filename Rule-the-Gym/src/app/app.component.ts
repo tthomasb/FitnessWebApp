@@ -84,6 +84,19 @@ export class AppComponent {
     }
   }
 
+  async resetPassword(email: string, event: Event): Promise<void> {
+    event.preventDefault(); // Prevent form submission
+    try {
+      await this.auth.sendPasswordResetEmail(email);
+      alert('Password reset email sent, check your inbox.');
+      // Password reset email sent successfully
+      // Display a success message to the user
+    } catch (error) {
+      console.error('Error sending password reset email:', error);
+      // Display an error message to the user
+    }
+  }
+
   signOutClicked(): void {
     this.auth.signOut();
   }
