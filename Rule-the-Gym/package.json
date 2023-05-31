@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json",
-    "build": "ng build",
+    "build": "ng build && sonar-scanner",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng e2e --port=4201"
