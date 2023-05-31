@@ -18,15 +18,19 @@ export class DialogStartWorkoutItemComponent {
 
    // Load Set Data
    loadSetHistoryData() {
-    this.setHistory = []
+    this.setHistory = []  
     if (!this.workoutExercise || this.sets.length) return; 
     this.dataService.getSetsByWorkoutExerciseId(this.workoutExercise.workout_exercise_id).subscribe((data) => {
-      this.sets = data
-      console.log(data)
+      this.sets = data      
       for(let set of data) {
-        this.dataService.getSetHistoryBySetId(set.set_id).subscribe((lambda)=>{this.setHistory.push(lambda)
+        try{
+        this.dataService.getSetHistoryBySetId(set.set_id).subscribe((lambda)=>{this.setHistory.push(lambda)          
+          
           this.setMap.set(set.set_id,lambda);})
-        this.setHistory.push()
+        //this.setHistory.push()
+        }catch(e){
+          this.setMap.set(set.set_id,{weight:0, reps:0} as Set_History)
+        }
         }
       });
   }
@@ -36,10 +40,12 @@ export class DialogStartWorkoutItemComponent {
   }
 
   getMapHistories() {
-    return this.getMapKeys().map(x => this.getMapParam(x))
+    console.log(this.getMapKeys())
+    return this.getMapKeys().map(x => this.getMapParam(x))    
   }
 
   getMapParam(SetId:number){
+    //console.log(this.setMap.get(SetId))
     let res=this.setMap.get(SetId);
     return res?? {weight:0, reps:0} as Set_History
   }

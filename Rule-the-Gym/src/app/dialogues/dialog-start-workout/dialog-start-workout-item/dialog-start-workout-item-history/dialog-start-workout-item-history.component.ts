@@ -14,8 +14,14 @@ export class DialogStartWorkoutItemHistoryComponent {
   @Input() history?:Set_History
   @Input() set?: Set;
   @ViewChild("finish") finishButton?:MatButton
+  newHistory!:Set_History
 
   constructor(public dialog: MatDialog) {}
+  
+  ngOnInit(): void {
+   this.newHistory={set_id:0,set_history_id:0,reps:0,weight:0,record_time:new Date()}
+   console.log(this.newHistory)
+  }
 
   // Open the dialog to set the start time
   startTime() {
@@ -26,4 +32,5 @@ export class DialogStartWorkoutItemHistoryComponent {
     });
     this.finishButton!.disabled = true
   }
+  //todo add a set_history
 }
