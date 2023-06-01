@@ -6,12 +6,12 @@
             {{ w }}
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="div-mat-card" *ngFor="let workout of Data.toLoop; let index =  index">
-          <div *ngIf="workout[Data.topLayer]===w">
+        <ng-container *ngFor="let workout of Data.toLoop; let index =  index">
+          <div class="div-mat-card" *ngIf="workout[Data.topLayer]===w">
             <mat-card>
               <mat-card-title>{{ workout.workoutname ?? workout.exercisename }}</mat-card-title>
               <mat-card-subtitle>{{ workout.type ?? workout.description}}</mat-card-subtitle>
-              <mat-card-actions>
+              <mat-card-actions class="actions-column">
                 <button *ngIf="Data.type===start"
                   mat-flat-button
                   (click)="dialogEvent.emit({event: start, source: index})"
@@ -20,8 +20,6 @@
                 >
                   Start
                 </button>
-              </mat-card-actions>
-              <mat-card-actions>
                 <button *ngIf="Data.type===start || Data.type===edit"
                   mat-flat-button
                   (click)="dialogEvent.emit({event:edit, source: index})"
@@ -30,8 +28,6 @@
                 >
                   Edit
                 </button>
-              </mat-card-actions>
-              <mat-card-actions>
                 <button *ngIf="(Data.type===start || Data.type===edit) && workout.user_id !== '1'"
                   mat-flat-button
                   (click)="dialogEvent.emit({event: delete, source: index})"
@@ -51,7 +47,7 @@
                 </button>
             </mat-card>
            </div>
-        </div>
+        </ng-container>
       </mat-expansion-panel>
     </div>
   </mat-accordion>

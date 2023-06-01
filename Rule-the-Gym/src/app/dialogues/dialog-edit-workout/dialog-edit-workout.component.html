@@ -65,13 +65,13 @@
         </div>
       </div>
     </mat-card-subtitle>
-    <div mat-dialog-actions>
+    <mat-card-actions class="hover-button">
       <button [disabled]="user_id === '1'" mat-flat-button (click)="addExercise()" color="primary" class="action-buttons">
         Add exercise
       </button>
       <button mat-flat-button color="primary" (click)="safeWorkoutData()" class="action-buttons" mat-dialog-close>
         Finish
     </button>
-    </div>
+    </mat-card-actions>
   </div>
 </div>

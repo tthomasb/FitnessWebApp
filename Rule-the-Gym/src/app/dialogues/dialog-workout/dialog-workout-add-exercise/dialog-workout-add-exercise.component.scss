@@ -13,3 +13,10 @@ mat-form-field {
 .inner-mat-card {
   margin-top: 5px;
 }
+
+.hover-button {
+  position: sticky;
+  bottom: 0px;
+  background-color: var(--color-background);
+  z-index: 2;
+}

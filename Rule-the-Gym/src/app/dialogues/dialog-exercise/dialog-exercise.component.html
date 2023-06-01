@@ -20,12 +20,12 @@
             <mat-label>Equipment</mat-label>
             <input matInput placeholder="" [(ngModel)]="equipment" [disabled]="user_id === '1'"/>
           </mat-form-field>
+          <mat-card-actions class="action-button">
+            <button *ngIf="user_id !='1'" mat-flat-button color="primary" mat-dialog-close (click)="safeData()">Save</button>
+            <button mat-flat-button color="primary" mat-dialog-close>Cancel</button>
+          </mat-card-actions>
         </mat-card>
       </section>
-    </div>
-    <div mat-dialog-actions>
-      <button *ngIf="user_id !='1'" mat-flat-button color="primary" mat-dialog-close class="action-buttons" (click)="safeData()">Save</button>
-      <button mat-flat-button color="primary" mat-dialog-close class="action-buttons">Cancel</button>
     </div>
   </div>
 </div>

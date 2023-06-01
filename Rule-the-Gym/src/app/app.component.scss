@@ -1,8 +1,4 @@
-@use '../styles/styles_variables.scss';
-@use '../styles/restyle.scss';
-@use '../styles.scss';
-
-mat-toolbar {
+::ng-deep.mat-toolbar {
     mat-icon {
         position: absolute;
         margin-top: -15px;
