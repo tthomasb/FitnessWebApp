@@ -27,16 +27,16 @@
                   <mat-panel-description> Delete </mat-panel-description>
                 </mat-expansion-panel-header>
               </mat-expansion-panel>
-              <mat-expansion-panel *ngFor="let exercise of exercises; let index=index"
-                (opened)="loadExerciseData(index)" #panel>
+              <mat-expansion-panel *ngFor="let exercise of exercises; let workout_exercise_index=index"
+                (opened)="loadExerciseData(workout_exercise_index)" #panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title> {{exercise.exercisename}}</mat-panel-title>
                   <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
                   <mat-panel-description>
                     <button [disabled]="user_id === '1'" class="delete-button" mat-flat-button color="primary"
-                      (click)="openDeleteExercise(index)">Delete</button>
+                      (click)="openDeleteExercise(workout_exercise_index)">Delete</button>
                     <button [disabled]="user_id === '1'"  mat-flat-button color="primary"
-                       (click)="addSet(index);panel.close()">Add Set</button>
+                       (click)="addSet(workout_exercise_index);panel.close()">Add Set</button>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                 <mat-card *ngFor="let set of sets; let i = index" appearance="outlined">
@@ -54,8 +54,8 @@
                       <input matInput placeholder="" type="text" [(ngModel)]="set.weight" [disabled]="user_id === '1'"/>
                     </mat-form-field>
                     <mat-card-actions>
-                      <button [disabled]="user_id === '1'" mat-flat-button color="primary" (click)="safeExerciseData(i)">Save</button>
-                      <button [disabled]="user_id === '1'" mat-flat-button color="primary" (click)="deleteSet(i,index)">Delete</button>
+                      <button [disabled]="user_id === '1'" mat-flat-button color="primary" (click)="safeExerciseData(i,workout_exercise_index)">Save</button>
+                      <button [disabled]="user_id === '1'" mat-flat-button color="primary" (click)="deleteSet(i,workout_exercise_index)">Delete</button>
                     </mat-card-actions>
                   </div>
                 </mat-card>

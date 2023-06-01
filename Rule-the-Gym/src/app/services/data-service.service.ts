@@ -208,22 +208,22 @@ export class DataServiceService {
   }
 
   editSet(id: number, reps: number, weight: number, pause: number) {
-    this.http.put<Set | object>(
+  let obs=  this.http.put<Set | object>(
       `api/workout/exercise/set/${id}`,
       { reps: reps, weight: weight, pause: pause },
       httpOptions
-    );
+    )
+    obs.subscribe((data)=>{});
+    return obs;
   }
 
   DeleteSet(set_id: number): Observable<any> {
-    this.http
+    let obs=this.http
       .delete(`api/workout/exercise/set/${set_id}`, httpOptions)
-      .subscribe();
-    let obs = new Observable<any>();
-    return obs;
+        obs.subscribe((data)=>{});  
+    return obs
   }
   createSet(workoutexercise_id: number) {
-    console.log(workoutexercise_id);
     this.http
       .post(
         `api/workout/exercise/${workoutexercise_id}/set`,

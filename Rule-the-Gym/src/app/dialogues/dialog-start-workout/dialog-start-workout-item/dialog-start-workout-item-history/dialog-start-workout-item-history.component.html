@@ -2,11 +2,11 @@
     Set Variable:
     <mat-form-field>
       <mat-label> Weight (kg):</mat-label>
-      <input matInput placeholder="" [(ngModel)]="history.weight"/>
+      <input matInput placeholder="history.weight" [(ngModel)]="newHistory.weight"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label> Reps:</mat-label>
-      <input matInput placeholder="" [(ngModel)]="history.reps"/>
+      <input matInput placeholder="history.reps" [(ngModel)]="newHistory.reps"/>
     </mat-form-field>
     <button mat-flat-button (click)="startTime()" class="action-buttons" color="primary" #finish> 
       Finish set

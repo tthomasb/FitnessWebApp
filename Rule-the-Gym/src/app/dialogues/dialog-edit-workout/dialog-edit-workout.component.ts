@@ -1,6 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DialogWorkoutAddExerciseComponent } from 'src/app/dialogues/dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { DialogAskDeleteComponent } from '../dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { Exercise, Set, WorkoutExercise } from 'src/app/models/models';
@@ -10,7 +14,6 @@ import { Exercise, Set, WorkoutExercise } from 'src/app/models/models';
   templateUrl: './dialog-edit-workout.component.html',
   styleUrls: ['./dialog-edit-workout.component.scss'],
 })
-
 export class DialogEditWorkoutComponent implements OnInit {
   sets: Set[] = [
     { set_id: 0, workout_exercise_id: 0, reps: 0, weight: 0, pause: 0 },
@@ -35,15 +38,24 @@ export class DialogEditWorkoutComponent implements OnInit {
       .getWorkoutExerciseByWorkoutId(this.data.workout.workout_id)
       .subscribe((data) => {
         this.workoutexercises = data;
+        this.workoutexercises.sort((x, y) => {
+          if (x.workout_exercise_id < y.workout_exercise_id) {
+            return -1;
+          } else if (x.workout_exercise_id === y.workout_exercise_id) {
+            return 0;
+          }
+          return 1;
+        });
         this.exercises = [];
-        for (let workoutexercise of data) {
-          console.log(workoutexercise)
+        for (let workoutexercise of this.workoutexercises) {
           this.dataService
             .getExerciseById(workoutexercise.exercise_id)
             .subscribe((data) => {
+              
               this.exercises.push(data);
-            });
+            });          
         }
+        
       });
   }
 
@@ -57,17 +69,25 @@ export class DialogEditWorkoutComponent implements OnInit {
         for (let set of data) {
           this.sets.push(set);
         }
+        this.sets.sort((x, y) => {
+          if (x.set_id < y.set_id) {
+            return -1;
+          } else if (x.set_id === y.set_id) {
+            return 0;
+          }
+          return 1;
+        });
       });
   }
 
-  safeExerciseData(id: number) {
+  safeExerciseData(id: number, workout_exercise_index:number) {
     this.dataService.editSet(
-      this.sets[0].set_id,
-      this.sets[0].reps,
-      this.sets[0].weight,
-      this.sets[0].pause
-    );
-    this.loadExerciseData(id);
+      this.sets[id].set_id,
+      this.sets[id].reps,
+      this.sets[id].weight,
+      this.sets[id].pause
+    ).subscribe(()=>{this.loadExerciseData(workout_exercise_index);});
+    
   }
 
   openDeleteExercise(index: number) {
@@ -87,9 +107,6 @@ export class DialogEditWorkoutComponent implements OnInit {
 
   // Delete the selected exercise
   deleteExercise(index: any) {
-    //todo fix this
-    console.log(index);
-    console.log(this.workoutexercises);
     this.dataService.deleteWorkoutExercise(
       this.workoutexercises[index].workout_exercise_id
     );
@@ -105,22 +122,23 @@ export class DialogEditWorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
       width: '90%',
       height: '90%',
-      data: {"workout_id":this.data.workout.workout_id},
+      data: { workout_id: this.data.workout.workout_id },
     });
-    dialogRef.afterClosed().subscribe((e)=>{
+    dialogRef.afterClosed().subscribe((e) => {
       this.ngOnInit();
-    })
+    });
   }
 
-  addSet(index:number){
-    this.dataService.createSet(this.workoutexercises[index].workout_exercise_id);
+  addSet(index: number) {
+    this.dataService.createSet(
+      this.workoutexercises[index].workout_exercise_id
+    );
     this.loadExerciseData(index);
   }
 
-  deleteSet(set_index:number,workout_exercise_index:number){
-    this.dataService.DeleteSet(this.sets[set_index].set_id).subscribe(()=>
-    this.loadExerciseData(workout_exercise_index));
-
+  deleteSet(set_index: number, workout_exercise_index: number) {
+    this.dataService
+      .DeleteSet(this.sets[set_index].set_id)
+      .subscribe(() => this.loadExerciseData(workout_exercise_index));
   }
-  close() {}
 }
