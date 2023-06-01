@@ -35,10 +35,16 @@ export class DialogEditWorkoutComponent implements OnInit {
       .getWorkoutExerciseByWorkoutId(this.data.workout.workout_id)
       .subscribe((data) => {        
         this.workoutexercises = data;
+        this.workoutexercises.sort((x, y) => {
+          if (x.workout_exercise_id < y.workout_exercise_id) {
+            return -1;
+          } else if (x.workout_exercise_id === y.workout_exercise_id) {
+            return 0;
+          }
+          return 1;
+        });
         this.exercises = [];
-        console.log(data)
-        for (let workoutexercise of data) {
-          console.log(workoutexercise)
+        for (let workoutexercise of this.workoutexercises) {
           this.dataService
             .getExerciseById(workoutexercise.exercise_id)
             .subscribe((data) => {
@@ -46,14 +52,7 @@ export class DialogEditWorkoutComponent implements OnInit {
               this.exercises.push(data);
             });          
         }
-        this.workoutexercises.sort((x, y) => {
-          if (x.workout_exercise_id < y.workout_exercise_id) {
-            return 1;
-          } else if (x.workout_exercise_id === y.workout_exercise_id) {
-            return 0;
-          }
-          return -1;
-        });
+        
       });
   }
 
@@ -69,11 +68,11 @@ export class DialogEditWorkoutComponent implements OnInit {
         }
         this.sets.sort((x, y) => {
           if (x.set_id < y.set_id) {
-            return 1;
+            return -1;
           } else if (x.set_id === y.set_id) {
             return 0;
           }
-          return -1;
+          return 1;
         });
       });
   }
@@ -105,9 +104,6 @@ export class DialogEditWorkoutComponent implements OnInit {
 
   // Delete the selected exercise
   deleteExercise(index: any) {
-    //todo fix this
-    console.log(index);
-    console.log(this.workoutexercises);
     this.dataService.deleteWorkoutExercise(
       this.workoutexercises[index].workout_exercise_id
     );
