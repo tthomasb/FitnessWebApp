@@ -26,11 +26,6 @@ export class DialogStartWorkoutTimeComponent {
     this.beginnTimer(this.data.set.pause);
   }
 
-  ngOnInit(): void {
-    // this.dataService.workoutGetTime(this.data.workout_id)
-    // .subscribe((lambda)=>{this.workoutExercises = lambda; console.log(this.workoutExercises)})
-  }
-
   // Calculate the time
   calcTime(): void {
     this.current = new Date();
@@ -51,22 +46,11 @@ export class DialogStartWorkoutTimeComponent {
     this.sub = setInterval(() => this.calcTime(), 250);
   }
 
-  // Ideen: 
-  // Time aus der Datenbank holen und als lokale Variable speichern, 
-  // damit addTime() und removeTime() funktionieren
-
-  // Button to finish the time early (Just stop timer or set timer = 0)
-  finishTimeButton() {
-    // Evtl. nicht notwendig (Besprechen mit den anderen)
-    // time = 0
-  }
-
   // Button to finish the time early (Just stop timer)
   // Get back that the Timer is finish so the window close automatactly
   finishTime() {
     clearInterval(this.sub)
     this.dialogRef.close()
-    // Evtl. nicht notwendig (Besprechen mit den anderen)
   }
 
   changeTime(seconds: number) {

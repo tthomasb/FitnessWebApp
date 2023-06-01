@@ -100,9 +100,4 @@ describe('ExerciseComponent', () => {
       expect(component.openDeleteExercise).toHaveBeenCalledWith(1);
     });
   });
-
-  // TODO - test openEditExercise
-  // TODO - test openDeleteExercise
-  // TODO - test openAddExercise
-
 });
