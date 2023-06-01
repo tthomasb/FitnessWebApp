@@ -5,7 +5,7 @@
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Big Mac" #input>
     </mat-form-field>
     <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
+        <table mat-table [dataSource]="dataSource" matSort aria-label="Nutrition Table">
 
             <!-- ID Column -->
             <ng-container matColumnDef="id">

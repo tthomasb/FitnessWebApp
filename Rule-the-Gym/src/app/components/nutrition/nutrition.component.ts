@@ -40,23 +40,13 @@ export class NutritionComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   getDays(month:number) {
-    var date = new Date();
-    date = new Date(date.setMonth(month));  
+    let date = new Date();
+    date = new Date(date.setMonth(month));
     date = new Date(date.getFullYear(), date.getMonth(), 0)
     return Array(date.getDate()).fill(0).map((x, i) => ++i)
   }
 
-  getMonthLabel() {
-    
-  }
-
   ngOnInit(): void {
-    // const startDate = new Date(2023, 0, 1); // Startdatum: 1. Januar 2023
-    // const endDate = new Date(2023, 11, 31); // Enddatum: 31. Dezember 2023
-    // const dayMs = 24 * 60 * 60 * 1000; // Anzahl der Millisekunden pro Tag
-    // for (let date = startDate; date <= endDate; date.setDate(date.getDate() + 1)) {
-    //   this.dates.push(new Date(date.getTime())); // Erstelle ein neues Date-Objekt für jeden Tag und füge es zu "dates" hinzu
-    // }
 
     // Setze das aktive Tab auf das heutige Datum
     const today = new Date();

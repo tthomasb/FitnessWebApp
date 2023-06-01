@@ -1,9 +1,3 @@
-import { ExampleUserItemsComponent } from './components/backend-examples/example-user-items/example-user-items.component';
-import { ExampleAllItemsComponent } from './components/backend-examples/example-all-items/example-all-items.component';
-import { ExampleTemplateComponent } from './components/backend-examples/example-template/example-template.component';
-import { ExampleItemByIdComponent } from './components/backend-examples/example-item-by-id/example-item-by-id.component';
-import { ExampleEditItemComponent } from './components/backend-examples/example-edit-item/example-edit-item.component';
-import { ExampleCreateItemComponent } from './components/backend-examples/example-create-item/example-create-item.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -20,7 +14,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NutritionComponent } from './components/nutrition/nutrition.component';
 import { WorkoutComponent } from './components/training/workout/workout.component';
 import { ExerciseComponent } from './components/training/exercise/exercise.component';
-//import { DialogWorkoutComponent } from './dialogues/dialog-workout/dialog-workout.component';
 import { DialogExerciseComponent } from './dialogues/dialog-exercise/dialog-exercise.component';
 import { DialogWorkoutAddExerciseComponent } from './dialogues/dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
 import { DialogStartWorkoutComponent } from './dialogues/dialog-start-workout/dialog-start-workout.component';
@@ -42,7 +35,6 @@ import { DialogAddNutritionComponent } from './dialogues/dialog-add-nutrition/di
     NutritionComponent,
     WorkoutComponent,
     ExerciseComponent,
-    //DialogWorkoutComponent,
     DialogExerciseComponent,
     DialogWorkoutAddExerciseComponent,
     DialogStartWorkoutComponent,
@@ -52,12 +44,6 @@ import { DialogAddNutritionComponent } from './dialogues/dialog-add-nutrition/di
     DialogStartWorkoutTimeComponent,
     DialogAskDeleteComponent,
     DialogAddNutritionComponent,
-    ExampleAllItemsComponent,
-    ExampleCreateItemComponent,
-    ExampleEditItemComponent,
-    ExampleItemByIdComponent,
-    ExampleTemplateComponent,
-    ExampleUserItemsComponent,
     DialogStartWorkoutItemComponent,
     DialogStartWorkoutItemHistoryComponent,
   ],
