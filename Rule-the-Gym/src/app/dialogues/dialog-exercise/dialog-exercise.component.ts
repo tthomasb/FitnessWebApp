@@ -14,6 +14,8 @@ export class DialogExerciseComponent implements OnInit {
   description!: string;
   muscle!: string;
   equipment!: string;
+  user_id!: string;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public DialogRef: MatDialogRef<DialogExerciseComponent>,
@@ -28,6 +30,7 @@ export class DialogExerciseComponent implements OnInit {
     this.description = this.data.data[this.data.index].description;
     this.muscle = this.data.data[this.data.index].muscle;
     this.equipment = this.data.data[this.data.index].equipment;
+    this.user_id = this.data.data[this.data.index].user_id;
   }
 
   // Safe Exercise Data

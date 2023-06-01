@@ -22,6 +22,8 @@ export class DialogEditWorkoutComponent implements OnInit {
   index!: number;
   workout: any;
   workoutexercises!: WorkoutExercise[];
+  user_id!: string;
+
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -31,9 +33,10 @@ export class DialogEditWorkoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.user_id = this.data.workout.user_id;
     this.dataService
       .getWorkoutExerciseByWorkoutId(this.data.workout.workout_id)
-      .subscribe((data) => {        
+      .subscribe((data) => {
         this.workoutexercises = data;
         this.workoutexercises.sort((x, y) => {
           if (x.workout_exercise_id < y.workout_exercise_id) {

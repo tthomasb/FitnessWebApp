@@ -8,6 +8,7 @@ import {
   Workout,
   WorkoutExercise,
 } from '../models/models';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,14 +16,40 @@ const httpOptions = {
   }),
 };
 
+const httpOptionsWithAuthToken = (token: any) => ({
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    AuthToken: token,
+  }),
+});
+
 @Injectable({
   providedIn: 'root',
 })
 export class DataServiceService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private auth: AngularFireAuth) {}
 
   getAllExercises(): Observable<Exercise[]> {
-    return this.http.get<Exercise[]>('/api/exercise');
+    //return this.http.get<Exercise[]>('/api/exercise');
+    return new Observable<Exercise[]>((observer) => {
+      this.auth.user.subscribe((user) => {
+        user &&
+          user.getIdToken().then((token) => {
+            if (user && token) {
+              this.http
+                .get<Exercise[]>(
+                  `/api/exercises/${user.uid}`,
+                  httpOptionsWithAuthToken(token)
+                )
+                .subscribe((Exercises) => {
+                  observer.next(Exercises);
+                });
+            } else {
+              observer.next([]);
+            }
+          });
+      });
+    });
   }
 
   getExerciseById(id: number): Observable<Exercise> {
@@ -39,11 +66,20 @@ export class DataServiceService {
     muscle: string,
     equipment: string
   ): Observable<Exercise> {
-    return this.http.post<Exercise>(
-      '/api/exercise',
-      { exercisename, description, muscle, equipment },
-      httpOptions
-    );
+    return new Observable<Exercise>((observer) => {
+      this.auth.user.subscribe((user) => {
+        user &&
+          user.getIdToken().then((token) => {
+            this.http
+              .post<Exercise>(
+                '/api/exercise',
+                { exercisename, description, muscle, equipment },
+                httpOptionsWithAuthToken(token)
+              )
+              .subscribe(() => observer.next());
+          });
+      });
+    });
   }
 
   editExercise(
@@ -61,7 +97,25 @@ export class DataServiceService {
   }
 
   getAllWorkouts(): Observable<Workout[]> {
-    return this.http.get<Workout[]>('/api/workout/type', httpOptions);
+    return new Observable<Workout[]>((observer) => {
+      this.auth.user.subscribe((user) => {
+        user &&
+          user.getIdToken().then((token) => {
+            if (user && token) {
+              this.http
+                .get<Workout[]>(
+                  `/api/workouts/${user.uid}`,
+                  httpOptionsWithAuthToken(token)
+                )
+                .subscribe((Workouts) => {
+                  observer.next(Workouts);
+                });
+            } else {
+              observer.next([]);
+            }
+          });
+      });
+    });
   }
 
   safeWorkout(workout: Workout) {
@@ -90,12 +144,33 @@ export class DataServiceService {
   }
 
   CreateWorkout(name: string, type: string, id: number): Observable<any> {
-    return this.http.post<any>(`api/workout/add`, {
-      workoutname: name,
-      type: type,
-      user_id: id,
+    return new Observable<any>((observer) => {
+      this.auth.user.subscribe((user) => {
+        if (user) {
+          user.getIdToken().then((token) => {
+            this.http
+              .post<any>(
+                '/api/workout/add',
+                {
+                  workoutname: name,
+                  type: type,
+                  user_id: id,
+                },
+                httpOptionsWithAuthToken(token)
+              )
+              .subscribe((response) => {
+                observer.next(response); // Emit the entire response object if needed
+                observer.complete(); // Complete the observer if necessary
+              }, (error) => {
+                observer.error(error); // Handle and propagate the error if needed
+              });
+          });
+        }
+      });
     });
   }
+
+
 
   getWorkoutExerciseByWorkoutId(id: number): Observable<WorkoutExercise[]> {
     return this.http.get<WorkoutExercise[]>(

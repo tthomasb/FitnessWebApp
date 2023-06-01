@@ -1,9 +1,3 @@
-import { ExampleUserItemsComponent } from './components/backend-examples/example-user-items/example-user-items.component';
-import { ExampleAllItemsComponent } from './components/backend-examples/example-all-items/example-all-items.component';
-import { ExampleTemplateComponent } from './components/backend-examples/example-template/example-template.component';
-import { ExampleItemByIdComponent } from './components/backend-examples/example-item-by-id/example-item-by-id.component';
-import { ExampleEditItemComponent } from './components/backend-examples/example-edit-item/example-edit-item.component';
-import { ExampleCreateItemComponent } from './components/backend-examples/example-create-item/example-create-item.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -20,7 +14,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NutritionComponent } from './components/nutrition/nutrition.component';
 import { WorkoutComponent } from './components/training/workout/workout.component';
 import { ExerciseComponent } from './components/training/exercise/exercise.component';
-//import { DialogWorkoutComponent } from './dialogues/dialog-workout/dialog-workout.component';
 import { DialogExerciseComponent } from './dialogues/dialog-exercise/dialog-exercise.component';
 import { DialogWorkoutAddExerciseComponent } from './dialogues/dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
 import { DialogStartWorkoutComponent } from './dialogues/dialog-start-workout/dialog-start-workout.component';
@@ -32,6 +25,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DialogStartWorkoutItemComponent } from './dialogues/dialog-start-workout/dialog-start-workout-item/dialog-start-workout-item.component';
 import { DialogStartWorkoutItemHistoryComponent } from './dialogues/dialog-start-workout/dialog-start-workout-item/dialog-start-workout-item-history/dialog-start-workout-item-history.component';
 import { DialogAddNutritionComponent } from './dialogues/dialog-add-nutrition/dialog-add-nutrition.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -42,7 +38,6 @@ import { DialogAddNutritionComponent } from './dialogues/dialog-add-nutrition/di
     NutritionComponent,
     WorkoutComponent,
     ExerciseComponent,
-    //DialogWorkoutComponent,
     DialogExerciseComponent,
     DialogWorkoutAddExerciseComponent,
     DialogStartWorkoutComponent,
@@ -52,12 +47,6 @@ import { DialogAddNutritionComponent } from './dialogues/dialog-add-nutrition/di
     DialogStartWorkoutTimeComponent,
     DialogAskDeleteComponent,
     DialogAddNutritionComponent,
-    ExampleAllItemsComponent,
-    ExampleCreateItemComponent,
-    ExampleEditItemComponent,
-    ExampleItemByIdComponent,
-    ExampleTemplateComponent,
-    ExampleUserItemsComponent,
     DialogStartWorkoutItemComponent,
     DialogStartWorkoutItemHistoryComponent,
   ],
@@ -71,8 +60,10 @@ import { DialogAddNutritionComponent } from './dialogues/dialog-add-nutrition/di
     MatTreeModule,
     MatDialogModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
   ],
   providers: [HttpClient, MatDialogModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
