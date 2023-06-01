@@ -41,7 +41,7 @@ export class WorkoutComponent implements OnInit {
    * Open the workout dialog
    */
   openAddWorkout() {
-    let workout: Workout={workoutname:"", workout_id:"",type:"", description:"",user_id:1};
+    let workout: Workout={workoutname:"", workout_id:"",type:"", description:"",user_id:"1"};
     this.dataService.CreateWorkout("","",1).subscribe((e)=>{workout.workout_id=e.workout_id;
 
     //Open dialog with empty workout
