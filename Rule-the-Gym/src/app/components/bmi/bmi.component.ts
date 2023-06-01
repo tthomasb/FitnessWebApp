@@ -447,7 +447,7 @@ export class BmiComponent implements OnInit {
       this.calories = (this.physicalStatus * (655 + (9.56 * parseInt(this.weight)) + (1.81 * parseInt(this.height)) - (4.7 * parseInt(this.age)))).toFixed(0);
       this.calories = (this.physicalStatus * (66.5 + (13.75 * parseInt(this.weight)) + (5 * parseInt(this.height)) - (6.76 * parseInt(this.age)))).toFixed(0);
       this.bmi = parsedWeight / (Math.pow(parsedHeight, 2) / 10000);
-      this.result = `Your Calories are ${this.calories}, Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategory}`;
+      this.result = `Your Calories are ${this.calories}, Your BMI is ${this.bmi.toFixed(2)} and you are ${this.getAdvancedBmiCategory()}`;
     } else {
       this.result = "Fill in valid data";
     }
