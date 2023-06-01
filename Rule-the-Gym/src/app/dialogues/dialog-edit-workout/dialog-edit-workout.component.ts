@@ -19,6 +19,8 @@ export class DialogEditWorkoutComponent implements OnInit {
   index!: number;
   workout: any;
   workoutexercises!: WorkoutExercise[];
+  user_id!: string;
+
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -27,10 +29,11 @@ export class DialogEditWorkoutComponent implements OnInit {
     public dataService: DataServiceService
   ) {}
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    this.user_id = this.data.workout.user_id;
     this.dataService
       .getWorkoutExerciseByWorkoutId(this.data.workout.workout_id)
-      .subscribe((data) => {        
+      .subscribe((data) => {
         this.workoutexercises = data;
         this.exercises = [];
         for (let workoutexercise of data) {
@@ -49,7 +52,7 @@ export class DialogEditWorkoutComponent implements OnInit {
       .getSetsByWorkoutExerciseId(
         this.workoutexercises[index].workout_exercise_id
       )
-      .subscribe((data) => {        
+      .subscribe((data) => {
         this.sets = [];
         for (let set of data) {
           this.sets.push(set);
@@ -81,7 +84,7 @@ export class DialogEditWorkoutComponent implements OnInit {
       dialogRef.componentInstance.Emitter.unsubscribe();
     });
   }
-  
+
   // Delete the selected exercise
   deleteExercise(index: any) {
     //todo fix this
@@ -92,8 +95,8 @@ export class DialogEditWorkoutComponent implements OnInit {
     );
     this.ngOnInit();
   }
-  
-  safeWorkoutData() {        
+
+  safeWorkoutData() {
     this.dataService.safeWorkout(this.data.workout);
   }
 
@@ -114,7 +117,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     this.loadExerciseData(index);
   }
 
-  deleteSet(set_index:number,workout_exercise_index:number){    
+  deleteSet(set_index:number,workout_exercise_index:number){
     this.dataService.DeleteSet(this.sets[set_index].set_id).subscribe(()=>
     this.loadExerciseData(workout_exercise_index));
 

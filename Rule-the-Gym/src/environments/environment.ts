@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyBpPeBbDqI3-vHHdjsZrt1kUqnC8zHlJvI',
+    authDomain: 'rule-the-gym.firebaseapp.com',
+    projectId: 'rule-the-gym',
+    storageBucket: 'rule-the-gym.appspot.com',
+    messagingSenderId: '675817010941',
+    appId: '1:675817010941:web:c4ce75c60f43fc156b3094',
+    measurementId: 'G-F386YQZ7CY',
+  },
 };
 
 /*

@@ -25,6 +25,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DialogStartWorkoutItemComponent } from './dialogues/dialog-start-workout/dialog-start-workout-item/dialog-start-workout-item.component';
 import { DialogStartWorkoutItemHistoryComponent } from './dialogues/dialog-start-workout/dialog-start-workout-item/dialog-start-workout-item-history/dialog-start-workout-item-history.component';
 import { DialogAddNutritionComponent } from './dialogues/dialog-add-nutrition/dialog-add-nutrition.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -57,8 +60,10 @@ import { DialogAddNutritionComponent } from './dialogues/dialog-add-nutrition/di
     MatTreeModule,
     MatDialogModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
   ],
   providers: [HttpClient, MatDialogModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
