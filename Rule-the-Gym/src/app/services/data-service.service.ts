@@ -149,7 +149,6 @@ export class DataServiceService {
     return obs
   }
   createSet(workoutexercise_id: number) {
-    console.log(workoutexercise_id);
     this.http
       .post(
         `api/workout/exercise/${workoutexercise_id}/set`,

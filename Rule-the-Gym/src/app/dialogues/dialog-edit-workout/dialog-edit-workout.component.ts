@@ -77,13 +77,13 @@ export class DialogEditWorkoutComponent implements OnInit {
       });
   }
 
-  safeExerciseData(id: number) {
+  safeExerciseData(id: number, workout_exercise_index:number) {
     this.dataService.editSet(
       this.sets[id].set_id,
       this.sets[id].reps,
       this.sets[id].weight,
       this.sets[id].pause
-    ).subscribe(()=>{this.loadExerciseData(id);});
+    ).subscribe(()=>{this.loadExerciseData(workout_exercise_index);});
     
   }
 
