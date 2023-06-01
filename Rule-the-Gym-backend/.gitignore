@@ -43,3 +43,6 @@ Thumbs.db
 
 #database files
 src\database.js
+
+#Authentication
+credentials.json

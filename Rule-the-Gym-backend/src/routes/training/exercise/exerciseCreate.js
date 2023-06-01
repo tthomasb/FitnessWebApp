@@ -1,16 +1,20 @@
+import * as admin from "firebase-admin";
 import { db } from "../../../database";
 
 export const exerciseCreate = {
   method: "POST",
   path: "/api/exercise",
   handler: async (req, h) => {
+    const token = req.headers.authtoken;
+    console.log(token);
+    const user = await admin.auth().verifyIdToken(token);
+    const user_id = user.user_id;
     const {
       exercisename = "",
       description = "",
       muscle = "",
       equipment = "",
     } = req.payload;
-    const user_id = "1";
 
     const { results } = await db
       .query(
