@@ -2,7 +2,7 @@ import { db } from "../../../../database";
 
 export const workoutExerciseAddHistorySet = {
   method: "POST",
-  path: "/api/workout/exercise/{set_id}/set_history",
+  path: "/api/workout/exercise/set_history/{set_id}",
   handler: async (req, h) => {
     const { set_id } = req.params;
     const { reps, weight } = req.payload;
@@ -16,8 +16,7 @@ export const workoutExerciseAddHistorySet = {
         [set_id, reps, weight, record_time]
       )
       .catch((e) => {
-        message.message = e;
-        return message;
+        return e;
       });
     return { set_id, reps, weight, record_time };
   },

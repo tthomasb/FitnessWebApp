@@ -240,19 +240,19 @@ export class DataServiceService {
     );
   }
 
-  safeSetHistoryData(set_history: Set_History) {
+  safeSetHistoryData(set_history: Set_History, set_id:number) {
     // console.log(set_history);
     return this.http
-      .put(
-        `api/workout/exercise/set_history/${set_history.set_history_id}`,
+      .post(
+        `api/workout/exercise/set_history/${set_id}`,
+        // ${set_history.set_history_id}
         {
           reps: set_history.reps,
-          weight: set_history.weight,
-          record_time: set_history.record_time,
+          weight: set_history.weight          
         },
         httpOptions
       )
-      .subscribe((e) => console.log(e));
+      .subscribe((e) =>{});
   }
 
   // workoutGetTime(workout_id: any) {
