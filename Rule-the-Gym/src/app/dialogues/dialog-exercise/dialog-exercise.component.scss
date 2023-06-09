@@ -1,7 +1,8 @@
 mat-card {
-    margin: 10px;
+    margin: 10px !important;
 }
 
-.action-buttons {
-    margin: 5px;
+.action-button {
+    flex-direction: column;
+    gap: 8px;
 }

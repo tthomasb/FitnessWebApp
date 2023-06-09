@@ -13,3 +13,9 @@ mat-card-subtitle {
 .div-mat-card {
     margin-top: 10px;
 }
+
+.actions-column {
+    flex-direction: column;
+    position: center;
+    gap: 8px;
+}

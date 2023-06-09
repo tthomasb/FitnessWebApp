@@ -1,13 +1,18 @@
-@use '../styles/styles_variables.scss';
-@use '../styles/restyle.scss';
-@use '../styles.scss';
+.sidenav-list {
+    display:flex;
+    align-items: center;
+    font-size: 17px;
+    padding: 5px;
+}
 
-mat-toolbar {
-    mat-icon {
-        position: absolute;
-        margin-top: -15px;
-        margin-left: -13px
-    }
+.sidenav-text {
+    padding-left: 8px;
+    // color: var(--color-primary);
+}
+
+.auth {
+    position: absolute; 
+    bottom: 0;
 }
 
 mat-card {

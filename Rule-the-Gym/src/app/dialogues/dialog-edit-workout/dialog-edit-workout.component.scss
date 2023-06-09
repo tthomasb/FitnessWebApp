@@ -1,11 +1,16 @@
-.action-buttons {
-    margin-top: 5px;
-}
-
 .mat-dialog-content {
-    padding: 10px;
+    // padding: 5px;
 }
 
 mat-card {
     margin-bottom: 5px;
+}
+
+.hover-button {
+    position: sticky;
+    bottom: 0px;
+    background-color: var(--color-background);
+    z-index: 2;
+    flex-direction: column;
+    gap: 8px;
 }

@@ -2,10 +2,15 @@ mat-expansion-panel {
   margin-top: 10px;
 }
 
-.action-buttons {
-  margin: 5px;
-}
-
 .dialog {
   margin: 10px;
+}
+
+.hover-button {
+  position: sticky;
+  bottom: 0px;
+  background-color: var(--color-background);
+  z-index: 2;
+  flex-direction: column;
+  gap: 8px;
 }
