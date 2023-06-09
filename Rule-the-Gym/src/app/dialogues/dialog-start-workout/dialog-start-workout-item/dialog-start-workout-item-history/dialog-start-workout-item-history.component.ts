@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Set_History, Set } from 'src/app/models/models';
 import { DialogStartWorkoutTimeComponent } from '../../dialog-start-workout-time/dialog-start-workout-time.component';
 import { MatButton } from '@angular/material/button';
+import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-dialog-start-workout-item-history',
@@ -12,15 +13,17 @@ import { MatButton } from '@angular/material/button';
 export class DialogStartWorkoutItemHistoryComponent {
 
   @Input() history?:Set_History
-  @Input() set?: Set;
+  @Input() set!: Set;
   @ViewChild("finish") finishButton?:MatButton
   newHistory!:Set_History
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public dataService:DataServiceService) {}
   
   ngOnInit(): void {
    this.newHistory={set_id:0,set_history_id:0,reps:0,weight:0,record_time:new Date()}
-   console.log(this.newHistory)
+   if(this.history)   {
+    this.newHistory=this.history;
+   }
   }
 
   // Open the dialog to set the start time
@@ -31,6 +34,6 @@ export class DialogStartWorkoutItemHistoryComponent {
       data: {"set":this.set} 
     });
     this.finishButton!.disabled = true
-  }
-  //todo add a set_history
+    this.dataService.safeSetHistoryData(this.newHistory,this.set?.set_id);
+  }  
 }
