@@ -34,9 +34,9 @@
                   <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
                   <mat-panel-description>
                     <button [disabled]="user_id === '1'" class="delete-button" mat-mini-fab color="primary"
-                      (click)="openDeleteExercise(index)"><mat-icon>delete</mat-icon></button>
+                      (click)="openDeleteExercise(workout_exercise_index)"><mat-icon>delete</mat-icon></button>
                     <button [disabled]="user_id === '1'"  mat-mini-fab color="primary"
-                       (click)="addSet(index);panel.close()"><mat-icon>add</mat-icon></button>
+                       (click)="addSet(workout_exercise_index);panel.close()"><mat-icon>add</mat-icon></button>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                 <mat-card *ngFor="let set of sets; let i = index" appearance="outlined">
