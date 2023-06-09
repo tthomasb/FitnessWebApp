@@ -1,5 +1,5 @@
 <!-- Toolbar -->
-<div *ngIf="auth.user | async" class="toolbar" role="main">
+<div *ngIf="auth.user | async" class="toolbar" role="main" aria-label="Main toolbar">
   <mat-toolbar>
     <button
       mat-icon-button
@@ -46,44 +46,55 @@
         BMI
         <br />
       </mat-list-item>
-      <mat-list-item (click)="signOutClicked()" [routerLink]="['/dashboard']">
-        <mat-icon></mat-icon>
-        SIGN OUT
+      <mat-list-item class="auth" (click)="signOutClicked()" [routerLink]="['/dashboard']">
+        <mat-icon>input</mat-icon>
+        Sign Out
         <br />
       </mat-list-item>
     </mat-drawer>
     <div class="sidenav-content">
-      <div class="content" role="main"></div>
+      <div class="content" role="main" aria-label="Main content"></div>
     </div>
     <mat-drawer-content>
       <router-outlet></router-outlet>
     </mat-drawer-content>
   </mat-drawer-container>
 </div>
-<div *ngIf="!(auth.user | async)">
-  <form
-    *ngIf="!registerMode"
-    (ngSubmit)="signInWithEmail(email.value, password.value)"
-  >
-    <input type="email" placeholder="Email" #email />
-    <input type="password" placeholder="Password" #password />
-    <button type="submit">Sign in</button>
-    <button (click)="resetPassword(email.value, $event)">Reset Password</button>
-  </form>
-  <form
-    *ngIf="registerMode"
-    (ngSubmit)="registerWithEmail(email.value, password.value)"
-  >
-    <input type="email" placeholder="Email" #email />
-    <input type="password" placeholder="Password" #password />
-    <button type="submit">Register</button>
-    <button (click)="resetPassword(email.value, $event)">Reset Password</button>
-  </form>
-  <button (click)="signInWithGoogle()">Sign in with Google</button>
-  <button (click)="registerMode = false">Sign in with Email</button>
-  <button (click)="registerMode = true">Register with Email</button>
-</div>
-
-<!--
-  <mat-toolbar-row color="primary">
--->
+<!-- Authentification -->
+<mat-card *ngIf="!(auth.user | async)">
+  <mat-card-header>
+    <mat-card-title>Authentification</mat-card-title>
+    <br>
+  </mat-card-header>
+  <mat-card-content>
+    <form *ngIf="!registerMode" (ngSubmit)="signInWithEmail(email.value, password.value)">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" #email required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" #password required />
+      </mat-form-field>
+      <button class="button" mat-raised-button color="primary" type="submit">Sign in</button>
+      <button class="button" mat-button (click)="resetPassword(email.value, $event)">Reset Password</button>
+    </form>
+    <form *ngIf="registerMode" (ngSubmit)="registerWithEmail(email.value, password.value)">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" #email required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" #password required />
+      </mat-form-field>
+      <button class="button" mat-raised-button color="primary" type="submit">Register</button>
+      <button class="button" mat-button (click)="resetPassword(email.value, $event)">Reset Password</button>
+    </form>
+    <button class="button" mat-raised-button color="primary" (click)="signInWithGoogle()">Sign in with Google</button>
+    <div class="auth-toggle">
+      <button class="button" mat-button *ngIf="!registerMode" (click)="registerMode = true">Register</button>
+      <button class="button" mat-button *ngIf="registerMode" (click)="registerMode = false">Sign in</button>
+    </div>
+  </mat-card-content>
+</mat-card>
