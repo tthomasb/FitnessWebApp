@@ -14,8 +14,13 @@ export class AppComponent {
 
   constructor(public auth: AngularFireAuth) {}
 
-  signInWithGoogle(): void {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  async signInWithGoogle(): Promise<void> {
+    try {
+      await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    } catch (error) {
+      console.error('Error signing in with Google:', error);
+      // Display an error message to the user
+    }
   }
 
   async signInWithEmail(email: string, password: string): Promise<void> {
@@ -24,12 +29,16 @@ export class AppComponent {
         email,
         password
       );
-      if (userCredential.user && userCredential.user.emailVerified) {
+      if (userCredential?.user?.emailVerified) {
         // User is logged in and email is verified
         // Proceed with your logic or redirect to the desired page
       } else {
         alert('Please verify your email address before logging in.');
-        this.auth.signOut();
+        try {
+          await this.auth.signOut();
+        } catch (error) {
+          console.error('Error signing out:', error);
+        }
       }
     } catch (error) {
       const email = window.localStorage.getItem('emailForRegistration');
@@ -97,7 +106,11 @@ export class AppComponent {
     }
   }
 
-  signOutClicked(): void {
-    this.auth.signOut();
+  async signOutClicked(): Promise<void> {
+    try {
+      await this.auth.signOut();
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
   }
 }
