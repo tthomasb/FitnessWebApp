@@ -41,11 +41,17 @@ p {
 }
 
 // Sidenav Design
-::ng-deep.mat-toolbar {
+.mat-toolbar {
   background: mat.get-color-from-palette($dark-background);
   border-color: rgba(255, 255, 255, 0.059);
   border-bottom-style: solid;
 }
+
+// ::ng-deep.mat-toolbar {
+//   background: mat.get-color-from-palette($dark-background);
+//   border-color: rgba(255, 255, 255, 0.059);
+//   border-bottom-style: solid;
+// }
 
 .mat-drawer {
   background-color: mat.get-color-from-palette($dark-background);
@@ -56,35 +62,34 @@ p {
   background-color: mat.get-color-from-palette($dark-background);
 }
 
-button {
-  width: 100%;
-  height: 50px;
-  color: mat.get-color-from-palette($dark-primary);
-}
-
-mat-form-field{
-  width: 100%;
-}
-
 .sidenav {
   padding: 1%;
 }
 
-::ng-deep.mat-list-item {
-  font-size: 70%;
+mat-list-item {
   cursor: pointer;
 }
 
 .is-active {
   font-weight: bold;
   color: mat.get-color-from-palette($dark-primary);
+  // color: var(--color-primary);
 }
 
-// Mat-Icons Design
+// Material design
+button {
+  width: 100%;
+  height: 50px;
+  color: mat.get-color-from-palette($dark-primary);
+}
+
 mat-icon {
   font-size: 130%;
-  color: white;
   background-color: transparent;
+}
+
+mat-form-field{
+  width: 100%;
 }
 
 mat-expansion {

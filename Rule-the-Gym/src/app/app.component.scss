@@ -1,7 +1,16 @@
-::ng-deep.mat-toolbar {
-    mat-icon {
-        position: absolute;
-        margin-top: -15px;
-        margin-left: -13px
-    }
+.sidenav-list {
+    display:flex;
+    align-items: center;
+    font-size: 17px;
+    padding: 5px;
+}
+
+.sidenav-text {
+    padding-left: 8px;
+    // color: var(--color-primary);
+}
+
+.auth {
+    position: absolute; 
+    bottom: 0;
 }

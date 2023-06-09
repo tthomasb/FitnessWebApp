@@ -9,12 +9,27 @@ interface Tab {
   content: string;
 }
 
+export interface NutritionalValues {
+  name: string;
+  kcal: number;
+  carbs: number;
+  protein: number;
+  fat: number;
+}
+
+const ELEMENT_DATA: NutritionalValues[] = [
+  {name: 'Chicken', kcal: 100, carbs: 100, protein: 100, fat: 100},
+];
+
 @Component({
   selector: 'app-nutrition',
   templateUrl: './nutrition.component.html',
   styleUrls: ['./nutrition.component.scss']
 })
 export class NutritionComponent implements OnInit {
+
+  displayedColumns: string[] = ['name', 'kcal', 'carbs', 'protein', 'fat'];
+  dataSource = ELEMENT_DATA;
 
   // Data for Overview
   goal!: number|undefined;
