@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 export interface Tile {
   //color: string;
@@ -17,9 +17,7 @@ export interface Tile {
   styleUrls: ['./dashboard.component.scss'],
 })
 
-export class DashboardComponent implements OnInit {
-  constructor() {}
-  ngOnInit(): void {}
+export class DashboardComponent {
 
   // Images for the tiles
   tiles: Tile[] = [
