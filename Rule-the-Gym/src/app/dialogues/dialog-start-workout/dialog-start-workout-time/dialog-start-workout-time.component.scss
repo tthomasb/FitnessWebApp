@@ -1,27 +1,40 @@
+mat-card {
+  margin: 10px;
+  height: 280px;
+  border: none;
+  box-shadow: none;
+}
+
 .spinner {
   position: absolute;
-  top: 45%;
-  left: 45%;
+  top: 85px;
+  left: 90px;
 }
 
 h3 {
   position: absolute;
-  top: 30%;
-  left: 25%;
+  top: 34px;
+  left: 26px;
+  color: white;
 }
 
 .button-remove {
-  
+  position: absolute;
+  top: 105px;
+  left: 10px;
 }
 
 .button-add {
-  
+  position: absolute;
+  top: 105px;
+  left: 210px;
 }
 
-.button-finish {
-  
+mat-card-action {
+  margin-top: 200px;
 }
 
-// ::-webkit-scrollbar {
-//     display: none;
-// }
+.finish-button {
+  margin-top: 200px;
+  margin-left: 10px;
+}

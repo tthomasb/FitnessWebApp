@@ -1,9 +1,19 @@
-.mat-dialog-content {
-    // padding: 5px;
+mat-card {
+    margin: 5px;
 }
 
-mat-card {
-    margin-bottom: 5px;
+.delete-button {
+    position: absolute;
+    right: 35px;
+    height: 30px;
+    width: 30px;
+}
+
+.add-button {
+    position: absolute;
+    right: 70px;
+    height: 30px;
+    width: 30px;
 }
 
 .hover-button {
