@@ -1,14 +1,32 @@
-<mat-card class="inner-mat-card" *ngIf="history">
-    Set Variable:
-    <mat-form-field>
-      <mat-label> Weight (kg):</mat-label>
-      <input matInput placeholder="history.weight" [(ngModel)]="newHistory.weight"/>
+<mat-card appearance="outlined" class="inner-mat-card" *ngIf="history">
+  <div class="div">
+    <mat-form-field appearance="fill">
+      <mat-label>Weight Set {{index+1}}</mat-label>
+      <input matInput placeholder="history.weight" type="text" [(ngModel)]="newHistory.weight"/>
     </mat-form-field>
-    <mat-form-field>
-      <mat-label> Reps:</mat-label>
+    <mat-form-field appearance="fill">
+      <mat-label>Reps Set {{index+1}}</mat-label>
       <input matInput placeholder="history.reps" [(ngModel)]="newHistory.reps"/>
     </mat-form-field>
-    <button mat-flat-button (click)="startTime()" class="action-buttons" color="primary" #finish> 
+    <mat-card-actions>
+      <button mat-flat-button (click)="startTime()" class="action-buttons" color="primary" #finish> 
       Finish set
     </button>
+    </mat-card-actions>
+  </div>
 </mat-card>
+
+<!-- <mat-card class="inner-mat-card" *ngIf="history">
+  Set Variable:
+  <mat-form-field>
+    <mat-label> Weight (kg):</mat-label>
+    <input matInput placeholder="history.weight" [(ngModel)]="newHistory.weight"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label> Reps:</mat-label>
+    <input matInput placeholder="history.reps" [(ngModel)]="newHistory.reps"/>
+  </mat-form-field>
+  <button mat-flat-button (click)="startTime()" class="action-buttons" color="primary" #finish> 
+    Finish set
+  </button>
+</mat-card> -->

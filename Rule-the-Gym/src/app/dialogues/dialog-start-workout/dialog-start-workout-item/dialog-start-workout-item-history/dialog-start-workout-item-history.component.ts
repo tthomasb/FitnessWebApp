@@ -13,7 +13,11 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 export class DialogStartWorkoutItemHistoryComponent {
 
   @Input() history?:Set_History
+  @Input() index!: number;
   @Input() set!: Set;
+  sets: Set[] = [
+    { set_id: 0, workout_exercise_id: 0, reps: 0, weight: 0, pause: 0 },
+  ];
   @ViewChild("finish") finishButton?:MatButton
   newHistory!:Set_History
 
@@ -29,8 +33,8 @@ export class DialogStartWorkoutItemHistoryComponent {
   // Open the dialog to set the start time
   startTime() {
     const dialogRef = this.dialog.open(DialogStartWorkoutTimeComponent, {
-      width: '60%',
-      height: '60%',
+      width: '300px',
+      height: '300px',
       data: {"set":this.set} 
     });
     this.finishButton!.disabled = true

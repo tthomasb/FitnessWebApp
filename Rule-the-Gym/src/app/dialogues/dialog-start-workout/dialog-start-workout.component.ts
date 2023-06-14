@@ -32,11 +32,4 @@ export class DialogStartWorkoutComponent implements OnInit {
       this.ngOnInit();
     })
   }
-
-  // Safe History after start workout timer or finish workout
-  // Need a fix (Siehe: DC Johannes)
-  safeSetHistoryData() {
-    // console.log()
-    // this.dataService.safeSetHistoryData(this.set_History[index]);
-  }
 }

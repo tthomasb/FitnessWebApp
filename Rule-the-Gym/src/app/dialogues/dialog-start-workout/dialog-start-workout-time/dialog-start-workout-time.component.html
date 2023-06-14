@@ -1,23 +1,32 @@
-<div class="container">
-  <div class="workout">
-    <div class="spinner">
-      <mat-progress-spinner [value]="value"></mat-progress-spinner>
-      <h3>{{time | date: 'mm | ss'}}</h3>
-    </div>
-    <div class="icon-buttons">
-      <button mat-fab (click)="changeTime(-15)" color="primary" class="button-remove">
-        <mat-icon>remove</mat-icon>
-        <mat-label>15</mat-label> 
-      </button>
-      <button mat-fab (click)="changeTime(15)" color="primary" class="button-add">
-        <mat-icon>add</mat-icon>
-        <mat-label>15</mat-label> 
-      </button>
-    </div>
-    <div class="finish-button" >
-      <button mat-flat-button color="primary" (click)=null mat-dialog-close>
-        Finish
-      </button>
-    </div>
+<mat-card>
+  <mat-card-header>
+  <div class="spinner">
+    <mat-progress-spinner [value]="value"></mat-progress-spinner>
+    <h3>{{ time | date : "mm | ss" }}</h3>
   </div>
-</div>
+  <button
+    mat-fab
+    (click)="changeTime(-15)"
+    color="primary"
+    class="button-remove"
+  >
+    <mat-icon>remove</mat-icon>
+    <mat-label>15</mat-label>
+  </button>
+  <button mat-fab (click)="changeTime(15)" color="primary" class="button-add">
+    <mat-icon>add</mat-icon>
+    <mat-label>15</mat-label>
+  </button>
+</mat-card-header>
+  <mat-card-actions>
+    <button
+    mat-flat-button
+    color="primary"
+    class="finish-button"
+    (click)="(null)"
+    mat-dialog-close
+    >
+    Finish
+    </button>
+  </mat-card-actions>
+</mat-card>
