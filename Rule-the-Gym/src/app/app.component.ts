@@ -74,8 +74,9 @@ export class AppComponent {
         await userCredential.user.sendEmailVerification();
         if (!userCredential.user.emailVerified) {
           await this.auth.signOut();
-          this.errortext =
-            'Please verify your email address before logging in.';
+          alert(
+            'Please verify your email address before logging in.\nYou should receive an email shortly.'
+          );
           return;
         }
       }
