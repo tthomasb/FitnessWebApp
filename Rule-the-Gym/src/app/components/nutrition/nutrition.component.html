@@ -14,18 +14,7 @@
               }}</span>
             </ng-template>
             <div class="nutrition-card">
-              <!-- <mat-card>
-                <mat-card-header>Overview</mat-card-header>
-                <mat-divider></mat-divider>
-                <mat-card-content>
-                  Mat-list macht die Probleme
-                    <mat-list-item>Goal - Eaten = Remaining</mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item
-                      >0g Fat 0g Carbs 0g Protein 0g kcal</mat-list-item
-                    >
-                </mat-card-content>
-              </mat-card> -->
+
               <mat-card>
                 <mat-card-header>Evening<mat-icon (click)="openAddNutritionDialog()">add</mat-icon></mat-card-header>
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -105,17 +94,6 @@
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 </table>
               </mat-card>
-              <!-- <mat-card appearance="outlined">
-                <mat-card-header>Morning<mat-icon (click)="openAddNutritionDialog()">add</mat-icon></mat-card-header>
-                <mat-divider></mat-divider>
-                <mat-card-content>
-                  <mat-list>
-                    <mat-list-item>Test</mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>Test</mat-list-item>
-                  </mat-list>
-                </mat-card-content>
-              </mat-card> -->
             </div>
           </mat-tab>
         </mat-tab-group>

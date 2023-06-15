@@ -39,7 +39,6 @@ export class DialogStartWorkoutItemComponent {
               }
             }
           );
-          //this.setHistory.push()
         }
       });
   }
@@ -49,12 +48,10 @@ export class DialogStartWorkoutItemComponent {
   }
 
   getMapHistories() {
-    //console.log(this.getMapKeys())
     return this.getMapKeys().map((x) => this.getMapParam(x));
   }
 
   getMapParam(SetId: number) {
-    //console.log(this.setMap.get(SetId))
     let res = this.setMap.get(SetId);
     return res ?? ({ weight: 0, reps: 0 } as Set_History);
   }

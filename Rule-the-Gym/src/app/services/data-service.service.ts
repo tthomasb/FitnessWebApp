@@ -241,11 +241,9 @@ export class DataServiceService {
   }
 
   safeSetHistoryData(set_history: Set_History, set_id:number) {
-    // console.log(set_history);
     return this.http
       .post(
-        `api/workout/exercise/set_history/${set_id}`,
-        // ${set_history.set_history_id}
+        `api/workout/exercise/set_history/${set_id}`,      
         {
           reps: set_history.reps,
           weight: set_history.weight          
@@ -255,9 +253,6 @@ export class DataServiceService {
       .subscribe((e) =>{});
   }
 
-  // workoutGetTime(workout_id: any) {
-  //   // return this.http.get<ExerciseTime>(`api/workout/exercise/time`, httpOptions);
-  // }
 
   createSetHistory(): any[] {
     let res: any[] = [];

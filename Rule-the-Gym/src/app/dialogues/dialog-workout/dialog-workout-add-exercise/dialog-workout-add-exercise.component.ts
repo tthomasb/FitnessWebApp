@@ -1,11 +1,6 @@
-import { ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
 import { Component, Input, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ExerciseComponent } from 'src/app/components/training/exercise/exercise.component';
 import { Dialog } from 'src/app/enums/dialog';
-// import { ExerciseDataModel } from 'src/app/models/exercise-data-model.model';
-// import { ExerciseModel } from 'src/app/models/exercise-model.model';
-// import { WorkoutData } from 'src/app/models/workout-data.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { DialogEditWorkoutComponent } from '../../dialog-edit-workout/dialog-edit-workout.component';
 import { Exercise } from 'src/app/models/models';
