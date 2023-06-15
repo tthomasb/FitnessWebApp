@@ -18,7 +18,7 @@ export const workoutExerciseEditSet = {
     const { results } = await db
       .query("SELECT * FROM set WHERE set_id=$1", [set_id])
       .catch((e) => {
-        //console.log(e);
+        console.log(e);
       });
       
     return {message:"success"};

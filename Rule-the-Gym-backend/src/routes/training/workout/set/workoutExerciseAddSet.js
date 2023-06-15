@@ -14,8 +14,6 @@ export const workoutExerciseAddSet = {
       VALUES ($1, $2, $3, $4);
           `,
         [workout_exercise_id, reps, pause, weight]
-      ).then(
-        (a)=>{console.log(a)}
       )
       .catch((e) => {
         console.log(e);

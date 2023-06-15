@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({

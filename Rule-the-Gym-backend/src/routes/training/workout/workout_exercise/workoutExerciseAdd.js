@@ -6,7 +6,6 @@ export const workoutExerciseAdd = {
   handler: async (req, h) => {    
     const { workout_id, exercise_id } = req.payload; 
     //create workout_exercise   
-    console.log(req.payload)
     const {results} =await db.query(
       `
       INSERT INTO workout_exercise(exercise_id,workout_id,exercisepause)
