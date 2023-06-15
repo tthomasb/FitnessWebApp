@@ -10,6 +10,7 @@ import { Exercise } from 'src/app/models/models';
   templateUrl: './dialog-workout-add-exercise.component.html',
   styleUrls: ['./dialog-workout-add-exercise.component.scss'],
 })
+
 export class DialogWorkoutAddExerciseComponent {
   @Input() search: string = '';
   Allexercises: Exercise[]=[];
@@ -24,7 +25,6 @@ export class DialogWorkoutAddExerciseComponent {
       	this.Allexercises=data;
     });
   }
-
 
   // Get Data for Accordion
   getAccordionData(): any {

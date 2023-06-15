@@ -10,8 +10,8 @@ import { DataServiceService } from 'src/app/services/data-service.service';
   templateUrl: './dialog-start-workout-item-history.component.html',
   styleUrls: ['./dialog-start-workout-item-history.component.scss']
 })
-export class DialogStartWorkoutItemHistoryComponent {
 
+export class DialogStartWorkoutItemHistoryComponent {
   @Input() history?:Set_History
   @Input() index!: number;
   @Input() set!: Set;

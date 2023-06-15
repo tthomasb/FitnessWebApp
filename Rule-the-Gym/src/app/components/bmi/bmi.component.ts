@@ -450,7 +450,6 @@ export class BmiComponent {
   setPhysicalStatus(pal: number) {
     this.physicalStatus = pal;
   }
-
 }
 
 // BMI table interface

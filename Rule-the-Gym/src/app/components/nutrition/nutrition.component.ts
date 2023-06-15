@@ -62,7 +62,6 @@ export class NutritionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     // Setze das aktive Tab auf das heutige Datum
     const today = new Date();
     this.activeTabIndexDay = today.getDate() - 1;

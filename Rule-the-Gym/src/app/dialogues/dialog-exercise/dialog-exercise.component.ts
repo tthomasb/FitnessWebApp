@@ -7,6 +7,7 @@ import { DataServiceService } from 'src/app/services/data-service.service';
   templateUrl: './dialog-exercise.component.html',
   styleUrls: ['./dialog-exercise.component.scss'],
 })
+
 export class DialogExerciseComponent implements OnInit {
   exercise_id!: string;
   exercisename!: string;

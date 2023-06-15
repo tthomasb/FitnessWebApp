@@ -35,8 +35,6 @@ export class AccordionComponent  {
 
   //Event emitter for Dialogs in Parent
   @Output() dialogEvent:EventEmitter<any>=new EventEmitter<any>();
-  
   topLayer!: string[];
   topLayer2!: string[];
-
 }

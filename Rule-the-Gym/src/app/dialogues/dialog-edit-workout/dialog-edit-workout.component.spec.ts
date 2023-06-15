@@ -30,12 +30,4 @@ describe('DialogEditWorkoutComponent', () => {
     component.ngOnInit();
     expect(component.ngOnInit).toHaveBeenCalled();
   });
-
-  // it('should call loadExerciseData method', () => {
-  //   spyOn(component, 'loadExerciseData');
-  //   component.exercises = [];
-  //   component.loadExerciseData(0);
-  //   expect(component.loadExerciseData).toHaveBeenCalled();
-  //   expect(component.exercises.length).toBeGreaterThan(0);
-  // });
 });
