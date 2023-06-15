@@ -47,24 +47,24 @@
                 <input matInput formControlName="fourthCtrl" placeholder="Ex. 85" [(ngModel)]="weight" required>
             </mat-form-field>
             <div>
-                <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperPrevious>Back</button>
             </div>
         </form>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Your physical activity</ng-template>
-        <!-- <mat-selection-list #shoes [multiple]="false" >
-            <mat-list-option (click)="setPhysicalStatus(1.2)">Only sitting/laying acitvities</mat-list-option>
-            <mat-list-option (click)="setPhysicalStatus(1.4)">Only sitting activities, working at a desk job</mat-list-option>
-            <mat-list-option (click)="setPhysicalStatus(1.6)">Mainly sitting but partly walking or standing activities</mat-list-option>
-            <mat-list-option (click)="setPhysicalStatus(1.8)">Mainly standing or walking activities with some sports</mat-list-option>
-            <mat-list-option (click)="setPhysicalStatus(2.1)">Heavy physical work or sports</mat-list-option>
-        </mat-selection-list> -->
+          <mat-radio-group #shoes (change)="setPhysicalStatus($event.value)">
+            <mat-radio-button value="1.2">Only sitting/laying acitvities</mat-radio-button><br>
+            <mat-radio-button value="1.4">Only sitting activities, working at a desk job</mat-radio-button><br>
+            <mat-radio-button value="1.6">Mainly sitting but partly walking or standing activities</mat-radio-button><br>
+            <mat-radio-button value="1.8">Mainly standing or walking activities with some sports</mat-radio-button><br>
+            <mat-radio-button value="2.1">Heavy physical work or sports</mat-radio-button>
+          </mat-radio-group>
         <br>
         <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperNext (click)="getBmiAndCalories()">Next</button>
         </div>
     </mat-step>
     <mat-step>
@@ -73,7 +73,6 @@
         <br>
         <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="getBmiAndCalories()">Calculate</button>
         </div>
         <br>
         <mat-card class="info">Info: To build muscle mass, add 300 calories to the result. To lose weight, subtract 300 calories from the result.</mat-card>
