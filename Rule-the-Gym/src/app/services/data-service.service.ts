@@ -188,7 +188,7 @@ export class DataServiceService {
     this.http
       .delete(`api/workout/exercise/delete/${id}`, httpOptions)
       .subscribe((e) => {
-        console.log(e);
+        
       });
   }
 
