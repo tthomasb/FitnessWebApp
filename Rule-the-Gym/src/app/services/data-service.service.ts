@@ -72,7 +72,7 @@ export class DataServiceService {
           user.getIdToken().then((token) => {
             this.http
               .post<Exercise>(
-                '/api/exercise',
+                `/api/exercise/${user.uid}`,
                 { exercisename, description, muscle, equipment },
                 httpOptionsWithAuthToken(token)
               )
@@ -150,7 +150,7 @@ export class DataServiceService {
           user.getIdToken().then((token) => {
             this.http
               .post<any>(
-                '/api/workout/add',
+                `/api/workout/add/${user.uid}`,
                 {
                   workoutname: name,
                   type: type,
@@ -220,7 +220,7 @@ export class DataServiceService {
   DeleteSet(set_id: number): Observable<any> {
     let obs=this.http
       .delete(`api/workout/exercise/set/${set_id}`, httpOptions)
-        obs.subscribe((data)=>{});  
+        obs.subscribe((data)=>{});
     return obs
   }
   createSet(workoutexercise_id: number) {
@@ -246,7 +246,7 @@ export class DataServiceService {
         `api/workout/exercise/set_history/${set_id}`,      
         {
           reps: set_history.reps,
-          weight: set_history.weight          
+          weight: set_history.weight
         },
         httpOptions
       )
