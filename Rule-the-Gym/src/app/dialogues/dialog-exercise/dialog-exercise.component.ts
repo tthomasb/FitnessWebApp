@@ -23,7 +23,6 @@ export class DialogExerciseComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //    console.log(this.data);
     this.exercise_id = this.data.data[this.data.index].exercise_id;
     this.exercisename = this.data.data[this.data.index].exercisename;
     this.description = this.data.data[this.data.index].description;

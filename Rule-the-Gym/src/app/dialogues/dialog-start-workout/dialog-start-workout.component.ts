@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { WorkoutExercise } from 'src/app/models/models';
 import { DialogWorkoutAddExerciseComponent } from '../dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { createLoopVariable } from 'typescript';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/material/stepper';
@@ -11,7 +10,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './bmi.component.html',
   styleUrls: ['./bmi.component.scss']
 })
-export class BmiComponent implements OnInit {
+export class BmiComponent {
 
   // Table columns and data
   displayedColumns = ['category', 'bmi', 'risk'];
@@ -34,8 +33,6 @@ export class BmiComponent implements OnInit {
   // Observable to change the stepper orientation based on the screen size
   stepperOrientation!: Observable<StepperOrientation>;
 
-  favoriteSeason!: string;
-  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   bmi!: number;
   result!: string;
   weight!: string;
@@ -53,9 +50,6 @@ export class BmiComponent implements OnInit {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
-  }
-
-  ngOnInit(): void {
   }
 
   //New Method to get  the BMI category based on the BMI value
@@ -345,7 +339,7 @@ export class BmiComponent implements OnInit {
               return "Mild Thinness";
             } else if (this.bmi >= 23 && this.bmi < 29.5) {
               return "Normal";
-            } else if (this.bmi >= 29.5 && this.bmi < 34, 5) {
+            } else if (this.bmi >= 29.5 && this.bmi < 34.5) {
               return "Overweight";
             } else if (this.bmi >= 34.5 && this.bmi < 39.5) {
               return "Obese Class I";
@@ -437,7 +431,7 @@ export class BmiComponent implements OnInit {
       }
     }
   }
-    
+
   // Method to calculate BMI based on height, weight and gender input
   getBmiAndCalories() {
     const parsedWeight = parseInt(this.weight);
