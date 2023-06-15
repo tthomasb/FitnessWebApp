@@ -9,7 +9,6 @@ export const workoutCreate = {
     const token = req.headers.authtoken;
     const user = await admin.auth().verifyIdToken(token);
     const user_id = user.user_id;
-    //console.log(test);
     const {results}=await db
       .query(
         `
@@ -22,8 +21,7 @@ export const workoutCreate = {
         console.log(e);
         
         return e;
-      });
-      console.log(results.rows[0].workout_id, workoutname, type, description, user_id);
+      });      
     return {workout_id:results.rows[0].workout_id, workoutname, type, description, user_id };
   },
 };

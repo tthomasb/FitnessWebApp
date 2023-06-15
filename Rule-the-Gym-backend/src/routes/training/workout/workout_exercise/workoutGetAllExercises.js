@@ -18,7 +18,6 @@ export const workoutGetAllExercise = {
         console.log(e);
       });
     const rows = await results.rows;
-    console.log(rows);
     let list=[];
     for(let row of rows)
     {                  

@@ -32,7 +32,6 @@ import { workoutGetAllExercise } from "./training/workout/workout_exercise/worko
 import { workoutGetById } from "./training/workout/workout/workoutGetById";
 import { workoutExerciseDelete } from "./training/workout/workout_exercise/workoutExerciseDelete";
 import { workoutExerciseAdd } from "./training/workout/workout_exercise/workoutExerciseAdd";
-import { workoutGetTime } from "./training/workout/workoutGetTime";
 
 export default [
   exampleCreateItemRoute,
@@ -65,7 +64,6 @@ export default [
   workoutExerciseGetHistorySets,
   workoutExerciseDelete,
   workoutExerciseAdd,
-  workoutGetTime,
   userById,
   userCreate,
   userDelete,
