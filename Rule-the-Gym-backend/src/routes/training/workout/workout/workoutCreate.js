@@ -19,8 +19,7 @@ export const workoutCreate = {
         console.log(e);
         
         return e;
-      });
-      console.log(results.rows[0].workout_id, workoutname, type, description, user_id);
+      });      
     return {workout_id:results.rows[0].workout_id, workoutname, type, description, user_id };
   },
 };
