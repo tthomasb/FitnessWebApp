@@ -26,9 +26,6 @@ export class ExerciseComponent implements OnInit {
     });
   }
 
-  /**
-   * Open the workout dialog
-   */
   getAccordionData(): any {
     const data: any = {
       toLoop: this.exercises,
@@ -87,7 +84,6 @@ export class ExerciseComponent implements OnInit {
   catchDialogEvent(value: any) {
     switch (value.event) {
       case Dialog.START:
-        console.log('start Workout was called in exercise!');
         break;
       case Dialog.EDIT:
         this.openEditExercise(value.source);

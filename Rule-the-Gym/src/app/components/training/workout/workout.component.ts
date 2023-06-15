@@ -17,9 +17,7 @@ export class WorkoutComponent implements OnInit {
   typestring: string = 'type';
   accordionConfig: any;
 
-  constructor(public dataService:DataServiceService ,public dialog: MatDialog) {
-    //initialize dummy data
-  }
+  constructor(public dataService:DataServiceService ,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.dataService.getAllWorkouts().subscribe((data)=>{
@@ -37,14 +35,13 @@ export class WorkoutComponent implements OnInit {
     };
     return data;
   }
-  /**
-   * Open the workout dialog
-   */
+  
+  // Open the workout dialog
   openAddWorkout() {
     let workout: Workout={workoutname:"", workout_id:"",type:"", description:"",user_id:""};
     this.dataService.CreateWorkout("","",1).subscribe((e)=>{workout.workout_id=e.workout_id;
 
-    //Open dialog with empty workout
+    //Open dialog
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
@@ -103,7 +100,6 @@ export class WorkoutComponent implements OnInit {
   catchDialogEvent(value: any) {
     switch (value.event) {
       case Dialog.START:
-        console.log('start caught');
         this.openStartWorkout(value.source);
         break;
       case Dialog.EDIT:

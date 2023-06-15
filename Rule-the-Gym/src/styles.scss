@@ -47,12 +47,6 @@ p {
   border-bottom-style: solid;
 }
 
-// ::ng-deep.mat-toolbar {
-//   background: mat.get-color-from-palette($dark-background);
-//   border-color: rgba(255, 255, 255, 0.059);
-//   border-bottom-style: solid;
-// }
-
 .mat-drawer {
   background-color: mat.get-color-from-palette($dark-background);
 }
@@ -73,7 +67,6 @@ mat-list-item {
 .is-active {
   font-weight: bold;
   color: mat.get-color-from-palette($dark-primary);
-  // color: var(--color-primary);
 }
 
 // Material design

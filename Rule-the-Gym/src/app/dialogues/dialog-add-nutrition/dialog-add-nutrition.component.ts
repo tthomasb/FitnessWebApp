@@ -85,5 +85,3 @@ function createNewUser(id: number): UserData {
     food: food[Math.round(Math.random() * (food.length - 1))],
   };
 }
-
-

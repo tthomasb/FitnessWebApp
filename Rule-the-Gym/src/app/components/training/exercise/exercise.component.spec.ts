@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ExerciseComponent } from './exercise.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { of } from 'rxjs';
 import { Exercise } from 'src/app/models/models';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -9,7 +9,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { AccordionComponent } from '../../utils/accordion/accordion.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
-import { DialogExerciseComponent } from 'src/app/dialogues/dialog-exercise/dialog-exercise.component';
 import { Dialog } from 'src/app/enums/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';

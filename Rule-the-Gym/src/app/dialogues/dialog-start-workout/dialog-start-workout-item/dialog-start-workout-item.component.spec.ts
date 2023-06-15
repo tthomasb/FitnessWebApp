@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DialogStartWorkoutItemComponent } from './dialog-start-workout-item.component';
 
 describe('DialogStartWorkoutItemComponent', () => {

@@ -11,7 +11,6 @@ import { DialogAddNutritionComponent } from 'src/app/dialogues/dialog-add-nutrit
 import { Dialog } from 'src/app/enums/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-
 describe('NutritionComponent', () => {
   let component: NutritionComponent;
   let fixture: ComponentFixture<NutritionComponent>;

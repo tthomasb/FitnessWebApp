@@ -1,9 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { WorkoutComponent } from './workout.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
-import { of } from 'rxjs';
-import { Dialog } from 'src/app/enums/dialog';
-import { Workout } from 'src/app/models/models';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AccordionComponent } from '../../utils/accordion/accordion.component';
@@ -14,8 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 describe('WorkoutComponent', () => {
   let component: WorkoutComponent;
   let fixture: ComponentFixture<WorkoutComponent>;
-  let dataService: DataServiceService;
-  let dialog: MatDialog;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -45,7 +40,7 @@ describe('WorkoutComponent', () => {
 
   it('should call openEditWorkout', () => {
     spyOn(component, 'openEditWorkout');
-    component.workouts = [{ workoutname: "Chest", workout_id: "1", type: "", description: "", user_id: 1 }];
+    component.workouts = [{ workoutname: "Chest", workout_id: "1", type: "", description: "", user_id: '1'}];
     component.openEditWorkout(1);
     expect(component.openEditWorkout).toHaveBeenCalled();
   });

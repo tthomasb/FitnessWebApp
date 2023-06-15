@@ -170,8 +170,6 @@ export class DataServiceService {
     });
   }
 
-
-
   getWorkoutExerciseByWorkoutId(id: number): Observable<WorkoutExercise[]> {
     return this.http.get<WorkoutExercise[]>(
       `api/workout/exercise/${id}`,
@@ -223,6 +221,7 @@ export class DataServiceService {
         obs.subscribe((data)=>{});
     return obs
   }
+
   createSet(workoutexercise_id: number) {
     this.http
       .post(
@@ -252,7 +251,6 @@ export class DataServiceService {
       )
       .subscribe((e) =>{});
   }
-
 
   createSetHistory(): any[] {
     let res: any[] = [];

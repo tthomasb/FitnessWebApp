@@ -6,7 +6,6 @@ export const workoutCreate = {
   handler: async (req, h) => {
     const { workoutname = "", type = "", description=""} = req.payload;
     const user_id = req.params.user_id;
-    //console.log(test);
     const {results}=await db
       .query(
         `

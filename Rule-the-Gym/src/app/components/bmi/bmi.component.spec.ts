@@ -8,8 +8,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Component } from '@angular/core';
-
 
 describe('BmiComponent', () => {
   let component: BmiComponent;
@@ -48,7 +46,7 @@ describe('BmiComponent', () => {
     component.weight = '75';
     component.height = '175';
     component.age = '25';
-    component.getBmi();
+    
     expect(component.bmi).toBeCloseTo(24.49, 2);
     expect(component.result).toContain('Your BMI is 24.49 and you are Normal');
   });
@@ -60,7 +58,7 @@ describe('BmiComponent', () => {
     component.weight = '65';
     component.height = '165';
     component.age = '25';
-    component.getBmi();
+    
     expect(component.bmi).toBeCloseTo(23.88, 2);
     expect(component.result).toContain('Your BMI is 23.88 and you are Normal');
   });

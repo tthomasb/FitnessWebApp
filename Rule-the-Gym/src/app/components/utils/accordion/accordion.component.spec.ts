@@ -5,7 +5,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionComponent } from './accordion.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { By } from '@angular/platform-browser';
 
 describe('AccordionComponent', () => {
   let component: AccordionComponent;

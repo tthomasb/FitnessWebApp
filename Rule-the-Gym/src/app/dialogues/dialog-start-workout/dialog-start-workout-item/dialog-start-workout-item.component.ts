@@ -7,6 +7,7 @@ import { DataServiceService } from 'src/app/services/data-service.service';
   templateUrl: './dialog-start-workout-item.component.html',
   styleUrls: ['./dialog-start-workout-item.component.scss'],
 })
+
 export class DialogStartWorkoutItemComponent {
   @Input() exercise?: WorkoutExercise;
   @Input() workoutExercise?: WorkoutExercise;

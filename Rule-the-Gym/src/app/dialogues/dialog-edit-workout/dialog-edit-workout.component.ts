@@ -1,10 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DialogWorkoutAddExerciseComponent } from 'src/app/dialogues/dialog-workout/dialog-workout-add-exercise/dialog-workout-add-exercise.component';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogAskDeleteComponent } from '../dialog-ask-delete/dialog-ask-delete/dialog-ask-delete.component';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { Exercise, Set, WorkoutExercise } from 'src/app/models/models';
@@ -14,6 +10,7 @@ import { Exercise, Set, WorkoutExercise } from 'src/app/models/models';
   templateUrl: './dialog-edit-workout.component.html',
   styleUrls: ['./dialog-edit-workout.component.scss'],
 })
+
 export class DialogEditWorkoutComponent implements OnInit {
   sets: Set[] = [
     { set_id: 0, workout_exercise_id: 0, reps: 0, weight: 0, pause: 0 },
@@ -23,7 +20,6 @@ export class DialogEditWorkoutComponent implements OnInit {
   workout: any;
   workoutexercises!: WorkoutExercise[];
   user_id!: string;
-
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -51,11 +47,9 @@ export class DialogEditWorkoutComponent implements OnInit {
           this.dataService
             .getExerciseById(workoutexercise.exercise_id)
             .subscribe((data) => {
-              
               this.exercises.push(data);
             });          
         }
-        
       });
   }
 

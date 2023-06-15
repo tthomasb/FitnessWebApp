@@ -14,7 +14,6 @@
               }}</span>
             </ng-template>
             <div class="nutrition-card">
-
               <mat-card>
                 <mat-card-header>Evening<mat-icon (click)="openAddNutritionDialog()">add</mat-icon></mat-card-header>
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -23,31 +22,26 @@
                     <th mat-header-cell *matHeaderCellDef> Name </th>
                     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                   </ng-container>
-            
                   <!-- kcal Column -->
                   <ng-container matColumnDef="kcal">
                     <th mat-header-cell *matHeaderCellDef> kcal </th>
                     <td mat-cell *matCellDef="let element"> {{element.kcal}} </td>
                   </ng-container>
-                
                   <!-- Carbs Column -->
                   <ng-container matColumnDef="carbs">
                     <th mat-header-cell *matHeaderCellDef> carbs </th>
                     <td mat-cell *matCellDef="let element"> {{element.carbs}} </td>
                   </ng-container>
-
                   <!-- Protein Column -->
                   <ng-container matColumnDef="protein">
                     <th mat-header-cell *matHeaderCellDef> protein </th>
                     <td mat-cell *matCellDef="let element"> {{element.protein}} </td>
                   </ng-container>
-
                   <!-- Fat Column -->
                   <ng-container matColumnDef="fat">
                     <th mat-header-cell *matHeaderCellDef> fat </th>
                     <td mat-cell *matCellDef="let element"> {{element.fat}} </td>
                   </ng-container>
-
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>

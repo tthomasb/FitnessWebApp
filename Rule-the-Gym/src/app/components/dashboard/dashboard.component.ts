@@ -1,16 +1,12 @@
 import { Component } from '@angular/core';
 
 export interface Tile {
-  //color: string;
   cols: number;
   rows: number;
   text: string;
   picture: string;
 }
 
-/**
- * @title Dynamic grid-list
- */
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,15 +14,13 @@ export interface Tile {
 })
 
 export class DashboardComponent {
-
-  // Images for the tiles
+  // Images
   tiles: Tile[] = [
     { text: 'leer', cols: 4, rows: 1, picture: '' },
-    { text: 'One', cols: 2, rows: 1, picture: '/assets/pictures/Trainingssitzungen.png' },
-    { text: 'Two', cols: 2, rows: 1, picture: '/assets/pictures/Gesamtzeit.png' },
-    { text: 'Three', cols: 2, rows: 1, picture: '/assets/pictures/Sitzungsdauer.png'  },
-    { text: 'Four', cols: 2, rows: 1, picture: '/assets/pictures/Sätze.png'  },
-    { text: 'Five', cols: 4, rows: 4, picture: '/assets/pictures/Muskeln.png'  },
-    { text: 'leer', cols: 4, rows: 1, picture: '' },
+    { text: 'One', cols: 4, rows: 1, picture: '/assets/pictures/Trainingssitzungen.png' },
+    { text: 'Two', cols: 4, rows: 1, picture: '/assets/pictures/Gesamtzeit.png' },
+    { text: 'Three', cols: 4, rows: 1, picture: '/assets/pictures/Sitzungsdauer.png'  },
+    { text: 'Four', cols: 4, rows: 1, picture: '/assets/pictures/Sätze.png'  },
+    { text: 'Five', cols: 4, rows: 3, picture: '/assets/pictures/Muskeln.png'  },
   ];
 }

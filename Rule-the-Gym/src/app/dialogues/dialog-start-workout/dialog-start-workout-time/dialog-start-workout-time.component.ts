@@ -22,7 +22,6 @@ export class DialogStartWorkoutTimeComponent {
   sub!: any;
 
   constructor(@Inject (MAT_DIALOG_DATA) public data: any ,public dataService: DataServiceService, private dialogRef: DialogRef<DialogStartWorkoutTimeComponent>) {
-    console.log(this.data.set.pause)
     this.beginnTimer(this.data.set.pause);
   }
 

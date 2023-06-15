@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DialogStartWorkoutItemHistoryComponent } from './dialog-start-workout-item-history.component';
 
 describe('DialogStartWorkoutItemHistoryComponent', () => {
