@@ -20,10 +20,10 @@ export interface WorkoutExercise{
   workout_id:number,
   exercise_id:number,
   exercisepause:number,
-  exercisename:String,
-  description:String,
-  equipment:String,
-  muscle:String,
+  exercisename:string,
+  description:string,
+  equipment:string,
+  muscle:string,
   user_id:number
 }
 

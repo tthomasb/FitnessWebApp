@@ -1,4 +1,4 @@
-import { Component,EventEmitter,Input, OnInit, Output } from '@angular/core';
+import { Component,EventEmitter,Input, Output } from '@angular/core';
 import { Dialog } from 'src/app/enums/dialog';
 
 @Component({
@@ -6,17 +6,15 @@ import { Dialog } from 'src/app/enums/dialog';
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss']
 })
-export class AccordionComponent implements OnInit {
+export class AccordionComponent  {
   //setter for Data, so it can be loaded when passed 
   _data:any;
-  @Input()set Data(value:any){
-    //console.log(value);
+  @Input()set Data(value:any){    
     this._data=value;
     if(!value)return;
     this.topLayer2=[];
     
-    for(let w of value.toLoop){
-      // console.log(w);
+    for(let w of value.toLoop){      
       if(!this.topLayer2.includes(w[value.topLayer])){
         this.topLayer2.push(w[value.topLayer]);
         this.topLayer=[];
@@ -39,9 +37,6 @@ export class AccordionComponent implements OnInit {
   @Output() dialogEvent:EventEmitter<any>=new EventEmitter<any>();
   
   topLayer!: string[];
-  topLayer2!: String[];
-  constructor() {     
-  }
+  topLayer2!: string[];
 
-  ngOnInit(): void {}
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ExerciseModel } from 'src/app/models/exercise-model.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
@@ -24,7 +23,6 @@ export class DialogExerciseComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //    console.log(this.data);
     this.exercise_id = this.data.data[this.data.index].exercise_id;
     this.exercisename = this.data.data[this.data.index].exercisename;
     this.description = this.data.data[this.data.index].description;

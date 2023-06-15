@@ -15,7 +15,7 @@ import { Exercise } from 'src/app/models/models';
   templateUrl: './dialog-workout-add-exercise.component.html',
   styleUrls: ['./dialog-workout-add-exercise.component.scss'],
 })
-export class DialogWorkoutAddExerciseComponent implements OnInit {
+export class DialogWorkoutAddExerciseComponent {
   @Input() search: string = '';
   Allexercises: Exercise[]=[];
   dataService:DataServiceService;
@@ -30,9 +30,6 @@ export class DialogWorkoutAddExerciseComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    
-  }
 
   // Get Data for Accordion
   getAccordionData(): any {
