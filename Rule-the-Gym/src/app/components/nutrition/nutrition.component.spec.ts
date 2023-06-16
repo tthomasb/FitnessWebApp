@@ -37,6 +37,7 @@ describe('NutritionComponent', () => {
     expect(dialogSpy).toHaveBeenCalledWith(DialogAddNutritionComponent, jasmine.objectContaining({
       width: '90%',
       height: '90%',
+      minWidth: 370,
       data: { dialogName: Dialog.ADD }
     }));
   });

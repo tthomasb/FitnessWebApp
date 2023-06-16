@@ -45,6 +45,7 @@ export class WorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
+      minWidth: 370,
       data:{workout:workout, dialogName:Dialog.CREATE}
     });
      dialogRef.afterClosed().subscribe((result) => {
@@ -58,6 +59,7 @@ export class WorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogEditWorkoutComponent, {
       width: '90%',
       height: '90%',
+      minWidth: 370,
       data: { workout: this.workouts[index], dialogName: Dialog.EDIT },
     });
     dialogRef.afterClosed().subscribe((result) => {
@@ -86,6 +88,7 @@ export class WorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogStartWorkoutComponent, {
       width: '90%',
       height: '90%',
+      minWidth: 370,
       data: { data: this.workouts[index], dialogName: Dialog.START },
     });
   }

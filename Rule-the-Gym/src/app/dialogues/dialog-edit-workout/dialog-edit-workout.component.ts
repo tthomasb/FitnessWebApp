@@ -116,6 +116,7 @@ export class DialogEditWorkoutComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogWorkoutAddExerciseComponent, {
       width: '90%',
       height: '90%',
+      minWidth: 370,
       data: { workout_id: this.data.workout.workout_id },
     });
     dialogRef.afterClosed().subscribe((e) => {
