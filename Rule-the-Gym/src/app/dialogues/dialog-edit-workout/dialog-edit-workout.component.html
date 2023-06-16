@@ -24,13 +24,13 @@
                 <mat-expansion-panel hideToggle disabled>
                   <mat-expansion-panel-header>
                     <mat-panel-title> Exercise name </mat-panel-title>
-                    <mat-panel-description> Muscle group </mat-panel-description>
-                    <mat-panel-description class="test"> Delete/ Add set</mat-panel-description>
+                    <mat-panel-description>Muscle group</mat-panel-description>
+                    <mat-panel-description>Add/ Delete set</mat-panel-description>
                   </mat-expansion-panel-header>
                 </mat-expansion-panel>
                 <mat-expansion-panel *ngFor="let exercise of exercises; let workout_exercise_index=index"
                   (opened)="loadExerciseData(workout_exercise_index)" #panel>
-                  <mat-expansion-panel-header>
+                  <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*">
                     <mat-panel-title> {{exercise.exercisename}}</mat-panel-title>
                     <mat-panel-description> {{exercise.muscle}} </mat-panel-description>
                     <mat-panel-description>
