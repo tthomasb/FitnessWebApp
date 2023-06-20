@@ -39,6 +39,7 @@ export class ExerciseComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogExerciseComponent, {
       width: '90%',
       height: '90%',
+      minWidth: 370,
       data: { data: this.exercises, index: index, dialogName: Dialog.EDIT },
     });
     dialogRef.afterClosed().subscribe((result) => {
@@ -73,6 +74,7 @@ export class ExerciseComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogExerciseComponent, {
       width: '90%',
       height: '90%',
+      minWidth: 370,
       data: { data: this.exercises, dialogName: Dialog.CREATE },
     });
     dialogRef.afterClosed().subscribe((result) => {

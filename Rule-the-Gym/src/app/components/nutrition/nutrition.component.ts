@@ -77,6 +77,7 @@ export class NutritionComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogAddNutritionComponent, {
       width: '90%',
       height: '90%',
+      minWidth: 370,
       data: { dialogName: Dialog.ADD }
     });
   }

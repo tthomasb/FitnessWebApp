@@ -14,3 +14,15 @@ mat-expansion-panel {
   flex-direction: column;
   gap: 8px;
 }
+
+mat-expansion-panel {
+  mat-expansion-panel-header {
+    height: auto!important;
+    min-height: 48px !important; 
+  }    
+}
+
+mat-panel-title {
+  min-width: 100px !important;
+  width: auto;
+}
